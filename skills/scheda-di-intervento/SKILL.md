@@ -105,10 +105,7 @@ Se la correzione è provvisoria, segnala al team che va aperta una issue per rim
 
 ## Regole di scrittura
 
-- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
-- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
-- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
-- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
+{{SCRITTURA}}
 
 ## Bozza o scheda completa
 
@@ -122,4 +119,4 @@ In ogni altro caso produci una **bozza**: la prima riga è "BOZZA INTERNA, DA NO
 2. **Finito quando.** Ogni condizione è verificabile con un sì o un no.
 3. **Coerenza con il livello.** Sei voci per il ticket rapido, nove per l'esteso.
 4. **Contenuti fuori posto.** Nessuna tecnologia, nessun prezzo, nessuna stima non confermata in una scheda completa.
-5. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.
+5. {{CONTROLLO}}

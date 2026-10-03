@@ -85,10 +85,7 @@ Dopo l'applicazione, elenca cosa è stato modificato e cosa resta in attesa di u
 
 ## Regole di scrittura
 
-- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
-- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
-- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
-- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
+{{SCRITTURA}}
 
 I documenti aggiornati mantengono il proprio lessico e le proprie regole: quelli per il cliente restano senza tecnologie, prezzi e date.
 
@@ -99,4 +96,4 @@ I documenti aggiornati mantengono il proprio lessico e le proprie regole: quelli
 3. Nessun documento è stato modificato prima della conferma.
 4. Nessun documento approvato per un altro lavoro in corso è stato modificato.
 5. I documenti non raggiunti sono dichiarati.
-6. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.
+6. {{CONTROLLO}}

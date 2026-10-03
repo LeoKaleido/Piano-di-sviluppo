@@ -124,7 +124,7 @@ Ogni skill ha `scripts/controlla_caratteri.py`. In `build/`:
 - `controlla_caratteri.py`: il controllo dei caratteri vietati;
 - `patch_verifica.py`: patch usata una volta, non serve più.
 
-Nota: i percorsi dentro `build.py` puntano a `/home/claude/`: vanno adattati.
+Nota: `build.py` ora calcola i percorsi dalla propria posizione nella repo (non più fissi su `/home/claude/`); serve un interprete Python per eseguirlo.
 
 All'utente le skill si consegnano come file scaricabili (`.skill`, cioè zip della cartella), non con schede di proposta.
 

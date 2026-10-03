@@ -1,9 +1,9 @@
 import pathlib, shutil, subprocess, sys, zipfile
 
-ROOT = pathlib.Path("/home/claude")
+ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 DIST = ROOT / "dist"
-CHECK = ROOT / "build" / "controlla_caratteri.py"
+CHECK = pathlib.Path(__file__).resolve().parent / "controlla_caratteri.py"
 
 SCRITTURA = """- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
 - Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
