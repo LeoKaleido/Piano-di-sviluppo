@@ -1,0 +1,10 @@
+va analizzato ogni piano per poter definire in dettaglio ogni fase, possono emergere problemi o sviste che poi vanno a creare comportamenti standard da seguire anche negli altri progetti
+
+va fatto un documento generale che raccoglie il processo prima e dopo che i piani di sviluppo partano perché ci sono delle cose che vanno unificate, come il kickoff iniziale e le verifiche finali, aggionramento di 
+docuemntazione recupero del già fatto e tutto il resto che è in comune all'inizio e alla fine
+
+serve un documento di glossario per spiegare i termini e per solidificarli in modo tale che ogni documento usi semppre la stessa nomenclatura e sia di facile lettura e documentazione per chi poi deve studiare i documennti
+
+i documenti dei piani vanno organizzati in modo che siano più semplici possibile da leggere, con una descrizione iniziale di cosa tratta il documento un elenco puntato delle fasi e sotto fasi come fosse un indice e una parte in cui le fasi vanno spiegate nel dettaglio incluse le sottofasi.
+
+vanno aggiornate tutte le skill
