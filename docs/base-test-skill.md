@@ -38,13 +38,12 @@ Lumera Arredi è un'azienda inventata che vende illuminazione e complementi d'ar
 - **Marta.** Si occupa dell'assistenza clienti. Usa il gestionale ogni giorno e apre la maggior parte dei ticket.
 - **Diego.** Cura i rapporti commerciali con i rivenditori. Ha richieste precise e tende a rivolgersi direttamente agli sviluppatori.
 
-Le regole su variazioni, ritardi e accettazione sono già firmate, in un accordo valido per tutti i lavori. I valori concordati:
+Le regole su variazioni, ritardi e accettazione sono già concordate con il cliente, valide per tutti i lavori. I valori concordati:
 
 - accettazione di una milestone entro 5 giorni lavorativi, poi vale il silenzio;
 - garanzia di 60 giorni dopo ogni rilascio;
-- conferma di una Scheda di intervento entro 10 giorni lavorativi, poi il ticket viene chiuso.
 
-> Nota: questi tre valori usano il vecchio lessico/regole (accettazione implicita di una demo, garanzia fissa a 60 giorni). Vanno allineati alle decisioni prese il 2026-10-03 (demo senza termine di accettazione implicita; garanzia = 50% della durata della lavorazione, minimo 15 giorni) prima di usare questa base nel test.
+> Nota: questi valori usano il vecchio lessico e le vecchie regole (accettazione implicita di una demo, garanzia fissa a 60 giorni). La conferma della Scheda di intervento non esiste più: i ticket non hanno conferma del cliente. Vanno allineati alle decisioni prese il 2026-10-03 (demo senza termine di accettazione implicita; garanzia = 50% della durata della lavorazione, minimo 15 giorni) prima di usare questa base nel test.
 
 ## Il sistema esistente
 
@@ -103,8 +102,8 @@ Lo sprint in corso è il terzo, dal 28 settembre al 9 ottobre. La milestone del 
 
 **Ticket aperti**
 
-- **Ticket 101, bug.** Nel carrello il totale a volte differisce di un centesimo dal riepilogo del pagamento. Urgenza alta, scheda confermata, assegnato allo sviluppatore 3.
-- **Ticket 102, modifica.** Aggiungere il campo "partita IVA" al modulo di contatto. Scheda inviata, in attesa di conferma da 6 giorni lavorativi.
+- **Ticket 101, bug.** Nel carrello il totale a volte differisce di un centesimo dal riepilogo del pagamento. Urgenza normale, Scheda di intervento scritta, assegnato allo sviluppatore 3.
+- **Ticket 102, feature.** Aggiungere il campo "partita IVA" al modulo di contatto. Scheda di intervento scritta, in attesa di entrare in uno sprint.
 
 **Registro delle modifiche del progetto comparatore**
 
@@ -135,7 +134,7 @@ I parametri già decisi (nella base originale; vedi nota sotto):
 - sprint di 2 settimane;
 - buffer di sprint: 10% della capacità;
 - buffer di milestone: 20% delle ore stimate;
-- una stima superata di oltre il 25% ferma il ticket.
+- un ticket che supera 2 settimane di lavoro si ferma e diventa progetto.
 
 > Nota: il buffer di sprint è stato fissato al 20% (non 10%) nella sessione del 2026-10-03. Da correggere in questa base prima del test.
 
@@ -166,7 +165,11 @@ Cosa deve emergere:
 - volerla prima è un cambio di priorità, quindi una variazione media, e la decide Franco, non Marta;
 - la parte sul catalogo non è nel progetto, e nel codice è già quasi pronta;
 - quella parte tocca il modulo `disponibilita`, che un ramo non rilasciato sta modificando;
-- il ticket 104 chiede una cosa che il sistema fa già: manca solo un permesso.
+- il ticket 104 chiede una cosa che il sistema fa già: manca solo un permesso;
+- per ogni richiesta l'analisi decide categoria, esito della verifica (da fare, non da fare, da fare in parte, da rimandare), stima in ore, tipo, urgenza e responsabile;
+- il 103, diviso in due, ha per la parte sul comparatore l'esito "non da fare come ticket" (è una variazione) e per la parte sul catalogo l'esito "da rimandare", per la sovrapposizione con lo sviluppo in corso;
+- il 104 ha l'esito "non da fare": il sistema lo fa già, e la risposta al cliente è un'assistenza;
+- nessuno dei due ticket ha una conferma o una prova del cliente.
 
 ### Percorso 2: progetto
 
@@ -189,7 +192,7 @@ Gli eventi da introdurre, nell'ordine, durante il percorso:
 2. Dopo l'approvazione, Diego chiede a uno sviluppatore di aggiungere i preventivi in PDF.
 3. Il cliente consegna i listini dei rivenditori con 6 giorni lavorativi di ritardo.
 4. Lo sviluppatore 2 si ammala per una settimana, nel secondo sprint.
-5. Un ticket bloccante sul pagamento ferma lo sviluppatore 1 per due giorni.
+5. Un ticket urgente sul pagamento ferma lo sviluppatore 1 per due giorni.
 6. Alla demo una story ha un difetto non bloccante, e Franco chiede una cosa nuova.
 7. Franco non risponde alla demo successiva.
 

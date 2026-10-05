@@ -1,39 +1,42 @@
 ---
 name: allineamento-documenti
-description: Trova i documenti di altri lavori toccati da un ticket o da un progetto (Manuale del prodotto, Documento tecnico, documenti di progetti in corso, schede di altri ticket) e ne propone l'aggiornamento. Usala alla conferma di una scheda o di una proposta, e di nuovo alla chiusura del ticket o dopo il rilascio.
+description: Trova i documenti di altri lavori toccati da un ticket o da un progetto (Manuale del prodotto, Documento tecnico, documenti di progetti, Schede di intervento di altri ticket) e ne propone l'aggiornamento. Usala a lavoro concluso, per un ticket prima del rilascio, e prima di sviluppare alla conferma di una proposta.
 ---
 
 # Allineamento dei documenti
 
 ## A cosa serve
 
-Un ticket o un progetto può cambiare un comportamento descritto nei documenti di un altro lavoro. Se nessuno se ne accorge, quei documenti diventano falsi: il Manuale del prodotto descrive qualcosa che il sistema non fa più, oppure un progetto in corso viene costruito su una base che un ticket ha appena cambiato.
+Un ticket o un progetto può cambiare un comportamento descritto nei documenti di un altro lavoro. Se nessuno se ne accorge, quei documenti diventano falsi: il Manuale del prodotto descrive qualcosa che il sistema non fa più, oppure un progetto viene costruito su una base che un ticket ha appena cambiato.
 
-La skill cerca i documenti toccati, dice cosa cambia in ciascuno e propone le modifiche. Le applica solo dopo la conferma del product lead.
+La skill cerca i documenti toccati, dice cosa cambia in ciascuno e propone le modifiche. Le applica solo dopo la conferma del responsabile del lavoro.
 
 Si usa in due momenti:
 
-- **Prima di sviluppare**, alla conferma della Scheda di intervento o della Proposta di soluzione: serve a scoprire i conflitti con altri lavori quando costa ancora poco risolverli.
-- **Dopo**, alla chiusura del ticket o dopo il rilascio del progetto: serve ad aggiornare i documenti con ciò che è stato realmente fatto.
+- **Prima di iniziare.** Per un progetto o un prodotto, alla conferma della Proposta di soluzione: serve a scoprire i conflitti con altri lavori quando costa ancora poco risolverli. Per un ticket questo controllo è già nell'analisi, dentro la verifica preliminare, che può rimandare il lavoro.
+- **A lavoro concluso.** Serve ad aggiornare i documenti con ciò che è stato realmente fatto. Per un ticket avviene prima del rilascio, perché rilascio e chiusura coincidono. Fa eccezione il ticket urgente, che si chiude al rilascio e aggiorna i documenti dopo. Per un progetto o un prodotto avviene dopo il rilascio.
 
 ## Avvio
 
 Chiedi solo ciò che non è già stato detto.
 
-1. **Il lavoro di partenza.** Il ticket (con le sue schede) o il progetto (con Proposta di soluzione e Manuale), e il sistema su cui interviene.
-2. **Il momento.** Prima di sviluppare, oppure dopo.
+1. **Il lavoro di partenza.** Il ticket (con la sua Scheda di intervento) o il progetto (con Proposta di soluzione e Manuale), e il sistema su cui interviene.
+2. **Il momento.** Prima di iniziare, oppure a lavoro concluso.
 3. **Dove sono i documenti.** I documenti sono conservati su Drive. Chiedi in quale cartella si trovano quelli del cliente e del sistema: non dare per scontata la struttura. Se hai accesso a Drive, cerca tu a partire da quella cartella. Se non hai accesso, chiedi che i documenti vengano forniti e dichiara che il controllo copre solo quelli ricevuti.
-4. **Per il momento "dopo"**: cosa è stato realmente fatto, se diverso da quanto previsto.
+4. **Per un ticket, la fonte.** Le voci "Su cosa intervenire" e "Documenti collegati" della Scheda di intervento: dicono quali parti del sistema sono toccate e quali documenti controllare per primi. Se lo sviluppatore ha toccato parti diverse da quelle previste, la scheda deve essere stata corretta prima di usarla: se non lo è, chiedilo.
+5. **A lavoro concluso**: cosa è stato realmente fatto, se diverso da quanto previsto.
 
 ## Dove cercare
 
 Sullo stesso sistema:
 
 - il **Manuale del prodotto** e il **Documento tecnico** del sistema;
-- i documenti dei **progetti in corso**: Stato di partenza, Proposta di soluzione, Piano delle milestone, wireframe e mockup;
-- le **Schede di intervento** dei ticket aperti sulla stessa parte.
+- i documenti dei **progetti**, in corso o chiusi: Stato di partenza, Proposta di soluzione, Piano delle milestone, wireframe e mockup;
+- le **Schede di intervento** degli altri ticket, aperti o chiusi, sulla stessa parte.
 
 Su altri sistemi dello stesso cliente, solo se dialogano con la parte toccata: integrazioni, dati condivisi.
+
+Per ora la ricerca parte dalla cartella indicata e dalle voci della Scheda di intervento. Un metodo per trovare i documenti senza cercarli ogni volta tra tutti (indici, divisione per repository) è ancora da definire.
 
 ## Come riconoscere un documento toccato
 
@@ -44,7 +47,7 @@ Parti da ciò che il lavoro cambia: schermate, comportamenti, dati, integrazioni
 - prevede di modificare la stessa parte in un altro modo;
 - contiene un wireframe o un mockup di una schermata che cambia.
 
-Leggi i documenti per intero: una ricerca per parole chiave non basta, perché la stessa cosa può essere chiamata in modi diversi in documenti vecchi. Se trovi due nomi per la stessa cosa, segnalalo.
+Un documento va modificato solo se il lavoro ha cambiato qualcosa di rilevante nella parte di codice che riguarda. Leggi i documenti per intero: una ricerca per parole chiave non basta, perché la stessa cosa può essere chiamata in modi diversi in documenti vecchi. Se trovi due nomi per la stessa cosa, segnalalo.
 
 ## Rapporto di impatto
 
@@ -58,7 +61,7 @@ Per ogni documento toccato:
 - **Tipo**:
   - **Aggiornamento**: il documento va allineato, nessun conflitto.
   - **Conflitto**: un altro lavoro in corso prevede qualcosa di incompatibile. Va risolto prima di sviluppare.
-  - **Documento approvato dal cliente**: vedi la regola sotto.
+  - **Documento approvato dal cliente per un lavoro aperto**: vedi la regola sotto.
 - **Chi deve decidere.**
 
 In coda al rapporto:
@@ -68,18 +71,18 @@ In coda al rapporto:
 
 ## Regola sui documenti approvati dal cliente
 
-Un documento già approvato da un cliente non si modifica in silenzio. Se il lavoro lo tocca:
+Un documento già approvato da un cliente per un lavoro ancora aperto non si modifica in silenzio. Se il lavoro lo tocca, la skill si ferma: segnala che per quel lavoro serve una variazione o una comunicazione al cliente, e lascia la decisione al responsabile.
 
-- se appartiene al sistema (Manuale del prodotto), e la modifica è la conseguenza di un lavoro confermato dallo stesso cliente, l'aggiornamento è lecito: si fa con una nuova versione numerata e l'origine della modifica dichiarata;
-- se appartiene a un altro lavoro in corso (la proposta o il Manuale approvati per un progetto), la skill si ferma: segnala che per quel progetto serve una variazione o una comunicazione al cliente, e lascia la decisione al product lead.
+I documenti di lavori già chiusi, e quelli del sistema (Manuale del prodotto, Documento tecnico), si aggiornano a lavoro concluso, con una nuova versione numerata e l'origine della modifica dichiarata.
 
 ## Applicare le modifiche
 
-Solo dopo la conferma del product lead, e solo per le voci confermate.
+Solo dopo la conferma del responsabile del lavoro, e solo per le voci confermate.
 
 - Manuale del prodotto e Documento tecnico: nuova versione, con le modifiche registrate e la loro origine (codice del ticket o del progetto). Appartengono al sistema: si aggiornano, non se ne creano di nuovi.
 - Story eliminate: restano con il loro codice e la dicitura "Rimossa". Story nuove: codice successivo all'ultimo usato.
-- Piano delle milestone di un altro progetto: non modificarlo. Segnala le issue toccate al product lead.
+- Documenti di lavori già chiusi: modifica con l'indicazione del lavoro che l'ha causata.
+- Piano delle milestone di un progetto aperto: non modificarlo. Segnala le issue toccate al responsabile.
 
 Dopo l'applicazione, elenca cosa è stato modificato e cosa resta in attesa di una decisione.
 
@@ -94,6 +97,6 @@ I documenti aggiornati mantengono il proprio lessico e le proprie regole: quelli
 1. Ogni cosa che il lavoro cambia è stata cercata in tutti i documenti raggiunti.
 2. Ogni voce del rapporto riporta il testo attuale e quello proposto.
 3. Nessun documento è stato modificato prima della conferma.
-4. Nessun documento approvato per un altro lavoro in corso è stato modificato.
+4. Nessun documento approvato per un lavoro aperto è stato modificato.
 5. I documenti non raggiunti sono dichiarati.
 6. {{CONTROLLO}}

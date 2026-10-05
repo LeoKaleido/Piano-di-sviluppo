@@ -4,7 +4,7 @@ Data: 2026-10-02
 
 Un prodotto è un sistema nuovo, costruito da zero e consegnato in più release. Si gestisce in dieci fasi, ognuna con una condizione di chiusura verificabile. Questo piano governa la prima release: le successive sono progetti.
 
-Questo piano contiene solo ciò che è proprio dei prodotti. Le regole valide per ogni lavoro (glossario, taglie, verifica preliminare, contatti, documenti, organizzazione del lavoro, date, variazioni, garanzia) sono nelle Regole comuni. Ciò che il prodotto ha in comune con il progetto è nel Piano di progetto. È il riferimento per tutto il team.
+Questo piano contiene solo ciò che è proprio dei prodotti. Le regole valide per ogni lavoro (glossario, categorie, verifica preliminare, contatti, documenti, date, variazioni, garanzia) sono nelle Regole comuni. Lo sviluppo (sprint, milestone, issue, buffer, imprevisti) è nel Ciclo di sviluppo. Ciò che il prodotto ha in comune con il progetto è nel Piano di progetto. È il riferimento per tutto il team.
 
 ## Quando si applica
 
@@ -15,16 +15,16 @@ Rispetto al progetto cambiano queste cose:
 - **Non c'è un sistema esistente.** Non si indaga il codice: si indaga come lavora oggi il cliente. La verifica preliminare guarda solo i lavori aperti.
 - **L'incertezza è più alta.** Il cliente non sa cosa vuole finché non lo vede, quindi un prototipo viene approvato prima di scrivere il dettaglio.
 - **È troppo grande per un'unica consegna.** Il prodotto è diviso in release. La prima contiene il minimo utile, le successive si gestiscono come progetti.
-- **Non si assegna l'urgenza.** Riguarda sempre un sistema che non esiste ancora, quindi non può essere bloccante né degradare una funzione esistente.
+- **Non si assegna l'urgenza.** Riguarda sempre un sistema che non esiste ancora, quindi non può essere urgente né degradare una funzione esistente.
 
 ## Il flusso del prodotto
 
 Non si passa alla fase successiva finché la condizione di chiusura non è soddisfatta.
 
-1. **Ingresso e classificazione.** Il cliente apre la richiesta nel sistema di ticket. Non si assegna l'urgenza: si esegue la verifica preliminare sui soli lavori aperti, poi si assegna la taglia.
-   - Si chiude quando: la taglia è assegnata e la verifica ha un esito.
-2. **Qualifica e primo confronto.** Si capisce il bisogno, si individuano referente, scadenze e vincoli. Con un cliente nuovo si firma l'accordo quadro.
-   - Si chiude quando: il referente è noto, l'accordo quadro è firmato e ci sono le risposte senza le quali l'analisi non può partire.
+1. **Ingresso e classificazione.** Il cliente apre la richiesta nel sistema di ticket. Non si assegna l'urgenza: si esegue la verifica preliminare sui soli lavori aperti, poi si conferma la categoria.
+   - Si chiude quando: la categoria è confermata e la verifica ha un esito.
+2. **Qualifica e primo confronto.** Si capisce il bisogno, si individuano referente, scadenze e vincoli.
+   - Si chiude quando: il referente è noto e ci sono le risposte senza le quali l'analisi non può partire.
 3. **Analisi del contesto.** A tempo limitato si analizza come lavora oggi il cliente, chi userà il prodotto, con quali sistemi dovrà dialogare.
    - Si chiude quando: lo Stato di partenza è scritto, ogni punto della richiesta ha un giudizio di fattibilità e le incognite rimaste sono elencate.
 4. **Proposta.** Si scrive la Proposta di soluzione, con la divisione in release e i wireframe delle schermate principali.
@@ -69,7 +69,7 @@ Ai materiali tipici del cliente si aggiungono dati da importare, domini e accoun
 
 Ai momenti fissi del progetto si aggiungono l'analisi del contesto, le sessioni sul prototipo e il lancio; il primo confronto diventa qualifica e primo confronto. Le regole di ogni contatto sono nelle Regole comuni.
 
-- **Qualifica e primo confronto** (fase 2, incontro o call). Domande su bisogno, scadenze e vincoli. Devono tornare le risposte, il nome del referente e l'accordo quadro firmato.
+- **Qualifica e primo confronto** (fase 2, incontro o call). Domande su bisogno, scadenze e vincoli. Devono tornare le risposte e il nome del referente.
 - **Analisi del contesto** (fase 3, incontri con gli utilizzatori). Domande su come lavorano oggi. Deve tornare la descrizione del lavoro attuale.
 - **Sessioni sul prototipo** (fase 6, call o incontro). Come si presenterà e come si userà il prodotto. Devono tornare le correzioni, poi l'approvazione scritta.
 - **Lancio** (fase 9, incontro, formazione, email). Piano di lancio, formazione degli utilizzatori, canale per le segnalazioni. Devono tornare l'approvazione del piano, i dati iniziali e la conferma dopo il lancio.
@@ -111,7 +111,6 @@ Ogni imprevisto ha una risposta già decisa. Qui stanno solo quelli propri del p
 
 **Fase 2: qualifica e primo confronto**
 
-- **Il cliente non firma l'accordo quadro.** Il lavoro non prosegue oltre la fase 2.
 
 **Fase 3: analisi del contesto**
 
@@ -144,7 +143,7 @@ Ogni imprevisto ha una risposta già decisa. Qui stanno solo quelli propri del p
 **Fase 10: passaggio a regime**
 
 - **Bug dopo il lancio.** Corretto come pacchetto di garanzia, non come un lavoro nuovo.
-- **Nuova richiesta presentata come bug.** Se il comportamento rispetta il Manuale è un ticket di tipo Modifica o un nuovo progetto.
+- **Nuova richiesta presentata come bug.** Se il comportamento rispetta il Manuale è un ticket di tipo feature o un nuovo progetto.
 
 ## Decisioni proprie di questo piano
 

@@ -1,6 +1,6 @@
 ---
 name: documento-tecnico
-description: Scrive e aggiorna il Documento tecnico interno, cioè come viene realizzato il sistema (architettura, dati, integrazioni, infrastruttura, scelte tecniche). Usala dopo il Manuale del prodotto, e dopo ogni variazione, ticket o progetto che cambia la realizzazione.
+description: Scrive e aggiorna il Documento tecnico interno, cioè come viene realizzato il sistema (repository, tecnologie, architettura, dati, integrazioni, infrastruttura, scelte tecniche, milestone e issue). Usala dopo il Manuale del prodotto, e dopo ogni variazione, ticket o progetto che cambia la realizzazione.
 ---
 
 # Documento tecnico
@@ -11,7 +11,7 @@ Il Documento tecnico è interno e non viene mai condiviso con il cliente. Dice *
 
 Questa divisione serve a evitare che due documenti descrivano la stessa cosa e finiscano per divergere. Per questo il Documento tecnico cita i codici delle story (F3.1) e non ne riscrive mai il contenuto. Se i due documenti sono in contrasto, vale il Manuale e si corregge il Documento tecnico.
 
-Come il Manuale, appartiene al sistema e non al singolo lavoro: un progetto o un ticket lo aggiornano, non ne creano uno nuovo. Lo cura il team lead.
+Come il Manuale, appartiene al sistema e non al singolo lavoro: un progetto o un ticket lo aggiornano, non ne creano uno nuovo. Lo cura il responsabile del lavoro, con chi sviluppa.
 
 Deve bastare a uno sviluppatore che entra nel team a lavoro avviato.
 
@@ -21,12 +21,12 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
 2. **Documento tecnico esistente.** Chiedi se il sistema ne ha già uno e dove si trova. Se esiste, il lavoro è un aggiornamento.
-3. **Le fonti.** Il Manuale del prodotto, lo Stato di partenza, le scelte tecniche del team lead, il codice se accessibile.
+3. **Le fonti.** Il Manuale del prodotto, lo Stato di partenza, le scelte tecniche di chi sviluppa, il codice se accessibile, e le sintesi delle conversazioni sul lavoro.
 4. **Situazione.** Prima stesura oppure aggiornamento, e in quel caso l'elenco dei codici di story modificati, aggiunti o rimossi nel Manuale.
 
 ## Informazioni mancanti
 
-Le scelte tecniche le prende il team lead. Puoi proporne, motivandole, ma entrano in una versione completa solo dopo essere state accettate: fino ad allora sono marcate con "[Proposta da validare]". Non scegliere in silenzio una tecnologia al posto del team.
+Le scelte tecniche le prende chi sviluppa. Puoi proporne, motivandole, ma entrano in una versione completa solo dopo essere state accettate: fino ad allora sono marcate con "[Proposta da validare]". Non scegliere in silenzio una tecnologia al posto del team.
 
 Chiedi in un unico elenco numerato ciò che manca.
 
@@ -44,16 +44,17 @@ Intestazione: titolo, cliente, sistema, data, versione, versione del Manuale a c
 8. **Sicurezza e dati personali.** Accessi, permessi, dati sensibili, backup.
 9. **Decisioni tecniche.** Ogni scelta rilevante con data, alternative scartate e motivo. Serve a non ridiscutere ciò che è già stato deciso.
 10. **Rischi e debito tecnico.** Ciò che è stato fatto in modo provvisorio e andrà ripreso.
-11. **Modifiche rispetto alla versione precedente.**
+11. **Milestone e issue.** Solo per progetti e prodotti. La divisione in milestone, le issue con le stime, il calendario, i buffer e i materiali del cliente. Lo scrive la skill `piano-delle-milestone`, che da qui estrae anche il Piano dei SAL per il cliente.
+12. **Modifiche rispetto alla versione precedente.**
 
 Per un prodotto i capitoli 7 e 8 sono sempre completi, perché l'infrastruttura nasce da zero. Per un progetto su un sistema esistente descrivono solo ciò che cambia, con un rimando a ciò che resta invariato.
 
 ## Regole di contenuto
 
 - **Solo il come.** Nessun comportamento visto dall'utente: per quello si rimanda al codice della story.
-- **Nessun prezzo e nessuna data.**
+- **Nessun prezzo.** Le date compaiono solo nel capitolo Milestone e issue.
 - **Linguaggio tecnico**, senza semplificazioni: i lettori sono sviluppatori.
-- **Nulla di inventato.** Ciò che non è stato deciso si scrive come domanda aperta per il team lead.
+- **Nulla di inventato.** Ciò che non è stato deciso si scrive come domanda aperta per chi sviluppa.
 
 ## Regole di scrittura
 
@@ -70,7 +71,7 @@ Markdown, sia in bozza sia completo, perché è un documento di lavoro che gli s
 A ogni variazione, ticket o progetto che cambia la realizzazione:
 
 - parti dall'elenco dei codici di story cambiati nel Manuale e aggiorna le sezioni che li citano;
-- incrementa la versione e compila il capitolo 11 con l'origine della modifica;
+- incrementa la versione e compila il capitolo 12 con l'origine della modifica;
 - aggiungi al capitolo 9 le nuove decisioni.
 
 ## Controllo finale

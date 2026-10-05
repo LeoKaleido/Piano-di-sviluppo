@@ -1,13 +1,13 @@
 ---
 name: variazione
-description: Gestisce una variazione chiesta dal cliente a lavoro avviato. La categorizza come piccola, media o grande, stima l'impatto, aggiorna il Registro delle modifiche e indica i documenti da aggiornare. Usala ogni volta che il cliente chiede qualcosa che i documenti approvati non prevedono.
+description: Gestisce una variazione chiesta dal cliente a lavoro avviato. La categorizza come piccola, media o grande, stima l'impatto, aggiorna il Registro delle variazioni e indica i documenti da aggiornare. Usala ogni volta che il cliente chiede qualcosa che i documenti approvati non prevedono.
 ---
 
 # Variazione
 
 ## A cosa serve
 
-Dopo l'approvazione dei documenti, tutto ciò che il cliente chiede e che quei documenti non prevedono è una variazione. Senza una procedura, le variazioni entrano a voce, si accumulano e spostano le date senza che nessuno l'abbia deciso.
+Dopo la conferma dei documenti (per un progetto, la conferma del Manuale del prodotto), tutto ciò che il cliente chiede e che quei documenti non prevedono è una variazione. Prima della conferma è una modifica: si recepisce con una nuova versione numerata, non entra nel Registro delle variazioni e non passa da qui. Senza una procedura, le variazioni entrano a voce, si accumulano e spostano le date senza che nessuno l'abbia deciso.
 
 La skill fa quattro cose: verifica che sia davvero una variazione, la categorizza, ne stima l'impatto e prepara ciò che serve per farla approvare. Non modifica i documenti del progetto: indica quali vanno aggiornati.
 
@@ -17,9 +17,9 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
 2. **La richiesta del cliente**, come è arrivata.
-3. **I documenti approvati**: Proposta di soluzione, Manuale del prodotto, Piano delle milestone, e wireframe e mockup se la richiesta tocca l'interfaccia.
+3. **I documenti confermati**: Proposta di soluzione, Manuale del prodotto, Documento tecnico (capitolo Milestone e issue), e wireframe e mockup se la richiesta tocca l'interfaccia.
 4. **Lo stato del lavoro**: quali issue toccate sono da fare, in corso, finite o già accettate.
-5. **Il Registro delle modifiche**, se esiste.
+5. **Il Registro delle variazioni**, se esiste.
 
 ## Passo 1: è una variazione?
 
@@ -27,7 +27,8 @@ Confronta la richiesta con il Manuale del prodotto.
 
 - **Bug**: il sistema fa una cosa diversa dal Manuale. Non è una variazione: si corregge.
 - **Ambiguità**: il Manuale non è chiaro. Si chiarisce con il cliente e si aggiorna il Manuale. Diventa una variazione solo se il chiarimento comporta lavoro non previsto.
-- **Variazione**: il Manuale non lo prevede, o prevede altro.
+- **Modifica**: il documento non è ancora confermato dal cliente. Non è una variazione: nuova versione numerata, fuori dal Registro. Dillo e fermati.
+- **Variazione**: il Manuale confermato non lo prevede, o prevede altro.
 
 Cambiare un wireframe o un mockup già approvato è sempre una variazione. Se la richiesta non è una variazione, dillo e fermati lì.
 
@@ -37,13 +38,13 @@ Cambiare un wireframe o un mockup già approvato è sempre una variazione. Se la
 - **Media**: oltre 4 ore, oppure tocca più story o lavoro già accettato, ma resta dentro una sola milestone. Sono medie anche il cambio di priorità tra milestone e, in un prodotto, lo spostamento di una story tra rilasci.
 - **Grande**: cambia ciò che la proposta aveva stabilito, oppure tocca più milestone.
 
-La categoria la proponi tu, motivandola con il criterio. La decide il product lead. Se la stima è vicina alla soglia delle 4 ore, segnalalo.
+La categoria la proponi tu, motivandola con il criterio. La decide il responsabile. Se la stima è vicina alla soglia delle 4 ore, segnalalo.
 
 ## Passo 3: impatto
 
 - **Story toccate**: codici modificati, aggiunti, rimossi.
 - **Issue toccate**, divise per stato. Le issue in corso, finite o accettate non si cancellano: passano a Superata, e il lavoro già svolto resta dovuto.
-- **Ore**: nuove ore necessarie e ore di lavoro superato. Le stime vanno validate dal team lead: fino ad allora sono marcate con "[Stima da validare]".
+- **Ore**: nuove ore necessarie e ore di lavoro superato. Le stime vanno validate da chi sviluppa: fino ad allora sono marcate con "[Stima da validare]".
 - **Buffer di milestone**: quanto ne resta dopo la variazione.
 - **Date**: quali date di consegna cambiano e di quanto. Se nessuna cambia, dillo.
 - **Altri lavori**: se la variazione tocca documenti di altri progetti o ticket, segnala che serve l'allineamento dei documenti.
@@ -51,16 +52,16 @@ La categoria la proponi tu, motivandola con il criterio. La decide il product le
 ## Passo 4: come si gestisce
 
 - **Piccola**: conferma scritta del cliente. È assorbita dal buffer di milestone. Si aggiorna il Manuale del prodotto.
-- **Media**: stima dell'impatto e approvazione scritta del cliente prima di lavorarci. Può spostare una story o una data. Si aggiornano Manuale del prodotto, Piano delle milestone, Documento tecnico se serve, Piano dei SAL se cambia una data.
+- **Media**: stima dell'impatto e approvazione scritta del cliente prima di lavorarci. Può spostare una story o una data. Si aggiornano Manuale del prodotto, Documento tecnico (capitolo Milestone e issue), Piano dei SAL se cambia una data.
 - **Grande**: si torna alla proposta. Serve una proposta integrativa, la conferma del cliente e una nuova documentazione di progetto. Si aggiornano tutti i documenti.
 
 Una variazione non entra mai nello sprint in corso: entra in uno sprint successivo, dopo l'approvazione.
 
-Se il buffer di milestone è già stato consumato da variazioni piccole precedenti, segnalalo: una nuova variazione piccola non è più assorbibile e va trattata come media.
+Le variazioni piccole possono consumare al massimo metà del buffer di milestone. Se è già stato consumato da variazioni piccole precedenti, segnalalo: una nuova variazione piccola non è più assorbibile e va trattata come media.
 
 ## Cosa produci
 
-**1. Voce del Registro delle modifiche.** Il registro è un file Markdown per sistema, `registro-modifiche-<cliente>-<sistema>.md`. Se non esiste, crealo. Ogni voce contiene:
+**1. Voce del Registro delle variazioni.** Il registro è un file Markdown per sistema, `registro-variazioni-<cliente>-<sistema>.md`. Se non esiste, crealo. Ogni voce contiene:
 
 - codice fisso (V1, V2), data, chi l'ha chiesta;
 - la richiesta, con le parole del cliente;

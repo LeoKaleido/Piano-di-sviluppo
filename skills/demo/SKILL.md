@@ -1,6 +1,6 @@
 ---
 name: demo
-description: Prepara la scaletta di una demo al cliente (story da mostrare, criteri di accettazione da verificare) e ne registra l'esito nel verbale di accettazione. Usala a fine milestone di un progetto o prodotto, prima del lancio, e per la verifica di un ticket esteso sullo staging.
+description: Prepara la scaletta di una demo al cliente (story da mostrare, criteri di accettazione da verificare) e ne registra l'esito nel verbale di accettazione. Usala a fine milestone di un progetto o prodotto e prima del lancio. Non si usa per i ticket.
 ---
 
 # Demo
@@ -13,8 +13,7 @@ Senza una scaletta, una demo diventa una conversazione: il cliente guarda, comme
 
 Quando si tiene:
 
-- **Ticket esteso**: prima del rilascio, il cliente verifica i criteri della Scheda di intervento.
-- **Progetto**: a fine di ogni milestone.
+- **Progetto**: a fine di ogni milestone, e al collaudo finale prima della pubblicazione (skill `collaudo-e-rilascio`).
 - **Prodotto**: a fine di ogni milestone e prima del lancio.
 
 ## Avvio
@@ -22,21 +21,21 @@ Quando si tiene:
 Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
-2. **Cosa si dimostra.** La milestone (SAL) o il ticket.
+2. **Cosa si dimostra.** La milestone (SAL).
 3. **Momento.** Preparazione della demo, oppure registrazione dell'esito.
-4. **Le fonti.** Per la preparazione: il Manuale del prodotto con i criteri di accettazione, il Piano delle milestone, l'ultimo Documento di sprint; per un ticket, la Scheda di intervento. Per l'esito: la scaletta e gli appunti presi durante la demo.
+4. **Le fonti.** Per la preparazione: il Manuale del prodotto con i criteri di accettazione, il Piano delle milestone, l'ultimo Documento di sprint. Per l'esito: la scaletta e gli appunti presi durante la demo.
 
 ## Preparazione: verifica interna
 
 Prima di scrivere la scaletta, chiedi conferma che ogni story della milestone sia stata verificata dal team sullo staging. Una story che non soddisfa il suo criterio non si porta in demo sperando che vada bene.
 
-Se una story prevista non è pronta, segnalalo al product lead prima della demo: decide lui se rinviare la demo, mostrarla senza quella story dichiarandolo, o riprogrammare.
+Se una story prevista non è pronta, segnalalo al responsabile prima della demo: decide lui se rinviare la demo, mostrarla senza quella story dichiarandolo, o riprogrammare.
 
 ## Scaletta
 
-Documento interno, Markdown, `demo-<cliente>-<sistema>-<SAL o ticket>.md`.
+Documento interno, Markdown, `demo-<cliente>-<sistema>-<SAL>.md`.
 
-1. **Cosa si dimostra.** SAL o ticket, data, ambiente, chi partecipa. Deve partecipare il referente del cliente: vale solo la sua accettazione.
+1. **Cosa si dimostra.** SAL, data, ambiente, chi partecipa. Deve partecipare il referente del cliente: vale solo la sua accettazione.
 2. **Preparazione dell'ambiente.** Dati di prova, utenze, cosa va predisposto prima.
 3. **Percorso.** Le story nell'ordine in cui si mostrano, seguendo il percorso naturale di un utente e non l'ordine dei codici. Per ogni story:
    - codice e nome;
@@ -46,7 +45,7 @@ Documento interno, Markdown, `demo-<cliente>-<sistema>-<SAL o ticket>.md`.
 4. **Casi particolari da mostrare.** Almeno i principali: un errore, uno stato vuoto. Il cliente li incontrerà.
 5. **Fuori da questa demo.** Le story non ancora consegnate, per evitare che il cliente le cerchi.
 6. **Difetti noti.** Quelli non bloccanti già conosciuti, da dichiarare subito e non da far scoprire.
-7. **Cosa si chiede al cliente.** Provare da solo sullo staging e dare l'accettazione scritta entro il termine. Dopo il termine il silenzio vale come accettazione.
+7. **Cosa si chiede al cliente.** Provare da solo sullo staging e dare un'accettazione esplicita. Il silenzio non vale come accettazione di una demo.
 
 ## Durante la demo
 
@@ -68,13 +67,13 @@ L'esito complessivo è uno fra tre: accettato, accettato con difetti non bloccan
 
 Un comportamento che rispetta il Manuale ma non piace al cliente non è un difetto: è una richiesta nuova.
 
-Il **verbale di accettazione** è il testo da inviare al cliente per la conferma scritta:
+Il **verbale di accettazione** è il testo da inviare al cliente per la conferma scritta. Per una milestone fa parte del Milestone report (skill `milestone-report`), per la demo finale è un documento a parte:
 
 - cosa è stato dimostrato, con le story per codice e nome;
 - l'esito di ciascuna;
 - i difetti non bloccanti, ciascuno con la data entro cui verrà corretto;
 - i difetti bloccanti, con la data della nuova verifica;
-- il termine entro cui il cliente può segnalare altro, dopo il quale il lavoro vale come accettato.
+- la richiesta di conferma esplicita: il silenzio non vale come accettazione. La conferma può arrivare anche a voce, e vale dopo il riepilogo scritto.
 
 Per uso interno, a parte:
 

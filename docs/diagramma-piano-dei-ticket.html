@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagramma del Piano dei ticket</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --ink: #1b2430;
+  --muted: #5a6575;
+  --line: #c9d1dc;
+  --phase: #1f4e8c;
+  --phase-ink: #ffffff;
+  --who: #e8f0fb;
+  --skill: #e6f5ec;
+  --doc: #fff4d6;
+  --steps: #f1f3f6;
+  --warn: #fdeaea;
+  --event: #f3ecfa;
+  --impl: #e9f6f8;
+  --close: #eaf3df;
+  --decision: #fff0e0;
+  --decision-line: #d98a2b;
+  --start: #223a5a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b;
+    --card: #1a2029;
+    --ink: #e6eaf0;
+    --muted: #9aa6b6;
+    --line: #3a4455;
+    --phase: #3b72b8;
+    --phase-ink: #ffffff;
+    --who: #1e2d44;
+    --skill: #1b3326;
+    --doc: #3a3220;
+    --steps: #222a35;
+    --warn: #3b2224;
+    --event: #2c2438;
+    --impl: #1b3236;
+    --close: #26331b;
+    --decision: #3a2c1a;
+    --decision-line: #d98a2b;
+    --start: #3b72b8;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 24px 16px 64px;
+}
+main { max-width: 1040px; margin: 0 auto; }
+h1 { font-size: 1.9rem; margin: 0 0 4px; }
+h2 { font-size: 1.25rem; margin: 0; }
+h3 { font-size: 0.95rem; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+p { margin: 0 0 8px; }
+ul, ol { margin: 0; padding-left: 20px; }
+li { margin: 0 0 4px; }
+code { background: rgba(120,130,150,0.18); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+.lead { color: var(--muted); margin-bottom: 20px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 24px; }
+.legend span { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.85rem; }
+.legend .l-who { background: var(--who); }
+.legend .l-skill { background: var(--skill); }
+.legend .l-doc { background: var(--doc); }
+.legend .l-steps { background: var(--steps); }
+.legend .l-warn { background: var(--warn); }
+.legend .l-event { background: var(--event); }
+.legend .l-impl { background: var(--impl); }
+.legend .l-close { background: var(--close); }
+.legend .l-decision { background: var(--decision); border-color: var(--decision-line); }
+
+.overview { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.overview a {
+  text-decoration: none; color: var(--phase-ink); background: var(--phase);
+  padding: 6px 12px; border-radius: 8px; font-size: 0.9rem;
+}
+.overview a.alt { background: var(--decision-line); }
+
+.start, .end {
+  background: var(--start); color: #fff; border-radius: 999px;
+  padding: 12px 20px; text-align: center; font-weight: 600;
+}
+.arrow { display: flex; flex-direction: column; align-items: center; margin: 0; }
+.arrow .stem { width: 2px; height: 22px; background: var(--line); }
+.arrow .head { width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 9px solid var(--line); }
+.arrow .tag { font-size: 0.8rem; color: var(--muted); padding: 2px 0; }
+
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.phase > header { background: var(--phase); color: var(--phase-ink); padding: 12px 18px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.phase > header .num { font-weight: 700; font-size: 1.1rem; }
+.phase > header .what { opacity: 0.92; font-size: 0.92rem; }
+.phase .body { padding: 16px 18px 18px; }
+.phase .intro { margin-bottom: 14px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+.box { border-radius: 10px; padding: 12px 14px; border: 1px solid var(--line); }
+.box.wide { grid-column: 1 / -1; }
+.who { background: var(--who); }
+.skill { background: var(--skill); }
+.doc { background: var(--doc); }
+.steps { background: var(--steps); }
+.warn { background: var(--warn); }
+.event { background: var(--event); }
+.impl { background: var(--impl); }
+.close { background: var(--close); }
+
+.decision { background: var(--decision); border: 2px solid var(--decision-line); border-radius: 14px; padding: 14px 16px; }
+.decision .q { font-weight: 700; margin-bottom: 10px; }
+.branches { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.branch { background: var(--card); border: 1px solid var(--decision-line); border-radius: 10px; padding: 10px 12px; }
+.branch .label { font-weight: 700; display: block; margin-bottom: 4px; }
+.branch .goes { display: block; margin-top: 6px; font-size: 0.88rem; color: var(--muted); }
+
+.event table { width: 100%; }
+dl.events { margin: 0; }
+dl.events dt { font-weight: 700; margin-top: 8px; }
+dl.events dt:first-child { margin-top: 0; }
+dl.events dd { margin: 2px 0 0 0; }
+
+.side { margin-top: 36px; }
+.side h2 { margin-bottom: 10px; }
+.stack > * + * { margin-top: 12px; }
+.note { font-size: 0.9rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Diagramma del Piano dei ticket</h1>
+<p class="lead">Il percorso completo di un ticket, dall'apertura della richiesta alla garanzia. Per ogni fase: chi la esegue, quale skill usare, quali documenti si producono, a cosa stare attenti, cosa può succedere e cosa implica. La fonte di verità resta <code>docs/piano-dei-ticket.md</code>: se il piano cambia, questo diagramma va aggiornato.</p>
+
+<div class="legend">
+  <span class="l-who">Chi esegue</span>
+  <span class="l-skill">Skill da usare</span>
+  <span class="l-doc">Documenti che si producono</span>
+  <span class="l-steps">Cosa si fa</span>
+  <span class="l-warn">Attenzione a</span>
+  <span class="l-event">Cosa può succedere</span>
+  <span class="l-impl">Cosa implica</span>
+  <span class="l-close">Si chiude quando</span>
+  <span class="l-decision">Decisione, con i rami possibili</span>
+</div>
+
+<nav class="overview" aria-label="Fasi">
+  <a href="#fase1">1. Apertura e analisi</a>
+  <a href="#fase2">2. Scheda di intervento</a>
+  <a href="#fase3">3. Pianificazione</a>
+  <a href="#fase4">4. Esecuzione</a>
+  <a href="#fase5">5. Resoconto e documenti</a>
+  <a href="#fase6">6. Rilascio e chiusura</a>
+  <a href="#garanzia">Dopo la chiusura</a>
+  <a class="alt" href="#urgenza">Percorso d'urgenza</a>
+  <a class="alt" href="#assistenza">Percorso assistenza</a>
+</nav>
+
+<div class="stack">
+
+<div class="start">Il cliente apre una richiesta su osTicket</div>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<!-- URGENZA -->
+<div class="decision">
+  <div class="q">Prima di tutto: che urgenza ha? Si decide sui fatti descritti, mai sul tono della richiesta.</div>
+  <div class="branches">
+    <div class="branch">
+      <span class="label">Urgente</span>
+      Sistema fermo in produzione, utenti che non possono lavorare, dati a rischio.
+      <span class="goes">Va al percorso d'urgenza (sezione in fondo). Non aspetta la verifica né la pianificazione.</span>
+    </div>
+    <div class="branch">
+      <span class="label">Normale</span>
+      Tutto il resto.
+      <span class="goes">Prosegue con la fase 1. Non toglie nessuno a un progetto.</span>
+    </div>
+    <div class="branch">
+      <span class="label">A tempo perso</span>
+      Senza scadenza.
+      <span class="goes">Prosegue con la fase 1. Viene dopo tutto il resto e non toglie nessuno a un progetto.</span>
+    </div>
+  </div>
+  <p class="note" style="margin-top:10px">Un cliente può scrivere "urgentissimo" per una richiesta normale, o descrivere con calma un sistema fermo. Se i fatti non bastano a scegliere tra due livelli, si assegna il più alto e si fa la domanda che scioglie il dubbio.</p>
+</div>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<!-- FASE 1 -->
+<section class="phase" id="fase1">
+  <header><span class="num">Fase 1</span><h2>Apertura e analisi</h2><span class="what">Si decide se e come lavorare la richiesta</span></header>
+  <div class="body">
+    <p class="intro">Il cliente non apre una lavorazione: apre una richiesta. È l'azienda a decidere se diventa un ticket, un progetto o un prodotto. Il ticket si legge subito e si prende in carico appena possibile: non ci sono termini di presa in carico. La fase ha un tempo massimo pari al 10% di una stima a occhio della dimensione della richiesta, fatta prima di guardare il codice.</p>
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>Chi analizza: la persona che legge la richiesta e decide come trattarla. Le decisioni sono sue, la skill propone.</p></div>
+      <div class="box skill"><h3>Skill</h3>
+        <ul>
+          <li><code>verifica-preliminare</code>: i due controlli (lavori aperti e codice), in sola lettura.</li>
+          <li><code>valutazione-richiesta</code>: le decisioni (categoria, esito, stima, tipo, urgenza, responsabile) e le prime domande al cliente. Richiama l'esito della verifica.</li>
+        </ul>
+      </div>
+      <div class="box steps wide"><h3>Cosa si fa, in ordine</h3>
+        <ol>
+          <li>Si legge la richiesta per intero, allegati compresi. Se contiene più lavori indipendenti, si dividono: un ticket per lavoro.</li>
+          <li><b>Confronto con i lavori aperti.</b> La richiesta si cerca in progetti, ticket aperti, variazioni registrate e consegne ancora in garanzia sullo stesso sistema. Gli esiti possibili: già compresa in un progetto; compresa ma serve prima (è una variazione sul progetto); compresa in parte; in conflitto con un progetto; doppione di un ticket aperto; già decisa (variazione identica rifiutata o in attesa); difetto di una consegna recente; nessuna sovrapposizione.</li>
+          <li><b>Controllo del codice.</b> Si guarda il codice della parte coinvolta senza modificarlo. Gli esiti possibili: il sistema lo fa già; basta una configurazione; bug confermato; bug non riprodotto; causa fuori dal codice; intervento come appare; intervento più esteso di come appare; sovrapposizione con uno sviluppo non ancora rilasciato.</li>
+          <li><b>Esito complessivo</b> dei due controlli (vedi la decisione più sotto).</li>
+          <li><b>Categoria:</b> ticket, progetto o prodotto, applicando le condizioni delle Regole comuni.</li>
+          <li><b>Stima in ore</b> del lavoro, a partire da ciò che si è visto nel codice.</li>
+          <li><b>Tipo:</b> bug, feature, entrambi o assistenza.</li>
+          <li><b>Responsabile:</b> lo sviluppatore a cui assegnare il ticket.</li>
+          <li>Si elencano le parti del sistema toccate e i lavori e i documenti collegati: serviranno nella scheda e a fine lavoro.</li>
+        </ol>
+      </div>
+      <div class="box doc"><h3>Documenti che si producono</h3>
+        <ul>
+          <li>Le decisioni sopra, riportate nel ticket (nota interna).</li>
+          <li>L'elenco delle parti di codice toccate e dei documenti collegati.</li>
+          <li>Se il lavoro non va aperto: il testo della risposta al cliente, con il motivo e il riferimento preciso, senza tecnologie, file o ore.</li>
+        </ul>
+      </div>
+      <div class="box close"><h3>Si chiude quando</h3><p>Tutte le voci sono decise (categoria, esito, stima, tipo, responsabile). Oppure la richiesta è chiusa perché il lavoro non va aperto, con la risposta al cliente.</p></div>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="decision">
+      <div class="q">Esito della verifica: cosa si fa della richiesta?</div>
+      <div class="branches">
+        <div class="branch"><span class="label">Da fare</span>Nessuna sovrapposizione, e il bug è confermato oppure basta una configurazione. Se l'intervento è più esteso del previsto si aggiorna la stima.<span class="goes">Va alla fase 2.</span></div>
+        <div class="branch"><span class="label">Non da fare</span>Già compresa in un progetto, doppione, il sistema lo fa già, difetto di una consegna recente (pacchetto di garanzia), oppure variazione su un progetto.<span class="goes">Si risponde al cliente con il motivo e il ticket si chiude. Un "il sistema lo fa già" è un'assistenza: la risposta contiene le istruzioni.</span></div>
+        <div class="branch"><span class="label">Da fare in parte</span>La richiesta è compresa in parte altrove.<span class="goes">Solo ciò che resta fuori diventa lavoro: va alla fase 2 solo per quella parte, e al cliente si dice quale parte è già coperta.</span></div>
+        <div class="branch"><span class="label">Da rimandare</span>In conflitto con un progetto, sovrapposizione con uno sviluppo in corso, oppure bug non riprodotto in attesa di informazioni dal cliente.<span class="goes">Il ticket resta in attesa finché il conflitto non è risolto o le informazioni non arrivano.</span></div>
+      </div>
+    </div>
+    <div style="height:12px"></div>
+    <div class="decision">
+      <div class="q">Categoria: è davvero un ticket?</div>
+      <div class="branches">
+        <div class="branch"><span class="label">Ticket</span>Il sistema esiste e nessuna di queste condizioni vale: stima oltre le 2 settimane, più di una persona, serve una proposta, cambia l'aspetto grafico.<span class="goes">Prosegue in questo piano.</span></div>
+        <div class="branch"><span class="label">Progetto</span>Il sistema esiste e vale almeno una delle condizioni.<span class="goes">Esce da questo piano e segue il Piano di progetto.</span></div>
+        <div class="branch"><span class="label">Prodotto</span>Il sistema non esiste ancora.<span class="goes">Esce da questo piano e segue il Piano di prodotto.</span></div>
+      </div>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="grid">
+      <div class="box warn"><h3>Attenzione a</h3>
+        <ul>
+          <li>La verifica è in sola lettura: niente correzioni, niente commit, nemmeno se la correzione sembra banale.</li>
+          <li>Ogni affermazione porta il suo grado di certezza: verificato, riferito, supposto. Una parte non eseguita va dichiarata.</li>
+          <li>Una stima fatta senza guardare il codice è provvisoria. Un intervento che sembra piccolo può toccare codice usato in molti punti.</li>
+          <li>Si propone, non si decide al posto di chi analizza. Davanti a un conflitto si presentano le opzioni con le conseguenze.</li>
+          <li>La categoria la decide l'azienda, mai il cliente.</li>
+          <li>Le domande al cliente sono numerate, puntuali e a risposta breve. Nessuna soluzione si propone al cliente in questa fase.</li>
+          <li>Se la richiesta è vicina alla soglia tra ticket e progetto, va detto subito: un ticket che cresce va fermato e convertito.</li>
+        </ul>
+      </div>
+      <div class="box event"><h3>Cosa può succedere</h3>
+        <dl class="events">
+          <dt>Il cliente dichiara urgente ciò che non lo è</dt><dd>L'urgenza si assegna sui fatti. Al cliente si comunicano livello e tempi.</dd>
+          <dt>La richiesta è in realtà un progetto o un prodotto</dt><dd>Si riclassifica e segue il piano della nuova categoria.</dd>
+          <dt>Una richiesta contiene più lavori</dt><dd>Si divide in un ticket per lavoro. Al cliente va l'elenco dei ticket creati.</dd>
+          <dt>La verifica dice che il lavoro non va aperto</dt><dd>Si risponde al cliente con il motivo e il riferimento preciso, e il ticket si chiude.</dd>
+          <dt>La richiesta è vaga</dt><dd>Chiarimenti con il cliente, con domande puntuali. La scheda si scrive solo dopo la risposta. Il cliente risponde quando vuole: se tarda, il ticket ha un ritardo e resta sospeso informalmente.</dd>
+          <dt>Il codice non è accessibile</dt><dd>La parte sul codice la fa chi lo conosce, con domande precise. Le risposte si riportano come "riferito".</dd>
+          <dt>Il tempo della verifica finisce</dt><dd>Ciò che non si è riuscito a controllare si dichiara, e la stima resta provvisoria.</dd>
+        </dl>
+      </div>
+      <div class="box impl wide"><h3>Cosa implica</h3>
+        <p>Le decisioni di questa fase guidano tutto il resto: la categoria sceglie il piano, il tipo sceglie cosa si scrive nel resoconto, l'urgenza sceglie il percorso e la pianificazione, la stima decide se il ticket entra nello sprint, il responsabile è chi lavora e chi scrive i documenti finali. La verifica produce anche l'elenco dei lavori e dei documenti toccati: non si cerca due volte, a fine lavoro serve la stessa lista.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="tag">esito da fare, categoria ticket</div><div class="head"></div></div>
+
+<!-- FASE 2 -->
+<section class="phase" id="fase2">
+  <header><span class="num">Fase 2</span><h2>Scheda di intervento</h2><span class="what">Il documento di lavoro dello sviluppatore</span></header>
+  <div class="body">
+    <p class="intro">La Scheda di intervento dice allo sviluppatore cosa fare e su cosa mettere le mani. La legge solo lo sviluppatore, il cliente non la vede mai. A fine lavoro è anche la fonte per aggiornare i documenti degli altri lavori.</p>
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>Chi analizza scrive la scheda. La legge il responsabile.</p></div>
+      <div class="box skill"><h3>Skill</h3><p><code>scheda-di-intervento</code>, nella situazione "scheda iniziale". Serve in ingresso l'esito della fase 1.</p></div>
+      <div class="box doc wide"><h3>Documento che si produce: la Scheda di intervento</h3>
+        <p>Nella nota interna del ticket, non visibile al cliente. In testa: categoria, tipo, urgenza, responsabile. Poi:</p>
+        <ul>
+          <li><b>Cosa fare.</b> L'intervento, con le story del Manuale del prodotto a cui si riferisce (codice e titolo). Per un bug, la story violata e il comportamento atteso. Per un'assistenza, cosa controllare o fare.</li>
+          <li><b>Su cosa intervenire.</b> Le parti del sistema da toccare: repository, moduli, file, ricavati dalla verifica. Se il codice è usato anche altrove, con chi lo usa.</li>
+          <li><b>Stima.</b> Le ore previste. Serve anche alla pianificazione dello sprint.</li>
+          <li><b>DoD</b> (Definition of Done). Le condizioni verificabili che chiudono il lavoro, ognuna con un sì o un no. Con più persone comprendono la code review.</li>
+          <li><b>Documenti collegati.</b> I lavori e i documenti toccati: Manuale del prodotto, Documento tecnico, documenti di progetti, Schede di intervento di altri ticket.</li>
+        </ul>
+        <p>La scheda di un ticket di circa 2 ore è di poche righe.</p>
+      </div>
+      <div class="box close wide"><h3>Si chiude quando</h3><p>La scheda è completa e il responsabile può iniziare senza fare altre domande.</p></div>
+      <div class="box warn"><h3>Attenzione a</h3>
+        <ul>
+          <li>Una DoD che non si può verificare con un sì o un no non è una DoD. "Funziona correttamente" non basta: "il pulsante Esporta scarica un file con tutte le righe visibili nell'elenco" sì.</li>
+          <li>"Su cosa intervenire" deve indicare repository, moduli o file, non descrizioni generiche: a fine lavoro è la base dell'aggiornamento dei documenti.</li>
+          <li>Se la stima non è confermata, si marca "[Stima da validare]" e la scheda è una bozza.</li>
+          <li>Nessuna decisione del cliente va scritta come supposizione: si chiede nel ticket prima.</li>
+          <li>Ogni cosa chiesta dal cliente compare in "Cosa fare" oppure è dichiarata esclusa. Nulla sparisce in silenzio.</li>
+          <li>Nessun prezzo, nessun messaggio per il cliente.</li>
+        </ul>
+      </div>
+      <div class="box event"><h3>Cosa può succedere</h3>
+        <dl class="events">
+          <dt>Mancano informazioni che nessuno può dare subito</dt><dd>Si produce una bozza interna, con per ogni voce incompleta la riga "Cosa manca" e chi deve fornirla. Una bozza non si assegna allo sviluppatore.</dd>
+          <dt>La richiesta era vaga</dt><dd>Si chiedono chiarimenti al cliente prima di scrivere. Il cliente risponde quando vuole: il ticket resta sospeso informalmente, senza termini.</dd>
+          <dt>Servono dati o materiali dal cliente</dt><dd>Si chiedono nel ticket, che va in attesa finché non arrivano. Il cliente consegna quando vuole: il ticket resta sospeso informalmente, senza termini.</dd>
+          <dt>Il codice o i documenti collegati cambiano la stima</dt><dd>Si aggiorna la stima prima di pianificare. Se supera le 2 settimane è un progetto.</dd>
+        </dl>
+      </div>
+      <div class="box impl wide"><h3>Cosa implica</h3>
+        <p>Tutto ciò che è scritto qui diventa il perimetro del lavoro: lo sviluppatore lavora su queste parti e verifica queste condizioni. La stima in ore decide quanta capacità occupa il ticket nello sprint. L'elenco delle parti toccate e dei documenti collegati viene ripreso a fine lavoro dalla skill di allineamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<!-- FASE 3 -->
+<section class="phase" id="fase3">
+  <header><span class="num">Fase 3</span><h2>Pianificazione</h2><span class="what">Il ticket entra nello sprint</span></header>
+  <div class="body">
+    <p class="intro">Lo sprint è un intervallo di 2 settimane, uguale per tutta l'azienda, in cui si decide chi fa cosa. Ogni persona ha una capacità, cioè le ore realmente disponibili nello sprint, tolte ferie e festività. Un ticket entra nello sprint quando, alla pianificazione, viene assegnato al responsabile e occupa la sua capacità per le ore stimate.</p>
+    <div class="decision">
+      <div class="q">Come entra nello sprint, secondo l'urgenza?</div>
+      <div class="branches">
+        <div class="branch"><span class="label">Urgente</span>Non aspetta la pianificazione: parte subito. Le ore vengono dal buffer di sprint, la parte di capacità riservata alle urgenze (il 20% della capacità).<span class="goes">Si può togliere una persona a un progetto. Vedi il percorso d'urgenza.</span></div>
+        <div class="branch"><span class="label">Normale</span>Entra nel primo sprint in cui il responsabile ha capacità libera per le ore stimate.<span class="goes">Se non c'è posto, aspetta lo sprint successivo. Non si toglie nessuno a un progetto.</span></div>
+        <div class="branch"><span class="label">A tempo perso</span>Entra solo se, dopo tutto il resto, avanza capacità.<span class="goes">Sta in fondo alla coda. Non si toglie nessuno a un progetto.</span></div>
+      </div>
+    </div>
+    <div style="height:14px"></div>
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>Chi pianifica lo sprint, insieme a chi conosce la disponibilità del team.</p></div>
+      <div class="box skill"><h3>Skill</h3>
+        <ul>
+          <li><code>sprint</code>, all'apertura dello sprint: calcola la capacità, toglie il buffer di sprint e propone le issue e i ticket.</li>
+          <li><code>riprogrammazione</code>, se un ticket urgente sposta altro lavoro e una milestone va a rischio.</li>
+        </ul>
+      </div>
+      <div class="box doc"><h3>Documenti che si producono</h3><p>Il ticket assegnato a uno sprint, nel sistema in uso. Il Documento di sprint, se si usa la skill <code>sprint</code>, è un documento interno del progetto.</p></div>
+      <div class="box close"><h3>Si chiude quando</h3><p>Il ticket ha un responsabile e uno sprint. Per un ticket urgente, quando il lavoro è partito.</p></div>
+      <div class="box warn"><h3>Attenzione a</h3>
+        <ul>
+          <li>Un ticket normale o a tempo perso non può togliere persone ai progetti: va a chi ha capacità libera.</li>
+          <li>Le ore dei ticket vanno sul ticket, non si contano come lavoro di progetto: le stime di progetto devono restare leggibili.</li>
+          <li>Le urgenze non si accettano direttamente dal cliente: l'interruzione si decide in un solo punto.</li>
+          <li>Il buffer di sprint non usato a metà sprint si restituisce: si anticipa altro lavoro.</li>
+        </ul>
+      </div>
+      <div class="box event"><h3>Cosa può succedere</h3>
+        <dl class="events">
+          <dt>Nessuna capacità nel primo sprint utile</dt><dd>I ticket stanno in una coda ordinata per urgenza e data di apertura. A tempo perso resta in fondo.</dd>
+          <dt>La persona adatta non è disponibile</dt><dd>Se il ticket è urgente si riassegna. Altrimenti slitta.</dd>
+          <dt>Le urgenze superano il buffer di sprint</dt><dd>Escono dallo sprint le issue meno prioritarie e si rifà il controllo della milestone. Se accade per due sprint consecutivi, il buffer si alza oppure una persona a rotazione viene dedicata ai ticket.</dd>
+        </dl>
+      </div>
+      <div class="box impl wide"><h3>Cosa implica</h3>
+        <p>L'urgenza è l'unico modo per interrompere un progetto, e ha un costo: ore tolte allo sprint o alla milestone. Un ticket non urgente che aspetta uno sprint non è in ritardo, è in coda. Al cliente non si dichiara una data di consegna: appena il ticket è assegnato si può rispondere per presa visione, e la data di pubblicazione si comunica solo quando è certa, senza obbligo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<!-- FASE 4 -->
+<section class="phase" id="fase4">
+  <header><span class="num">Fase 4</span><h2>Esecuzione</h2><span class="what">Lo sviluppatore lavora</span></header>
+  <div class="body">
+    <p class="intro">Il responsabile sviluppa il lavoro descritto nella Scheda di intervento. Il cliente non partecipa e non prova il lavoro prima del rilascio.</p>
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>Il responsabile: lo sviluppatore a cui il ticket è assegnato.</p></div>
+      <div class="box skill"><h3>Skill</h3><p>Nessuna per lo sviluppo. <code>scheda-di-intervento</code> nella situazione "correzione a fine lavoro", se le parti toccate sono diverse da quelle previste.</p></div>
+      <div class="box steps wide"><h3>Cosa si fa</h3>
+        <ol>
+          <li>Si sviluppa sulle parti indicate in "Su cosa intervenire".</li>
+          <li>Si fa la code review quando al lavoro partecipa più di una persona (con una sola persona la code review è a campione e fatta da chi è esterno al lavoro).</li>
+          <li>Si controlla il lavoro sulla DoD, condizione per condizione.</li>
+          <li>Se si sono toccate parti diverse da quelle previste, si corregge la voce "Su cosa intervenire" della scheda con ciò che è stato toccato davvero.</li>
+        </ol>
+      </div>
+      <div class="box doc"><h3>Documenti che si producono</h3><p>Il lavoro sviluppato. La Scheda di intervento corretta, con le parti realmente toccate.</p></div>
+      <div class="box close"><h3>Si chiude quando</h3><p>Ogni condizione della DoD è soddisfatta.</p></div>
+      <div class="box warn"><h3>Attenzione a</h3>
+        <ul>
+          <li>Un ticket che cresce fino a diventare un progetto si ferma: non si completa "già che ci siamo".</li>
+          <li>Le richieste nuove aggiunte strada facendo non si fanno nello stesso ticket.</li>
+          <li>Se emerge uno sviluppo non rilasciato che tocca la stessa parte, ci si ferma e si avvisa chi ha analizzato: la verifica avrebbe dato "da rimandare".</li>
+          <li>La correzione della scheda non è facoltativa: a fine lavoro l'aggiornamento dei documenti parte da lì.</li>
+        </ul>
+      </div>
+      <div class="box event"><h3>Cosa può succedere</h3>
+        <dl class="events">
+          <dt>Il lavoro supera la stima</dt><dd>Il responsabile avvisa chi ha analizzato, che aggiorna la stima. Se il lavoro supera le 2 settimane si ferma e si riclassifica come progetto.</dd>
+          <dt>Il ticket cresce fino a diventare un progetto</dt><dd>Si ferma e segue il Piano di progetto. Al cliente si comunicano motivo e passi successivi.</dd>
+          <dt>Nuove richieste aggiunte allo stesso ticket</dt><dd>Diventano un ticket nuovo.</dd>
+          <dt>Servono dati o materiali dal cliente</dt><dd>Si chiedono nel ticket, che va in attesa. Il cliente consegna quando vuole: il ticket resta sospeso informalmente, senza termini, e la consegna slitta degli stessi giorni.</dd>
+          <dt>Assenza del responsabile</dt><dd>Se il ticket è urgente si riassegna, altrimenti slitta.</dd>
+          <dt>Un ticket urgente interrompe il lavoro</dt><dd>La issue in corso va in pausa, con il lavoro salvato e una nota sullo stato.</dd>
+        </dl>
+      </div>
+      <div class="box impl wide"><h3>Cosa implica</h3>
+        <p>Se il ticket si ferma e diventa progetto, il piano cambia: servono una proposta e una conferma del cliente, e il lavoro già fatto va considerato nella nuova stima. Se il ticket va in attesa, la consegna slitta degli stessi giorni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<!-- FASE 5 -->
+<section class="phase" id="fase5">
+  <header><span class="num">Fase 5</span><h2>Resoconto e aggiornamento dei documenti</h2><span class="what">Si prepara tutto ciò che accompagna il rilascio</span></header>
+  <div class="body">
+    <p class="intro">Il lavoro è sviluppato ma non ancora pubblicato. In questa fase si prepara il documento per il cliente e si aggiornano i documenti che il ticket ha reso vecchi. Si fa prima del rilascio perché il rilascio e la chiusura coincidono e un lavoro è chiuso solo dopo l'aggiornamento dei documenti.</p>
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>Il responsabile, anche per l'aggiornamento dei documenti con la skill di allineamento. Le modifiche ai documenti si applicano solo dopo la sua conferma.</p></div>
+      <div class="box skill"><h3>Skill</h3>
+        <ul>
+          <li><code>resoconto-di-intervento</code>: il documento per il cliente.</li>
+          <li><code>allineamento-documenti</code>: trova i documenti toccati e propone le modifiche.</li>
+          <li><code>manuale-del-prodotto</code> e <code>documento-tecnico</code>: per riscrivere questi due documenti del sistema.</li>
+        </ul>
+      </div>
+      <div class="box doc wide"><h3>Documenti che si producono</h3>
+        <p><b>Resoconto di intervento</b>, per il cliente. Sintesi non tecnica di cosa il ticket ha risolto o aggiunto e in che modo:</p>
+        <ul>
+          <li><b>Cosa è stato risolto o aggiunto.</b> Una o due frasi, nei termini di ciò che l'utente vede e può fare.</li>
+          <li><b>In che modo.</b> Con le user story (codice se già nel Manuale, titolo, frase "Come, voglio, per") o con brevi riassunti.</li>
+          <li><b>Cosa non è stato fatto.</b> Solo se qualcosa di chiesto resta fuori, con il motivo.</li>
+          <li>Per un bug: cosa non funzionava e cosa funziona ora, con la story violata, senza la causa. Per una feature: cosa il prodotto fa in più. Per un'assistenza: la risposta.</li>
+          <li>Nessun file, codice, modulo, tecnologia, ora o prezzo.</li>
+        </ul>
+        <p><b>Documenti aggiornati.</b> Prima Manuale del prodotto e Documento tecnico del sistema, poi i documenti degli altri lavori sulle stesse parti di codice.</p>
+      </div>
+      <div class="box steps wide"><h3>Cosa si fa, in ordine</h3>
+        <ol>
+          <li>Si scrive il Resoconto di intervento a partire dalla Scheda di intervento e da ciò che è stato realmente fatto.</li>
+          <li>Si aggiornano Manuale del prodotto e Documento tecnico del sistema, con nuova versione numerata e origine della modifica (codice del ticket). Le story nuove ricevono il codice successivo all'ultimo usato, quelle eliminate restano con la dicitura "Rimossa".</li>
+          <li>Con le voci "Su cosa intervenire" e "Documenti collegati" della scheda si cercano i documenti degli altri lavori, progetti e ticket, sulle stesse parti di codice.</li>
+          <li>Si modificano solo quelli su cui il ticket ha cambiato qualcosa di rilevante.</li>
+        </ol>
+      </div>
+      <div class="box close"><h3>Si chiude quando</h3><p>Il resoconto è pronto e i documenti sono aggiornati.</p></div>
+      <div class="box doc"><h3>Regola sui documenti già approvati</h3>
+        <ul>
+          <li><b>Lavoro ancora aperto, documento approvato dal cliente:</b> non si modifica in silenzio. Serve una variazione o una comunicazione al cliente.</li>
+          <li><b>Lavoro già chiuso, o documento del sistema:</b> si aggiorna, con l'indicazione del ticket che ha causato la modifica.</li>
+          <li><b>Piano delle milestone di un progetto aperto:</b> non si modifica. Si segnalano le issue toccate.</li>
+        </ul>
+      </div>
+      <div class="box warn"><h3>Attenzione a</h3>
+        <ul>
+          <li>Il resoconto è una comunicazione, non una richiesta di approvazione: il cliente non conferma e non prova.</li>
+          <li>Il lessico è quello del Manuale e delle comunicazioni precedenti: una cosa, un nome.</li>
+          <li>Ogni cosa prevista da "Cosa fare" deve comparire tra le fatte o le non fatte. Nulla sparisce.</li>
+          <li>Una ricerca per parole chiave non basta: documenti vecchi chiamano le cose in modo diverso. Si leggono per intero.</li>
+          <li>Un controllo parziale va dichiarato: i documenti non raggiunti si elencano.</li>
+          <li>Un documento si modifica solo se il ticket ha cambiato qualcosa di rilevante nella parte che riguarda.</li>
+        </ul>
+      </div>
+      <div class="box event"><h3>Cosa può succedere</h3>
+        <dl class="events">
+          <dt>Lo sviluppatore non ha fatto tutto ciò che era previsto</dt><dd>Il resoconto riporta la parte non fatta con il motivo. Se la parte mancante è rilevante, va deciso prima del rilascio.</dd>
+          <dt>Un documento approvato per un lavoro aperto è toccato</dt><dd>La skill si ferma: serve una variazione o una comunicazione al cliente, e decide il responsabile.</dd>
+          <dt>Due documenti chiamano la stessa cosa con nomi diversi</dt><dd>Si segnala nel rapporto di impatto.</dd>
+          <dt>I documenti non si trovano o non sono accessibili</dt><dd>Si dichiara che il controllo copre solo quelli ricevuti.</dd>
+          <dt>Un conflitto con un altro lavoro in corso</dt><dd>Va risolto prima del rilascio, con chi ha analizzato.</dd>
+        </dl>
+      </div>
+      <div class="box impl wide"><h3>Cosa implica</h3>
+        <p>Un ticket non lascia documenti falsi dietro di sé. Se si salta questa fase, il Manuale descrive qualcosa che il sistema non fa più e un progetto può essere costruito su una base già cambiata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<!-- FASE 6 -->
+<section class="phase" id="fase6">
+  <header><span class="num">Fase 6</span><h2>Rilascio e chiusura</h2><span class="what">Il lavoro va in produzione e il ticket si chiude</span></header>
+  <div class="body">
+    <p class="intro">Il rilascio e la chiusura coincidono: appena il lavoro è pubblicato il ticket è chiuso, e da quel momento decorre la garanzia. Il cliente non prova il lavoro prima: nessuna demo, nessuna conferma.</p>
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>Il responsabile.</p></div>
+      <div class="box skill"><h3>Skill</h3><p>Nessuna.</p></div>
+      <div class="box steps wide"><h3>Cosa si fa</h3>
+        <ol>
+          <li>Il lavoro passa dallo staging, l'ambiente separato dalla produzione.</li>
+          <li>Va in produzione.</li>
+          <li>Il Resoconto di intervento è inviato al cliente.</li>
+          <li>Il ticket è chiuso. Parte la garanzia.</li>
+        </ol>
+      </div>
+      <div class="box doc"><h3>Documenti che si producono</h3><p>Nessuno di nuovo. Il Resoconto di intervento, già pronto, è inviato al cliente.</p></div>
+      <div class="box close"><h3>Si chiude quando</h3><p>Il lavoro è in produzione e il resoconto è inviato.</p></div>
+      <div class="box warn"><h3>Attenzione a</h3>
+        <ul>
+          <li>Il resoconto si invia solo a lavoro pubblicato.</li>
+          
+          <li>La garanzia decorre dal rilascio in produzione, non da un'accettazione: per un ticket coincide con la chiusura.</li>
+        </ul>
+      </div>
+      <div class="box event"><h3>Cosa può succedere</h3>
+        <dl class="events">
+          <dt>La correzione rompe altro</dt><dd>Il ticket si riapre come urgente, con avviso immediato al cliente.</dd>
+          <dt>Il cliente segnala un difetto dopo il rilascio</dt><dd>Entro la garanzia è un pacchetto di garanzia, non un ticket nuovo.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<!-- GARANZIA -->
+<section class="phase" id="garanzia">
+  <header><span class="num">Dopo la chiusura</span><h2>Garanzia</h2><span class="what">15 giorni lavorativi dal rilascio</span></header>
+  <div class="body">
+    <p class="intro">Un ticket dura al massimo 2 settimane, quindi il 50% della durata pianificata è sempre sotto il minimo: la garanzia di un ticket è sempre il minimo, 15 giorni lavorativi dal rilascio.</p>
+    <div class="decision">
+      <div class="q">Il cliente segnala qualcosa dopo la chiusura. Di che si tratta?</div>
+      <div class="branches">
+        <div class="branch"><span class="label">Bug entro la garanzia</span>Il sistema fa una cosa diversa dal Manuale, su ciò che è stato rilasciato.<span class="goes">Pacchetto di garanzia: si registra sul lavoro già chiuso, si corregge senza conferma del cliente. Per la capacità segue le regole di urgenza (urgente: buffer di sprint; non urgente: in coda nello sprint unico).</span></div>
+        <div class="branch"><span class="label">Bug oltre la garanzia</span>Passati i 15 giorni lavorativi.<span class="goes">È un ticket nuovo: riparte dalla fase 1.</span></div>
+        <div class="branch"><span class="label">Richiesta nuova</span>Il Manuale non lo prevede, o prevede altro.<span class="goes">La garanzia copre i bug, non le richieste nuove: è un ticket nuovo (o una variazione, se il lavoro è ancora in corso).</span></div>
+      </div>
+    </div>
+    <div style="height:10px"></div>
+    <div class="grid">
+      <div class="box warn"><h3>Attenzione a</h3><p>Il criterio per distinguere un bug da una richiesta nuova è sempre lo stesso e lo decide il Manuale del prodotto. Se il Manuale non è chiaro è un'ambiguità: non si interpreta, si pone una domanda puntuale al cliente e si aggiorna il Manuale.</p></div>
+      <div class="box impl"><h3>Cosa implica</h3><p>Il pacchetto di garanzia può contenere più voci (un bug, una variazione piccola, una richiesta estetica) segnalate insieme sulla stessa lavorazione. Non apre una nuova lavorazione.</p></div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+<div class="end">Ticket concluso</div>
+
+</div>
+
+<!-- PERCORSO URGENZA -->
+<section class="side" id="urgenza">
+  <div class="phase">
+    <header><span class="num">Percorso d'urgenza</span><h2>Solo per il ticket urgente</h2><span class="what">Si interviene subito, i documenti seguono dopo</span></header>
+    <div class="body">
+      <p class="intro">Un ticket urgente non aspetta la verifica, la scheda iniziale né la pianificazione. Il ticket si chiude comunque al rilascio.</p>
+      <div class="grid">
+        <div class="box steps wide"><h3>Passi, in ordine</h3>
+          <ol>
+            <li><b>Si sceglie la persona</b> che conosce meglio la parte coinvolta, anche se sta lavorando a un progetto. L'interruzione si decide in un solo punto.</li>
+            <li><b>La persona mette in pausa la issue in corso</b>, lasciando salvato il lavoro e una nota sullo stato.</li>
+            <li><b>Si corregge e si rilascia.</b> Il ticket si chiude al rilascio e da lì decorre la garanzia.</li>
+            <li><b>Scheda di intervento a posteriori</b> (skill <code>scheda-di-intervento</code>, situazione "scheda a posteriori"): cosa è successo, causa, correzione, parti toccate.</li>
+            <li><b>Se la correzione è provvisoria</b>, si apre una issue per rimuovere la causa.</li>
+            <li><b>Verifica preliminare saltata all'inizio</b> (skill <code>verifica-preliminare</code>), per sapere quali lavori e quali documenti sono stati toccati.</li>
+            <li><b>Resoconto di intervento</b> (skill <code>resoconto-di-intervento</code>) e <b>aggiornamento dei documenti</b> (skill <code>allineamento-documenti</code>), come per ogni ticket ma dopo il rilascio.</li>
+          </ol>
+        </div>
+        <div class="box warn"><h3>Attenzione a</h3>
+          <ul>
+            <li>Le ore vanno sul ticket, non sul progetto interrotto.</li>
+            <li>Le urgenze non si accettano direttamente dal cliente.</li>
+            <li>La verifica saltata va recuperata: senza, i documenti toccati non si conoscono.</li>
+            <li>Una correzione provvisoria senza issue di rimozione diventa debito nascosto.</li>
+          </ul>
+        </div>
+        <div class="box event"><h3>Cosa può succedere</h3>
+          <dl class="events">
+            <dt>Le urgenze superano il buffer di sprint</dt><dd>Escono dallo sprint le issue meno prioritarie e si rifà il controllo della milestone (skill <code>riprogrammazione</code>).</dd>
+            <dt>L'urgenza era in realtà normale</dt><dd>Si riclassifica sui fatti e prosegue dalla fase 1. Al cliente si comunicano livello e tempi.</dd>
+            <dt>La correzione rompe altro</dt><dd>Il ticket si riapre come urgente, con avviso immediato.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERCORSO ASSISTENZA -->
+<section class="side" id="assistenza">
+  <div class="phase">
+    <header><span class="num">Percorso assistenza</span><h2>Solo per il tipo assistenza</h2><span class="what">Domanda, controllo o operazione che non cambia il codice</span></header>
+    <div class="body">
+      <div class="grid">
+        <div class="box steps wide"><h3>Passi, in ordine</h3>
+          <ol>
+            <li>Fase 1 come per ogni ticket: se la verifica dice che il sistema lo fa già, l'esito è "non da fare" e la risposta al cliente contiene le istruzioni.</li>
+            <li>Se serve un controllo o un'operazione, la Scheda di intervento dice cosa controllare o fare (skill <code>scheda-di-intervento</code>). Nessuna parte di codice da toccare.</li>
+            <li>Il Resoconto di intervento (skill <code>resoconto-di-intervento</code>) è la risposta al cliente: la risposta alla domanda, o il risultato del controllo, con le istruzioni utili. Niente story.</li>
+            <li>Non c'è rilascio: la chiusura coincide con l'invio della risposta.</li>
+          </ol>
+        </div>
+        <div class="box warn"><h3>Attenzione a</h3><p>Se durante l'assistenza emerge che il codice va cambiato, non è più un'assistenza: si riclassifica come bug o feature e si segue il flusso completo.</p></div>
+        <div class="box impl"><h3>Cosa implica</h3><p>Nessun aggiornamento dei documenti, perché il codice non cambia. Se la risposta rivela che il Manuale era sbagliato o incompleto, quello è un aggiornamento del Manuale da fare comunque.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>

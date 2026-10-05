@@ -1,6 +1,6 @@
 ---
 name: stato-di-partenza
-description: Scrive lo Stato di partenza, cioè come funziona oggi il sistema del cliente, cosa verrà toccato, vincoli e incognite. Usala dopo il primo confronto, per l'indagine sull'esistente di un progetto o l'analisi del contesto di un prodotto.
+description: Scrive lo Stato di partenza, cioè come funziona oggi il sistema del cliente, cosa verrà toccato, vincoli e incognite. Usala al kickoff di un progetto, per l'indagine sull'esistente, o per l'analisi del contesto di un prodotto.
 ---
 
 # Stato di partenza
@@ -14,7 +14,7 @@ Ha due forme:
 - **Progetto**: indagine sull'esistente. Descrive come funziona oggi il sistema e cosa verrà toccato.
 - **Prodotto**: analisi del contesto. Il sistema non esiste, quindi descrive come lavora oggi il cliente.
 
-L'indagine ha un tempo limitato, deciso da product lead e team lead. Quando il tempo finisce il documento si chiude comunque, con le incognite rimaste elencate.
+Il kickoff, di cui l'indagine fa parte, ha un tempo massimo pari al 10% della stima del progetto, prima Proposta di soluzione compresa. Quando il tempo finisce il documento si chiude comunque, con le incognite rimaste elencate: diventano issue di tipo Spike nella prima milestone.
 
 ## Avvio
 
@@ -22,8 +22,8 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.** Il nome del cliente e, per un progetto, il sistema coinvolto.
 2. **Forma.** Progetto o prodotto.
-3. **La richiesta.** Il ticket e gli appunti del primo confronto, oppure dove si trovano.
-4. **Le fonti dell'indagine.** Appunti di product lead e team lead, codice se accessibile, Manuale del prodotto e Documento tecnico del sistema se esistono, racconti degli utilizzatori. Chiedi dove si trovano su Drive: non dare per scontata la struttura delle cartelle.
+3. **La richiesta.** Il ticket, le trascrizioni e le sintesi delle conversazioni del kickoff (skill `interpretazione-conversazioni`), oppure dove si trovano.
+4. **Le fonti dell'indagine.** Appunti di chi conosce il sistema, codice se accessibile, Manuale del prodotto e Documento tecnico del sistema se esistono, racconti degli utilizzatori. Chiedi dove si trovano su Drive: non dare per scontata la struttura delle cartelle.
 
 Leggi tutte le fonti prima di scrivere.
 
@@ -31,7 +31,7 @@ Leggi tutte le fonti prima di scrivere.
 
 L'indagine non si limita a ciò che viene raccontato: guarda il codice e gli altri lavori. Una proposta scritta senza aver aperto il codice promette cose che poi costano il doppio.
 
-**Il codice.** Con il team lead o uno sviluppatore, oppure direttamente se hai accesso al repository. In sola lettura: l'indagine non modifica nulla.
+**Il codice.** Con chi conosce il sistema, oppure direttamente se hai accesso al repository. In sola lettura: l'indagine non modifica nulla.
 
 - Dove si trova la parte coinvolta e come è fatta.
 - Chi altro la usa: altre schermate, altre funzioni, integrazioni, dati condivisi.

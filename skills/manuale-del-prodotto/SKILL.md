@@ -7,7 +7,7 @@ description: Scrive e aggiorna il Manuale del prodotto, cioè cosa fa il sistema
 
 ## A cosa serve
 
-Il Manuale del prodotto descrive in ogni dettaglio cosa fa il sistema. È l'unica fonte per i comportamenti: il cliente lo approva e vi riconosce ciò che riceverà, gli sviluppatori lo usano per costruire, e alla consegna decide se una story è accettata.
+Il Manuale del prodotto descrive in ogni dettaglio cosa fa il sistema. È l'unica fonte per i comportamenti: il cliente lo conferma e vi riconosce ciò che riceverà, gli sviluppatori lo usano per costruire, e alla consegna decide se una story è accettata.
 
 Il come viene realizzato non sta qui: sta nel Documento tecnico.
 
@@ -39,7 +39,7 @@ Intestazione: titolo, cliente, sistema, data, versione, versione della proposta 
 2. **Glossario.** Ogni termine proprio del sistema.
 3. **Tipi di utente e permessi.** Chi usa il sistema e cosa può fare ciascuno.
 4. **Funzionalità.** Una sezione per funzionalità, nel formato sotto.
-5. **Schermate e navigazione.** Elenco delle schermate, cosa contiene ciascuna, come si passa dall'una all'altra. Rimanda a wireframe e mockup approvati.
+5. **Schermate e navigazione.** Elenco delle schermate, cosa contiene ciascuna, come si passa dall'una all'altra. Rimanda ai wireframe e, se ci sono, ai mockup e al prototipo navigabile: sono facoltativi.
 6. **Dati gestiti.** Quali informazioni il sistema conserva, in parole comuni.
 7. **Requisiti generali.** Dispositivi e browser supportati, lingue, accessi, privacy, comunicazioni inviate dal sistema.
 8. **Fuori ambito.**
@@ -65,7 +65,7 @@ Esempio:
   - **F3.1** Come cliente finale, voglio prenotare un appuntamento scegliendo giorno e ora, per non dover telefonare.
   - Accettata quando: il cliente finale sceglie una fascia libera, riceve conferma via email e la fascia non è più prenotabile da altri.
 
-Per un prodotto, le story del primo rilascio sono complete; quelle dei rilasci successivi restano a titolo e frase, con l'indicazione del rilascio.
+Per un prodotto, le story della prima release sono complete; quelle delle release successive restano a titolo e frase, con l'indicazione della release.
 
 ## Regole di contenuto
 
@@ -88,11 +88,11 @@ Il Manuale è completo se ogni capitolo è compilato, ogni story ha comportament
 
 ## Riscontro del cliente
 
-Come per la proposta: raccogli il riscontro, scomponilo in voci, fai decidere al product lead l'esito di ogni correzione o nuova richiesta, aggiorna, produci una nuova versione numerata con l'elenco delle modifiche. Una richiesta che supera la proposta confermata non è una correzione: è una variazione, e va segnalata come tale.
+Come per la proposta: raccogli il riscontro, scomponilo in voci, fai decidere al responsabile l'esito di ogni correzione o nuova richiesta, aggiorna, produci una nuova versione numerata con l'elenco delle modifiche. Prima della conferma del Manuale ogni cambiamento è una modifica: nuova versione numerata, nessun limite di giri. Dopo la conferma è una variazione, e va segnalata come tale.
 
 ## Approvazione e aggiornamenti successivi
 
-La versione approvata dal cliente è la v1.0 e non contiene domande aperte.
+La versione confermata dal cliente è la v1.0 e non contiene domande aperte. La conferma può arrivare a voce, in una riunione: vale dopo il riepilogo scritto che il responsabile invia al cliente.
 
 Dopo la v1.0 il Manuale cambia in tre casi: una variazione approvata, un ticket che modifica un comportamento, un nuovo progetto sullo stesso sistema. In tutti:
 
@@ -100,9 +100,9 @@ Dopo la v1.0 il Manuale cambia in tre casi: una variazione approvata, un ticket 
 - le story eliminate restano con il loro codice e la dicitura "Rimossa nella v<versione>";
 - le nuove ricevono il codice successivo all'ultimo usato;
 - registra la modifica nel capitolo 11, con la sua origine (codice della variazione o del ticket);
-- comunica l'elenco dei codici modificati, aggiunti o rimossi: serve per aggiornare Documento tecnico e Piano delle milestone.
+- comunica l'elenco dei codici modificati, aggiunti o rimossi: serve per aggiornare il Documento tecnico (capitolo Milestone e issue compreso).
 
-Se l'aggiornamento tocca story già approvate dal cliente per un altro lavoro in corso, non applicarlo in silenzio: segnalalo al product lead.
+Se l'aggiornamento tocca story già approvate dal cliente per un altro lavoro in corso, non applicarlo in silenzio: segnalalo al responsabile.
 
 ## Controllo finale
 
