@@ -1,6 +1,6 @@
 ---
 name: riprogrammazione
-description: Gestisce un imprevisto che tocca i tempi di un progetto o prodotto (assenza lunga, festività dimenticata, sprint non completati, ticket bloccante, blocco tecnico, ritardo del cliente, milestone a rischio). Usala quando una milestone va ripianificata o quando lo sprint segnala uno stato a rischio o in ritardo.
+description: Gestisce un imprevisto che tocca i tempi di un progetto o prodotto (assenza lunga, festività dimenticata, sprint non completati, ticket urgente, blocco tecnico, ritardo del cliente, milestone a rischio). Usala quando una milestone va ripianificata o quando lo sprint segnala uno stato a rischio o in ritardo.
 ---
 
 # Riprogrammazione
@@ -19,7 +19,7 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
 2. **L'imprevisto**: cosa è successo, quando, quanto dura o quante ore è costato.
-3. **Il Piano delle milestone** e l'ultimo Documento di sprint.
+3. **Il Documento tecnico** (capitolo Milestone e issue) e l'ultimo Documento di sprint.
 4. **La capacità residua**: le ore disponibili di ogni persona negli sprint rimanenti della milestone.
 
 Non inventare durate o disponibilità: ciò che non sai, chiedilo.
@@ -38,23 +38,24 @@ Non inventare durate o disponibilità: ciò che non sai, chiedilo.
 **Tempi**
 
 - **Sprint non completato**: le issue tornano nella milestone, lo sprint non si allunga.
-- **Stime sbagliate**: dopo due sprint sotto le attese si ristimano le issue rimanenti, con team lead e team.
-- **Ticket bloccante o ticket urgenti oltre la quota**: le ore vanno sul ticket, escono dallo sprint le issue meno prioritarie.
-- **Blocco tecnico o di un servizio esterno**: issue di indagine a tempo limitato, poi nuova stima.
+- **Stime sbagliate**: dopo due sprint sotto le attese si ristimano le issue rimanenti, con chi sviluppa.
+- **Ticket urgenti oltre il buffer di sprint**: le ore vanno sul ticket, escono dallo sprint le issue meno prioritarie.
+- **Blocco tecnico o di un servizio esterno**: issue di tipo spike a tempo limitato, poi nuova stima.
 
 **Cliente**
 
-- **Materiali o risposte in ritardo**: le issue che ne dipendono escono dallo sprint, le date slittano degli stessi giorni.
+- **Materiali o risposte in ritardo**: il progetto non è mai fermo. Le issue che ne dipendono escono dallo sprint, si sposta altro lavoro non dipendente, le date della parte bloccata slittano degli stessi giorni.
 - **Progetto sospeso dal cliente**: si registra lo stato raggiunto. La ripresa richiede una nuova pianificazione.
 
 Se l'imprevisto non rientra in nessun caso, dillo: descrivi la situazione e proponi il caso più vicino, senza forzare.
 
+## Quale buffer si usaCi sono due buffer, con scopi diversi.- **Buffer di sprint.** La parte di capacità dello sprint riservata ai ticket urgenti (20%). Si usa solo per i ticket urgenti entrati nello sprint. Se a metà sprint non è stato usato, si anticipa altro lavoro.- **Buffer di milestone.** Le ore aggiunte alla milestone (20%, 30% con una sola persona). Si usa per stime sbagliate, assenze brevi, urgenze oltre il buffer di sprint e variazioni piccole (al massimo metà del buffer).Ordine d'uso: un ticket urgente usa prima il buffer di sprint. Oltre quello escono dallo sprint le issue meno prioritarie e le ore pesano sul buffer di milestone. Se il buffer di milestone si sta consumando la milestone è a rischio. Se è esaurito è in ritardo.
 ## Passo 2: ricalcolo
 
-Rifai il controllo della milestone con i nuovi dati: ore rimanenti, margine compreso, contro la capacità reale degli sprint rimanenti prima della data. Mostra i numeri usati.
+Rifai il controllo della milestone con i nuovi dati: ore rimanenti, buffer di milestone compreso, contro la capacità reale degli sprint rimanenti prima della data. Mostra i numeri usati.
 
 - **In linea**: l'imprevisto è assorbito. Si aggiorna il piano e non si comunica nulla al cliente.
-- **A rischio**: è assorbito solo consumando il margine. Si segnala al product lead, e si comunica al cliente solo se il product lead lo decide.
+- **A rischio**: è assorbito solo consumando il buffer di milestone. Si segnala al responsabile, e si comunica al cliente solo se il responsabile lo decide.
 - **In ritardo**: non è assorbibile. Servono le leve.
 
 Controlla anche le milestone successive: uno slittamento può propagarsi.

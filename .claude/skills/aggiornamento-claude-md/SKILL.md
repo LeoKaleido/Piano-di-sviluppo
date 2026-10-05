@@ -24,10 +24,10 @@ Questa è una skill della repo, non una delle 16 skill del piano operativo conse
    - `git log --oneline -20` per la cronologia recente.
    - `git status` per capire se ci sono modifiche non commesse.
    - `promemoria.txt`, se esiste, per le note libere di Leonardo non ancora riportate altrove.
-   - Se la conversazione corrente ha modificato i documenti Claude Docs, usa quello che la conversazione già sa: non è necessario rileggerli da Claude Docs se sono già stati letti freschi in questa sessione.
+   - Se la conversazione corrente ha modificato i documenti in `docs/`, usa quello che la conversazione già sa: non è necessario rileggerli se sono già stati letti in questa sessione.
 2. **Confronta con il CLAUDE.md esistente** e individua cosa è cambiato: decisioni nuove, voci di "non ancora fatto" diventate fatte, voci nuove da aggiungere.
 3. **Riscrivi la sezione "Stato attuale"** con il nuovo stato. Non accumulare storia: questa sezione descrive solo l'oggi, non un changelog. La cronologia sta nei commit Git, non qui.
 4. **Aggiorna la lista "Non ancora fatto"** togliendo le voci completate e aggiungendo quelle nuove emerse (da `promemoria.txt` o dalla conversazione).
-5. **Non toccare**: la sezione "Dove vive la fonte di verità" (gli URL dei documenti) e "Struttura della repo", a meno che la struttura sia davvero cambiata (nuove cartelle, file rinominati). Non toccare `HANDOVER.md`: resta uno snapshot storico immutabile.
+5. **Non toccare**: la sezione "Dove vive la fonte di verità" e "Struttura della repo", a meno che la struttura sia davvero cambiata (nuove cartelle, file rinominati). Non toccare `HANDOVER.md`: resta uno snapshot storico immutabile.
 6. **Rispetta le stesse regole di scrittura dei documenti del piano**: italiano, impersonale, niente conteggi nel testo, niente tabelle, solo caratteri da tastiera italiana. `CLAUDE.md` non è un documento per il cliente, ma mantiene la stessa igiene per restare leggibile e stabile nel tempo.
 7. **Non fare commit automaticamente**: lascia il file modificato nel working tree, come per ogni altra modifica a questa repo. L'utente decide quando committare.

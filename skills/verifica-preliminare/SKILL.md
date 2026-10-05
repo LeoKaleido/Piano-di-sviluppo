@@ -14,7 +14,7 @@ Una richiesta non va valutata da sola. Prima di classificarla e stimarla bisogna
 
 Senza questa verifica capita di stimare e far confermare al cliente un lavoro che è già compreso in un progetto, di correggere una parte che un progetto sta per rifare, o di promettere in due giorni un intervento che tocca mezzo sistema.
 
-La verifica propone un esito. Le decisioni restano al product lead.
+La verifica propone un esito. Le decisioni restano a chi analizza la richiesta.
 
 ## Avvio
 
@@ -22,14 +22,14 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **La richiesta.** Il testo del ticket, oppure dove si trova.
 2. **Cliente e sistema.**
-3. **Dove sono i lavori aperti.** I documenti sono su Drive: chiedi in quale cartella si trovano quelli del cliente e del sistema. Servono i Piani delle milestone dei progetti in corso, le Schede di intervento dei ticket aperti, il Registro delle modifiche, i verbali delle ultime demo. Se hai accesso a Drive cerca tu a partire da quella cartella, altrimenti chiedi che vengano forniti.
+3. **Dove sono i lavori aperti.** I documenti sono su Drive: chiedi in quale cartella si trovano quelli del cliente e del sistema. Servono i Piani delle milestone dei progetti in corso, le Schede di intervento dei ticket aperti, il Registro delle variazioni, i verbali delle ultime demo. Se hai accesso a Drive cerca tu a partire da quella cartella, altrimenti chiedi che vengano forniti.
 4. **Dove si trova il codice.** Il repository del sistema, e se puoi accedervi.
 
-Se la richiesta è un ticket bloccante (sistema fermo, utenti che non possono lavorare, dati a rischio), la verifica non deve ritardare l'intervento: si interviene subito e la verifica si fa in parallelo o dopo. Dillo e fermati.
+Se la richiesta è un ticket urgente (sistema fermo, utenti che non possono lavorare, dati a rischio), la verifica non deve ritardare l'intervento: si interviene subito e la verifica si fa in parallelo o dopo. Dillo e fermati.
 
 ## Tempo
 
-La verifica ha un tempo limitato, proporzionato alla richiesta e deciso dal product lead. Non è l'indagine di un progetto: deve rispondere a due domande, non descrivere il sistema. Se allo scadere del tempo una domanda resta aperta, lo dichiari e indichi cosa servirebbe per chiuderla.
+La verifica ha un tempo massimo pari al 10% di una stima a occhio della dimensione della richiesta, fatta prima di guardare il codice. Non è l'indagine di un progetto: deve rispondere a due domande, non descrivere il sistema. Se allo scadere del tempo una domanda resta aperta, lo dichiari e indichi cosa servirebbe per chiuderla.
 
 ## Parte A: confronto con i lavori aperti
 
@@ -37,7 +37,7 @@ Cerca la richiesta in ciò che è già in corso sullo stesso sistema.
 
 - **Progetti in corso.** Nel Manuale del prodotto e nel Piano delle milestone: esiste una story o una issue che copre la richiesta, in tutto o in parte? Il progetto prevede di modificare la stessa parte?
 - **Ticket aperti.** Nelle Schede di intervento: qualcuno ha già chiesto la stessa cosa, o un intervento sulla stessa parte?
-- **Variazioni.** Nel Registro delle modifiche: la richiesta è già stata registrata, approvata o rifiutata?
+- **Variazioni.** Nel Registro delle variazioni: la richiesta è già stata registrata, approvata o rifiutata?
 - **Consegne recenti.** Nei verbali di accettazione e nelle schede chiuse: la parte coinvolta è stata consegnata da poco ed è ancora in garanzia?
 
 Leggi i documenti per intero. Una ricerca per parole chiave non basta: il cliente chiama le cose in modo diverso dai documenti.
@@ -50,7 +50,7 @@ Leggi i documenti per intero. Una ricerca per parole chiave non basta: il client
 - **In conflitto con un progetto.** Il progetto sta per rifare quella parte, oppure il ticket cambia qualcosa su cui il progetto si appoggia. Farla ora sarebbe lavoro da rifare, o romperebbe il progetto. Le opzioni sono tre: rinviarla, assorbirla nel progetto come variazione, farla comunque perché urgente.
 - **Doppione di un ticket aperto.** Si unisce a quello.
 - **Già decisa.** Una variazione identica è stata rifiutata o è in attesa del cliente: si rimanda a quella.
-- **Difetto di una consegna recente.** Non è un ticket nuovo: è un bug in garanzia, o un difetto della milestone.
+- **Difetto di una consegna recente.** Non è un ticket nuovo: è un pacchetto di garanzia, o un difetto della milestone.
 - **Nessuna sovrapposizione.**
 
 ## Parte B: verifica nel codice
@@ -76,8 +76,17 @@ Cosa cercare:
 - **Bug non riprodotto.** Servono altre informazioni dal cliente: quali, in domande puntuali.
 - **La causa è fuori dal codice.** Dati, configurazione o sistema esterno: l'intervento è diverso da quello chiesto.
 - **Intervento come appare.** L'estensione corrisponde alla richiesta.
-- **Intervento più esteso di come appare.** Tocca più parti o codice usato altrove. La taglia può cambiare: se supera le 2 settimane o richiede più di una persona, è un progetto.
+- **Intervento più esteso di come appare.** Tocca più parti o codice usato altrove. La stima e la categoria possono cambiare: se supera le 2 settimane o richiede più di una persona, è un progetto.
 - **Sovrapposizione con uno sviluppo in corso.** Un'altra modifica sta toccando la stessa parte.
+
+## Esito complessivo (per un ticket)
+
+Dai due esiti ricava uno fra questi:
+
+- **Da fare.** Nessuna sovrapposizione, e il bug è confermato oppure basta una configurazione. Se l'intervento è più esteso del previsto, aggiorna la stima.
+- **Non da fare.** Già compresa in un progetto, doppione di un ticket aperto, il sistema lo fa già, difetto di una consegna recente (pacchetto di garanzia), oppure è una variazione su un progetto. Al cliente si risponde con il motivo.
+- **Da fare in parte.** Compresa in parte: solo ciò che resta fuori diventa lavoro.
+- **Da rimandare.** In conflitto con un progetto, sovrapposizione con uno sviluppo in corso, oppure bug non riprodotto in attesa di altre informazioni dal cliente.
 
 ## Grado di certezza
 
@@ -93,13 +102,14 @@ Non presentare come verificato ciò che non lo è. Una parte non eseguita va dic
 
 Una nota interna, breve, in risposta e non come file, salvo richiesta diversa.
 
-- **Esito in una frase.** Va lavorata, non va lavorata, va lavorata in altro modo.
+- **Esito in una frase.** Per un ticket: da fare, non da fare, da fare in parte, da rimandare.
 - **Parte A.** L'esito, con il riferimento preciso: lavoro, documento, codice della story o della issue, data prevista.
 - **Parte B.** L'esito, con il riferimento preciso: file e punti del codice, cosa è stato osservato.
-- **Effetto sulla classificazione.** Come cambiano taglia, tipo e stima rispetto a ciò che la richiesta farebbe pensare.
-- **Decisioni per il product lead.** Solo se servono, con le opzioni.
+- **Effetto sulla classificazione.** Come cambiano categoria, tipo e stima rispetto a ciò che la richiesta farebbe pensare.
+- **Decisioni per chi analizza.** Solo se servono, con le opzioni.
 - **Domande per il cliente.** Numerate, a risposta breve.
 - **Cosa non è stato verificato**, e cosa servirebbe per farlo.
+- **Parti del sistema toccate e documenti collegati.** L'elenco dei file e delle parti di codice, e dei lavori e dei documenti toccati. Alimenta le voci "Su cosa intervenire" e "Documenti collegati" della Scheda di intervento, e l'aggiornamento dei documenti a fine lavoro.
 - **Prossimo passo.** Uno fra: valutazione della richiesta e Scheda di intervento; risposta al cliente senza aprire lavoro; variazione sul progetto; unione con un altro ticket; riclassificazione come progetto.
 
 Quando l'esito è che non si apre lavoro, oppure che la richiesta è già compresa in un progetto, aggiungi il **testo della risposta al cliente**: cosa è stato trovato, dove e quando lo riceverà, cosa può fare se gli serve prima. Per il cliente niente tecnologie, niente nomi di file, niente ore.
@@ -108,8 +118,8 @@ Quando l'esito è che non si apre lavoro, oppure che la richiesta è già compre
 
 - **Sola lettura.** Né il codice né i documenti degli altri lavori vengono modificati.
 - **Riferimenti precisi.** "È già previsto nel progetto" non basta: serve il codice della story e la data.
-- **Nessuna soluzione.** La verifica dice cosa c'è e cosa manca. Come intervenire lo dirà la Scheda di intervento o la proposta.
-- **Nessuna decisione al posto del product lead.** Davanti a un conflitto presenta le opzioni con le conseguenze di ciascuna.
+- **Nessuna soluzione.** La verifica dice cosa c'è e cosa manca. Come intervenire lo dirà la Scheda di intervento, o la proposta.
+- **Nessuna decisione al posto di chi analizza.** Davanti a un conflitto presenta le opzioni con le conseguenze di ciascuna.
 
 ## Regole di scrittura
 

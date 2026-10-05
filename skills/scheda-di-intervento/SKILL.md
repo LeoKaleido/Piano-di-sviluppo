@@ -1,23 +1,23 @@
 ---
 name: scheda-di-intervento
-description: Scrive la Scheda di intervento di un ticket, rapido o esteso, e i suoi aggiornamenti (metà lavorazione, stima superata, chiusura, scheda a posteriori per un ticket bloccante). Usala per ogni ticket da lavorare, dopo la valutazione della richiesta.
+description: Scrive la Scheda di intervento di un ticket, il documento interno che dice allo sviluppatore cosa fare e su cosa mettere le mani, e la scheda a posteriori di un ticket urgente. Usala per ogni ticket da lavorare, dopo la valutazione della richiesta e la verifica preliminare.
 ---
 
 # Scheda di intervento
 
 ## A cosa serve
 
-La Scheda di intervento è l'unico documento di un ticket. Vive dentro il ticket, non in un file a parte, e ha due lettori: il cliente, che la conferma prima che il lavoro inizi, e lo sviluppatore, che la usa per sapere cosa fare e quando ha finito.
+La Scheda di intervento è il documento interno di un ticket. La legge solo lo sviluppatore a cui il ticket è assegnato, il responsabile: gli dice cosa deve fare, su cosa mettere le mani e quando ha finito. Il cliente non la vede mai.
 
-È ciò che fa fede se a lavoro concluso nasce una discussione: quello che è scritto nella scheda è compreso, quello che è escluso non lo è. Per questo deve essere breve ma senza ambiguità.
+Ha un secondo uso: a fine lavoro è la fonte per l'aggiornamento dei documenti (skill `allineamento-documenti`). Per questo le parti di codice e i documenti collegati vanno indicati con precisione.
 
-La skill copre cinque situazioni:
+Il documento per il cliente è un altro: il Resoconto di intervento, che si scrive a fine lavoro con la skill `resoconto-di-intervento`.
 
-- **Scheda iniziale**, da far confermare al cliente.
-- **Aggiornamento a metà lavorazione**, per il ticket esteso.
-- **Avviso di stima superata.**
-- **Chiusura.**
-- **Scheda a posteriori**, per un ticket bloccante già risolto.
+La skill copre tre situazioni:
+
+- **Scheda iniziale**, scritta da chi analizza la richiesta.
+- **Correzione a fine lavoro**, quando lo sviluppatore ha toccato parti diverse da quelle previste.
+- **Scheda a posteriori**, per un ticket urgente già risolto.
 
 ## Avvio
 
@@ -25,98 +25,73 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Il ticket.** Il testo della richiesta e degli scambi con il cliente, oppure dove si trovano.
 2. **Il cliente.** Il nome con cui indicarlo.
-3. **Il livello.** Ticket rapido (fino a 2 giorni) o esteso (da 2 giorni a 2 settimane). Se esiste una valutazione della richiesta, usala.
-4. **La situazione.** Quale delle cinque sopra. Se non è detto e non esiste ancora una scheda, è la scheda iniziale.
-5. **L'esito della verifica preliminare**, per la scheda iniziale: cosa è stato trovato nel codice e nei lavori aperti. Stato di partenza, esclusioni e stima partono da lì. Se la verifica non è stata fatta, segnalalo: una scheda scritta senza aver guardato il codice impegna su una stima non fondata.
+3. **Le decisioni dell'analisi.** Categoria (deve essere ticket), esito della verifica, stima in ore, tipo (bug, feature, entrambi, assistenza), urgenza, responsabile. Se esiste una valutazione della richiesta, usala.
+4. **La situazione.** Quale delle tre sopra. Se non è detto e non esiste ancora una scheda, è la scheda iniziale.
+5. **L'esito della verifica preliminare**, per la scheda iniziale: parti del sistema toccate, lavori e documenti toccati. "Su cosa intervenire" e "Documenti collegati" partono da lì. Se la verifica non è stata fatta, segnalalo: una scheda scritta senza aver guardato il codice impegna su una stima non fondata.
+6. **Il Manuale del prodotto**, se il sistema ne ha uno: serve per le story di riferimento.
 
 ## Informazioni mancanti
 
-Chiedi in un unico elenco numerato ciò che serve e non trovi. Non colmare i buchi con supposizioni: ciò che è scritto nella scheda diventa un impegno verso il cliente.
+Chiedi in un unico elenco numerato ciò che serve e non trovi. Non colmare i buchi con supposizioni.
 
-- **Stima e data prevista** le fornisce chi conosce il lavoro (product lead, team lead o sviluppatore). Puoi proporre una stima, ma vale solo dopo la conferma: finché non è confermata, marcala con "[Stima da validare]".
+- **La stima** la fornisce chi conosce il lavoro. Puoi proporre una stima, ma finché non è confermata marcala con "[Stima da validare]".
 - **Decisioni del cliente**: se una decisione spetta a lui, non va nella scheda come supposizione. Va chiesta nel ticket prima di scrivere la scheda.
 
 Se mancano informazioni che nessuno può fornire subito, produci una bozza (vedi "Bozza o scheda completa").
 
 ## Scheda iniziale
 
-Ogni scheda contiene sei voci, in quest'ordine:
+In testa la scheda riporta categoria, tipo, urgenza e responsabile decisi nell'analisi. Poi queste voci, in quest'ordine:
 
-1. **Cosa verrà fatto.** L'intervento, in parole comprensibili al cliente.
-2. **Cosa resta escluso.** Ciò che il cliente potrebbe dare per compreso. Se non c'è nulla da escludere, scrivilo.
-3. **Materiali attesi dal cliente.** Testi, immagini, dati, accessi, ciascuno con la data entro cui serve. Se non serve nulla, scrivilo.
-4. **Stima.** Le ore previste.
-5. **Data prevista.** Quando la modifica sarà in produzione. Se servono materiali, precisa che la data vale se arrivano entro il termine, e che ogni giorno di ritardo sposta di un giorno la consegna.
-6. **Finito quando.** Le condizioni verificabili che chiudono il lavoro. Devono poter ricevere un sì o un no senza interpretazioni: "funziona correttamente" non è una condizione, "il pulsante Esporta scarica un file con tutte le righe visibili nell'elenco" lo è.
+1. **Cosa fare.** L'intervento, con le story del Manuale del prodotto a cui si riferisce (codice e titolo), se esiste un Manuale. Per un bug, la story violata e il comportamento atteso. Per un'assistenza, cosa controllare o fare.
+2. **Su cosa intervenire.** Le parti del sistema da toccare, ricavate dalla verifica preliminare: repository, moduli, file. Se il codice è usato anche altrove, indicalo con chi lo usa.
+3. **Stima.** Le ore previste per il lavoro.
+4. **DoD.** Le condizioni verificabili che chiudono il lavoro. Devono poter ricevere un sì o un no senza interpretazioni: "funziona correttamente" non è una condizione, "il pulsante Esporta scarica un file con tutte le righe visibili nell'elenco" lo è. Quando al lavoro partecipa più di una persona comprendono la code review.
+5. **Documenti collegati.** I lavori e i documenti toccati, ricavati dalla verifica preliminare: Manuale del prodotto e Documento tecnico del sistema, documenti di progetti, Schede di intervento di altri ticket. Ricorda al team che a lavoro concluso vanno controllati.
 
-La scheda di un **ticket rapido** si ferma qui e deve restare di poche righe.
+La scheda di un ticket di circa 2 ore è di poche righe.
 
-La scheda di un **ticket esteso** aggiunge tre voci:
+La scheda non contiene prezzi né messaggi per il cliente.
 
-7. **Stato di partenza.** Come funziona oggi la parte toccata. Serve a rendere esplicito cosa cambia e cosa resta uguale.
-8. **Criteri di accettazione.** Cosa verificherà il cliente nella demo sull'ambiente di prova, prima del rilascio.
-9. **Elenco delle issue.** Le parti in cui è diviso il lavoro, ciascuna con la sua stima.
+## Correzione a fine lavoro
 
-**Wireframe.** Se l'intervento cambia una schermata, la scheda segnala che è allegato un wireframe, cioè lo schema della schermata senza grafica, e che il cliente lo conferma insieme alla scheda. Un ticket non prevede mockup: segue l'aspetto grafico esistente. Se serve un aspetto nuovo, segnala che la richiesta potrebbe essere un progetto.
-
-**Allineamento dei documenti.** Quando consegni la scheda iniziale, ricorda al team che alla conferma del cliente vanno controllati i documenti toccati dall'intervento (Manuale del prodotto e Documento tecnico del sistema, documenti di progetti in corso, schede di altri ticket aperti). Questo promemoria non fa parte del testo per il cliente.
-
-## Aggiornamento a metà lavorazione
-
-Solo per il ticket esteso. Poche righe: cosa è stato fatto, cosa resta, se la data prevista è confermata, cosa serve ancora dal cliente.
-
-## Avviso di stima superata
-
-Quando le ore consumate superano la soglia concordata sulla stima (proposta: 25%), il lavoro si ferma e il cliente deve confermare prima che prosegua. L'avviso contiene:
-
-- le ore stimate e le ore consumate;
-- le ore che mancano per concludere;
-- il motivo dello scostamento, in parole comprensibili;
-- la richiesta di conferma per proseguire.
-
-Se la nuova stima porta il ticket oltre le 2 settimane, non scrivere l'avviso: segnala che il ticket va fermato e convertito in progetto.
-
-## Chiusura
-
-Aggiunge alla scheda:
-
-- **Cosa è stato fatto**, con riferimento alle condizioni del "finito quando".
-- **Ore consumate**, e il motivo se diverse dalla stima.
-- **Cosa deve fare il cliente**: confermare la chiusura entro il termine, dopo il quale il ticket viene chiuso comunque.
-
-Quando consegni la chiusura, ricorda al team che Manuale del prodotto e Documento tecnico del sistema vanno aggiornati con ciò che è stato realmente fatto.
+Quando lo sviluppatore ha finito, riceve la scheda e dice cosa ha toccato davvero. Correggi la voce "Su cosa intervenire" in modo che elenchi le parti toccate e non quelle previste, e segnala le differenze di rilievo: la skill `allineamento-documenti` parte da qui.
 
 ## Scheda a posteriori
 
-Un ticket bloccante viene risolto subito, senza scheda né conferma. A problema risolto la scheda si scrive dopo, con quattro voci:
+Un ticket urgente viene risolto subito. A problema risolto la scheda si scrive dopo, con quattro voci:
 
 1. **Cosa è successo.** Il problema e il suo effetto sugli utenti.
-2. **Causa.** In parole comprensibili al cliente.
+2. **Causa.** Anche in termini tecnici.
 3. **Correzione.** Cosa è stato fatto, e se la correzione è definitiva o provvisoria.
-4. **Ore consumate.**
+4. **Su cosa si è intervenuti.** Le parti del sistema toccate e i documenti collegati, con la stessa precisione della scheda iniziale.
 
-Se la correzione è provvisoria, segnala al team che va aperta una issue per rimuovere la causa.
+Se la correzione è provvisoria, segnala al team che va aperta una issue per rimuovere la causa. Segnala anche che la verifica preliminare saltata all'inizio va eseguita ora.
 
 ## Regole di contenuto
 
-- **Per il cliente.** Parole comuni. Un termine tecnico inevitabile va spiegato. Le tecnologie non si nominano: il cliente deve capire cosa cambia per lui, non come è costruito.
-- **Nessun prezzo.** La scheda riporta ore e date, non importi.
-- **Testo da incollare nel ticket.** Restituisci la scheda come testo semplice, con le voci su righe separate e le etichette in chiaro. Produci un file solo se viene chiesto.
+- **Per lo sviluppatore.** I termini tecnici, i nomi di file e di moduli sono ammessi e anzi voluti.
+- **Una scheda, un ticket.** Se la richiesta contiene più lavori, ogni lavoro ha la sua scheda.
+- **Nessun prezzo.**
+- **Testo da incollare.** Restituisci la scheda come testo semplice, con le voci su righe separate e le etichette in chiaro, pronta per la nota interna del ticket, che il cliente non vede. Produci un file solo se viene chiesto.
 
 ## Regole di scrittura
 
 {{SCRITTURA}}
 
+Nella scheda i nomi di file e di parti del codice si scrivono come sono.
+
 ## Bozza o scheda completa
 
-La scheda è **completa** solo se tutte le voci previste dal livello sono compilate, la stima è stata confermata e nessuna domanda è rimasta senza risposta.
+La scheda è **completa** solo se tutte le voci sono compilate, la stima è stata confermata e nessuna domanda è rimasta senza risposta.
 
-In ogni altro caso produci una **bozza**: la prima riga è "BOZZA INTERNA, DA NON INVIARE AL CLIENTE", e ogni voce incompleta è seguita da una riga "Cosa manca", con ciò che serve e chi deve fornirlo. Una bozza non va incollata nel ticket.
+In ogni altro caso produci una **bozza**: la prima riga è "BOZZA INTERNA", e ogni voce incompleta è seguita da una riga "Cosa manca", con ciò che serve e chi deve fornirlo. Una bozza non si assegna allo sviluppatore.
 
 ## Controllo finale
 
-1. **Tracciabilità.** Ogni cosa chiesta dal cliente nel ticket compare in "Cosa verrà fatto" oppure in "Cosa resta escluso". Nulla sparisce in silenzio.
-2. **Finito quando.** Ogni condizione è verificabile con un sì o un no.
-3. **Coerenza con il livello.** Sei voci per il ticket rapido, nove per l'esteso.
-4. **Contenuti fuori posto.** Nessuna tecnologia, nessun prezzo, nessuna stima non confermata in una scheda completa.
-5. {{CONTROLLO}}
+1. **Tracciabilità.** Ogni cosa chiesta dal cliente nel ticket compare in "Cosa fare" oppure è dichiarata esclusa. Nulla sparisce in silenzio.
+2. **Precisione.** "Su cosa intervenire" indica repository, moduli o file, non descrizioni generiche.
+3. **DoD.** Ogni condizione è verificabile con un sì o un no.
+4. **Documenti collegati.** Ogni lavoro e documento trovato dalla verifica è elencato.
+5. **Contenuti fuori posto.** Nessun prezzo, nessuna stima non confermata in una scheda completa.
+6. {{CONTROLLO}}

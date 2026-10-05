@@ -1,6 +1,6 @@
 ---
 name: wireframe-e-prototipo
-description: Genera wireframe e prototipi navigabili a partire da user story o da una Scheda di intervento, come pagine HTML da aprire nel browser. Usala quando un ticket, un progetto o un prodotto tocca l'interfaccia e il cliente deve validare struttura e percorso prima dello sviluppo.
+description: Genera wireframe e prototipi navigabili a partire da user story, come pagine HTML da aprire nel browser. Usala quando un progetto o un prodotto tocca l'interfaccia e il cliente deve validare struttura e percorso prima dello sviluppo.
 ---
 
 # Wireframe e prototipo
@@ -14,13 +14,13 @@ I quattro strumenti visivi vanno tenuti distinti, perché validano cose diverse:
 - **Wireframe**: lo schema di una schermata, senza grafica. Mostra cosa c'è e dove. Valida struttura e contenuti.
 - **Prototipo**: più wireframe collegati e navigabili, senza logica vera. Valida il percorso dell'utente.
 - **Mockup**: l'aspetto grafico definitivo. Non si produce qui: si disegna in Figma.
-- **Demo**: il software vero sull'ambiente di prova. Non si produce qui.
+- **Demo**: il software vero sullo staging. Non si produce qui.
 
-Questa skill produce wireframe e prototipi. Servono solo se il lavoro tocca l'interfaccia.
+Questa skill produce wireframe e prototipi. Servono solo se il lavoro tocca l'interfaccia, quindi in progetti e prodotti.
 
 ## Dove entrano nei piani
 
-- **Ticket**: un wireframe allegato alla Scheda di intervento, se una schermata cambia. Il cliente lo conferma con la scheda.
+- **Ticket**: non previsto. Un ticket non cambia l'aspetto grafico: se serve ridisegnare una schermata la richiesta è un progetto.
 - **Progetto**: wireframe delle schermate nuove o modificate, allegati alla Proposta di soluzione. Un prototipo è facoltativo, in fase di documentazione, quando il percorso è complesso.
 - **Prodotto**: wireframe delle schermate principali nella proposta, poi prototipo nella fase di prototipo e design.
 
@@ -29,9 +29,9 @@ Questa skill produce wireframe e prototipi. Servono solo se il lavoro tocca l'in
 Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
-2. **Taglia.** Ticket, progetto o prodotto.
-3. **La fonte.** La Scheda di intervento, oppure l'elenco delle user story e la soluzione proposta, oppure il Manuale del prodotto.
-4. **Lo stato attuale**, per ticket e progetti: come si presenta oggi la schermata. Chiedi una schermata o una descrizione. Un wireframe che ridisegna da zero una schermata esistente fa credere al cliente che cambierà tutto.
+2. **Categoria.** Progetto o prodotto.
+3. **La fonte.** L'elenco delle user story e la soluzione proposta, oppure il Manuale del prodotto.
+4. **Lo stato attuale**, per i progetti: come si presenta oggi la schermata. Chiedi una schermata o una descrizione. Un wireframe che ridisegna da zero una schermata esistente fa credere al cliente che cambierà tutto.
 5. **Cosa produrre.** Wireframe singoli, oppure prototipo navigabile.
 6. **Dispositivo.** Schermo grande, telefono, o entrambi.
 
@@ -45,7 +45,7 @@ Se la fonte non dice cosa contiene una schermata, non inventarlo: chiedilo.
 - **Codici.** Ogni schermata ha un codice fisso (S1, S2) e riporta in piccolo i codici delle story che realizza (F3.1). Sono il legame con il Manuale.
 - **Stati.** Per ogni schermata che li ha: stato vuoto, errore, caricamento. Sono i casi particolari delle story, e sono quelli che più spesso mancano.
 - **Dicitura fissa.** Ogni pagina porta in alto: "Wireframe: mostra struttura e contenuti, non l'aspetto grafico".
-- **Per i ticket: prima e dopo.** Mostra lo stato attuale e quello proposto, con evidenziato solo ciò che cambia.
+- **Per i progetti: prima e dopo.** Mostra lo stato attuale e quello proposto, con evidenziato solo ciò che cambia.
 
 ## Regole del prototipo
 

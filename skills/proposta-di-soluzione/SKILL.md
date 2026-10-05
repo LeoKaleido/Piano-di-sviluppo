@@ -1,15 +1,15 @@
 ---
 name: proposta-di-soluzione
-description: Scrive e aggiorna la Proposta di soluzione per il cliente, con richiesta come compresa, soluzione e allegato con le user story. Usala dopo lo Stato di partenza, e ogni volta che il cliente manda correzioni o risposte a una versione già inviata.
+description: Scrive e aggiorna la Proposta di soluzione per il cliente, con richiesta come compresa, soluzione e allegato con le user story. Usala dopo lo Stato di partenza, e ogni volta che il cliente manda correzioni o risposte a una versione già inviata, anche a voce in una riunione.
 ---
 
 # Proposta di soluzione
 
 ## A cosa serve
 
-La Proposta di soluzione è l'unico documento che il cliente riceve prima della conferma. Il suo messaggio è: "si farebbe così, cosa ne pensa?". Riformula la richiesta, descrive la soluzione, dichiara compromessi e limiti, raccoglie le decisioni che spettano al cliente.
+La Proposta di soluzione è il documento che il cliente riceve prima della conferma. Il suo messaggio è: "si farebbe così, cosa ne pensa?". Riformula la richiesta, descrive la soluzione, dichiara compromessi e limiti, raccoglie le decisioni che spettano al cliente.
 
-Il cliente la corregge e risponde alle domande; la proposta viene aggiornata e rimandata fino alla conferma. La versione confermata è la base del Manuale del prodotto.
+Il cliente la corregge e risponde alle domande; la proposta viene aggiornata e rimandata fino alla conferma, senza limite di giri. La versione confermata è la base del Manuale del prodotto. La prima versione rientra nel tempo massimo del kickoff (10% della stima del progetto): i giri successivi no.
 
 Vale per progetti e prodotti. Un ticket non ha proposta: ha la Scheda di intervento.
 
@@ -19,7 +19,7 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Il cliente.** Il nome con cui chiamarlo nel testo.
 2. **Progetto o prodotto.**
-3. **Le fonti.** La richiesta, gli appunti del primo confronto e lo Stato di partenza. Chiedi dove si trovano. Se lo Stato di partenza manca, avvisa: i limiti della proposta verrebbero scritti senza un'indagine. Procedi solo se confermato.
+3. **Le fonti.** La richiesta, le trascrizioni e le sintesi delle conversazioni del kickoff e lo Stato di partenza. Chiedi dove si trovano. Se lo Stato di partenza manca, avvisa: i limiti della proposta verrebbero scritti senza un'indagine. Procedi solo se confermato.
 4. **Situazione.** Prima stesura, oppure riscontro del cliente a una versione già inviata.
 
 ## Informazioni mancanti
@@ -44,17 +44,17 @@ Intestazione: titolo, cliente, data, versione.
 3. **Compromessi.** Cose chieste che verranno realizzate in forma diversa: cosa era stato chiesto, perché non si fa così, con cosa viene sostituito.
 4. **Suggerimenti.** Cose non chieste che si propone di aggiungere, dichiarate opzionali, con il beneficio.
 5. **Cosa non si potrà fare.** I limiti e ciò che resta fuori, in particolare ciò che il cliente potrebbe dare per scontato. Una richiesta esplicita esclusa senza alternativa va spiegata tra i compromessi e ripetuta qui.
-6. **Divisione in rilasci.** Solo per il prodotto: cosa entra nel primo rilascio e cosa dopo. Nel primo entra solo ciò senza cui il prodotto non è utilizzabile.
+6. **Divisione in release.** Solo per il prodotto: cosa entra nella prima release e cosa dopo. Nella prima entra solo ciò senza cui il prodotto non è utilizzabile.
 7. **Assunzioni.** Ciò che è stato dato per scontato.
 8. **Domande aperte.** Vedi il formato sotto.
-9. **Cosa serve dal cliente.** I materiali da fornire (testi, immagini, dati, accessi, documentazione di sistemi esterni, utenze di prova), ancora senza date, e il nome del decisore.
+9. **Cosa serve dal cliente.** I materiali da fornire (testi, immagini, dati, accessi, documentazione di sistemi esterni, utenze di prova), ancora senza date, e il nome del referente.
 10. **Prossimi passi.**
 
 **Parte 3: allegato.**
 
 - **Elenco delle user story.** Raggruppate per funzionalità. Ogni funzionalità ha un codice fisso (F1, F2), ogni story un codice derivato (F1.1). Di ogni story solo titolo e frase: "Come [tipo di utente], voglio [azione], per [beneficio]". Il dettaglio arriverà nel Manuale del prodotto.
 - **Sunto della lavorazione.** Come procederà il lavoro dopo la conferma: documentazione, sviluppo a milestone con demo, rilascio. Senza date.
-- **Wireframe.** Se il lavoro tocca l'interfaccia, segnala che sono allegati i wireframe delle schermate nuove o modificate e che il cliente li conferma con la proposta.
+- **Wireframe.** Facoltativi. Se il lavoro tocca l'interfaccia e si decide di allegarli, segnala che sono allegati i wireframe delle schermate nuove o modificate e che il cliente li conferma con la proposta.
 
 ## Formato delle domande aperte
 
@@ -70,8 +70,8 @@ Li fornisce il team. Puoi proporne di tuoi, partendo dai vincoli dello Stato di 
 ## Regole di contenuto
 
 - **Nessuna tecnologia e nessun flusso tecnico.** Il cliente valuta cosa fa il prodotto.
-- **Nessun prezzo e nessuna data.** Prezzi e preventivi sono seguiti a parte; le date nascono dal Piano delle milestone.
-- **Nessun limite di lunghezza**, ma la sintesi iniziale resta breve.
+- **Nessun prezzo e nessuna data.** Prezzi e preventivi sono seguiti a parte; le date nascono dal capitolo Milestone e issue del Documento tecnico.
+- **Lunghezza.** Da 2 a 3 pagine, al massimo 5, allegato compreso. La sintesi iniziale resta breve. Se per stare nel limite bisogna togliere qualcosa, si toglie il dettaglio: arriverà nel Manuale del prodotto.
 - **Comprensibile a chi non è del settore.** Un termine tecnico inevitabile va spiegato alla prima occorrenza.
 - **Formula delle user story.** È in prima persona dal punto di vista dell'utente ed è l'unica eccezione alla forma impersonale.
 
@@ -88,19 +88,19 @@ La proposta è completa se tutte le sezioni sono compilate, nessuna domanda per 
 
 ## Riscontro del cliente
 
-Il cliente può rispondere in qualunque forma: email, documento modificato, messaggio, appunti di una call.
+Il cliente può rispondere in qualunque forma: email, documento modificato, messaggio, o a voce in una riunione o telefonata. Per una conversazione usa la sintesi prodotta dalla skill `interpretazione-conversazioni`.
 
 1. **Raccogli.** Chiedi dove si trova il riscontro e a quale versione si riferisce. Se il cliente ha restituito il documento modificato, confrontalo con la versione inviata: può aver cambiato una parola in un punto qualsiasi.
 2. **Registro del riscontro.** Prima di modificare, scomponi il riscontro in voci e mostrale: cosa ha detto il cliente, il tipo (Correzione, Risposta a una domanda, Nuova richiesta, Domanda del cliente, Da chiarire), le sezioni toccate.
-3. **Decisioni.** Per ogni Correzione o Nuova richiesta il product lead decide: Accolta, Accolta con compromesso, Non accolta. Una richiesta del cliente non è accolta in automatico.
+3. **Decisioni.** Per ogni Correzione o Nuova richiesta il responsabile decide: Accolta, Accolta con compromesso, Non accolta. Una richiesta del cliente non è accolta in automatico.
 4. **Aggiorna.** Applica gli esiti in tutte le sezioni toccate, allegato compreso. I codici di story e domande non cambiano.
 5. **Nuova versione.** Incrementa il numero e aggiungi "Modifiche rispetto alla versione precedente", con cosa è cambiato, dove e da cosa nasce. Le richieste non accolte compaiono anch'esse, con il motivo.
 
-Se il product lead non può decidere subito tutti gli esiti, la nuova versione è una bozza.
+Se il responsabile non può decidere subito tutti gli esiti, la nuova versione è una bozza.
 
 ## Conferma
 
-La versione confermata dal cliente diventa la v1.0. Non può contenere domande aperte: ognuna va chiusa con una risposta, trasformata in assunzione o spostata tra ciò che non si potrà fare. Alla conferma ricorda al team l'allineamento dei documenti: vanno controllati gli altri lavori e documenti toccati dal progetto.
+La versione confermata dal cliente diventa la v1.0. La conferma può arrivare a voce, in una riunione: vale dopo il riepilogo scritto che il responsabile invia al cliente. Non può contenere domande aperte: ognuna va chiusa con una risposta, trasformata in assunzione o spostata tra ciò che non si potrà fare. Alla conferma ricorda al team l'allineamento dei documenti: vanno controllati gli altri lavori e documenti toccati dal progetto.
 
 ## Controllo finale
 
@@ -108,4 +108,5 @@ La versione confermata dal cliente diventa la v1.0. Non può contenere domande a
 2. Ogni story dell'allegato corrisponde a qualcosa descritto nella soluzione, e viceversa.
 3. Ogni vincolo dello Stato di partenza che tocca la richiesta è riflesso nella proposta.
 4. Nessuna tecnologia, prezzo o data.
-5. {{CONTROLLO}}
+5. La proposta sta in 5 pagine al massimo.
+6. {{CONTROLLO}}

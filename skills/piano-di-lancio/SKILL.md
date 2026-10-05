@@ -1,6 +1,6 @@
 ---
 name: piano-di-lancio
-description: Scrive il Piano di lancio di un prodotto per il cliente, con data, dati iniziali da caricare, formazione, apertura graduale, assistenza rafforzata e ciò che serve dal cliente. Usala solo per i prodotti, quando le milestone del primo rilascio si avvicinano alla conclusione.
+description: Scrive il Piano di lancio di un prodotto per il cliente, con data, dati iniziali da caricare, formazione, apertura graduale, assistenza rafforzata e ciò che serve dal cliente. Usala solo per i prodotti, quando le milestone della prima release si avvicinano alla conclusione.
 ---
 
 # Piano di lancio
@@ -34,7 +34,7 @@ Intestazione: titolo, cliente, prodotto, data, versione.
 
 **In sintesi.** Poche righe: la data di lancio, cosa deve essere pronto, cosa serve dal cliente.
 
-1. **Cosa viene lanciato.** Le funzionalità del primo rilascio, con codice e nome presi dal Manuale. E cosa arriverà nei rilasci successivi, perché gli utilizzatori non lo cerchino.
+1. **Cosa viene lanciato.** Le funzionalità della prima release, con codice e nome presi dal Manuale. E cosa arriverà nelle release successive, perché gli utilizzatori non lo cerchino.
 2. **Data e condizioni.** La data prevista e le condizioni perché valga: tutte le milestone accettate, i materiali arrivati, gli adempimenti completati.
 3. **Cosa serve dal cliente.** Ogni voce con la data entro cui serve:
    - **dati iniziali** da caricare: quali, in che forma, chi li fornisce. La pulizia dei dati spetta al cliente: se la chiede al team è una variazione;
@@ -47,7 +47,7 @@ Intestazione: titolo, cliente, prodotto, data, versione.
 6. **Apertura graduale.** Se prevista: il gruppo iniziale, quando si apre a tutti, e cosa deve essere vero per aprire.
 7. **Assistenza rafforzata.** Per quanto tempo, come si segnala un problema, in quanto tempo si interviene.
 8. **Se qualcosa va storto.** In parole comuni: il prodotto può essere riportato allo stato precedente, e chi decide di farlo.
-9. **Dopo il lancio.** Parte la garanzia. Le nuove richieste arrivano come ticket, i rilasci successivi come progetti.
+9. **Dopo il lancio.** Parte la garanzia. Le nuove richieste arrivano come ticket, le release successive come progetti.
 
 ## Promemoria interno
 
@@ -69,7 +69,7 @@ A parte, non nel documento per il cliente, restituisci un elenco per il team:
 
 ## Bozza o versione completa
 
-Il piano è completo se ogni voce della sezione 3 ha una data e un responsabile, e i parametri del lancio sono stati confermati.
+Il piano è completo se ogni voce della sezione 3 ha una data e un incaricato, e i parametri del lancio sono stati confermati.
 
 - **Bozza**: Markdown, `piano-lancio-<cliente>-<prodotto>-bozza-<N>.md`. Prima riga "BOZZA INTERNA, DA NON CONDIVIDERE CON IL CLIENTE". Ogni parte incompleta termina con un blocco "Cosa manca".
 - **Versione completa**: PDF, `piano-lancio-<cliente>-<prodotto>-v<N>.pdf`. Conserva il sorgente Markdown.
@@ -78,8 +78,8 @@ Se una data cambia dopo l'approvazione, produci una nuova versione con l'elenco 
 
 ## Controllo finale
 
-1. Ogni funzionalità elencata coincide con il Manuale e con il primo rilascio.
-2. Ogni cosa che serve dal cliente ha una data e un responsabile.
+1. Ogni funzionalità elencata coincide con il Manuale e con la prima release.
+2. Ogni cosa che serve dal cliente ha una data e un incaricato.
 3. Gli adempimenti legali sono presenti.
 4. Il promemoria interno è separato dal documento per il cliente.
 5. {{CONTROLLO}}
