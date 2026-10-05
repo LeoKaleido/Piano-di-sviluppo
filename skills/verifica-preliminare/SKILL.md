@@ -100,7 +100,7 @@ Una nota interna, breve, in risposta e non come file, salvo richiesta diversa.
 - **Decisioni per il product lead.** Solo se servono, con le opzioni.
 - **Domande per il cliente.** Numerate, a risposta breve.
 - **Cosa non è stato verificato**, e cosa servirebbe per farlo.
-- **Prossimo passo.** Uno fra: valutazione della richiesta e Scheda di intervento; risposta al cliente senza aprire lavoro; variazione sul progetto; unione con un altro ticket; riclassificazione come progetto.
+- **Prossimo passo.** Uno fra: valutazione della richiesta e schede del ticket (Scheda di intervento e Scheda di sviluppo); risposta al cliente senza aprire lavoro; variazione sul progetto; unione con un altro ticket; riclassificazione come progetto.
 
 Quando l'esito è che non si apre lavoro, oppure che la richiesta è già compresa in un progetto, aggiungi il **testo della risposta al cliente**: cosa è stato trovato, dove e quando lo riceverà, cosa può fare se gli serve prima. Per il cliente niente tecnologie, niente nomi di file, niente ore.
 
@@ -108,7 +108,7 @@ Quando l'esito è che non si apre lavoro, oppure che la richiesta è già compre
 
 - **Sola lettura.** Né il codice né i documenti degli altri lavori vengono modificati.
 - **Riferimenti precisi.** "È già previsto nel progetto" non basta: serve il codice della story e la data.
-- **Nessuna soluzione.** La verifica dice cosa c'è e cosa manca. Come intervenire lo dirà la Scheda di intervento o la proposta.
+- **Nessuna soluzione.** La verifica dice cosa c'è e cosa manca. Come intervenire lo diranno la Scheda di sviluppo e la Scheda di intervento, o la proposta.
 - **Nessuna decisione al posto del product lead.** Davanti a un conflitto presenta le opzioni con le conseguenze di ciascuna.
 
 ## Regole di scrittura

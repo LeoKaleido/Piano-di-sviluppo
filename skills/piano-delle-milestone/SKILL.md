@@ -27,8 +27,8 @@ Chiedi solo ciò che non è già stato detto.
    - chi è nel team e per quante ore alla settimana;
    - durata dello sprint;
    - durata delle milestone, da 4 a 8 settimane;
-   - margine sulle ore di ogni milestone (proposta: 20%, 30% se sviluppa una sola persona);
-   - quota della capacità riservata ai ticket urgenti (proposta: 10%).
+   - buffer di milestone, in percentuale sulle ore stimate (proposta: 20%, 30% se sviluppa una sola persona);
+   - buffer di sprint, riservato ai ticket urgenti (proposta: 10%).
 4. **Calendario di progetto.** Festività, chiusure aziendali, ferie già note di ogni persona, chiusure del cliente. Va chiesto esplicitamente: una festività dimenticata sposta le date dopo che sono state comunicate.
 
 ## Informazioni mancanti
@@ -45,7 +45,7 @@ Intestazione: titolo, cliente, sistema, data, versione, versione del Manuale da 
 
 1. **Parametri.** Quelli raccolti all'avvio.
 2. **Calendario di progetto.**
-3. **Quadro delle milestone.** Per ognuna: codice, obiettivo dimostrabile, story consegnate, ore stimate, margine, data di consegna, stato.
+3. **Quadro delle milestone.** Per ognuna: codice, obiettivo dimostrabile, story consegnate, ore stimate, buffer di milestone, data di consegna, stato.
 4. **Dettaglio.** Per ogni milestone, le sue issue nel formato sotto.
 5. **Materiali del cliente.** Ogni materiale con le issue che ne dipendono e la data entro cui serve.
 6. **Rischi e incognite.** Con il modo in cui vengono contenuti.
@@ -57,7 +57,7 @@ Intestazione: titolo, cliente, sistema, data, versione, versione del Manuale da 
 - **Codice e nome**: M1, M2. Verso il cliente la milestone si chiama SAL: SAL1, SAL2.
 - **Obiettivo dimostrabile**: cosa si potrà mostrare funzionante nella demo, in una frase.
 - **Story consegnate**: i codici del Manuale.
-- **Ore stimate, margine, data di consegna.**
+- **Ore stimate, buffer di milestone, data di consegna.**
 - **Stato**: Da avviare, In corso, Consegnata, Accettata.
 
 ### Formato di una issue
@@ -73,7 +73,7 @@ Intestazione: titolo, cliente, sistema, data, versione, versione del Manuale da 
 - **Descrizione**: cosa va fatto, con rimando alla sezione del Documento tecnico.
 - **Dipendenze**: issue da concludere prima, e materiali del cliente necessari.
 - **Stima**: in ore.
-- **Finito quando**: condizioni verificabili che derivano dal criterio di accettazione della story. Quando il team ha più di una persona comprende la revisione del codice da parte di un collega.
+- **DoD**: condizioni verificabili che derivano dal criterio di accettazione della story. Quando il team ha più di una persona comprende la code review da parte di un collega.
 - **Stato**: Da fare, In corso, Finita, Superata.
 
 ## Regole di pianificazione
@@ -82,8 +82,8 @@ Intestazione: titolo, cliente, sistema, data, versione, versione del Manuale da 
 - **Prima le parti rischiose.** Ciò che è incerto va nelle prime milestone. In un prodotto la prima milestone è quella delle fondamenta: infrastruttura, ambienti, parti mai affrontate.
 - **Le dipendenze decidono l'ordine.** Nessuna issue precede quelle da cui dipende. I materiali del cliente sono dipendenze.
 - **Issue piccole.** Una issue stimata oltre le 16 ore va divisa.
-- **Lavori trasversali espliciti.** Ambienti, ambiente di prova accessibile al cliente, rilascio, preparazione della demo e correzioni sono issue con stima propria.
-- **Date dal calendario.** La data di una milestone si calcola dalle ore stimate più il margine, sulla capacità reale: ore settimanali di ogni persona, meno la quota per i ticket, meno festività e ferie del calendario.
+- **Lavori trasversali espliciti.** Ambienti, staging accessibile al cliente, rilascio, preparazione della demo e correzioni sono issue con stima propria.
+- **Date dal calendario.** La data di una milestone si calcola dalle ore stimate più il buffer di milestone, sulla capacità reale: ore settimanali di ogni persona, meno il buffer di sprint, meno festività e ferie del calendario.
 
 ## Piano dei SAL
 
@@ -93,7 +93,7 @@ Si genera solo da un Piano delle milestone completo. Contiene due elenchi.
 
 **Elenco dei materiali attesi.** Per ogni materiale: cosa serve, per quale SAL, entro quale data. Seguito dalla regola: ogni giorno di ritardo su un materiale sposta di un giorno le consegne che ne dipendono.
 
-Il Piano dei SAL non contiene issue, stime, margini, tecnologie, rischi interni, prezzi. Usa il lessico del Manuale ed è comprensibile a chi non è del settore. Il cliente lo approva insieme al Manuale.
+Il Piano dei SAL non contiene issue, stime, buffer di milestone, tecnologie, rischi interni, prezzi. Usa il lessico del Manuale ed è comprensibile a chi non è del settore. Il cliente lo approva insieme al Manuale.
 
 ## Regole di scrittura
 
@@ -119,9 +119,9 @@ Il piano cambia per avanzamento (stati), per una variazione approvata o per una 
 ## Controllo finale
 
 1. **Copertura.** Ogni story ha almeno una issue e una sola milestone.
-2. **Criteri.** I "finito quando" delle issue di una story coprono per intero il suo criterio di accettazione.
+2. **Criteri.** Le DoD delle issue di una story coprono per intero il suo criterio di accettazione.
 3. **Ordine.** Nessuna issue precede una sua dipendenza. Nessuna issue supera le 16 ore.
-4. **Date.** Ogni data è coerente con calendario, capacità e margine.
+4. **Date.** Ogni data è coerente con calendario, capacità e buffer di milestone.
 5. **Coerenza.** Milestone, story, date e materiali del Piano dei SAL coincidono con il Piano delle milestone.
 6. **Riservatezza.** Il Piano dei SAL non contiene nulla di interno.
 7. {{CONTROLLO}}

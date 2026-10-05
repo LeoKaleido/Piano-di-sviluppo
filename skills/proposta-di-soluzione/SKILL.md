@@ -47,7 +47,7 @@ Intestazione: titolo, cliente, data, versione.
 6. **Divisione in rilasci.** Solo per il prodotto: cosa entra nel primo rilascio e cosa dopo. Nel primo entra solo ciò senza cui il prodotto non è utilizzabile.
 7. **Assunzioni.** Ciò che è stato dato per scontato.
 8. **Domande aperte.** Vedi il formato sotto.
-9. **Cosa serve dal cliente.** I materiali da fornire (testi, immagini, dati, accessi, documentazione di sistemi esterni, utenze di prova), ancora senza date, e il nome del decisore.
+9. **Cosa serve dal cliente.** I materiali da fornire (testi, immagini, dati, accessi, documentazione di sistemi esterni, utenze di prova), ancora senza date, e il nome del referente.
 10. **Prossimi passi.**
 
 **Parte 3: allegato.**

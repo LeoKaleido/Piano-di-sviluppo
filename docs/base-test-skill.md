@@ -34,9 +34,9 @@ A ogni passo si annota una di queste cose:
 
 Lumera Arredi è un'azienda inventata che vende illuminazione e complementi d'arredo, online e in tre showroom. È cliente da quattro anni.
 
-- **Franco.** Titolare. È il decisore: vale solo la sua approvazione. Risponde in fretta ma legge poco.
-- **Marta.** Responsabile dell'assistenza clienti. Usa il gestionale ogni giorno e apre la maggior parte dei ticket.
-- **Diego.** Responsabile commerciale per i rivenditori. Ha richieste precise e tende a rivolgersi direttamente agli sviluppatori.
+- **Franco.** Titolare. È il referente: vale solo la sua approvazione. Risponde in fretta ma legge poco.
+- **Marta.** Si occupa dell'assistenza clienti. Usa il gestionale ogni giorno e apre la maggior parte dei ticket.
+- **Diego.** Cura i rapporti commerciali con i rivenditori. Ha richieste precise e tende a rivolgersi direttamente agli sviluppatori.
 
 Le regole su variazioni, ritardi e accettazione sono già firmate, in un accordo valido per tutti i lavori. I valori concordati:
 
@@ -99,7 +99,7 @@ Le story del progetto:
 - **F3.1** Come visitatore, voglio condividere il confronto con un link, per chiedere un parere.
 - **F3.2** Come visitatore, voglio mettere nel carrello un prodotto dal confronto, per acquistare senza tornare alla scheda.
 
-Lo sprint in corso è il terzo, dal 28 settembre al 9 ottobre. La milestone del SAL2 è in linea, con metà del margine già consumata.
+Lo sprint in corso è il terzo, dal 28 settembre al 9 ottobre. La milestone del SAL2 è in linea, con metà del buffer di milestone già consumato.
 
 **Ticket aperti**
 
@@ -124,7 +124,7 @@ Il test parte da venerdì 2 ottobre 2026.
 Le persone e le ore settimanali disponibili per Lumera Arredi:
 
 - **Product lead.** Segue tutti i lavori del cliente.
-- **Team lead.** 8 ore, per indagini, stime e revisione del codice.
+- **Team lead.** 8 ore, per indagini, stime e code review.
 - **Sviluppatore 1.** 30 ore, tutte sul comparatore.
 - **Sviluppatore 2.** 30 ore: 15 sul comparatore, 15 libere.
 - **Sviluppatore 3.** 30 ore: segue i ticket, il resto è libero.
@@ -133,11 +133,11 @@ Le persone e le ore settimanali disponibili per Lumera Arredi:
 I parametri già decisi (nella base originale; vedi nota sotto):
 
 - sprint di 2 settimane;
-- quota riservata ai ticket urgenti: 10% della capacità;
-- margine di milestone: 20% delle ore stimate;
+- buffer di sprint: 10% della capacità;
+- buffer di milestone: 20% delle ore stimate;
 - una stima superata di oltre il 25% ferma il ticket.
 
-> Nota: la quota urgenze è stata fissata al 20% (non 10%) nella sessione del 2026-10-03. Da correggere in questa base prima del test.
+> Nota: il buffer di sprint è stato fissato al 20% (non 10%) nella sessione del 2026-10-03. Da correggere in questa base prima del test.
 
 Il calendario:
 

@@ -14,7 +14,7 @@ I quattro strumenti visivi vanno tenuti distinti, perché validano cose diverse:
 - **Wireframe**: lo schema di una schermata, senza grafica. Mostra cosa c'è e dove. Valida struttura e contenuti.
 - **Prototipo**: più wireframe collegati e navigabili, senza logica vera. Valida il percorso dell'utente.
 - **Mockup**: l'aspetto grafico definitivo. Non si produce qui: si disegna in Figma.
-- **Demo**: il software vero sull'ambiente di prova. Non si produce qui.
+- **Demo**: il software vero sullo staging. Non si produce qui.
 
 Questa skill produce wireframe e prototipi. Servono solo se il lavoro tocca l'interfaccia.
 

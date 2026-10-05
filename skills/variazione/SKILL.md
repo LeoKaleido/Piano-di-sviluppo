@@ -44,19 +44,19 @@ La categoria la proponi tu, motivandola con il criterio. La decide il product le
 - **Story toccate**: codici modificati, aggiunti, rimossi.
 - **Issue toccate**, divise per stato. Le issue in corso, finite o accettate non si cancellano: passano a Superata, e il lavoro già svolto resta dovuto.
 - **Ore**: nuove ore necessarie e ore di lavoro superato. Le stime vanno validate dal team lead: fino ad allora sono marcate con "[Stima da validare]".
-- **Margine**: quanto margine della milestone resta dopo la variazione.
+- **Buffer di milestone**: quanto ne resta dopo la variazione.
 - **Date**: quali date di consegna cambiano e di quanto. Se nessuna cambia, dillo.
 - **Altri lavori**: se la variazione tocca documenti di altri progetti o ticket, segnala che serve l'allineamento dei documenti.
 
 ## Passo 4: come si gestisce
 
-- **Piccola**: conferma scritta del cliente. È assorbita dal margine della milestone. Si aggiorna il Manuale del prodotto.
+- **Piccola**: conferma scritta del cliente. È assorbita dal buffer di milestone. Si aggiorna il Manuale del prodotto.
 - **Media**: stima dell'impatto e approvazione scritta del cliente prima di lavorarci. Può spostare una story o una data. Si aggiornano Manuale del prodotto, Piano delle milestone, Documento tecnico se serve, Piano dei SAL se cambia una data.
 - **Grande**: si torna alla proposta. Serve una proposta integrativa, la conferma del cliente e una nuova documentazione di progetto. Si aggiornano tutti i documenti.
 
 Una variazione non entra mai nello sprint in corso: entra in uno sprint successivo, dopo l'approvazione.
 
-Se il margine è già stato consumato da variazioni piccole precedenti, segnalalo: una nuova variazione piccola non è più assorbibile e va trattata come media.
+Se il buffer di milestone è già stato consumato da variazioni piccole precedenti, segnalalo: una nuova variazione piccola non è più assorbibile e va trattata come media.
 
 ## Cosa produci
 

@@ -20,7 +20,7 @@ Si usa in due momenti:
 
 Chiedi solo ciò che non è già stato detto.
 
-1. **Il lavoro di partenza.** Il ticket (con la sua Scheda di intervento) o il progetto (con Proposta di soluzione e Manuale), e il sistema su cui interviene.
+1. **Il lavoro di partenza.** Il ticket (con le sue schede) o il progetto (con Proposta di soluzione e Manuale), e il sistema su cui interviene.
 2. **Il momento.** Prima di sviluppare, oppure dopo.
 3. **Dove sono i documenti.** I documenti sono conservati su Drive. Chiedi in quale cartella si trovano quelli del cliente e del sistema: non dare per scontata la struttura. Se hai accesso a Drive, cerca tu a partire da quella cartella. Se non hai accesso, chiedi che i documenti vengano forniti e dichiara che il controllo copre solo quelli ricevuti.
 4. **Per il momento "dopo"**: cosa è stato realmente fatto, se diverso da quanto previsto.

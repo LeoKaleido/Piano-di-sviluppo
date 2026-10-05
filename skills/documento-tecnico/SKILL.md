@@ -40,7 +40,7 @@ Intestazione: titolo, cliente, sistema, data, versione, versione del Manuale a c
 4. **Dati.** Entità, relazioni, regole di validità. Per ogni entità, le story che la usano.
 5. **Realizzazione delle funzionalità.** Per ogni funzionalità del Manuale, con il suo codice: le parti del sistema coinvolte, il flusso tecnico passo per passo, i rami di errore corrispondenti ai casi particolari delle story. Si cita il codice della story, non se ne riscrive il comportamento.
 6. **Integrazioni.** Sistemi esterni: cosa si scambia, come, cosa succede se non rispondono.
-7. **Infrastruttura e ambienti.** Dove gira il sistema, ambiente di prova e di produzione, come si rilascia e come si torna alla versione precedente.
+7. **Infrastruttura e ambienti.** Dove gira il sistema, staging e produzione, come si rilascia e come si torna alla versione precedente.
 8. **Sicurezza e dati personali.** Accessi, permessi, dati sensibili, backup.
 9. **Decisioni tecniche.** Ogni scelta rilevante con data, alternative scartate e motivo. Serve a non ridiscutere ciò che è già stato deciso.
 10. **Rischi e debito tecnico.** Ciò che è stato fatto in modo provvisorio e andrà ripreso.

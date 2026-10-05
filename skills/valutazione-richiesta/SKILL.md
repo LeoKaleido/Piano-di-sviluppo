@@ -90,7 +90,7 @@ La valutazione è una nota interna, breve, restituita in risposta e non come fil
 - **Documenti e lavori toccati.** Se rilevati.
 - **Dubbi.** Cosa potrebbe far cambiare la classificazione, e quale informazione lo deciderebbe.
 - **Domande per il cliente.** Numerate.
-- **Prossimo passo.** Per un ticket, la Scheda di intervento. Per un ticket bloccante, il percorso d'urgenza: si interviene subito e la scheda si scrive a posteriori. Per un progetto, il primo confronto e lo Stato di partenza. Per un prodotto, la qualifica del cliente.
+- **Prossimo passo.** Per un ticket, la Scheda di intervento e la Scheda di sviluppo. Per un ticket bloccante, il percorso d'urgenza: si interviene subito e la scheda si scrive a posteriori. Per un progetto, il primo confronto e lo Stato di partenza. Per un prodotto, la qualifica del cliente.
 
 Se il ticket contiene più richieste, ripeti la struttura per ognuna.
 

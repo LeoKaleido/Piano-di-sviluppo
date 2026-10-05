@@ -1,13 +1,13 @@
 ---
 name: demo
-description: Prepara la scaletta di una demo al cliente (story da mostrare, criteri di accettazione da verificare) e ne registra l'esito nel verbale di accettazione. Usala a fine milestone di un progetto o prodotto, prima del lancio, e per la verifica di un ticket esteso sull'ambiente di prova.
+description: Prepara la scaletta di una demo al cliente (story da mostrare, criteri di accettazione da verificare) e ne registra l'esito nel verbale di accettazione. Usala a fine milestone di un progetto o prodotto, prima del lancio, e per la verifica di un ticket esteso sullo staging.
 ---
 
 # Demo
 
 ## A cosa serve
 
-La demo è il software vero, funzionante sull'ambiente di prova, mostrato al cliente perché accetti il lavoro. La skill non crea la demo: prepara ciò che serve perché porti a un'accettazione chiara, e ne registra l'esito.
+La demo è il software vero, funzionante sullo staging, mostrato al cliente perché accetti il lavoro. La skill non crea la demo: prepara ciò che serve perché porti a un'accettazione chiara, e ne registra l'esito.
 
 Senza una scaletta, una demo diventa una conversazione: il cliente guarda, commenta, chiede cose nuove, e alla fine nessuno sa cosa è stato accettato. Con la scaletta, ogni story viene mostrata e verificata sul suo criterio, e l'esito è scritto.
 
@@ -28,7 +28,7 @@ Chiedi solo ciò che non è già stato detto.
 
 ## Preparazione: verifica interna
 
-Prima di scrivere la scaletta, chiedi conferma che ogni story della milestone sia stata verificata dal team sull'ambiente di prova. Una story che non soddisfa il suo criterio non si porta in demo sperando che vada bene.
+Prima di scrivere la scaletta, chiedi conferma che ogni story della milestone sia stata verificata dal team sullo staging. Una story che non soddisfa il suo criterio non si porta in demo sperando che vada bene.
 
 Se una story prevista non è pronta, segnalalo al product lead prima della demo: decide lui se rinviare la demo, mostrarla senza quella story dichiarandolo, o riprogrammare.
 
@@ -36,7 +36,7 @@ Se una story prevista non è pronta, segnalalo al product lead prima della demo:
 
 Documento interno, Markdown, `demo-<cliente>-<sistema>-<SAL o ticket>.md`.
 
-1. **Cosa si dimostra.** SAL o ticket, data, ambiente, chi partecipa. Deve partecipare il decisore del cliente: vale solo la sua accettazione.
+1. **Cosa si dimostra.** SAL o ticket, data, ambiente, chi partecipa. Deve partecipare il referente del cliente: vale solo la sua accettazione.
 2. **Preparazione dell'ambiente.** Dati di prova, utenze, cosa va predisposto prima.
 3. **Percorso.** Le story nell'ordine in cui si mostrano, seguendo il percorso naturale di un utente e non l'ordine dei codici. Per ogni story:
    - codice e nome;
@@ -46,7 +46,7 @@ Documento interno, Markdown, `demo-<cliente>-<sistema>-<SAL o ticket>.md`.
 4. **Casi particolari da mostrare.** Almeno i principali: un errore, uno stato vuoto. Il cliente li incontrerà.
 5. **Fuori da questa demo.** Le story non ancora consegnate, per evitare che il cliente le cerchi.
 6. **Difetti noti.** Quelli non bloccanti già conosciuti, da dichiarare subito e non da far scoprire.
-7. **Cosa si chiede al cliente.** Provare da solo sull'ambiente di prova e dare l'accettazione scritta entro il termine. Dopo il termine il silenzio vale come accettazione.
+7. **Cosa si chiede al cliente.** Provare da solo sullo staging e dare l'accettazione scritta entro il termine. Dopo il termine il silenzio vale come accettazione.
 
 ## Durante la demo
 

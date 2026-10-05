@@ -39,7 +39,7 @@ Non inventare durate o disponibilità: ciò che non sai, chiedilo.
 
 - **Sprint non completato**: le issue tornano nella milestone, lo sprint non si allunga.
 - **Stime sbagliate**: dopo due sprint sotto le attese si ristimano le issue rimanenti, con team lead e team.
-- **Ticket bloccante o ticket urgenti oltre la quota**: le ore vanno sul ticket, escono dallo sprint le issue meno prioritarie.
+- **Ticket bloccante o ticket urgenti oltre il buffer di sprint**: le ore vanno sul ticket, escono dallo sprint le issue meno prioritarie.
 - **Blocco tecnico o di un servizio esterno**: issue di indagine a tempo limitato, poi nuova stima.
 
 **Cliente**
@@ -51,10 +51,10 @@ Se l'imprevisto non rientra in nessun caso, dillo: descrivi la situazione e prop
 
 ## Passo 2: ricalcolo
 
-Rifai il controllo della milestone con i nuovi dati: ore rimanenti, margine compreso, contro la capacità reale degli sprint rimanenti prima della data. Mostra i numeri usati.
+Rifai il controllo della milestone con i nuovi dati: ore rimanenti, buffer di milestone compreso, contro la capacità reale degli sprint rimanenti prima della data. Mostra i numeri usati.
 
 - **In linea**: l'imprevisto è assorbito. Si aggiorna il piano e non si comunica nulla al cliente.
-- **A rischio**: è assorbito solo consumando il margine. Si segnala al product lead, e si comunica al cliente solo se il product lead lo decide.
+- **A rischio**: è assorbito solo consumando il buffer di milestone. Si segnala al product lead, e si comunica al cliente solo se il product lead lo decide.
 - **In ritardo**: non è assorbibile. Servono le leve.
 
 Controlla anche le milestone successive: uno slittamento può propagarsi.

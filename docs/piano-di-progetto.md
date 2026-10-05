@@ -19,7 +19,7 @@ Non si passa alla fase successiva finché la condizione di chiusura non è soddi
 1. **Ingresso e classificazione.** Il cliente apre la richiesta nel sistema di ticket. Si assegna l'urgenza, si esegue la verifica preliminare sui lavori aperti e sul codice, poi si assegna la taglia. Al cliente si comunicano la presa in carico e cosa comporta la taglia.
    - Si chiude quando: la taglia è assegnata e la verifica ha un esito.
 2. **Primo confronto.** Si dialoga con il cliente per capire il bisogno e sapere chi decide. Con un cliente nuovo si firma l'accordo quadro.
-   - Si chiude quando: il decisore è noto, l'accordo quadro è firmato e ci sono le risposte alle domande senza le quali l'indagine non può partire.
+   - Si chiude quando: il referente è noto, l'accordo quadro è firmato e ci sono le risposte alle domande senza le quali l'indagine non può partire.
 3. **Indagine sull'esistente.** A tempo limitato, partendo dall'esito della verifica preliminare, si analizzano il codice, gli altri lavori aperti sullo stesso sistema e i documenti esistenti.
    - Si chiude quando: lo Stato di partenza è scritto, ogni punto della richiesta ha un giudizio di fattibilità e le incognite rimaste sono elencate.
 4. **Proposta.** Si scrive la Proposta di soluzione, con i wireframe delle schermate nuove o modificate.
@@ -60,22 +60,22 @@ I documenti:
 
 Ogni affermazione dello Stato di partenza porta il suo grado di certezza: verificata, riferita oppure supposta. Una proposta non si scrive su affermazioni supposte: se il codice non è stato guardato, la fattibilità è provvisoria e la proposta lo dichiara.
 
-L'indagine ha un tempo fissato prima di iniziare. Allo scadere si chiude comunque, e ogni incognita rimasta diventa una issue di tipo Approfondimento nella prima milestone.
+L'indagine ha un tempo fissato prima di iniziare. Allo scadere si chiude comunque, e ogni incognita rimasta diventa una issue di tipo Spike nella prima milestone.
 
 ## Documenti del progetto
 
 Per il cliente:
 
-- **Proposta di soluzione** (fasi 4 e 5). La richiesta come è stata compresa, la soluzione con suggerimenti, compromessi, esclusioni, domande aperte e materiali che servono dal cliente, l'allegato con titolo e frase di ogni user story e un sunto di come procederà la lavorazione. Richiede la conferma del decisore.
-- **Manuale del prodotto** (fase 6). Cosa fa il sistema: funzionalità, user story complete, criteri di accettazione. Richiede l'approvazione del decisore. Se il sistema ha già un Manuale, il progetto lo aggiorna.
-- **Piano dei SAL** (fase 6). I SAL con consegne, date e stato, la data di avvio da cui le date sono calcolate, i materiali attesi con la data entro cui servono. È ricavato dal Piano delle milestone. Richiede l'approvazione del decisore.
-- **Resoconto di sprint** (fase 7). Poche righe: fatto, prossimo, stato della milestone, cosa serve dal cliente. È ricavato dal Documento di sprint e non richiede approvazione.
+- **Proposta di soluzione** (fasi 4 e 5). La richiesta come è stata compresa, la soluzione con suggerimenti, compromessi, esclusioni, domande aperte e materiali che servono dal cliente, l'allegato con titolo e frase di ogni user story e un sunto di come procederà la lavorazione. Richiede la conferma del referente.
+- **Manuale del prodotto** (fase 6). Cosa fa il sistema: funzionalità, user story complete, criteri di accettazione. Richiede l'approvazione del referente. Se il sistema ha già un Manuale, il progetto lo aggiorna.
+- **Piano dei SAL** (fase 6). I SAL con consegne, date e stato, la data di avvio da cui le date sono calcolate, i materiali attesi con la data entro cui servono. È ricavato dal Piano delle milestone. Richiede l'approvazione del referente.
+- **Sprint report** (fase 7). Poche righe: fatto, prossimo, stato della milestone, cosa serve dal cliente. È ricavato dal Documento di sprint e non richiede approvazione.
 
 Interni:
 
 - **Stato di partenza** (fase 3). Come funziona oggi il sistema, cosa viene toccato, fattibilità, incognite.
 - **Documento tecnico** (fase 6). Come viene realizzato: architettura, dati, integrazioni, scelte tecniche. Cita i codici delle story senza riscriverle. Se il sistema lo ha già, il progetto lo aggiorna.
-- **Piano delle milestone** (fase 6). Milestone, issue, stime, dipendenze, margini, materiali del cliente come dipendenze delle issue.
+- **Piano delle milestone** (fase 6). Milestone, issue, stime, dipendenze, buffer di milestone, materiali del cliente come dipendenze delle issue.
 - **Documento di sprint** (fase 7). È unico per tutta l'azienda: il progetto vi compare con le sue issue e con lo stato della sua milestone.
 - **Registro delle variazioni** (dalla fase 5 in poi). Ogni variazione chiesta, con categoria, impatto ed esito.
 
@@ -86,12 +86,12 @@ Strumenti visivi, quando il progetto tocca l'interfaccia: wireframe, mockup, pro
 Il cliente viene contattato in momenti fissi, e ognuno ha una risposta attesa. Le regole di ogni contatto e il valore del silenzio sono nelle Regole comuni.
 
 - **Apertura della richiesta** (fase 1, sistema di ticket). Si comunicano la presa in carico e la taglia assegnata. Non serve risposta.
-- **Primo confronto** (fase 2, call o messaggi). Domande per capire il bisogno. Devono tornare le risposte e il nome del decisore.
+- **Primo confronto** (fase 2, call o messaggi). Domande per capire il bisogno. Devono tornare le risposte e il nome del referente.
 - **Invio della proposta** (fase 4, email con presentazione in call). Devono tornare correzioni e risposte alle domande aperte.
 - **Giri di revisione** (fase 5, email, call se serve). Nuova versione con l'elenco di ciò che è cambiato. Deve tornare la conferma scritta, o altre correzioni.
 - **Invio di Manuale del prodotto e Piano dei SAL** (fase 6, email con presentazione in call). Cosa verrà consegnato, quando, e quali materiali servono. Deve tornare l'approvazione scritta di entrambi, e dei mockup se presenti.
-- **Resoconto di sprint** (fase 7, email a ogni fine sprint). Devono tornare i materiali e le risposte richieste.
-- **Demo di milestone** (fase 7, call sull'ambiente di prova). Le story completate, provate sui criteri di accettazione. Deve tornare l'accettazione scritta entro il termine.
+- **Sprint report** (fase 7, email a ogni fine sprint). Devono tornare i materiali e le risposte richieste.
+- **Demo di milestone** (fase 7, call sullo staging). Le story completate, provate sui criteri di accettazione. Deve tornare l'accettazione scritta entro il termine.
 - **Rilascio** (fase 8, email). Prima la data e il piano di rilascio, poi l'avviso a sistema in produzione. Deve tornare la conferma che il sistema funziona.
 
 ## Strumenti visivi nel progetto
@@ -107,7 +107,7 @@ Le definizioni sono nelle Regole comuni. Nel progetto entrano così:
 
 L'accettazione delle singole milestone non basta: prima della produzione si prova l'insieme.
 
-Collaudo finale, sull'ambiente di prova:
+Collaudo finale, sullo staging:
 
 - i percorsi che attraversano più milestone, dall'inizio alla fine;
 - le parti del sistema che esistevano già e che il progetto ha toccato, per escludere regressioni;
@@ -138,14 +138,14 @@ Ogni imprevisto ha una risposta già decisa, applicata nella fase in cui si pres
 
 **Fase 2: primo confronto**
 
-- **Si parla con chi non decide.** Si chiede il nome del decisore: vale solo la sua approvazione.
+- **Si parla con chi non decide.** Si chiede il nome del referente: vale solo la sua approvazione.
 - **Le risposte non arrivano.** Un sollecito scritto, poi la richiesta resta ferma. L'indagine non parte su supposizioni.
 - **Il cliente non firma l'accordo quadro.** Il lavoro non prosegue oltre la fase 2.
 
 **Fase 3: indagine sull'esistente**
 
-- **Comportamento del sistema non rilevato.** Si aggiunge allo Stato di partenza. Se emerge dopo la conferma della proposta è una variazione, e il decisore sceglie se mantenerlo.
-- **L'indagine supera il tempo fissato.** Si chiude con le incognite elencate, da sciogliere con issue di tipo Approfondimento.
+- **Comportamento del sistema non rilevato.** Si aggiunge allo Stato di partenza. Se emerge dopo la conferma della proposta è una variazione, e il referente sceglie se mantenerlo.
+- **L'indagine supera il tempo fissato.** Si chiude con le incognite elencate, da sciogliere con issue di tipo Spike.
 - **Il codice non è accessibile.** Lo Stato di partenza lo dichiara, e la proposta presenta la fattibilità come provvisoria.
 - **Un punto della richiesta non è fattibile.** Va nella proposta tra ciò che non si potrà fare, con il motivo e un'alternativa.
 
@@ -180,7 +180,7 @@ Ogni imprevisto ha una risposta già decisa, applicata nella fase in cui si pres
 
 Le decisioni comuni a tutti i piani sono nelle Regole comuni.
 
-- [ ] **Prezzo fisso o a consumo.** Fuori da questo piano: prezzi e preventivi sono seguiti da un'altra persona. La scelta incide però sulla gestione delle variazioni medie e grandi. *(Nota: nel documento originale c'è un commento ancorato a questa voce, da non cancellare.)*
+- [ ] **Prezzo fisso o a consumo.** Fuori da questo piano: prezzi e preventivi sono seguiti da un'altra persona. La scelta incide però sulla gestione delle variazioni medie e grandi. *(Nota: domanda aperta, ereditata da un commento del documento Claude Docs originale: "Ho scritto il piano in modo che regga sia a prezzo fisso sia a consumo: quale dei due usate di solito?" Nessuna risposta ancora.)*
 - [ ] **Giri di revisione inclusi** nella Proposta di soluzione, se si vuole fissare un limite.
 - [ ] **Tempo dell'indagine sull'esistente**, e chi lo fissa per ogni progetto.
 - [ ] **Termine per la risposta del cliente in revisione**, dopo il quale il progetto resta fermo e le date non valgono più.

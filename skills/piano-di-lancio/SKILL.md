@@ -69,7 +69,7 @@ A parte, non nel documento per il cliente, restituisci un elenco per il team:
 
 ## Bozza o versione completa
 
-Il piano è completo se ogni voce della sezione 3 ha una data e un responsabile, e i parametri del lancio sono stati confermati.
+Il piano è completo se ogni voce della sezione 3 ha una data e un incaricato, e i parametri del lancio sono stati confermati.
 
 - **Bozza**: Markdown, `piano-lancio-<cliente>-<prodotto>-bozza-<N>.md`. Prima riga "BOZZA INTERNA, DA NON CONDIVIDERE CON IL CLIENTE". Ogni parte incompleta termina con un blocco "Cosa manca".
 - **Versione completa**: PDF, `piano-lancio-<cliente>-<prodotto>-v<N>.pdf`. Conserva il sorgente Markdown.
@@ -79,7 +79,7 @@ Se una data cambia dopo l'approvazione, produci una nuova versione con l'elenco 
 ## Controllo finale
 
 1. Ogni funzionalità elencata coincide con il Manuale e con il primo rilascio.
-2. Ogni cosa che serve dal cliente ha una data e un responsabile.
+2. Ogni cosa che serve dal cliente ha una data e un incaricato.
 3. Gli adempimenti legali sono presenti.
 4. Il promemoria interno è separato dal documento per il cliente.
 5. {{CONTROLLO}}
