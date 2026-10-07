@@ -7,7 +7,7 @@ description: Gestisce una variazione chiesta dal cliente a lavoro avviato. La ca
 
 ## A cosa serve
 
-Dopo la conferma dei documenti (per un progetto, la conferma del Manuale del prodotto), tutto ciò che il cliente chiede e che quei documenti non prevedono è una variazione. Prima della conferma è una modifica: si recepisce con una nuova versione numerata, non entra nel Registro delle variazioni e non passa da qui. Senza una procedura, le variazioni entrano a voce, si accumulano e spostano le date senza che nessuno l'abbia deciso.
+Dopo la conferma del Manuale del prodotto, tutto ciò che il cliente chiede e che quei documenti non prevedono è una variazione. Prima della conferma è una modifica: si recepisce con una nuova versione numerata, non entra nel Registro delle variazioni e non passa da qui. Senza una procedura, le variazioni entrano a voce, si accumulano e spostano le date senza che nessuno l'abbia deciso.
 
 La skill fa quattro cose: verifica che sia davvero una variazione, la categorizza, ne stima l'impatto e prepara ciò che serve per farla approvare. Non modifica i documenti del progetto: indica quali vanno aggiornati.
 
@@ -17,8 +17,8 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
 2. **La richiesta del cliente**, come è arrivata.
-3. **I documenti confermati**: Proposta di soluzione, Manuale del prodotto, Documento tecnico (capitolo Milestone e issue), e wireframe e mockup se la richiesta tocca l'interfaccia.
-4. **Lo stato del lavoro**: quali issue toccate sono da fare, in corso, finite o già accettate.
+3. **I documenti confermati**: Proposta di soluzione, Manuale del prodotto, Documento tecnico (capitolo Milestone), e wireframe e mockup se la richiesta tocca l'interfaccia.
+4. **Lo stato del lavoro**: quali issue toccate sono in BACKLOG, PLANNED, IN PROGRESS, TESTING o COMPLETED, lette da ClickUp.
 5. **Il Registro delle variazioni**, se esiste.
 
 ## Passo 1: è una variazione?
@@ -36,14 +36,14 @@ Cambiare un wireframe o un mockup già approvato è sempre una variazione. Se la
 
 - **Piccola**: fino a 4 ore, tocca una sola story, nessuna data cambia.
 - **Media**: oltre 4 ore, oppure tocca più story o lavoro già accettato, ma resta dentro una sola milestone. Sono medie anche il cambio di priorità tra milestone e, in un prodotto, lo spostamento di una story tra rilasci.
-- **Grande**: cambia ciò che la proposta aveva stabilito, oppure tocca più milestone.
+- **Grande**: cambia ciò che la proposta aveva stabilito, oppure cambia il contenuto di story in più milestone.
 
 La categoria la proponi tu, motivandola con il criterio. La decide il responsabile. Se la stima è vicina alla soglia delle 4 ore, segnalalo.
 
 ## Passo 3: impatto
 
 - **Story toccate**: codici modificati, aggiunti, rimossi.
-- **Issue toccate**, divise per stato. Le issue in corso, finite o accettate non si cancellano: passano a Superata, e il lavoro già svolto resta dovuto.
+- **Issue toccate**, divise per stato. Le issue già iniziate o completate non si cancellano: passano a CANCELLED, e il lavoro già svolto resta dovuto.
 - **Ore**: nuove ore necessarie e ore di lavoro superato. Le stime vanno validate da chi sviluppa: fino ad allora sono marcate con "[Stima da validare]".
 - **Buffer di milestone**: quanto ne resta dopo la variazione.
 - **Date**: quali date di consegna cambiano e di quanto. Se nessuna cambia, dillo.
@@ -51,17 +51,17 @@ La categoria la proponi tu, motivandola con il criterio. La decide il responsabi
 
 ## Passo 4: come si gestisce
 
-- **Piccola**: conferma scritta del cliente. È assorbita dal buffer di milestone. Si aggiorna il Manuale del prodotto.
-- **Media**: stima dell'impatto e approvazione scritta del cliente prima di lavorarci. Può spostare una story o una data. Si aggiornano Manuale del prodotto, Documento tecnico (capitolo Milestone e issue), Piano dei SAL se cambia una data.
+- **Piccola**: conferma scritta del cliente. È assorbita dal buffer di milestone. Si aggiornano il Manuale del prodotto e il capitolo Milestone del Documento tecnico.
+- **Media**: stima dell'impatto e approvazione scritta del cliente prima di lavorarci. Può spostare una story o una data. Si aggiornano Manuale del prodotto, Documento tecnico (capitolo Milestone), Piano dei SAL se cambia una data.
 - **Grande**: si torna alla proposta. Serve una proposta integrativa, la conferma del cliente e una nuova documentazione di progetto. Si aggiornano tutti i documenti.
 
-Una variazione non entra mai nello sprint in corso: entra in uno sprint successivo, dopo l'approvazione.
+Una variazione non entra mai nello sprint in corso: entra in uno sprint successivo, dopo l'approvazione. L'issue di tipo variazione si crea in ClickUp, in BACKLOG, nella List della milestone interessata.
 
 Le variazioni piccole possono consumare al massimo metà del buffer di milestone. Se è già stato consumato da variazioni piccole precedenti, segnalalo: una nuova variazione piccola non è più assorbibile e va trattata come media.
 
 ## Cosa produci
 
-**1. Voce del Registro delle variazioni.** Il registro è un file Markdown per sistema, `registro-variazioni-<cliente>-<sistema>.md`. Se non esiste, crealo. Ogni voce contiene:
+**1. Voce del Registro delle variazioni.** Il registro è un file Markdown per lavorazione, `registro-variazioni.md`, nella cartella `02-sviluppo` della lavorazione. Se non esiste, crealo. Ogni voce contiene:
 
 - codice fisso (V1, V2), data, chi l'ha chiesta;
 - la richiesta, con le parole del cliente;
@@ -78,9 +78,16 @@ Le variazioni piccole possono consumare al massimo metà del buffer di milestone
 
 Una variazione è chiusa solo quando tutti i documenti indicati sono aggiornati. Quando viene comunicato che gli aggiornamenti sono fatti, spunta le voci nel registro e porta lo stato a Chiusa. Una variazione approvata ma con documenti non aggiornati resta aperta, e va segnalata.
 
+## Dove si salva
+
+Il registro e le comunicazioni in `02-sviluppo` della lavorazione.
+
 ## Regole di scrittura
 
-{{SCRITTURA}}
+- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
+- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 ## Controllo finale
 
@@ -88,4 +95,4 @@ Una variazione è chiusa solo quando tutti i documenti indicati sono aggiornati.
 2. La categoria è motivata da un criterio.
 3. L'impatto distingue le issue per stato, e nessuna issue già iniziata è stata cancellata.
 4. La comunicazione al cliente non contiene ore interne, tecnologie o prezzi.
-5. {{CONTROLLO}}
+5. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.

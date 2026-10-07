@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il piano operativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #0B1118; overflow: hidden; }
+  #stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: 0 0; }
+  .slide { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; visibility: hidden; opacity: 0; transition: opacity 0.25s ease; }
+  .slide.active { visibility: visible; opacity: 1; }
+  .slide aside { display: none; }
+  #bar { position: fixed; left: 0; bottom: 0; height: 4px; background: #F08A5D; width: 0; transition: width 0.25s ease; z-index: 5; }
+  #counter { position: fixed; right: 16px; bottom: 12px; font: 500 14px 'DM Sans', Arial, sans-serif; color: #AEB7C0; opacity: 0; transition: opacity 0.3s; z-index: 5; }
+  body.hint #counter { opacity: 0.8; }
+  #notes { position: fixed; left: 0; right: 0; bottom: 0; max-height: 40%; overflow: auto; padding: 20px 32px 28px; background: rgba(11, 17, 24, 0.94); color: #F7F5F0; font: 400 22px/1.45 'DM Sans', Arial, sans-serif; display: none; z-index: 6; }
+  body.notes #notes { display: block; }
+  #help { position: fixed; left: 16px; bottom: 12px; font: 500 14px 'DM Sans', Arial, sans-serif; color: #AEB7C0; opacity: 0; transition: opacity 0.3s; z-index: 5; }
+  body.hint #help { opacity: 0.8; }
+  body.notes #help, body.notes #counter { bottom: calc(40% + 12px); }
+  @media print {
+    html, body { overflow: visible; height: auto; background: #fff; }
+    #stage { position: static; transform: none !important; width: auto; height: auto; }
+    .slide { position: relative; visibility: visible; opacity: 1; page-break-after: always; }
+    #bar, #counter, #notes, #help { display: none !important; }
+    @page { size: 1920px 1080px; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+<section class="slide" id="cover" style="background:#16202B;color:#F7F5F0;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:flex-end;gap:32px">
+<p style="font-size:32px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:#F08A5D">Come lavoriamo</p>
+<h1 style="font-size:176px;font-weight:700;line-height:1.02">Il piano operativo</h1>
+<p style="font-size:48px;color:#AEB7C0">Dalla richiesta alla messa in produzione</p>
+<aside>Apertura. Obiettivo: far capire in venti minuti come una richiesta del cliente diventa lavoro finito. Nessun dettaglio ancora: prima il quadro, poi i tre piani uno alla volta.</aside>
+</section>
+<section class="slide" id="tre-strade" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#55606C">Il quadro</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Una richiesta, tre strade</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:80px;font-weight:700;color:#1D6A72;line-height:1.05">Ticket</p>
+<p style="font-size:40px;color:#16202B">Un intervento piccolo</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:80px;font-weight:700;color:#B5471B;line-height:1.05">Progetto</p>
+<p style="font-size:40px;color:#16202B">Un lavoro strutturato</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:80px;font-weight:700;color:#3B4FA0;line-height:1.05">Prodotto</p>
+<p style="font-size:40px;color:#16202B">Un sistema nuovo</p>
+</div>
+</div>
+<aside>Il cliente non apre un ticket, un progetto o un prodotto: apre una richiesta su osTicket. Poi l'azienda decide quale delle tre strade segue. Ogni strada ha il suo piano. Le regole comuni sono le stesse per tutte.</aside>
+</section>
+<section class="slide" id="quando-progetto" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:24px;width:600px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#55606C">La categoria</p>
+<h2 style="font-size:80px;font-weight:700;line-height:1.05">La decide l'azienda</h2>
+<p style="font-size:40px;color:#55606C">Mai il cliente</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:32px;font-weight:600;color:#B5471B">Su un sistema esistente è un progetto se:</p>
+<p style="font-size:48px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:24px 36px">Oltre 2 settimane</p>
+<p style="font-size:48px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:24px 36px">Più di una persona</p>
+<p style="font-size:48px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:24px 36px">Serve una proposta</p>
+<p style="font-size:48px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:24px 36px">Cambia la grafica</p>
+<p style="font-size:36px;color:#55606C">Altrimenti è un ticket. Se il sistema non esiste, è un prodotto.</p>
+</div>
+<aside>Quattro condizioni, basta che ne valga una per fare di una richiesta un progetto. Se nessuna vale è un ticket. Se il sistema non esiste ancora è un prodotto. Un ticket che cresce durante il lavoro si ferma e diventa progetto: non si finisce già che ci siamo.</aside>
+</section>
+<section class="slide" id="regole" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#55606C">Il quadro</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Tre regole per tutti</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;line-height:1.05">A consumo</p>
+<p style="font-size:36px;color:#55606C">Il cliente paga il tempo di lavoro</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;line-height:1.05">Prima si guarda</p>
+<p style="font-size:36px;color:#55606C">Nessuna stima senza aver controllato</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;line-height:1.05">Subito, le cattive notizie</p>
+<p style="font-size:36px;color:#55606C">Un ritardo detto a metà è gestibile</p>
+</div>
+</div>
+<aside>A consumo: nessun accordo quadro, nessuna approvazione economica, quindi la durata stimata è un impegno e la stima conta. Prima si guarda: non si promette una data su qualcosa che non è stato controllato nel codice e nei lavori aperti. Le cattive notizie si comunicano subito.</aside>
+</section>
+<section class="slide" id="sez-ticket" style="background:#1D6A72;color:#FDFCF9;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:flex-end;gap:24px">
+<p style="font-size:32px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:#CFE6E9">Primo piano</p>
+<h1 style="font-size:224px;font-weight:700;line-height:1">Ticket</h1>
+<p style="font-size:48px;color:#E4F1F2">Un intervento circoscritto</p>
+<aside>Il ticket è il caso più frequente: un intervento su un sistema esistente, da circa due ore a due settimane.</aside>
+</section>
+<section class="slide" id="ticket-fasi" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#1D6A72">Ticket</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Tre fasi</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:120px;font-weight:700;color:#1D6A72;line-height:1">1</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:56px;font-weight:700;line-height:1.05">Analisi</p>
+<p style="font-size:36px;color:#55606C">Capire se e come</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:120px;font-weight:700;color:#1D6A72;line-height:1">2</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:56px;font-weight:700;line-height:1.05">Sviluppo</p>
+<p style="font-size:36px;color:#55606C">Sprint e revisione</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:120px;font-weight:700;color:#1D6A72;line-height:1">3</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:56px;font-weight:700;line-height:1.05">Rilascio</p>
+<p style="font-size:36px;color:#55606C">Pubblicare e chiudere</p>
+</div>
+</div>
+</div>
+<aside>Tre fasi, nessuna conferma e nessuna prova del cliente: lo decide l'azienda con l'analisi.</aside>
+</section>
+<section class="slide" id="ticket-analisi" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:24px;width:560px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#1D6A72">Ticket, fase 1</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.05">Analisi</h2>
+<p style="font-size:40px;color:#55606C">Prima di promettere qualcosa</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;align-items:center;gap:36px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:32px 44px">
+<p style="font-size:72px;font-weight:700;color:#1D6A72;width:72px">1</p>
+<div style="display:flex;flex-direction:column;gap:6px">
+<p style="font-size:52px;font-weight:700;line-height:1.1">Lavori aperti</p>
+<p style="font-size:32px;color:#55606C">Esiste già altrove?</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:36px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:32px 44px">
+<p style="font-size:72px;font-weight:700;color:#1D6A72;width:72px">2</p>
+<div style="display:flex;flex-direction:column;gap:6px">
+<p style="font-size:52px;font-weight:700;line-height:1.1">Codice</p>
+<p style="font-size:32px;color:#55606C">Va davvero fatto?</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:36px;background:#1D6A72;border-radius:24px;padding:32px 44px">
+<p style="font-size:72px;font-weight:700;color:#CFE6E9;width:72px">3</p>
+<div style="display:flex;flex-direction:column;gap:6px">
+<p style="font-size:52px;font-weight:700;line-height:1.1;color:#FDFCF9">Scheda di intervento</p>
+<p style="font-size:32px;color:#E4F1F2">Cosa fare e dove intervenire</p>
+</div>
+</div>
+</div>
+<aside>Due controlli in sola lettura: il confronto con i lavori aperti (un progetto la copre già? c'è un doppione?) e il controllo del codice (il sistema lo fa già? basta una configurazione? è un bug vero?). Poi si decidono categoria, stima, tipo, urgenza e responsabile, e si scrive la Scheda di intervento: il documento che dice allo sviluppatore cosa fare e su cosa mettere le mani. La legge solo lo sviluppatore.</aside>
+</section>
+<section class="slide" id="ticket-sviluppo-rilascio" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:24px;width:560px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#1D6A72">Ticket, fasi 2 e 3</p>
+<h2 style="font-size:80px;font-weight:700;line-height:1.05">Sviluppo e rilascio</h2>
+<p style="font-size:40px;color:#55606C">Il cliente non prova niente</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#1D6A72;width:60px">1</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Sprint</p>
+<p style="font-size:28px;color:#55606C">Si sceglie chi e quando</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#1D6A72;width:60px">2</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Revisione</p>
+<p style="font-size:28px;color:#55606C">Sempre una seconda persona</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#1D6A72;width:60px">3</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Pubblicazione</p>
+<p style="font-size:28px;color:#55606C">La segue l'incaricato, non è in CI</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#1D6A72;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#CFE6E9;width:60px">4</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1;color:#FDFCF9">Ticket chiuso</p>
+<p style="font-size:28px;color:#E4F1F2">Da qui parte la garanzia</p>
+</div>
+</div>
+</div>
+<aside>Nello sprint il ticket entra secondo urgenza e capacità. Ogni ticket è rivisto da una seconda persona, anche se piccolo. Si pubblica seguendo la Guida alla pubblicazione del sistema. Rilascio e chiusura coincidono: il cliente riceve una risposta breve nel ticket, non un documento. I documenti si aggiornano dopo la chiusura, e il cliente non aspetta.</aside>
+</section>
+<section class="slide" id="ticket-urgente" style="background:#16202B;color:#F7F5F0;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#7ED0DA">Ticket urgente</p>
+<h2 style="font-size:120px;font-weight:700;line-height:1.02">Sistema fermo?</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-size:56px;font-weight:600;line-height:1.1"><span style="color:#7ED0DA">1</span>&#160;&#160;Si interviene subito</p>
+<p style="font-size:56px;font-weight:600;line-height:1.1"><span style="color:#7ED0DA">2</span>&#160;&#160;Chi conosce meglio la parte</p>
+<p style="font-size:56px;font-weight:600;line-height:1.1"><span style="color:#7ED0DA">3</span>&#160;&#160;I documenti dopo</p>
+</div>
+<aside>L'urgenza si decide sui fatti, mai sul tono: sistema fermo in produzione, utenti che non possono lavorare, dati a rischio. Non aspetta la verifica né la pianificazione. Si sceglie la persona che conosce meglio la parte coinvolta, anche se lavora a un progetto: l'interruzione si decide in un punto solo. Le ore vanno sul ticket, prima dal buffer di sprint. La Scheda si scrive dopo, a problema risolto.</aside>
+</section>
+<section class="slide" id="sez-progetto" style="background:#B5471B;color:#FDFCF9;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:flex-end;gap:24px">
+<p style="font-size:32px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:#F6D9CB">Secondo piano</p>
+<h1 style="font-size:224px;font-weight:700;line-height:1">Progetto</h1>
+<p style="font-size:48px;color:#FBE9DF">Un lavoro strutturato su un sistema esistente</p>
+<aside>Il progetto è il lavoro che richiede una proposta, più di due settimane, più persone o un cambio grafico.</aside>
+</section>
+<section class="slide" id="progetto-fasi" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#B5471B">Progetto</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Tre fasi</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:120px;font-weight:700;color:#B5471B;line-height:1">1</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:56px;font-weight:700;line-height:1.05">Kickoff</p>
+<p style="font-size:36px;color:#55606C">Dalla richiesta alla documentazione</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:120px;font-weight:700;color:#B5471B;line-height:1">2</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:56px;font-weight:700;line-height:1.05">Sviluppo</p>
+<p style="font-size:36px;color:#55606C">Sprint e milestone</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:120px;font-weight:700;color:#B5471B;line-height:1">3</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:56px;font-weight:700;line-height:1.05">Rilascio</p>
+<p style="font-size:36px;color:#55606C">Dal collaudo alla chiusura</p>
+</div>
+</div>
+</div>
+<aside>Non si passa alla fase successiva finché la condizione di chiusura non è soddisfatta. Il responsabile è il project manager: guida il progetto dalla valutazione al rilascio e tiene i contatti con il cliente.</aside>
+</section>
+<section class="slide" id="progetto-kickoff" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:24px;width:560px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#B5471B">Progetto, fase 1</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.05">Kickoff</h2>
+<p style="font-size:40px;color:#55606C">Si va avanti solo a tappa chiusa</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#B5471B;width:60px">1</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Valutazione</p>
+<p style="font-size:28px;color:#55606C">Cosa tocchiamo?</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#B5471B;width:60px">2</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Stima</p>
+<p style="font-size:28px;color:#55606C">Quanto dura?</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#B5471B;width:60px">3</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Proposta</p>
+<p style="font-size:28px;color:#55606C">Cosa faremo?</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#B5471B;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#F6D9CB;width:60px">4</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1;color:#FDFCF9">Documentazione</p>
+<p style="font-size:28px;color:#FBE9DF">Come funziona e come si costruisce</p>
+</div>
+</div>
+</div>
+<aside>Valutazione: confronto con i lavori aperti, controllo del codice, incontro con il cliente per sapere chi decide. Stima: dalla richiesta e dal codice, con i tempi dei progetti passati. Il tempo del kickoff è il dieci per cento di una stima a occhio fatta all'inizio. Proposta: due o tre pagine, giri senza limite. Documentazione: Manuale, Documento tecnico con le milestone, Piano dei SAL.</aside>
+</section>
+<section class="slide" id="due-conferme" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#B5471B">Progetto</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Il cliente conferma due volte</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:88px;font-weight:700;color:#B5471B;line-height:1.05">Proposta</p>
+<p style="font-size:44px;color:#16202B">Cosa faremo</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:88px;font-weight:700;color:#B5471B;line-height:1.05">Manuale</p>
+<p style="font-size:44px;color:#16202B">Come funzionerà, nei dettagli</p>
+</div>
+</div>
+<p style="font-size:36px;color:#55606C">Anche a voce, ma poi arriva il riepilogo scritto</p>
+<aside>La Proposta dice cosa faremo e quanto dura. Il Manuale dice come funziona, con le story e i criteri di accettazione: è su quei criteri che il cliente accetterà il lavoro. Una conferma a voce vale solo dopo il riepilogo scritto, e vale solo se arriva dal referente.</aside>
+</section>
+<section class="slide" id="progetto-sviluppo" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#B5471B">Progetto, fase 2</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Sviluppo</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;color:#B5471B;line-height:1.05">Sprint</p>
+<p style="font-size:36px;color:#16202B">Due settimane, uguali per tutti</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;color:#B5471B;line-height:1.05">Milestone</p>
+<p style="font-size:36px;color:#16202B">Un blocco che si può dimostrare</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;color:#B5471B;line-height:1.05">Prova</p>
+<p style="font-size:36px;color:#16202B">Il cliente prova sullo staging e accetta</p>
+</div>
+</div>
+<aside>Gli sprint sono dinamici: milestone, issue e date sono già nel Documento tecnico e nel Piano dei SAL. A fine sprint si scrive una Nota di sprint e si pianifica il successivo in ClickUp. A ogni milestone il cliente prova il lavoro sullo staging, guidato dal Milestone report, e accetta in modo esplicito. Il silenzio non vale come accettazione. Una demo in call è facoltativa.</aside>
+</section>
+<section class="slide" id="modifica-variazione" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#B5471B">Progetto</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Modifica o variazione?</h2>
+</div>
+<p style="font-size:44px;font-weight:600;color:#B5471B">Il confine è la conferma del Manuale</p>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:72px;font-weight:700;line-height:1.05">Modifica</p>
+<p style="font-size:40px;color:#16202B">Prima: nuova versione, nessun costo</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:72px;font-weight:700;color:#B5471B;line-height:1.05">Variazione</p>
+<p style="font-size:40px;color:#16202B">Dopo: costa ore, si registra</p>
+</div>
+</div>
+<aside>Prima della conferma del Manuale il cliente può cambiare idea quante volte vuole: ogni giro è un documento nuovo. Dopo la conferma ogni cambiamento è una variazione: si registra, si categorizza (piccola, media, grande), e non entra mai nello sprint in corso. Le variazioni non si accettano in call.</aside>
+</section>
+<section class="slide" id="progetto-rilascio" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:24px;width:560px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#B5471B">Progetto, fase 3</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.05">Rilascio</h2>
+<p style="font-size:40px;color:#55606C">Lo staging ha già tutto</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#B5471B;width:60px">1</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Collaudo</p>
+<p style="font-size:28px;color:#55606C">Si prova l'insieme</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#B5471B;width:60px">2</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Preparazione</p>
+<p style="font-size:28px;color:#55606C">Piano di rilascio e Guida alla pubblicazione</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#B5471B;width:60px">3</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Pubblicazione</p>
+<p style="font-size:28px;color:#55606C">La segue l'incaricato</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#B5471B;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#F6D9CB;width:60px">4</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1;color:#FDFCF9">Chiusura</p>
+<p style="font-size:28px;color:#FBE9DF">Documenti aggiornati e Report di progetto</p>
+</div>
+</div>
+</div>
+<aside>Il collaudo prova i percorsi che attraversano più milestone, le parti esistenti toccate e i dati reali; poi il cliente accetta in modo esplicito la prova finale. La preparazione concorda il piano di rilascio con il cliente e aggiorna la Guida alla pubblicazione. Pubblica una persona designata, non in CI. La garanzia decorre dalla pubblicazione. Il progetto è chiuso quando i documenti sono aggiornati e il Report di progetto è scritto.</aside>
+</section>
+<section class="slide" id="sez-prodotto" style="background:#3B4FA0;color:#FDFCF9;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:flex-end;gap:24px">
+<p style="font-size:32px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:#D3D9F0">Terzo piano</p>
+<h1 style="font-size:224px;font-weight:700;line-height:1">Prodotto</h1>
+<p style="font-size:48px;color:#E8EBF7">Un sistema che non esiste ancora</p>
+<aside>Il caso più raro e il più lungo, da sei mesi in su. Si gestisce come un progetto, con alcune differenze.</aside>
+</section>
+<section class="slide" id="prodotto-differenze" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#3B4FA0">Prodotto</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Cosa cambia dal progetto</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;color:#3B4FA0;line-height:1.05">Contesto</p>
+<p style="font-size:36px;color:#16202B">Non c'è codice: si studia come lavora il cliente</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;color:#3B4FA0;line-height:1.05">Release</p>
+<p style="font-size:36px;color:#16202B">La prima contiene il minimo utile</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:64px;font-weight:700;color:#3B4FA0;line-height:1.05">Prototipo</p>
+<p style="font-size:36px;color:#16202B">Il cliente lo vede prima del dettaglio</p>
+</div>
+</div>
+<aside>Non c'è un sistema esistente: non si indaga il codice, si indaga come lavora oggi il cliente. L'incertezza è più alta: il cliente non sa cosa vuole finché non lo vede, quindi il prototipo viene approvato prima di scrivere il Manuale. È troppo grande per un'unica consegna: la prima release contiene il minimo con cui gli utilizzatori possono lavorare davvero, le successive sono progetti. Non si assegna l'urgenza.</aside>
+</section>
+<section class="slide" id="prodotto-kickoff" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:24px;width:520px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#3B4FA0">Prodotto, fase 1</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.05">Kickoff</h2>
+<p style="font-size:40px;color:#55606C">Il prototipo prima del Manuale</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:28px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:18px;padding:14px 36px">
+<p style="font-size:52px;font-weight:700;color:#3B4FA0;width:52px">1</p>
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:44px;font-weight:700;line-height:1.1">Valutazione</p>
+<p style="font-size:28px;color:#55606C">Il contesto del cliente</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:28px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:18px;padding:14px 36px">
+<p style="font-size:52px;font-weight:700;color:#3B4FA0;width:52px">2</p>
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:44px;font-weight:700;line-height:1.1">Stima</p>
+<p style="font-size:28px;color:#55606C">Per release</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:28px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:18px;padding:14px 36px">
+<p style="font-size:52px;font-weight:700;color:#3B4FA0;width:52px">3</p>
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:44px;font-weight:700;line-height:1.1">Proposta</p>
+<p style="font-size:28px;color:#55606C">Con le release e i wireframe</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:28px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:18px;padding:14px 36px">
+<p style="font-size:52px;font-weight:700;color:#3B4FA0;width:52px">4</p>
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:44px;font-weight:700;line-height:1.1">Prototipo e design</p>
+<p style="font-size:28px;color:#55606C">Approvati per iscritto</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:28px;background:#3B4FA0;border-radius:18px;padding:14px 36px">
+<p style="font-size:52px;font-weight:700;color:#D3D9F0;width:52px">5</p>
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:44px;font-weight:700;line-height:1.1;color:#FDFCF9">Documentazione</p>
+<p style="font-size:28px;color:#E8EBF7">Manuale, Documento tecnico, Piano dei SAL</p>
+</div>
+</div>
+</div>
+<aside>Come per il progetto, con una tappa in più. La valutazione descrive come lavora oggi il cliente, chi userà il prodotto, con quali sistemi dovrà dialogare. La Proposta contiene la divisione in release. Poi il prototipo navigabile e i mockup, che il cliente prova in sessioni guidate. Solo dopo si scrive il Manuale. Il cliente conferma tre volte: Proposta, prototipo con mockup, Manuale.</aside>
+</section>
+<section class="slide" id="prodotto-rilascio" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:24px;width:560px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#3B4FA0">Prodotto, fase 3</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.05">Il lancio</h2>
+<p style="font-size:40px;color:#55606C">Nessuno ha ancora usato il sistema</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#3B4FA0;width:60px">1</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Collaudo</p>
+<p style="font-size:28px;color:#55606C">Sull'insieme, con dati reali</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#3B4FA0;width:60px">2</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Piano di lancio</p>
+<p style="font-size:28px;color:#55606C">Lo approva il referente</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#3B4FA0;width:60px">3</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1">Pubblicazione</p>
+<p style="font-size:28px;color:#55606C">Prima un gruppo ristretto</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#3B4FA0;border-radius:20px;padding:22px 40px">
+<p style="font-size:60px;font-weight:700;color:#D3D9F0;width:60px">4</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:48px;font-weight:700;line-height:1.1;color:#FDFCF9">A regime</p>
+<p style="font-size:28px;color:#E8EBF7">Poi ticket e progetti</p>
+</div>
+</div>
+</div>
+<aside>Il lancio è il rilascio di un sistema che nessuno ha usato, quindi aggiunge ciò che serve per iniziare: dati iniziali che il cliente consegna puliti, formazione degli utilizzatori, assistenza rafforzata. Non avviene finché mancano testi legali, domini o account. Dopo la chiusura la prima release è un sistema esistente: le richieste arrivano come ticket, le release successive come progetti.</aside>
+</section>
+<section class="slide" id="sez-comune" style="background:#16202B;color:#F7F5F0;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:flex-end;gap:24px">
+<p style="font-size:32px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:#F08A5D">Le regole comuni</p>
+<h1 style="font-size:224px;font-weight:700;line-height:1">Per tutti</h1>
+<p style="font-size:48px;color:#AEB7C0">Uguale, qualunque sia la strada</p>
+<aside>Ora le parti che valgono per ticket, progetti e prodotti: lo sviluppo, i buffer, la garanzia e i documenti.</aside>
+</section>
+<section class="slide" id="sprint-stati" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:56px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#55606C">Sviluppo</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.05">Uno sprint per tutta l'azienda</h2>
+<p style="font-size:48px;color:#B5471B;font-weight:600">Due settimane, finisce di venerdì</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-wrap:wrap;gap:16px">
+<p style="font-size:32px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:40px;padding:14px 32px">BACKLOG</p>
+<p style="font-size:32px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:40px;padding:14px 32px">PLANNED</p>
+<p style="font-size:32px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:40px;padding:14px 32px">IN PROGRESS</p>
+<p style="font-size:32px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:40px;padding:14px 32px">TESTING</p>
+<p style="font-size:32px;font-weight:600;background:#16202B;color:#F7F5F0;border-radius:40px;padding:14px 32px">COMPLETED</p>
+<p style="font-size:32px;font-weight:600;background:#FDFCF9;border:1px solid #DEDAD0;color:#55606C;border-radius:40px;padding:14px 32px">CANCELLED</p>
+</div>
+<p style="font-size:32px;color:#55606C">Le issue vivono in ClickUp, una sola volta, un solo stato alla volta</p>
+</div>
+<aside>Lo sprint è unico per tutta l'azienda: stesse date per tutti i lavori di tutti i clienti. Si pianifica a fine sprint, per il successivo, dopo la Nota di sprint. Le issue vivono solo in ClickUp, con sei stati. Un blocco non è uno stato: è una dipendenza. COMPLETED non si riapre: un difetto è una nuova issue di tipo bug. Ogni issue chiude con una DoD base, revisione del codice compresa.</aside>
+</section>
+<section class="slide" id="buffer" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#55606C">Capacità</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Due cuscinetti</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:52px;font-weight:700;line-height:1.05">Buffer di sprint</p>
+<p style="font-size:176px;font-weight:700;color:#B5471B;line-height:1">20%</p>
+<p style="font-size:40px;color:#16202B">Solo per i ticket urgenti</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:52px;font-weight:700;line-height:1.05">Buffer di milestone</p>
+<p style="font-size:176px;font-weight:700;color:#B5471B;line-height:1">20%</p>
+<p style="font-size:40px;color:#16202B">30% con una sola persona</p>
+</div>
+</div>
+<aside>Il buffer di sprint è il venti per cento della capacità di ogni persona, riservato ai ticket urgenti: se a metà sprint non è stato usato, si può anticipare altro lavoro. Il buffer di milestone sono le ore aggiunte a ogni milestone per stime sbagliate, assenze brevi, urgenze oltre il buffer di sprint e variazioni piccole. La differenza tra capacità rimanente e ore rimanenti è il margine: dice come sta la milestone, in linea, a rischio o in ritardo.</aside>
+</section>
+<section class="slide" id="garanzia" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#55606C">Dopo il rilascio</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.05">Garanzia</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:136px;font-weight:700;color:#B5471B;line-height:1.02">15 giorni</p>
+<p style="font-size:136px;font-weight:700;line-height:1.02">o il 50% della durata</p>
+</div>
+<p style="font-size:44px;color:#55606C">Vale il maggiore dei due. I bug si correggono senza conferma del cliente.</p>
+<aside>La garanzia decorre dalla pubblicazione in produzione. Per un ticket è sempre il minimo: quindici giorni lavorativi. Copre i bug, e le variazioni piccole e le richieste estetiche se sono davvero piccole. Più segnalazioni insieme sono un pacchetto di garanzia. È anche un imprevisto di capacità: le ore si tracciano e si gestiscono come ogni altro imprevisto.</aside>
+</section>
+<section class="slide" id="documenti" style="background:#F7F5F0;color:#16202B;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#55606C">Documenti</p>
+<h2 style="font-size:88px;font-weight:700;line-height:1.05">Tre documenti per ogni sistema</h2>
+</div>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:52px;font-weight:700;line-height:1.05">Manuale</p>
+<p style="font-size:40px;color:#16202B">Cosa fa il sistema</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:52px;font-weight:700;line-height:1.05">Documento tecnico</p>
+<p style="font-size:40px;color:#16202B">Come è fatto</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;background:#FDFCF9;border:1px solid #DEDAD0;border-radius:24px;padding:48px">
+<p style="font-size:52px;font-weight:700;line-height:1.05">Guida alla pubblicazione</p>
+<p style="font-size:40px;color:#16202B">Come si pubblica</p>
+</div>
+</div>
+<p style="font-size:36px;color:#55606C">Li aggiorna ogni lavoro che cambia qualcosa</p>
+<aside>Sono documenti del sistema, non del singolo lavoro: un sistema ha un solo Manuale, un solo Documento tecnico, una sola Guida alla pubblicazione. Ticket e progetti li aggiornano, non ne creano di nuovi. Il Manuale decide cos'è un bug. Se Manuale e Documento tecnico sono in contrasto, vale il Manuale. Stanno nella knowledge base, la repository del prodotto, insieme alle cartelle di ogni lavorazione.</aside>
+</section>
+<section class="slide" id="fine" style="background:#16202B;color:#F7F5F0;font-family:'DM Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<h1 style="font-size:224px;font-weight:700;line-height:1">Domande?</h1>
+<p style="font-size:48px;color:#AEB7C0">Un flusso, tre strade</p>
+<aside>Chiusura. Ripetere in una frase: ogni richiesta ha una categoria, ogni categoria ha il suo piano, e le regole comuni valgono per tutti.</aside>
+</section>
+</div>
+<div id="bar"></div>
+<div id="help">Frecce o spazio: avanti e indietro. F: schermo intero. N: note. Home e Fine.</div>
+<div id="counter"></div>
+<div id="notes"></div>
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(stage.querySelectorAll('.slide'));
+  var bar = document.getElementById('bar');
+  var counter = document.getElementById('counter');
+  var notes = document.getElementById('notes');
+  var current = 0;
+  var hintTimer = null;
+
+  function fit() {
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    var x = -960 * s, y = -540 * s;
+    stage.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + s + ')';
+  }
+
+  function hint() {
+    document.body.classList.add('hint');
+    clearTimeout(hintTimer);
+    hintTimer = setTimeout(function () { document.body.classList.remove('hint'); }, 2200);
+  }
+
+  function show(n, quiet) {
+    current = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (el, i) { el.classList.toggle('active', i === current); });
+    bar.style.width = ((current + 1) / slides.length * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+    var aside = slides[current].querySelector('aside');
+    notes.textContent = aside ? aside.textContent.trim() : '';
+    try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
+    if (!quiet) hint();
+  }
+
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+
+  function fullscreen() {
+    if (!document.fullscreenElement) {
+      if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+
+  document.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); next(); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); prev(); }
+    else if (k === 'Home') { e.preventDefault(); show(0); }
+    else if (k === 'End') { e.preventDefault(); show(slides.length - 1); }
+    else if (k === 'f' || k === 'F') { fullscreen(); }
+    else if (k === 'n' || k === 'N') { document.body.classList.toggle('notes'); }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (e.clientX < window.innerWidth * 0.25) prev(); else next();
+  });
+
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', function () {
+    var n = parseInt(location.hash.replace('#', ''), 10);
+    if (!isNaN(n)) show(n - 1, true);
+  });
+
+  fit();
+  var start = parseInt(location.hash.replace('#', ''), 10);
+  show(isNaN(start) ? 0 : start - 1, true);
+  hint();
+})();
+</script>
+</body>
+</html>

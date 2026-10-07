@@ -18,11 +18,11 @@ Vale solo per i prodotti. Il rilascio di un progetto o di un ticket non richiede
 Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e prodotto.**
-2. **Le fonti.** Manuale del prodotto, Piano delle milestone, Piano dei SAL, Documento tecnico (per infrastruttura e ritorno alla versione precedente).
+2. **Le fonti.** Manuale del prodotto, Piano dei SAL, Documento tecnico (capitolo Milestone e infrastruttura), Guida alla pubblicazione (per il ritorno alla versione precedente).
 3. **I parametri del lancio**:
    - la data prevista;
    - durata del periodo di assistenza rafforzata (proposta: 2 settimane);
-   - durata della garanzia (proposta: 60 giorni);
+   - durata della garanzia: la formula delle Regole comuni, da calcolare sulla durata pianificata;
    - chi sono gli utilizzatori e quanti;
    - se il lancio è graduale e con quale gruppo iniziale.
 
@@ -55,7 +55,11 @@ A parte, non nel documento per il cliente, restituisci un elenco per il team:
 
 - i controlli tecnici prima del lancio, dal Documento tecnico: backup, monitoraggio, ritorno alla versione precedente provato;
 - le issue ancora aperte che bloccano il lancio;
-- i difetti non bloccanti accettati nelle demo e non ancora corretti.
+- i difetti non bloccanti accettati nelle prove e non ancora corretti.
+
+## Dove si salva
+
+In `03-rilascio/02-preparazione` della lavorazione.
 
 ## Regole di contenuto
 
@@ -65,7 +69,10 @@ A parte, non nel documento per il cliente, restituisci un elenco per il team:
 
 ## Regole di scrittura
 
-{{SCRITTURA}}
+- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
+- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 ## Bozza o versione completa
 
@@ -82,4 +89,4 @@ Se una data cambia dopo l'approvazione, produci una nuova versione con l'elenco 
 2. Ogni cosa che serve dal cliente ha una data e un incaricato.
 3. Gli adempimenti legali sono presenti.
 4. Il promemoria interno è separato dal documento per il cliente.
-5. {{CONTROLLO}}
+5. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.

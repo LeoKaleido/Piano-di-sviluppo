@@ -51,7 +51,7 @@ Lo stesso contenuto, più indicazioni vincolanti, perché non deve prendere deci
 
 - quali componenti già esistenti nel sistema riusare, schermata per schermata;
 - quale schermata esistente prendere a modello per ogni schermata nuova;
-- cosa non va inventato: nuovi colori, nuovi caratteri, nuovi tipi di componente. Se serve qualcosa che non esiste, si segnala al product lead.
+- cosa non va inventato: nuovi colori, nuovi caratteri, nuovi tipi di componente. Se serve qualcosa che non esiste, si segnala al responsabile.
 
 ## Lavorare con Figma Starter
 
@@ -69,13 +69,20 @@ Quando i mockup sono pronti:
 1. **Verifica di corrispondenza.** Confronta i mockup con il materiale: ogni schermata e ogni stato richiesti sono presenti, e nulla è stato aggiunto o tolto rispetto ai wireframe. Per farlo servono le esportazioni dei mockup: chiedile.
 2. **Presentazione al cliente.** Prepara l'elenco di ciò che il cliente deve guardare e approvare: l'aspetto, non la struttura, che è già approvata.
 3. **Riscontro.** Scomponi le correzioni del cliente in voci. Una correzione all'aspetto si applica. Una richiesta che cambia struttura o contenuti non è una correzione del mockup: è una variazione, e va segnalata.
-4. **Archiviazione.** All'approvazione, ricorda che i mockup vanno esportati in PDF e salvati su Drive accanto ai documenti del lavoro, con il numero di versione. Quella copia è la versione che fa fede: il file Figma può cambiare, e la sua cronologia si perde dopo un mese.
+4. **Archiviazione.** All'approvazione, ricorda che i mockup vanno esportati in PDF e salvati nella knowledge base, nella cartella della fase del lavoro, con il numero di versione. Quella copia è la versione che fa fede: il file Figma può cambiare, e la sua cronologia si perde dopo un mese.
 
 In un progetto il cliente approva i mockup insieme al Manuale del prodotto. In un prodotto li approva a chiusura della fase di prototipo e design, con la direzione grafica. Da quel momento cambiarli è una variazione.
 
 ## Regole di scrittura
 
-{{SCRITTURA}}
+- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
+- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
+
+## Dove si salva
+
+Il materiale e i PDF approvati in `01-kickoff/04-documentazione`. Per un prodotto, in `01-kickoff/04-prototipo-e-design`.
 
 ## Controllo finale
 
@@ -83,4 +90,4 @@ In un progetto il cliente approva i mockup insieme al Manuale del prodotto. In u
 2. Ogni schermata ha i suoi stati elencati.
 3. La forma corrisponde a chi disegna: nessun suggerimento grafico per la persona dedicata, indicazioni vincolanti per lo sviluppatore.
 4. L'identità grafica mancante è dichiarata.
-5. {{CONTROLLO}}
+5. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.
