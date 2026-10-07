@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagramma generale di presa in carico</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --ink: #1b2430;
+  --muted: #5a6575;
+  --line: #c9d1dc;
+  --phase: #1f4e8c;
+  --phase-ink: #ffffff;
+  --who: #e8f0fb;
+  --skill: #e6f5ec;
+  --doc: #fff4d6;
+  --steps: #f1f3f6;
+  --warn: #fdeaea;
+  --event: #f3ecfa;
+  --impl: #e9f6f8;
+  --close: #eaf3df;
+  --decision: #fff0e0;
+  --decision-line: #d98a2b;
+  --start: #223a5a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b;
+    --card: #1a2029;
+    --ink: #e6eaf0;
+    --muted: #9aa6b6;
+    --line: #3a4455;
+    --phase: #3b72b8;
+    --phase-ink: #ffffff;
+    --who: #1e2d44;
+    --skill: #1b3326;
+    --doc: #3a3220;
+    --steps: #222a35;
+    --warn: #3b2224;
+    --event: #2c2438;
+    --impl: #1b3236;
+    --close: #26331b;
+    --decision: #3a2c1a;
+    --decision-line: #d98a2b;
+    --start: #3b72b8;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 24px 16px 64px;
+}
+main { max-width: 1040px; margin: 0 auto; }
+h1 { font-size: 1.9rem; margin: 0 0 4px; }
+h2 { font-size: 1.25rem; margin: 0; }
+h3 { font-size: 0.95rem; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+p { margin: 0 0 8px; }
+ul, ol { margin: 0; padding-left: 20px; }
+li { margin: 0 0 4px; }
+code { background: rgba(120,130,150,0.18); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+.lead { color: var(--muted); margin-bottom: 20px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 24px; }
+.legend span { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.85rem; }
+.legend .l-who { background: var(--who); }
+.legend .l-skill { background: var(--skill); }
+.legend .l-doc { background: var(--doc); }
+.legend .l-steps { background: var(--steps); }
+.legend .l-warn { background: var(--warn); }
+.legend .l-event { background: var(--event); }
+.legend .l-impl { background: var(--impl); }
+.legend .l-close { background: var(--close); }
+.legend .l-decision { background: var(--decision); border-color: var(--decision-line); }
+
+.overview { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.overview a {
+  text-decoration: none; color: var(--phase-ink); background: var(--phase);
+  padding: 6px 12px; border-radius: 8px; font-size: 0.9rem;
+}
+.overview a.alt { background: var(--decision-line); }
+
+.start, .end {
+  background: var(--start); color: #fff; border-radius: 999px;
+  padding: 12px 20px; text-align: center; font-weight: 600;
+}
+.arrow { display: flex; flex-direction: column; align-items: center; margin: 0; }
+.arrow .stem { width: 2px; height: 22px; background: var(--line); }
+.arrow .head { width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 9px solid var(--line); }
+.arrow .tag { font-size: 0.8rem; color: var(--muted); padding: 2px 0; }
+
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.phase > header { background: var(--phase); color: var(--phase-ink); padding: 12px 18px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.phase > header .num { font-weight: 700; font-size: 1.1rem; }
+.phase > header .what { opacity: 0.92; font-size: 0.92rem; }
+.phase .body { padding: 16px 18px 18px; }
+.phase .intro { margin-bottom: 14px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+.box { border-radius: 10px; padding: 12px 14px; border: 1px solid var(--line); }
+.box.wide { grid-column: 1 / -1; }
+.who { background: var(--who); }
+.skill { background: var(--skill); }
+.doc { background: var(--doc); }
+.steps { background: var(--steps); }
+.warn { background: var(--warn); }
+.event { background: var(--event); }
+.impl { background: var(--impl); }
+.close { background: var(--close); }
+
+.decision { background: var(--decision); border: 2px solid var(--decision-line); border-radius: 14px; padding: 14px 16px; }
+.decision .q { font-weight: 700; margin-bottom: 10px; }
+.branches { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.branch { background: var(--card); border: 1px solid var(--decision-line); border-radius: 10px; padding: 10px 12px; }
+.branch .label { font-weight: 700; display: block; margin-bottom: 4px; }
+.branch .goes { display: block; margin-top: 6px; font-size: 0.88rem; color: var(--muted); }
+
+.event table { width: 100%; }
+dl.events { margin: 0; }
+dl.events dt { font-weight: 700; margin-top: 8px; }
+dl.events dt:first-child { margin-top: 0; }
+dl.events dd { margin: 2px 0 0 0; }
+
+.side { margin-top: 36px; }
+.side h2 { margin-bottom: 10px; }
+.stack > * + * { margin-top: 12px; }
+.note { font-size: 0.9rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Diagramma generale di presa in carico</h1>
+<p class="lead">Ciò che accade a ogni richiesta, qualunque sia la sua categoria: la parte iniziale, uguale per tutti, poi la diramazione nei tre piani, poi la parte finale, ancora comune. La fonte di verità sono le Regole comuni (<code>docs/regole-comuni.md</code>) e i tre piani: se cambiano, questo diagramma va aggiornato.</p>
+
+<div class="legend">
+  <span class="l-who">Chi esegue</span>
+  <span class="l-skill">Skill da usare</span>
+  <span class="l-doc">Documenti che si producono</span>
+  <span class="l-steps">Cosa si fa</span>
+  <span class="l-warn">Attenzione a</span>
+  <span class="l-event">Cosa può succedere</span>
+  <span class="l-close">Si chiude quando</span>
+  <span class="l-decision">Decisione, con i rami possibili</span>
+</div>
+
+<nav class="overview" aria-label="Parti">
+  <a href="#ingresso">1. Ingresso</a>
+  <a href="#verifica">2. Verifica preliminare</a>
+  <a href="#categoria">3. Categoria</a>
+  <a href="#piani">4. I tre piani</a>
+  <a href="#rilascio">5. Rilascio</a>
+  <a href="#chiusura">6. Chiusura e documenti</a>
+  <a class="alt" href="#kb">Knowledge base</a>
+</nav>
+
+<div class="stack">
+
+<div class="start">Il cliente apre una richiesta su osTicket</div>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="ingresso">
+  <header><span class="num">Parte 1</span><h2>Ingresso</h2><span class="what">Il codice del ticket diventa il codice della lavorazione</span></header>
+  <div class="body">
+    <p class="intro">Il cliente non apre una lavorazione: apre una richiesta. La richiesta si legge subito e si prende in carico appena possibile. Il codice del ticket su osTicket dà il nome alla cartella della lavorazione nella knowledge base, qualunque sia la categoria. Di rado il cliente indica una scadenza: chi analizza dice subito se è fattibile.</p>
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>Chi analizza: la persona che legge la richiesta e decide come trattarla.</p></div>
+      <div class="box steps"><h3>Cosa si fa</h3>
+        <ol>
+          <li>Si assegna l'urgenza sui fatti: urgente, normale, a tempo perso. Per un ticket vale anche il percorso d'urgenza.</li>
+          <li>Se la richiesta contiene più lavori indipendenti, si divide: un codice per lavoro.</li>
+          <li>Il cliente può essere informato per presa visione. Non si dichiara una data di consegna.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="verifica">
+  <header><span class="num">Parte 2</span><h2>Verifica preliminare</h2><span class="what">Si decide se il lavoro va aperto</span></header>
+  <div class="body">
+    <p class="intro">Due controlli, con un tempo massimo pari al 10% di una stima a occhio. Un ticket urgente non li aspetta: si fanno in parallelo o dopo. Per un prodotto, che non ha ancora un codice, si fa solo il confronto con i lavori aperti.</p>
+    <div class="grid">
+      <div class="box skill"><h3>Skill</h3><p><code>kickoff</code> per progetti e prodotti, <code>kickoff-ticket</code> per i ticket: i due controlli e le decisioni.</p></div>
+      <div class="box steps"><h3>Cosa si fa</h3>
+        <ol>
+          <li><b>Confronto con i lavori aperti</b>: progetti, ticket aperti, variazioni registrate, consegne in garanzia.</li>
+          <li><b>Controllo del codice</b>, in sola lettura.</li>
+          <li>Si elencano i lavori e i documenti toccati, citando ogni lavoro per codice della lavorazione: serviranno all'allineamento dei documenti.</li>
+        </ol>
+      </div>
+    </div>
+    <div style="height:14px"></div>
+    <div class="decision">
+      <div class="q">Esito della verifica</div>
+      <div class="branches">
+        <div class="branch"><span class="label">Da fare</span>Nessuna sovrapposizione.<span class="goes">Prosegue con la categoria.</span></div>
+        <div class="branch"><span class="label">Non da fare</span>Già compresa, doppione, il sistema lo fa già.<span class="goes">Si risponde al cliente con il motivo e la richiesta si chiude.</span></div>
+        <div class="branch"><span class="label">Da fare in parte</span>Compresa in parte altrove.<span class="goes">Solo ciò che resta fuori diventa lavoro.</span></div>
+        <div class="branch"><span class="label">Da rimandare</span>Conflitto con un progetto o uno sviluppo in corso, oppure bug non riprodotto.<span class="goes">Si rimanda, con l'evento che la riapre.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="categoria">
+  <header><span class="num">Parte 3</span><h2>Categoria</h2><span class="what">La decide sempre l'azienda, mai il cliente</span></header>
+  <div class="body">
+    <div class="decision">
+      <div class="q">Il sistema esiste già?</div>
+      <div class="branches">
+        <div class="branch"><span class="label">No</span>Il sistema non esiste ancora.<span class="goes">Prodotto. Responsabile: il product lead.</span></div>
+        <div class="branch"><span class="label">Sì, e vale almeno una condizione</span>La stima supera le 2 settimane, serve più di una persona, serve una proposta, cambia l'aspetto grafico.<span class="goes">Progetto. Responsabile: il project manager.</span></div>
+        <div class="branch"><span class="label">Sì, e non ne vale nessuna</span>Intervento circoscritto.<span class="goes">Ticket. Responsabile: lo sviluppatore che lo esegue.</span></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:10px">Il responsabile è sempre uno sviluppatore: cambiano nome e responsabilità. Un ticket che cresce fino a soddisfare una condizione si ferma e diventa progetto.</p>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="piani">
+  <header><span class="num">Parte 4</span><h2>I tre piani</h2><span class="what">Dalla presa in carico al lavoro finito</span></header>
+  <div class="body">
+    <div class="grid">
+      <div class="box steps"><h3>Ticket</h3>
+        <p>Tre fasi. Analisi (verifica preliminare e Scheda di intervento), sviluppo (pianificazione ed esecuzione, con revisione del codice sempre), rilascio (pubblicazione con chiusura e risposta nel ticket, aggiornamento dei documenti dopo la chiusura). Nessuna conferma né prova del cliente.</p>
+        <p class="note"><code>docs/piano-dei-ticket.md</code>, <code>presentation/schemi/diagramma-piano-dei-ticket.html</code></p>
+      </div>
+      <div class="box steps"><h3>Progetto</h3>
+        <p>Tre fasi. Kickoff, in quattro sottofasi (valutazione, stima, proposta con la stima, documentazione con Manuale, Documento tecnico e Piano dei SAL), sviluppo con una prova del cliente sullo staging a ogni milestone, rilascio con collaudo, pubblicazione e chiusura.</p>
+        <p class="note"><code>docs/piano-di-progetto.md</code>, <code>presentation/schemi/diagramma-piano-di-progetto.html</code></p>
+      </div>
+      <div class="box steps"><h3>Prodotto</h3>
+        <p>Tre fasi. Kickoff, in cinque sottofasi (valutazione con analisi del contesto, stima, proposta con le release, prototipo e design, documentazione), sviluppo con la prima milestone dedicata alle fondamenta, rilascio con il lancio (collaudo, preparazione con Piano di lancio, pubblicazione graduale, chiusura).</p>
+        <p class="note"><code>docs/piano-di-prodotto.md</code></p>
+      </div>
+      <div class="box skill"><h3>Sviluppo, comune a tutti</h3>
+        <p>Sprint unico aziendale di 2 settimane, che finisce di venerdì. Issue in ClickUp con sei stati, capacità, buffer di sprint e di milestone, margine, supervisore che controlla stime e capacità. A fine sprint una Nota di sprint e la pianificazione del successivo.</p>
+        <p class="note"><code>docs/ciclo-di-sviluppo.md</code>, <code>presentation/schemi/diagramma-ciclo-di-sviluppo.html</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="rilascio">
+  <header><span class="num">Parte 5</span><h2>Rilascio</h2><span class="what">La messa in produzione, uguale per tutti</span></header>
+  <div class="body">
+    <div class="grid">
+      <div class="box who"><h3>Chi</h3><p>L'incaricato della pubblicazione: una persona designata, non necessariamente il responsabile. Non avviene in CI.</p></div>
+      <div class="box steps"><h3>Quando</h3>
+        <ul>
+          <li>Lo sprint finisce di venerdì. I documenti di aiuto al rilascio si leggono il lunedì.</li>
+          <li>In condizioni normali si rilascia anche a metà sprint.</li>
+          <li>Un'urgenza si pubblica appena pronta, anche di venerdì sera fino alle 18.</li>
+          <li>L'incaricato segue la Guida alla pubblicazione del sistema.</li>
+        </ul>
+      </div>
+      <div class="box close wide"><h3>Si chiude quando</h3><p>Il lavoro è in produzione. Per un ticket coincide con la chiusura e il cliente lo vede chiuso. Per un progetto o un prodotto il cliente ha accettato in modo esplicito prima.</p></div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="chiusura">
+  <header><span class="num">Parte 6</span><h2>Chiusura e documenti</h2><span class="what">Si aggiornano i documenti, decorre la garanzia</span></header>
+  <div class="body">
+    <div class="grid">
+      <div class="box steps"><h3>Aggiornamento dei documenti</h3>
+        <ul>
+          <li>Skill <code>allineamento-documenti</code>, con <code>manuale-del-prodotto</code>, <code>documento-tecnico</code> e <code>guida-alla-pubblicazione</code> per i tre documenti del sistema. Un progetto chiude anche con il Report di progetto (<code>report-di-progetto</code>).</li>
+          <li>Parte dai codici delle lavorazioni citati nella scheda o nella verifica preliminare.</li>
+          <li>Per un ticket, urgente o no, si fa dopo la chiusura. Per un progetto o un prodotto il lavoro si chiude dopo l'aggiornamento.</li>
+        </ul>
+      </div>
+      <div class="box doc"><h3>Garanzia</h3>
+        <ul>
+          <li>Dal rilascio, il maggiore tra 15 giorni e il 50% della durata pianificata. Per un ticket sempre 15 giorni lavorativi.</li>
+          <li>Copre i bug e le richieste piccole (variazioni piccole e richieste estetiche). Le voci segnalate insieme sono un pacchetto di garanzia, che si tratta con <code>pacchetto-di-garanzia</code> come imprevisto di capacità.</li>
+        </ul>
+      </div>
+      <div class="box event wide"><h3>Cosa può succedere</h3>
+        <dl class="events">
+          <dt>Un bug dopo il rilascio</dt><dd>Entro la garanzia è un pacchetto di garanzia. Oltre, è un ticket nuovo.</dd>
+          <dt>Una richiesta nuova presentata come bug</dt><dd>Decide il Manuale del prodotto: se il comportamento lo rispetta, è una variazione o un ticket nuovo.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+<div class="end">Lavorazione conclusa</div>
+
+</div>
+
+<section class="side" id="kb">
+  <div class="phase">
+    <header><span class="num">Dove stanno i documenti</span><h2>Knowledge base</h2><span class="what">Una repository per prodotto</span></header>
+    <div class="body">
+      <div class="grid">
+        <div class="box steps wide"><h3>Struttura</h3>
+          <ul>
+            <li><b>Piano di sviluppo e skill.</b> I documenti del piano e le skill.</li>
+            <li><b>Documenti del sistema.</b> Manuale del prodotto, Documento tecnico e Guida alla pubblicazione, nella versione vigente.</li>
+            <li><b>Cartella delle lavorazioni.</b> Una cartella per lavorazione, con il codice del ticket come nome.</li>
+            <li><b>Cartelle delle fasi.</b> Dentro, una cartella per ogni fase in cui nascono documenti, per esempio <code>01-analisi</code> per un ticket o <code>01-kickoff/03-proposta</code> per un progetto, con le sottofasi numerate. Ogni documento, trascrizione e file audio sta nella cartella della fase in cui è nato.</li>
+            <li><b>Storico e decisioni.</b> Ogni lavorazione ha <code>storico.md</code> e <code>decisioni.md</code>, nati vuoti e popolati a mano con le skill dedicate.</li>
+          </ul>
+        </div>
+        <div class="box warn wide"><h3>Attenzione a</h3><p>Il sistema del cliente può avere più repository di codice (sito pubblico, gestionale e altri): la Scheda di intervento e il Documento tecnico indicano sempre il repository di ogni parte toccata.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>

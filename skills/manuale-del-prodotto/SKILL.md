@@ -21,7 +21,7 @@ Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
 2. **Manuale esistente.** Chiedi se il sistema ha già un Manuale e dove si trova. Se esiste, il lavoro è un aggiornamento.
-3. **Le fonti.** La Proposta di soluzione confermata, lo Stato di partenza, la richiesta originale. Se la proposta non è confermata, avvisa che il Manuale rischia di essere rifatto e procedi solo se confermato.
+3. **Le fonti.** La Proposta di soluzione confermata, lo Stato di partenza, la richiesta originale e, per un prodotto, prototipo e mockup approvati. Se la proposta non è confermata, avvisa che il Manuale rischia di essere rifatto e procedi solo se confermato.
 4. **Situazione.** Prima stesura, riscontro del cliente, oppure aggiornamento dopo una variazione o un ticket.
 
 ## Informazioni mancanti
@@ -29,7 +29,7 @@ Chiedi solo ciò che non è già stato detto.
 Il Manuale scende a un dettaglio che la proposta non ha: comportamenti passo per passo, casi particolari, limiti, permessi. Ciò che manca non va inventato: chiedilo in un unico elenco numerato.
 
 - **Domande per il team**: bloccano il completamento.
-- **Domande per il cliente**: vanno nel capitolo delle domande aperte, con codice M1, M2.
+- **Domande per il cliente**: vanno nel capitolo delle domande aperte, con un codice D che continua la numerazione della Proposta (M è il codice delle milestone).
 
 ## Struttura
 
@@ -57,7 +57,7 @@ Per ogni funzionalità: codice, nome, descrizione, chi la usa. Per ogni story:
 - **Situazione di partenza**: cosa deve essere vero prima.
 - **Comportamento passo per passo**: cosa fa l'utente e cosa risponde il sistema.
 - **Casi particolari**: errori, dati mancanti o non validi, elenchi vuoti, limiti, azioni non permesse. Per ognuno, cosa vede l'utente.
-- **Criterio di accettazione**: introdotto da "Accettata quando:". Deve essere verificabile in una demo con un sì o un no. "Funziona bene" non è un criterio; "l'utente riceve una email di conferma entro un minuto" lo è.
+- **Criterio di accettazione**: introdotto da "Accettata quando:". Deve essere verificabile sullo staging con un sì o un no. "Funziona bene" non è un criterio; "l'utente riceve una email di conferma entro un minuto" lo è.
 
 Esempio:
 
@@ -75,9 +75,16 @@ Per un prodotto, le story della prima release sono complete; quelle delle releas
 - **Nulla oltre la proposta.** Se scrivendo emerge una funzionalità non prevista, non aggiungerla: segnalala, perché amplia il lavoro concordato.
 - **Formula delle user story.** È l'unica eccezione alla forma impersonale.
 
+## Dove si salva
+
+Il Manuale vigente in `sistema/`. Le bozze e le versioni condivise con il cliente in `01-kickoff/04-documentazione` (`05-documentazione` per un prodotto).
+
 ## Regole di scrittura
 
-{{SCRITTURA}}
+- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
+- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 ## Bozza o versione completa
 
@@ -92,7 +99,7 @@ Come per la proposta: raccogli il riscontro, scomponilo in voci, fai decidere al
 
 ## Approvazione e aggiornamenti successivi
 
-La versione confermata dal cliente è la v1.0 e non contiene domande aperte. La conferma può arrivare a voce, in una riunione: vale dopo il riepilogo scritto che il responsabile invia al cliente.
+La versione confermata dal cliente è la v1.0 (se il sistema ha già un Manuale, la versione successiva a quella corrente) e non contiene domande aperte. La conferma può arrivare a voce, in una riunione: vale dopo il riepilogo scritto che il responsabile invia al cliente.
 
 Dopo la v1.0 il Manuale cambia in tre casi: una variazione approvata, un ticket che modifica un comportamento, un nuovo progetto sullo stesso sistema. In tutti:
 
@@ -100,7 +107,7 @@ Dopo la v1.0 il Manuale cambia in tre casi: una variazione approvata, un ticket 
 - le story eliminate restano con il loro codice e la dicitura "Rimossa nella v<versione>";
 - le nuove ricevono il codice successivo all'ultimo usato;
 - registra la modifica nel capitolo 11, con la sua origine (codice della variazione o del ticket);
-- comunica l'elenco dei codici modificati, aggiunti o rimossi: serve per aggiornare il Documento tecnico (capitolo Milestone e issue compreso).
+- comunica l'elenco dei codici modificati, aggiunti o rimossi: serve per aggiornare il Documento tecnico (capitolo Milestone compreso).
 
 Se l'aggiornamento tocca story già approvate dal cliente per un altro lavoro in corso, non applicarlo in silenzio: segnalalo al responsabile.
 
@@ -110,4 +117,4 @@ Se l'aggiornamento tocca story già approvate dal cliente per un altro lavoro in
 2. Ogni story completa ha un criterio di accettazione verificabile.
 3. I termini coincidono con proposta e glossario.
 4. Nessuna tecnologia, prezzo o data.
-5. {{CONTROLLO}}
+5. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.

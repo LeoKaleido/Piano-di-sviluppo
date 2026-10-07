@@ -1,8 +1,8 @@
 # Piano di progetto
 
-Data: 2026-10-05
+Data: 2026-10-06
 
-Un progetto è un lavoro strutturato su un sistema esistente, portato dalla richiesta del cliente alla messa in produzione. Segue le fasi sotto, ognuna con una condizione di chiusura verificabile. Il cliente conferma prima la Proposta di soluzione, poi il Manuale del prodotto: la conferma può arrivare anche a voce, in una riunione, purché segua un riepilogo scritto. Si lavora a consumo: il cliente paga il tempo di lavoro, quindi la durata stimata è un impegno e la stima conta.
+Un progetto è un lavoro strutturato su un sistema esistente, portato dalla richiesta del cliente alla messa in produzione. Ha tre fasi: kickoff, sviluppo e rilascio, ognuna con una condizione di chiusura verificabile. Il cliente conferma due volte: prima la Proposta di soluzione, poi il Manuale del prodotto. La conferma può arrivare anche a voce, in una riunione, purché segua un riepilogo scritto. Si lavora a consumo: il cliente paga il tempo di lavoro, quindi la durata stimata è un impegno e la stima conta.
 
 Questo piano contiene solo ciò che è proprio dei progetti. Le regole valide per ogni lavoro (glossario, categorie, verifica preliminare, contatti, documenti, date, variazioni, garanzia) sono nelle Regole comuni. Lo sviluppo (sprint, milestone, issue, buffer, imprevisti) è nel Ciclo di sviluppo. È il riferimento per tutto il team.
 
@@ -12,60 +12,68 @@ Una richiesta è un progetto quando riguarda un sistema esistente e soddisfa alm
 
 ## Chi fa cosa
 
-- **Chi analizza** legge la richiesta, la classifica come progetto, stima la durata e designa il responsabile. La scelta del responsabile si fa con chi gestisce il team e, se serve, con il CEO: si decide in pochi minuti.
-- **Il responsabile** è il PL (project lead) disponibile in quel momento e più adatto al progetto. Guida il progetto dalla prima riunione con il cliente alla chiusura, scrive i documenti con le skill e tiene i contatti con il cliente.
+- **Chi analizza** è la persona che legge la richiesta su osTicket, vede che è un progetto e designa il responsabile. La scelta si fa con chi gestisce il team in pochi minuti.
+- **Il responsabile** è il project manager disponibile in quel momento e più adatto al progetto. Guida il progetto dalla valutazione della richiesta al rilascio, scrive i documenti con le skill e tiene i contatti con il cliente.
 - **Chi sviluppa** è il team, o la persona, che realizza le issue.
+- **L'incaricato della pubblicazione** segue il rilascio in produzione.
 
 ## Il flusso del progetto
 
 Non si passa alla fase successiva finché la condizione di chiusura non è soddisfatta. Per ogni fase sono indicati chi la esegue, le skill da usare, i documenti che produce e quando si chiude. Le skill sono nella cartella `skills/` della repo.
 
-1. **Ingresso e assegnazione.** Il cliente apre la richiesta su osTicket. Chi analizza esegue la verifica preliminare delle Regole comuni (confronto con i lavori aperti e controllo del codice), poi decide la categoria, stima la durata del progetto e designa il responsabile. Appena il progetto è assegnato si può rispondere al cliente per presa visione: non è obbligatorio.
-   - Chi: chi analizza.
-   - Skill: `verifica-preliminare`, poi `valutazione-richiesta`.
-   - Produce: le decisioni (categoria, esito della verifica, stima di durata, responsabile), riportate nel ticket.
-   - Si chiude quando: la categoria è confermata, la verifica ha un esito, la durata è stimata e il responsabile è designato.
-2. **Kickoff.** Il responsabile incontra il cliente per capire il bisogno e sapere chi decide, e analizza l'esistente. Il confronto e l'indagine vanno insieme. Tempo massimo, per il kickoff e la prima versione della Proposta di soluzione insieme: il 10% della stima del progetto, fissato prima di iniziare.
-   - Chi: il responsabile.
-   - Skill: `stato-di-partenza`. Per le conversazioni, `interpretazione-conversazioni`.
-   - Produce: lo Stato di partenza, e le trascrizioni e le sintesi delle conversazioni.
-   - Si chiude quando: il referente è noto, lo Stato di partenza è scritto, ogni punto della richiesta ha un giudizio di fattibilità, le incognite rimaste sono elencate e ci sono le risposte alle domande senza le quali la proposta non può partire.
-3. **Proposta di soluzione.** Il responsabile scrive la Proposta, un documento veloce e semplice da leggere, di 2 o 3 pagine e al massimo 5, e la invia al cliente. Si scambia avanti e indietro con il cliente, senza limite di giri. Ogni giro produce una nuova versione numerata, con l'elenco di ciò che è cambiato. Alla conferma si esegue l'allineamento dei documenti.
-   - Chi: il responsabile.
-   - Skill: `proposta-di-soluzione`. Facoltativi: `wireframe-e-prototipo`. A conferma avvenuta: `allineamento-documenti`. Per le conversazioni, `interpretazione-conversazioni`.
-   - Produce: la Proposta di soluzione, con versioni numerate, ed eventuali wireframe.
-   - Si chiude quando: il cliente conferma una versione, anche a voce, e il responsabile invia il riepilogo scritto; non restano domande aperte; l'allineamento è fatto.
-4. **Manuale del prodotto.** La Proposta confermata e la richiesta diventano la fonte del Manuale del prodotto, la spiegazione completa del prodotto, leggibile dal cliente. Il Manuale contiene le user story approfondite con i criteri di accettazione, tutto il necessario per capire il progetto e quali strumenti tocca (gestionale, sito pubblico e simili). Contiene wireframe. Possibilmente anche mockup e prototipo navigabile, ma non sono obbligatori. Se il sistema ha già un Manuale, il progetto lo aggiorna. Le modifiche chieste dal cliente prima della conferma si recepiscono con nuove versioni numerate.
-   - Chi: il responsabile.
-   - Skill: `manuale-del-prodotto`. Facoltativi: `wireframe-e-prototipo`, `mockup`. Per le conversazioni, `interpretazione-conversazioni`.
-   - Produce: il Manuale del prodotto, con wireframe e, se ci sono, mockup e prototipo.
-   - Si chiude quando: il cliente conferma il Manuale, anche a voce, e il responsabile invia il riepilogo scritto.
-5. **Documento tecnico.** Dal Manuale il responsabile scrive, con chi svilupperà, il Documento tecnico: repository coinvolte, tecnologie, come funzionano le cose, la struttura di come va realizzato il prodotto. Contiene anche la divisione in milestone e la creazione delle issue, con le stime. Con le issue la durata si stima di nuovo. Appena si ha la stima vera si informa il cliente, sempre, anche se è uguale a quella iniziale: si scrive il Piano dei SAL, il documento per il cliente con le milestone (i SAL), la data prevista di ciascuna demo e i materiali attesi con la data entro cui servono.
-   - Chi: il responsabile, con chi sviluppa.
-   - Skill: `documento-tecnico`, e `piano-delle-milestone` per la divisione in milestone e la creazione delle issue, che entrano nel Documento tecnico, e per il Piano dei SAL.
-   - Produce: il Documento tecnico, interno, con milestone e issue, la stima di durata aggiornata e il Piano dei SAL, per il cliente.
-   - Si chiude quando: il Documento tecnico è completo, ogni story del Manuale è coperta da issue stimate, ogni milestone ha il suo buffer e la sua data, e il Piano dei SAL con la stima di durata è inviato al cliente.
-6. **Sviluppo.** Si lavora a sprint, prendendo le issue dalla milestone in corso. A ogni milestone si mostra il lavoro al cliente sullo staging, con una demo, si invia il Milestone report e il cliente accetta in modo esplicito. Valgono la sezione "Modifiche e variazioni" e le regole del Ciclo di sviluppo (sprint, milestone, issue, buffer, cliente che non risponde).
+1. **Kickoff** (cartella `01-kickoff`). Dalla richiesta su osTicket fino alla documentazione pronta per lo sviluppo. Si divide in quattro sottofasi, ognuna con la sua cartella dentro `01-kickoff`. Non si passa alla sottofase successiva finché la condizione di chiusura non è soddisfatta. Il tempo del kickoff si fissa all'inizio della sottofase 1.1: il 10% di una stima a occhio della durata.
+   1. **Valutazione** (sottocartella `01-valutazione`). Il cliente apre la richiesta su osTicket, e di rado indica una scadenza: se c'è, il responsabile dice subito se è fattibile. Chi analizza vede che è un progetto e designa il responsabile, con chi gestisce il team. Appena il progetto è assegnato si può rispondere al cliente per presa visione, senza obbligo. Il responsabile fa subito una stima a occhio della durata, in una decina di minuti, solo interna: serve a fissare il tempo del kickoff. Poi valuta la richiesta: confronta con i lavori aperti, controlla il codice in sola lettura, conferma la categoria e incontra il cliente per capire il bisogno e sapere chi decide.
+      - Chi: chi analizza per l'assegnazione, poi il responsabile.
+      - Skill: `kickoff`, `interpretazione-conversazioni`.
+      - Produce: lo Stato di partenza, che in testa porta le decisioni dell'analisi (categoria, stima a occhio, responsabile, scadenza, domande); audio, trascrizione e un file per conversazione con sintesi e riepilogo.
+      - Si chiude quando: la categoria è confermata, il referente è noto, ogni punto della richiesta ha un giudizio di fattibilità e le incognite rimaste sono elencate.
+   2. **Stima** (sottocartella `02-stima`). Si ricava la stima precisa della durata del progetto dalla richiesta, analizzando la codebase, insieme ai tempi dei progetti già fatti letti nei loro Report di progetto. È la stima che compare nella Proposta. Non va confusa con la stima a occhio, che resta interna e serve solo al tempo del kickoff.
+      - Chi: il responsabile.
+      - Skill: `kickoff`.
+      - Produce: la stima di durata, con affidabilità e fattori, nello Stato di partenza e nella Proposta.
+      - Si chiude quando: la stima precisa c'è.
+   3. **Proposta** (sottocartella `03-proposta`). Dentro il tempo del kickoff il responsabile scrive la Proposta di soluzione, accompagnata dalla stima: un documento veloce e semplice da leggere, di 2 o 3 pagine e al massimo 5. Si scambia avanti e indietro con il cliente, senza limite di giri, e ogni giro produce una nuova versione numerata con l'elenco di ciò che è cambiato. Alla conferma si esegue l'allineamento dei documenti. La prima versione sta dentro il tempo del kickoff, i giri successivi no: il tempo del kickoff limita il lavoro del team fino alla prima versione, non l'attesa del cliente.
+      - Chi: il responsabile.
+      - Skill: `proposta-di-soluzione`; a conferma avvenuta `allineamento-documenti`. Facoltativa: `wireframe-e-prototipo`. Per le conversazioni, `interpretazione-conversazioni`.
+      - Produce: la Proposta di soluzione con versioni numerate, ed eventuali wireframe; il riepilogo scritto della conferma; audio, trascrizioni e sintesi delle conversazioni.
+      - Si chiude quando: il cliente conferma una versione, anche a voce, e il responsabile invia il riepilogo scritto; non restano domande aperte; l'allineamento è fatto.
+   4. **Documentazione** (sottocartella `04-documentazione`). A proposta confermata il responsabile scrive il Manuale del prodotto, la spiegazione completa del prodotto leggibile dal cliente, con wireframe e, se serve, mockup e prototipo. Il cliente lo conferma, anche a voce con riepilogo scritto: il Manuale è una seconda conferma, perché è su quei criteri di accettazione che le story si accettano. Poi il responsabile scrive, con chi svilupperà, il Documento tecnico: repository coinvolti, tecnologie, struttura, e il capitolo Milestone con la divisione in milestone. Le issue, con le stime, si creano in ClickUp e non stanno nei documenti. Con le issue la durata si stima di nuovo e appena si ha la stima vera si invia al cliente, sempre, il Piano dei SAL.
+      - Chi: il responsabile, con chi sviluppa per il Documento tecnico.
+      - Skill: `manuale-del-prodotto`; `documento-tecnico` e `piano-delle-milestone` per la divisione in milestone, la creazione delle issue in ClickUp e il Piano dei SAL. Facoltative: `wireframe-e-prototipo`, `mockup`. Per le conversazioni, `interpretazione-conversazioni`.
+      - Produce: il Manuale del prodotto confermato, il riepilogo scritto della conferma, il Documento tecnico con le milestone, le issue in ClickUp, il Piano dei SAL.
+      - Si chiude quando: il cliente ha confermato il Manuale (anche a voce, con il riepilogo scritto), ogni story del Manuale è coperta da issue stimate, ogni milestone ha il suo buffer e la sua data, e il Piano dei SAL con la stima di durata è inviato al cliente. Le issue del Documento tecnico sono caricate in ClickUp.
+2. **Sviluppo** (cartella `02-sviluppo`). Si lavora a sprint, prendendo le issue dalla milestone in corso. Gli sprint sono dinamici: milestone, issue e date sono già definite, e a fine di ogni sprint si scrive la Nota di sprint e poi si pianifica il successivo in ClickUp (il primo sprint si pianifica all'ingresso nello sviluppo, prima del suo inizio). Lo stato delle issue vive in ClickUp. A ogni milestone il cliente prova il lavoro sullo staging, guidato dal Milestone report, e accetta in modo esplicito. Una demo in call è facoltativa. Valgono la sezione "Modifiche e variazioni" e le regole del Ciclo di sviluppo.
    - Chi: il responsabile guida, il team sviluppa.
-   - Skill: `sprint` (con lo Sprint report interno), `variazione`, `riprogrammazione`, `demo`. Per il Milestone report, `milestone-report`. Per le conversazioni, `interpretazione-conversazioni`.
-   - Produce: il Documento di sprint e lo Sprint report (interni, unici per tutta l'azienda), il Registro delle variazioni, il Milestone report di ogni milestone con l'esito della demo.
+   - Skill: `sprint` (Nota di sprint e pianificazione), `variazione`, `riprogrammazione`, `prova-su-staging`. Per il Milestone report, `milestone-report`. Per le conversazioni, `interpretazione-conversazioni`.
+   - Produce: la Nota di sprint (interna, per lavorazione), il Registro delle variazioni, il Milestone report di ogni milestone con l'esito della prova.
    - Si chiude quando: tutte le milestone sono accettate.
-7. **Collaudo e rilascio.** Quando il lavoro sta per finire si mette tutto sullo staging e lo si mostra al cliente. Appena il cliente accetta si pubblica. Valgono le regole della sezione Collaudo e rilascio.
-   - Chi: il responsabile.
-   - Skill: `demo` per la demo finale; `collaudo-e-rilascio` per il collaudo e il piano di rilascio.
-   - Produce: il verbale di accettazione della demo finale e il piano di rilascio.
-   - Si chiude quando: il sistema è in produzione.
-8. **Chiusura.** Dopo la pubblicazione il responsabile aggiorna i documenti: Manuale del prodotto e Documento tecnico descrivono ciò che è stato realmente fatto, e così i documenti degli altri lavori toccati. Decorre la garanzia.
-   - Chi: il responsabile.
-   - Skill: `allineamento-documenti`, con `manuale-del-prodotto` e `documento-tecnico` per riscrivere i due documenti del sistema.
-   - Produce: i documenti aggiornati.
-   - Si chiude quando: i documenti sono aggiornati. Il progetto è chiuso.
+3. **Rilascio** (cartella `03-rilascio`). Dal sistema completo sullo staging alla messa in produzione e alla chiusura. Il rilascio è semplice perché lo staging contiene già tutte le milestone. Si divide in quattro sottofasi, ognuna con la sua sottocartella dentro `03-rilascio`. Non si passa alla sottofase successiva finché la condizione di chiusura non è soddisfatta. Valgono le regole della sezione Collaudo e rilascio.
+   1. **Collaudo** (sottocartella `01-collaudo`). Collaudo finale sullo staging: i percorsi che attraversano più milestone, le parti esistenti toccate dal progetto per escludere regressioni, le integrazioni e i dati reali o una copia fedele. Poi la prova finale del cliente sullo staging, con accettazione esplicita.
+      - Chi: il responsabile.
+      - Skill: `collaudo-e-rilascio` per la checklist del collaudo; `prova-su-staging` per la prova finale e il verbale.
+      - Produce: la checklist del collaudo (in ClickUp) e il verbale di accettazione della prova finale.
+      - Si chiude quando: il cliente ha accettato in modo esplicito.
+   2. **Preparazione** (sottocartella `02-preparazione`). Si concorda con il cliente il piano di rilascio. Si scrive o si aggiorna la Guida alla pubblicazione del sistema, con le regole di questo progetto (per esempio regole del server, riavvii, cache), e da essa si ricava la scheda tecnica di rilascio. L'incaricato della pubblicazione legge questi documenti prima di pubblicare, di norma il lunedì.
+      - Chi: il responsabile; l'incaricato della pubblicazione per la lettura.
+      - Skill: `collaudo-e-rilascio` per il piano di rilascio e la scheda tecnica; `guida-alla-pubblicazione`.
+      - Produce: il piano di rilascio (per il cliente), la scheda tecnica di rilascio (interna) e la Guida alla pubblicazione aggiornata.
+      - Si chiude quando: il piano è concordato con il cliente, la Guida è aggiornata e la scheda tecnica è pronta.
+   3. **Pubblicazione** (sottocartella `03-pubblicazione`). L'incaricato della pubblicazione pubblica seguendo la scheda tecnica e la Guida, e fa le verifiche dopo ogni passo e a pubblicazione finita. Se qualcosa fallisce si torna alla versione precedente, con una nuova data e un avviso immediato al cliente. A pubblicazione verificata si invia al cliente l'avviso di sistema in produzione.
+      - Chi: l'incaricato della pubblicazione; il responsabile per l'avviso al cliente.
+      - Skill: nessuna.
+      - Produce: l'avviso al cliente e una voce nello storico (cosa è stato fatto, cosa è emerso).
+      - Si chiude quando: il sistema è in produzione, le verifiche sono superate e il cliente è avvisato. Da qui decorre la garanzia.
+   4. **Chiusura** (sottocartella `04-chiusura`). Si aggiornano i documenti con ciò che è stato realmente fatto e con ciò che è emerso durante la pubblicazione: Manuale del prodotto, Documento tecnico, Guida alla pubblicazione e i documenti degli altri lavori toccati.
+      - Chi: il responsabile.
+      - Skill: `allineamento-documenti`, con `manuale-del-prodotto`, `documento-tecnico` e `guida-alla-pubblicazione`; `report-di-progetto`.
+      - Produce: i documenti aggiornati e il Report di progetto.
+      - Si chiude quando: i documenti sono aggiornati e il Report di progetto è scritto. Il progetto è chiuso.
 
-Un diagramma di flusso dettagliato di tutte le fasi è in `docs/diagramma-piano-di-progetto.html`.
+Un diagramma di flusso dettagliato di tutte le fasi è in `presentation/schemi/diagramma-piano-di-progetto.html`.
 
-## Kickoff: confronto e indagine
+## Kickoff: valutazione e indagine
 
-L'indagine è l'analisi completa che precede la proposta: nulla viene promesso al cliente su una parte del sistema che non è stata guardata. Parte dall'esito della verifica preliminare e non lo ripete.
+L'indagine è l'analisi completa che precede la proposta: nulla viene promesso al cliente su una parte del sistema che non è stata guardata. Comprende le due parti della verifica preliminare delle Regole comuni (confronto con i lavori aperti e controllo del codice) e le porta più a fondo.
 
 Il codice, in sola lettura:
 
@@ -79,7 +87,8 @@ Il codice, in sola lettura:
 Gli altri lavori:
 
 - progetti in corso, ticket aperti, variazioni registrate e consegne in garanzia sullo stesso sistema;
-- cosa prevedono di cambiare nella stessa parte, e quando.
+- cosa prevedono di cambiare nella stessa parte, e quando;
+- i progetti già fatti, per i loro tempi reali.
 
 I documenti:
 
@@ -88,20 +97,24 @@ I documenti:
 
 Ogni affermazione dello Stato di partenza porta il suo grado di certezza: verificata, riferita oppure supposta. Una proposta non si scrive su affermazioni supposte: se il codice non è stato guardato, la fattibilità è provvisoria e la proposta lo dichiara.
 
-Il tempo del kickoff è fissato prima di iniziare e vale il 10% della stima del progetto, scrittura della prima Proposta compresa. Allo scadere si chiude comunque, e ogni incognita rimasta diventa una issue di tipo Spike nella prima milestone. I giri di revisione successivi della Proposta non rientrano nel 10%.
+**Stima a occhio.** Appena il progetto è assegnato il responsabile ne fa una in una decina di minuti, solo interna. Serve a calibrare il kickoff.
+
+**Tempo del kickoff.** Vale il 10% della stima a occhio ed è fissato all'inizio. Dentro quel tempo il team fa la valutazione, la stima precisa e la prima versione della Proposta. Allo scadere la prima versione si invia comunque, con le incognite rimaste dichiarate, e ogni incognita diventa una issue di tipo Spike nella prima milestone. Il tempo non limita l'attesa del cliente: i giri di revisione successivi della Proposta, il Manuale e il Documento tecnico non rientrano.
+
+**Stima precisa.** Si ricava dalla richiesta, analizzando la codebase, insieme ai tempi dei progetti già fatti letti nei loro Report di progetto. Si dichiara quanto è affidabile e quali fattori l'hanno determinata. Compare nella Proposta.
 
 ## Conversazioni
 
-Le riunioni, le telefonate e le altre conversazioni con il cliente si registrano, si trascrivono e si aggiungono alla documentazione del progetto, su Drive. Servono come materiale in più per le skill: dicono cosa è stato chiesto, deciso e confermato.
+Le riunioni, le telefonate e le altre conversazioni con il cliente si registrano, si trascrivono e si aggiungono alla documentazione del progetto, nella knowledge base. Si registra con un computer o un telefono e alla skill si consegna un semplice file audio. Ogni trascrizione, sintesi e file audio si salva nella cartella della fase in cui la conversazione è avvenuta. Servono come materiale in più per le skill: dicono cosa è stato chiesto, deciso e confermato.
 
 - **Trascrizione.** Il testo della conversazione, così com'è.
-- **Sintesi della conversazione.** Il risultato dell'interpretazione del testo: richieste, decisioni, informazioni sul sistema, domande aperte, conferme, variazioni, e in quale documento del progetto vanno riportate. La produce la skill `interpretazione-conversazioni`.
-- **Riepilogo scritto.** Per una riunione o una telefonata in cui il cliente conferma o decide qualcosa, il responsabile invia il riepilogo scritto: ciò che è stato detto a voce vale solo dopo il riepilogo.
+- **Sintesi della conversazione.** Il risultato dell'interpretazione del testo: richieste, decisioni, informazioni sul sistema, domande aperte, conferme, variazioni, e in quale documento del progetto vanno riportate. La produce la skill `interpretazione-conversazioni`, in un solo file per conversazione insieme al riepilogo scritto.
+- **Riepilogo scritto.** Nello stesso file della sintesi. Per una riunione o una telefonata in cui il cliente conferma o decide qualcosa, il responsabile invia il riepilogo scritto: ciò che è stato detto a voce vale solo dopo il riepilogo.
 
 ## Modifiche e variazioni
 
-- **Modifica.** Un cambiamento a un documento non ancora confermato dal cliente: la Proposta di soluzione prima della conferma, il Manuale del prodotto prima della conferma. Si recepisce con una nuova versione numerata. Non ha limite di giri e non entra nel Registro delle variazioni.
-- **Variazione.** Un cambiamento a ciò che il cliente ha già confermato, o a ciò che è già in sviluppo. Entra nel Registro delle variazioni, riceve una categoria e si gestisce con le regole delle Regole comuni.
+- **Modifica.** Un cambiamento alla Proposta di soluzione o al Manuale del prodotto prima della conferma. Si recepisce con una nuova versione numerata. Non ha limite di giri e non entra nel Registro delle variazioni.
+- **Variazione.** Un cambiamento a ciò che il cliente ha già confermato, Manuale compreso, o a ciò che è già in sviluppo. Entra nel Registro delle variazioni, riceve una categoria e si gestisce con le regole delle Regole comuni.
 
 Il momento che separa le due cose è la conferma del Manuale del prodotto. Prima della conferma il cliente può cambiare idea quante volte vuole, perché ogni giro è un documento nuovo e non lavoro già fatto. Dopo la conferma ogni cambiamento ha un costo in ore e il cliente lo sa.
 
@@ -113,47 +126,50 @@ Le regole su quale buffer si usa e in che ordine (buffer di sprint, buffer di mi
 
 Per il cliente:
 
-- **Proposta di soluzione** (fasi 2 e 3). La richiesta come è stata compresa, la soluzione con suggerimenti, compromessi, esclusioni, domande aperte e materiali che servono dal cliente, l'allegato con titolo e frase di ogni user story e un sunto di come procederà la lavorazione. Può contenere wireframe.
-- **Manuale del prodotto** (fase 4). Cosa fa il sistema: funzionalità, user story complete, criteri di accettazione, strumenti toccati. Se il sistema ha già un Manuale, il progetto lo aggiorna.
+- **Proposta di soluzione** (kickoff). La richiesta come è stata compresa, la soluzione con suggerimenti, compromessi, esclusioni, domande aperte e materiali che servono dal cliente, la stima di durata, l'allegato con titolo e frase di ogni user story e un sunto di come procederà la lavorazione. Può contenere wireframe.
+- **Manuale del prodotto** (kickoff). Cosa fa il sistema: funzionalità, user story complete, criteri di accettazione, strumenti toccati, wireframe e, se ci sono, mockup e prototipo. Se il sistema ha già un Manuale, il progetto lo aggiorna. Richiede la conferma del cliente.
 - **Riepilogo scritto** di ogni riunione o telefonata in cui il cliente conferma o decide qualcosa.
-- **Piano dei SAL** (fase 5). La durata stimata, i SAL (le milestone) con la data prevista di ciascuna demo, i materiali attesi con la data entro cui servono. Ricavato dalle milestone del Documento tecnico. Si invia al cliente appena si ha la stima vera, anche se uguale a quella iniziale.
-- **Milestone report** (fase 6). Il documento per il cliente a ogni milestone, presentato insieme alla demo sullo staging: le story consegnate con i loro criteri di accettazione, l'esito della demo, lo stato della milestone successiva, le date aggiornate e ciò che serve dal cliente.
-- **Verbale di accettazione** della demo finale (fase 7).
-- **Piano di rilascio** (fase 7). Concordato con il cliente.
+- **Piano dei SAL** (kickoff). La durata stimata, i SAL (le milestone) con la data prevista di ciascuna prova, i materiali attesi con la data entro cui servono. Ricavato dalle milestone del Documento tecnico. Si invia al cliente appena si ha la stima vera, anche se uguale a quella iniziale.
+- **Milestone report** (sviluppo). Il documento per il cliente a ogni milestone, con le story consegnate e i loro criteri di accettazione, come provare sullo staging, l'esito della prova, lo stato della milestone successiva, le date aggiornate e ciò che serve dal cliente.
+- **Verbale di accettazione** della prova finale (rilascio).
+- **Piano di rilascio** (rilascio, preparazione). Concordato con il cliente.
 
 Interni:
 
-- **Stato di partenza** (fase 2). Come funziona oggi il sistema, cosa viene toccato, fattibilità, incognite.
-- **Documento tecnico** (fase 5). Come viene realizzato: repository, tecnologie, architettura, dati, integrazioni, scelte tecniche, divisione in milestone e issue con le stime e i buffer. Cita i codici delle story senza riscriverle. Se il sistema lo ha già, il progetto lo aggiorna.
-- **Documento di sprint** (fase 6). È unico per tutta l'azienda: il progetto vi compare con le sue issue e con lo stato della sua milestone.
-- **Sprint report** (fase 6). Poche righe interne a ogni fine sprint: fatto, prossimo, stato della milestone, cosa serve dal cliente. È ricavato dal Documento di sprint e non va al cliente.
-- **Registro delle variazioni** (dalla conferma del Manuale in poi). Ogni variazione chiesta, con categoria, impatto ed esito.
+- **Guida alla pubblicazione** (documento del sistema, rilascio). Cosa sapere per pubblicare il sistema: ordine dei passi, regole del server, riavvii, cache, verifiche, ritorno alla versione precedente. Si aggiorna a ogni lavoro che cambia il modo di pubblicare.
+- **Scheda tecnica di rilascio** (rilascio, preparazione). I passi di quel rilascio, ricavati dalla Guida con le particolarità del progetto. Se non ci sono particolarità, è una riga: si segue la Guida.
+- **Stato di partenza** (kickoff). Come funziona oggi il sistema, cosa viene toccato, fattibilità, incognite. In testa porta le decisioni dell'analisi: categoria, stima a occhio, responsabile, scadenza del cliente, domande.
+- **Documento tecnico** (kickoff). Come viene realizzato: repository, tecnologie, architettura, dati, integrazioni, scelte tecniche, divisione in milestone con ore e buffer. Le issue vivono in ClickUp. Cita i codici delle story senza riscriverle. Se il sistema lo ha già, il progetto lo aggiorna.
+- **Nota di sprint** (sviluppo). Interna, a ogni fine sprint: fatto, non fatto, ore, imprevisti, margine della milestone, cosa serve dal cliente. Il piano dello sprint successivo non è un documento: è la List dello sprint in ClickUp, scelta dopo la nota (il venerdì sera o il lunedì mattina).
+- **Registro delle variazioni** (dalla conferma del Manuale in poi, nella cartella `02-sviluppo`). Un file per progetto. Ogni variazione chiesta, con categoria, impatto ed esito.
 - **Trascrizioni e sintesi delle conversazioni** (per tutto il progetto).
+- **Storico e Registro delle decisioni** (per tutto il progetto). Due file nella cartella del progetto, nati vuoti all'inizio e popolati a mano con le skill `storico-lavorazione` e `registro-decisioni`.
+- **Report di progetto** (rilascio, chiusura). Tira le somme del progetto per le stime future.
 
-Strumenti visivi, quando il progetto tocca l'interfaccia: wireframe, mockup, prototipo, demo.
+Strumenti visivi, quando il progetto tocca l'interfaccia: wireframe, mockup, prototipo, prova su staging.
 
 ## Contatti con il cliente
 
 Il cliente viene contattato in momenti fissi, e ognuno ha una risposta attesa. Le regole di ogni contatto e il valore del silenzio sono nelle Regole comuni.
 
-- **Apertura della richiesta** (fase 1, osTicket). Si può rispondere per presa visione. Non serve risposta.
-- **Kickoff** (fase 2, riunione o call). Domande per capire il bisogno. Devono tornare le risposte e il nome del referente.
-- **Invio della proposta** (fase 3, email con presentazione in call). Devono tornare correzioni e risposte alle domande aperte, fino alla conferma.
-- **Giri di revisione** (fasi 3 e 4). Nuova versione con l'elenco di ciò che è cambiato.
-- **Invio del Manuale del prodotto** (fase 4, email con presentazione in call). Deve tornare la conferma, anche a voce, seguita dal riepilogo scritto.
-- **Invio del Piano dei SAL** (fase 5, email). La stima vera di durata, le milestone e le date delle demo. Non serve risposta.
-- **Demo di milestone e Milestone report** (fase 6, call sullo staging). Le story completate, provate sui criteri di accettazione, e il report. Deve tornare l'accettazione esplicita.
-- **Collaudo finale e piano di rilascio** (fase 7). Demo finale sullo staging e data di pubblicazione. Deve tornare l'accettazione esplicita.
-- **Pubblicazione** (fase 7, email). L'avviso a sistema in produzione.
+- **Apertura della richiesta** (kickoff, osTicket). Si può rispondere per presa visione. Non serve risposta.
+- **Incontro di kickoff** (riunione o call). Domande per capire il bisogno. Devono tornare le risposte e il nome del referente.
+- **Invio della Proposta** (kickoff, email con presentazione in call). Devono tornare correzioni e risposte alle domande aperte, fino alla conferma.
+- **Giri di revisione** (kickoff, Proposta e Manuale). Nuova versione con l'elenco di ciò che è cambiato.
+- **Invio del Manuale del prodotto** (kickoff, email con presentazione in call). Deve tornare la conferma, anche a voce, seguita dal riepilogo scritto.
+- **Invio del Piano dei SAL** (kickoff, email). La stima vera di durata, le milestone e le date delle prove. Non serve risposta.
+- **Prova di milestone e Milestone report** (sviluppo, prova del cliente sullo staging, con demo in call facoltativa). Le story da provare sui criteri di accettazione, e il report. Deve tornare l'accettazione esplicita.
+- **Collaudo finale e piano di rilascio** (rilascio). Prova finale sullo staging e data di pubblicazione. Deve tornare l'accettazione esplicita.
+- **Pubblicazione** (rilascio, email). L'avviso a sistema in produzione.
 
 ## Strumenti visivi nel progetto
 
 Le definizioni sono nelle Regole comuni. Nel progetto entrano così:
 
-- **Wireframe**: facoltativi nella Proposta di soluzione (fase 3) per le schermate nuove o modificate, e nel Manuale del prodotto (fase 4).
-- **Mockup**: facoltativi nella fase 4, quando cambia l'aspetto grafico. Si disegnano in Figma a partire dai wireframe. Il cliente li approva con il Manuale, e la copia in PDF su Drive è quella che fa fede.
-- **Prototipo**: facoltativo nella fase 4. Non c'è una regola su quando serve: lo decide il responsabile.
-- **Demo**: nella fase 6, a ogni milestone, e nella fase 7, al collaudo finale. L'esito è uno fra: accettata, accettata con difetti non bloccanti, non accettata per difetti bloccanti.
+- **Wireframe**: facoltativi nella Proposta di soluzione per le schermate nuove o modificate, e nel Manuale del prodotto.
+- **Mockup**: facoltativi nel Manuale, quando cambia l'aspetto grafico. Si disegnano in Figma a partire dai wireframe. Il cliente li approva con il Manuale, e la copia in PDF nella knowledge base è quella che fa fede.
+- **Prototipo**: facoltativo nel Manuale. Non c'è una regola su quando serve: lo decide il responsabile.
+- **Prova su staging**: nello sviluppo, a ogni milestone, e nel rilascio, al collaudo finale. Una demo in call è facoltativa. L'esito è uno fra: accettata, accettata con difetti non bloccanti, non accettata per difetti bloccanti.
 
 ## Collaudo e rilascio
 
@@ -168,64 +184,53 @@ Collaudo finale:
 Piano di rilascio, concordato con il cliente:
 
 - data e ora, scelte per ridurre il disturbo a chi usa il sistema;
-- ordine dei passi;
+- cosa cambia per gli utenti e le eventuali interruzioni;
 - come si torna alla versione precedente se qualcosa fallisce;
 - chi va avvisato prima e dopo.
 
-Dopo la pubblicazione decorre la garanzia, e la fase 8 chiude il progetto.
+**Guida alla pubblicazione.** Il documento del sistema con tutto ciò che serve a chi pubblica: l'ordine dei passi, le regole del server (per esempio Apache), i riavvii (per esempio il server SSR), le cache su certe rotte, le verifiche, il ritorno alla versione precedente. Un progetto la aggiorna con le regole che ha introdotto, e chi pubblica la rilegge a ogni rilascio. Un'issue che cambia il modo di pubblicare lo annota già durante lo sviluppo (condizione della DoD base).
+
+**Scheda tecnica di rilascio.** I passi di quel rilascio, ricavati dalla Guida con le particolarità del progetto. È interna. Se il rilascio non ha particolarità, è una riga: si segue la Guida.
+
+Dopo la pubblicazione si aggiornano i documenti: Manuale del prodotto, Documento tecnico e Guida alla pubblicazione descrivono ciò che è stato realmente fatto e ciò che è emerso durante la pubblicazione, e così i documenti degli altri lavori toccati. Decorre la garanzia, e il progetto è chiuso quando i documenti sono aggiornati e il Report di progetto è scritto. Le segnalazioni del cliente in garanzia (bug, variazioni piccole, richieste estetiche) si trattano con la skill `pacchetto-di-garanzia`, nella cartella `04-garanzia` del progetto: sono un imprevisto di capacità, usano la capacità dei ticket con un prestito di ore se serve chi conosce la parte, e si tracciano senza riserva. A fine periodo si compila la sezione sulla garanzia del Report di progetto.
 
 ## Imprevisti del progetto
 
 Ogni imprevisto ha una risposta già decisa, applicata nella fase in cui si presenta. Gli imprevisti dello sviluppo (persone, tempi, cliente) stanno nel Ciclo di sviluppo, le variazioni nelle Regole comuni.
 
-**Fase 1: ingresso e assegnazione**
+**Kickoff**
 
 - **Un progetto entra come ticket.** Se soddisfa una delle condizioni del progetto si riclassifica.
 - **La verifica dice che il lavoro non va aperto.** Si risponde al cliente con il motivo e il riferimento preciso.
 - **La richiesta riguarda un sistema nuovo.** Si riclassifica e segue il Piano di prodotto.
 - **Nessun responsabile adatto è disponibile.** Si decide con chi gestisce il team e, se serve, con il CEO.
-
-**Fase 2: kickoff**
-
 - **Si parla con chi non decide.** Si chiede il nome del referente: vale solo la sua approvazione.
 - **Le risposte non arrivano.** Vale la sezione "Il cliente non risponde" del Ciclo di sviluppo.
-- **Comportamento del sistema non rilevato.** Si aggiunge allo Stato di partenza. Se emerge dopo la conferma della proposta è una variazione, e il referente sceglie se mantenerlo.
+- **Comportamento del sistema non rilevato.** Si aggiunge allo Stato di partenza. Se emerge dopo la conferma del Manuale è una variazione, e il referente sceglie se mantenerlo.
 - **Il kickoff supera il tempo fissato.** Si chiude con le incognite elencate, da sciogliere con issue di tipo Spike.
-- **Il codice non è accessibile.** Lo Stato di partenza lo dichiara, e la proposta presenta la fattibilità come provvisoria.
-- **Un punto della richiesta non è fattibile.** Va nella proposta tra ciò che non si potrà fare, con il motivo e un'alternativa.
-
-**Fase 3: proposta di soluzione**
-
+- **Il codice non è accessibile.** Lo Stato di partenza lo dichiara, e la Proposta presenta la fattibilità e la stima come provvisorie.
+- **Un punto della richiesta non è fattibile.** Va nella Proposta tra ciò che non si potrà fare, con il motivo e un'alternativa.
 - **La soluzione è più grande della richiesta.** Si propone una divisione in più progetti, con il primo che ha valore da solo.
 - **Revisioni che non convergono.** Call dedicata sui punti aperti, poi un'ultima versione. Non c'è un limite ai giri.
 - **Risposta parziale alle domande.** Le domande senza risposta restano aperte e bloccano la conferma. Al cliente va l'elenco delle domande ancora aperte.
-- **L'allineamento trova un conflitto con un altro lavoro.** Si risolve prima della fase 4: si decide quale lavoro passa prima e cosa cambia nell'altro.
-
-**Fase 4: Manuale del prodotto**
-
+- **L'allineamento trova un conflitto con un altro lavoro.** Si risolve prima di scrivere il Manuale: si decide quale lavoro passa prima e cosa cambia nell'altro.
 - **Il cliente chiede modifiche al Manuale.** Prima della conferma sono modifiche: nuova versione numerata. Dopo la conferma sono variazioni.
 - **Manuale del prodotto e Documento tecnico in contrasto.** Vale il Manuale. Il Documento tecnico si corregge.
 - **Il cliente conferma a voce.** Vale dopo il riepilogo scritto inviato dal responsabile.
-
-**Fase 5: Documento tecnico**
-
 - **Festività o ferie non considerate.** Si corregge il calendario e si ricalcolano le date.
 - **La stima rifatta con le issue è più alta di quella iniziale.** Il cliente viene informato come per ogni stima, con il Piano dei SAL, e si spiega cosa è cambiato rispetto alla prima stima: le cattive notizie si comunicano subito.
 
-**Fase 6: sviluppo**
+**Sviluppo**
 
 - **Un ticket urgente interrompe il lavoro.** Vale la sezione sui buffer del Ciclo di sviluppo.
 - **La milestone è a rischio o in ritardo.** Vale la stessa sezione.
-- **Il cliente non accetta la demo.** I difetti bloccanti si correggono e si ripete la demo. Una demo non si accetta in silenzio.
+- **Il cliente non accetta la prova.** I difetti bloccanti si correggono e la prova si ripete. Una prova non si accetta in silenzio.
 
-**Fase 7: collaudo e rilascio**
+**Rilascio**
 
 - **Regressione su qualcosa che funzionava.** È un bug bloccante: si corregge prima della pubblicazione.
 - **Rilascio fallito.** Ritorno alla versione precedente e nuova data, con avviso immediato al cliente.
-- **Il cliente non accetta il collaudo finale.** I difetti bloccanti si correggono e si ripete la demo.
-
-**Fase 8: chiusura**
-
+- **Il cliente non accetta il collaudo finale.** I difetti bloccanti si correggono e la prova si ripete.
 - **Bug dopo il rilascio.** Corretto come pacchetto di garanzia.
 - **Nuova richiesta presentata come bug.** Si applica il criterio delle Regole comuni: se il comportamento rispetta il Manuale è una variazione o un nuovo ticket.
 

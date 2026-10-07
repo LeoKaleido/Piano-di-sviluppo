@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schema di ClickUp</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --ink: #1b2430;
+  --muted: #5a6575;
+  --line: #c9d1dc;
+  --phase: #1f4e8c;
+  --phase-ink: #ffffff;
+  --who: #e8f0fb;
+  --skill: #e6f5ec;
+  --doc: #fff4d6;
+  --steps: #f1f3f6;
+  --warn: #fdeaea;
+  --event: #f3ecfa;
+  --impl: #e9f6f8;
+  --close: #eaf3df;
+  --decision: #fff0e0;
+  --decision-line: #d98a2b;
+  --start: #223a5a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b;
+    --card: #1a2029;
+    --ink: #e6eaf0;
+    --muted: #9aa6b6;
+    --line: #3a4455;
+    --phase: #3b72b8;
+    --phase-ink: #ffffff;
+    --who: #1e2d44;
+    --skill: #1b3326;
+    --doc: #3a3220;
+    --steps: #222a35;
+    --warn: #3b2224;
+    --event: #2c2438;
+    --impl: #1b3236;
+    --close: #26331b;
+    --decision: #3a2c1a;
+    --decision-line: #d98a2b;
+    --start: #3b72b8;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 24px 16px 64px;
+}
+main { max-width: 1040px; margin: 0 auto; }
+h1 { font-size: 1.9rem; margin: 0 0 4px; }
+h2 { font-size: 1.25rem; margin: 0; }
+h3 { font-size: 0.95rem; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+p { margin: 0 0 8px; }
+ul, ol { margin: 0; padding-left: 20px; }
+li { margin: 0 0 4px; }
+code { background: rgba(120,130,150,0.18); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+.lead { color: var(--muted); margin-bottom: 20px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 24px; }
+.legend span { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.85rem; }
+.legend .l-who { background: var(--who); }
+.legend .l-skill { background: var(--skill); }
+.legend .l-doc { background: var(--doc); }
+.legend .l-steps { background: var(--steps); }
+.legend .l-warn { background: var(--warn); }
+.legend .l-event { background: var(--event); }
+.legend .l-impl { background: var(--impl); }
+.legend .l-close { background: var(--close); }
+.legend .l-decision { background: var(--decision); border-color: var(--decision-line); }
+
+.overview { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.overview a {
+  text-decoration: none; color: var(--phase-ink); background: var(--phase);
+  padding: 6px 12px; border-radius: 8px; font-size: 0.9rem;
+}
+.overview a.alt { background: var(--decision-line); }
+
+.start, .end {
+  background: var(--start); color: #fff; border-radius: 999px;
+  padding: 12px 20px; text-align: center; font-weight: 600;
+}
+.arrow { display: flex; flex-direction: column; align-items: center; margin: 0; }
+.arrow .stem { width: 2px; height: 22px; background: var(--line); }
+.arrow .head { width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 9px solid var(--line); }
+.arrow .tag { font-size: 0.8rem; color: var(--muted); padding: 2px 0; }
+
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.phase > header { background: var(--phase); color: var(--phase-ink); padding: 12px 18px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.phase > header .num { font-weight: 700; font-size: 1.1rem; }
+.phase > header .what { opacity: 0.92; font-size: 0.92rem; }
+.phase .body { padding: 16px 18px 18px; }
+.phase .intro { margin-bottom: 14px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+.box { border-radius: 10px; padding: 12px 14px; border: 1px solid var(--line); }
+.box.wide { grid-column: 1 / -1; }
+.who { background: var(--who); }
+.skill { background: var(--skill); }
+.doc { background: var(--doc); }
+.steps { background: var(--steps); }
+.warn { background: var(--warn); }
+.event { background: var(--event); }
+.impl { background: var(--impl); }
+.close { background: var(--close); }
+
+.decision { background: var(--decision); border: 2px solid var(--decision-line); border-radius: 14px; padding: 14px 16px; }
+.decision .q { font-weight: 700; margin-bottom: 10px; }
+.branches { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.branch { background: var(--card); border: 1px solid var(--decision-line); border-radius: 10px; padding: 10px 12px; }
+.branch .label { font-weight: 700; display: block; margin-bottom: 4px; }
+.branch .goes { display: block; margin-top: 6px; font-size: 0.88rem; color: var(--muted); }
+
+.event table { width: 100%; }
+dl.events { margin: 0; }
+dl.events dt { font-weight: 700; margin-top: 8px; }
+dl.events dt:first-child { margin-top: 0; }
+dl.events dd { margin: 2px 0 0 0; }
+
+.side { margin-top: 36px; }
+.side h2 { margin-bottom: 10px; }
+.stack > * + * { margin-top: 12px; }
+.note { font-size: 0.9rem; color: var(--muted); }
+.tree { font-size: 0.95rem; }
+.tree .node { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin: 8px 0; background: var(--card); }
+.tree .node .label { font-weight: 700; }
+.tree .node .what { display: block; color: var(--muted); font-size: 0.88rem; margin-top: 2px; }
+.tree .children { margin-left: 18px; padding-left: 12px; border-left: 2px solid var(--line); }
+.tree .space { background: var(--who); }
+.tree .folder { background: var(--steps); }
+.tree .list { background: var(--doc); }
+.tree .task { background: var(--skill); }
+.status { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; border: 1px solid var(--line); margin: 2px 4px 2px 0; }
+.st-backlog { background: var(--steps); }
+.st-planned { background: var(--who); }
+.st-progress { background: var(--doc); }
+.st-testing { background: var(--event); }
+.st-completed { background: var(--close); }
+.st-cancelled { background: var(--warn); }
+.flow { display: grid; gap: 8px; }
+.flow .row { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+.flow .row b { display: block; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Schema di ClickUp</h1>
+<p class="lead">Come sono organizzate le issue, le milestone e gli sprint in ClickUp, e cosa significa ogni stato. Serve a chi lavora con ClickUp ogni giorno e a chi deve capirne la logica senza leggere le skill. La fonte di verità è il Ciclo di sviluppo (<code>docs/ciclo-di-sviluppo.md</code>): se cambia, questo schema va aggiornato.</p>
+
+<div class="legend">
+  <span class="l-who">Space</span>
+  <span class="l-steps">Folder</span>
+  <span class="l-doc">List</span>
+  <span class="l-skill">Task (le issue)</span>
+</div>
+
+<nav class="overview" aria-label="Sezioni">
+  <a href="#struttura">1. Struttura</a>
+  <a href="#issue">2. L'issue</a>
+  <a href="#stati">3. Gli stati</a>
+  <a href="#sprint">4. Lo sprint</a>
+  <a href="#blocchi">5. I blocchi</a>
+  <a href="#regole">6. Regole d'oro</a>
+</nav>
+
+<div class="stack">
+
+<section class="phase" id="struttura">
+  <header><span class="num">1</span><h2>Struttura</h2><span class="what">Due Space: uno per il lavoro, uno per il tempo</span></header>
+  <div class="body">
+    <p class="intro">Il lavoro si divide in milestone, il tempo si divide in sprint. In ClickUp sono due posti diversi, e la stessa issue compare in tutti e due senza essere copiata.</p>
+    <div class="tree">
+      <div class="node space"><span class="label">Space "Lavorazioni"</span><span class="what">Tutto ciò che c'è da fare, per lavorazione.</span>
+        <div class="children">
+          <div class="node folder"><span class="label">Folder "102 - Cliente - Nome progetto"</span><span class="what">Uno per lavorazione. Il numero è il codice del ticket di osTicket.</span>
+            <div class="children">
+              <div class="node list"><span class="label">List "M1 - obiettivo"</span><span class="what">Una milestone (un SAL per il cliente). La scadenza è la data della prova del cliente. La descrizione elenca le story consegnate. ClickUp somma da solo le ore delle issue.</span>
+                <div class="children">
+                  <div class="node task"><span class="label">I1 - titolo</span><span class="what">Un'issue: scritta una volta sola, qui.</span></div>
+                  <div class="node task"><span class="label">I2 - titolo</span></div>
+                </div>
+              </div>
+              <div class="node list"><span class="label">List "M2 - obiettivo"</span><span class="what">La milestone successiva.</span></div>
+              <div class="node list"><span class="label">List "Materiali"</span><span class="what">Un task per ogni materiale che deve fornire il cliente, con la data entro cui serve.</span></div>
+              <div class="node list"><span class="label">List "Garanzia"</span><span class="what">Dopo il rilascio: un task per ogni voce segnalata in garanzia, con l'etichetta <code>garanzia</code>. Si crea alla prima segnalazione.</span></div>
+            </div>
+          </div>
+          <div class="node folder"><span class="label">Folder "Ticket"</span><span class="what">I ticket: un task per ticket, con gli stessi stati delle issue e i campi tipo, urgenza, scadenza, stima e checklist della DoD.</span></div>
+        </div>
+      </div>
+      <div class="node space"><span class="label">Space "Sprint"</span><span class="what">Il tempo: uno sprint dura due settimane ed è unico per tutta l'azienda.</span>
+        <div class="children">
+          <div class="node folder"><span class="label">Folder degli sprint</span><span class="what">La cartella speciale di ClickUp per gli sprint.</span>
+            <div class="children">
+              <div class="node list"><span class="label">List "S12 (data - data)"</span><span class="what">Le issue scelte per quello sprint, di tutte le lavorazioni.</span></div>
+              <div class="node list"><span class="label">List "S13 (data - data)"</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:12px">Le milestone stanno anche nel capitolo Milestone del Documento tecnico, che resta la fonte per buffer, durata e stato. Le issue stanno solo in ClickUp.</p>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="issue">
+  <header><span class="num">2</span><h2>L'issue</h2><span class="what">L'unità di lavoro, un task di ClickUp</span></header>
+  <div class="body">
+    <div class="grid">
+      <div class="box doc"><h3>Cosa contiene</h3>
+        <ul>
+          <li><b>Nome:</b> codice e titolo, per esempio "I12 - Esporta l'elenco".</li>
+          <li><b>Tipo:</b> story, supporto, spike, bug, variazione.</li>
+          <li><b>Story:</b> il codice nel Manuale (F3.1), se è una issue di story.</li>
+          <li><b>Descrizione:</b> cosa va fatto, con rimando al Documento tecnico.</li>
+          <li><b>Stima:</b> in ore, al massimo 16. Oltre si divide.</li>
+          <li><b>Ore reali:</b> si tracciano con il tracciamento del tempo di ClickUp: servono al margine della milestone, alla Nota di sprint e al Report di progetto.</li>
+          <li><b>Dipendenze:</b> le issue da concludere prima e i materiali del cliente.</li>
+          <li><b>Checklist DoD:</b> le condizioni per chiuderla.</li>
+          <li><b>Stato:</b> uno solo alla volta, vedi la sezione 3.</li>
+        </ul>
+      </div>
+      <div class="box steps"><h3>La DoD, in parole semplici</h3>
+        <ul>
+          <li>Il lavoro corrisponde alla descrizione.</li>
+          <li>La revisione del codice è fatta.</li>
+          <li>Il lavoro è sullo staging.</li>
+          <li>Lo stato in ClickUp è aggiornato e le ore sono tracciate.</li>
+          <li>Se l'issue cambia il modo di pubblicare, la modifica è annotata per la Guida alla pubblicazione.</li>
+          <li>Se è l'ultima issue di una story: il criterio di accettazione della story è verificato.</li>
+        </ul>
+        <p class="note">Ogni issue può aggiungere condizioni sue.</p>
+      </div>
+      <div class="box skill wide"><h3>Chi la crea</h3><p>La skill <code>piano-delle-milestone</code> scompone ogni story in issue e le crea in ClickUp, ma solo dopo la conferma del responsabile. Da quel momento la issue la tocca chi sviluppa.</p></div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="stati">
+  <header><span class="num">3</span><h2>Gli stati</h2><span class="what">Sei stati, uno solo alla volta</span></header>
+  <div class="body">
+    <p class="intro">
+      <span class="status st-backlog">BACKLOG</span>
+      <span class="status st-planned">PLANNED</span>
+      <span class="status st-progress">IN PROGRESS</span>
+      <span class="status st-testing">TESTING</span>
+      <span class="status st-completed">COMPLETED</span>
+      <span class="status st-cancelled">CANCELLED</span>
+    </p>
+    <div class="grid">
+      <div class="box steps"><h3>Cosa significano</h3>
+        <ul>
+          <li><span class="status st-backlog">BACKLOG</span> l'issue è nella sua milestone e non è in uno sprint.</li>
+          <li><span class="status st-planned">PLANNED</span> l'issue è in uno sprint.</li>
+          <li><span class="status st-progress">IN PROGRESS</span> qualcuno ci sta effettivamente lavorando.</li>
+          <li><span class="status st-testing">TESTING</span> la lavorazione è conclusa e va revisionata.</li>
+          <li><span class="status st-completed">COMPLETED</span> la lavorazione è conclusa e testata.</li>
+          <li><span class="status st-cancelled">CANCELLED</span> la lavorazione non serve più.</li>
+        </ul>
+      </div>
+      <div class="box doc"><h3>Chi sposta e quando</h3>
+        <div class="flow">
+          <div class="row"><b>BACKLOG a PLANNED</b>Quando l'issue è scelta nella pianificazione dello sprint e si aggiunge alla List dello sprint. A metà sprint il responsabile può anticipare issue con la parte avanzata del buffer di sprint non usato.</div>
+          <div class="row"><b>PLANNED a IN PROGRESS</b>Chi sviluppa inizia. Solo se l'issue è nello sprint corrente e le issue da cui dipende sono COMPLETED.</div>
+          <div class="row"><b>IN PROGRESS a TESTING</b>Chi sviluppa ha finito e il lavoro è sullo staging. Parte la revisione del codice.</div>
+          <div class="row"><b>TESTING a IN PROGRESS</b>La revisione ha commenti bloccanti.</div>
+          <div class="row"><b>TESTING a COMPLETED</b>La revisione è approvata e tutta la DoD è spuntata.</div>
+          <div class="row"><b>Qualsiasi stato a CANCELLED</b>Solo il responsabile, dopo una variazione, con il codice nel commento. Un'issue non si cancella mai.</div>
+          <div class="row"><b>PLANNED a BACKLOG</b>A fine sprint, se il nuovo piano non la sceglie di nuovo.</div>
+        </div>
+      </div>
+      <div class="box warn wide"><h3>COMPLETED non si riapre</h3><p>Se la prova del cliente o la revisione trovano un difetto, si crea una nuova issue di tipo bug in BACKLOG, con la story violata. Così COMPLETED resta un dato affidabile per contare le ore fatte.</p></div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="sprint">
+  <header><span class="num">4</span><h2>Lo sprint</h2><span class="what">Dalla Nota alla pianificazione, ogni due settimane</span></header>
+  <div class="body">
+    <div class="grid">
+      <div class="box steps wide"><h3>Come gira</h3>
+        <ol>
+          <li><b>Venerdì, fine sprint.</b> Si scrive la Nota di sprint. Le ore completate sono la somma delle stime delle issue diventate COMPLETED dentro le date dello sprint.</li>
+          <li><b>Venerdì sera o lunedì mattina.</b> Si pianifica il nuovo sprint, che dipende dalla nota. Le issue scelte passano a PLANNED e si aggiungono alla List del nuovo sprint, senza copiarle. Il piano non è un documento: è la List.</li>
+          <li><b>Durante lo sprint.</b> Chi sviluppa sposta le issue da PLANNED a COMPLETED. Una daily breve per i progetti.</li>
+        </ol>
+      </div>
+      <div class="box doc"><h3>Cosa succede alle issue non finite</h3>
+        <ul>
+          <li>IN PROGRESS e TESTING restano come sono e passano allo sprint dopo, con la priorità.</li>
+          <li>PLANNED non iniziate tornano in BACKLOG se il nuovo piano non le sceglie.</li>
+        </ul>
+      </div>
+      <div class="box skill"><h3>Capacità</h3>
+        <ul>
+          <li>La vista Workload mette a confronto le ore delle issue con le ore disponibili di ogni persona.</li>
+          <li>Una persona su più lavorazioni divide le sue ore tra i piani: il supervisore controlla che la somma non superi la sua capacità.</li>
+          <li>Il 20% è il buffer di sprint, riservato ai ticket urgenti.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="blocchi">
+  <header><span class="num">5</span><h2>I blocchi</h2><span class="what">Non sono uno stato: sono un attributo</span></header>
+  <div class="body">
+    <div class="grid">
+      <div class="box steps"><h3>Come funziona</h3>
+        <ul>
+          <li>Un blocco non cambia lo stato: l'issue resta IN PROGRESS, PLANNED o com'è.</li>
+          <li>ClickUp lo mostra quando un'issue è in attesa di un'altra, con la dipendenza nativa.</li>
+          <li>Chi scopre un blocco imposta la dipendenza lo stesso giorno e scrive la causa in un commento. Il responsabile viene avvisato e il blocco si dice anche nella daily.</li>
+          <li>Quando la causa cade, si toglie la dipendenza.</li>
+        </ul>
+      </div>
+      <div class="box doc"><h3>I materiali del cliente</h3>
+        <p>Ogni materiale è un task nella List "Materiali" del Folder della lavorazione, con la data entro cui serve. Le issue che ne dipendono sono in attesa di quel task: il blocco cade quando il materiale arriva e il task si completa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="arrow"><div class="stem"></div><div class="head"></div></div>
+
+<section class="phase" id="regole">
+  <header><span class="num">6</span><h2>Regole d'oro</h2><span class="what">Le poche cose da non dimenticare</span></header>
+  <div class="body">
+    <div class="grid">
+      <div class="box warn wide"><h3>Da ricordare</h3>
+        <ul>
+          <li>Un'issue si scrive una volta sola. Nello sprint non si copia: si aggiunge.</li>
+          <li>Un'issue non si inizia se non è in uno sprint (tranne un ticket urgente).</li>
+          <li>Un'issue non si cancella: passa a CANCELLED.</li>
+          <li>COMPLETED non si riapre: un difetto è un'issue nuova.</li>
+          <li>Gli stati devono essere gli stessi nei due Space, altrimenti le issue collegate non mostrano lo stesso stato.</li>
+          <li>La nota viene prima della pianificazione.</li>
+        </ul>
+      </div>
+      <div class="box event wide"><h3>Da verificare con il piano di ClickUp</h3>
+        <p>Task in più List, cartella degli sprint, vista Workload, e se il connettore crea Folder, List, task, campi personalizzati e checklist. Se non li crea, il campo "tipo", il campo "story" e il modello di checklist con la DoD base si preparano una volta a mano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+</main>
+</body>
+</html>

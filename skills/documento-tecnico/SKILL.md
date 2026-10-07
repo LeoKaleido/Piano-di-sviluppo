@@ -1,6 +1,6 @@
 ---
 name: documento-tecnico
-description: Scrive e aggiorna il Documento tecnico interno, cioè come viene realizzato il sistema (repository, tecnologie, architettura, dati, integrazioni, infrastruttura, scelte tecniche, milestone e issue). Usala dopo il Manuale del prodotto, e dopo ogni variazione, ticket o progetto che cambia la realizzazione.
+description: Scrive e aggiorna il Documento tecnico interno, cioè come viene realizzato il sistema (repository, tecnologie, architettura, dati, integrazioni, infrastruttura, scelte tecniche, milestone, con le issue in ClickUp). Usala dopo il Manuale del prodotto, e dopo ogni variazione, ticket o progetto che cambia la realizzazione.
 ---
 
 # Documento tecnico
@@ -40,11 +40,11 @@ Intestazione: titolo, cliente, sistema, data, versione, versione del Manuale a c
 4. **Dati.** Entità, relazioni, regole di validità. Per ogni entità, le story che la usano.
 5. **Realizzazione delle funzionalità.** Per ogni funzionalità del Manuale, con il suo codice: le parti del sistema coinvolte, il flusso tecnico passo per passo, i rami di errore corrispondenti ai casi particolari delle story. Si cita il codice della story, non se ne riscrive il comportamento.
 6. **Integrazioni.** Sistemi esterni: cosa si scambia, come, cosa succede se non rispondono.
-7. **Infrastruttura e ambienti.** Dove gira il sistema, staging e produzione, come si rilascia e come si torna alla versione precedente.
+7. **Infrastruttura e ambienti.** Dove gira il sistema, staging e produzione. I passi per pubblicare e per tornare alla versione precedente stanno nella Guida alla pubblicazione, a cui questo capitolo rimanda.
 8. **Sicurezza e dati personali.** Accessi, permessi, dati sensibili, backup.
-9. **Decisioni tecniche.** Ogni scelta rilevante con data, alternative scartate e motivo. Serve a non ridiscutere ciò che è già stato deciso.
+9. **Decisioni tecniche.** Le scelte tecniche che durano nel tempo, con data, alternative scartate e motivo. Serve a non ridiscutere ciò che è già stato deciso. Le decisioni di una singola lavorazione stanno nel suo Registro delle decisioni, che rimanda qui quando sono tecniche.
 10. **Rischi e debito tecnico.** Ciò che è stato fatto in modo provvisorio e andrà ripreso.
-11. **Milestone e issue.** Solo per progetti e prodotti. La divisione in milestone, le issue con le stime, il calendario, i buffer e i materiali del cliente. Lo scrive la skill `piano-delle-milestone`, che da qui estrae anche il Piano dei SAL per il cliente.
+11. **Milestone.** Solo per progetti e prodotti. La divisione in milestone, il calendario, i buffer e i materiali del cliente. Le issue non stanno qui: vivono in ClickUp. Lo scrive la skill `piano-delle-milestone`, che da qui estrae anche il Piano dei SAL per il cliente.
 12. **Modifiche rispetto alla versione precedente.**
 
 Per un prodotto i capitoli 7 e 8 sono sempre completi, perché l'infrastruttura nasce da zero. Per un progetto su un sistema esistente descrivono solo ciò che cambia, con un rimando a ciò che resta invariato.
@@ -52,13 +52,20 @@ Per un prodotto i capitoli 7 e 8 sono sempre completi, perché l'infrastruttura 
 ## Regole di contenuto
 
 - **Solo il come.** Nessun comportamento visto dall'utente: per quello si rimanda al codice della story.
-- **Nessun prezzo.** Le date compaiono solo nel capitolo Milestone e issue.
+- **Nessun prezzo.** Le date compaiono solo nel capitolo Milestone.
 - **Linguaggio tecnico**, senza semplificazioni: i lettori sono sviluppatori.
 - **Nulla di inventato.** Ciò che non è stato deciso si scrive come domanda aperta per chi sviluppa.
 
+## Dove si salva
+
+Il documento vigente in `sistema/`. La versione condivisa o in bozza di un progetto in `01-kickoff/04-documentazione` (`05-documentazione` per un prodotto).
+
 ## Regole di scrittura
 
-{{SCRITTURA}}
+- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
+- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 I nomi di tecnologie, file e parti del codice si scrivono come sono, anche se in inglese.
 
@@ -80,4 +87,4 @@ A ogni variazione, ticket o progetto che cambia la realizzazione:
 2. Nessun comportamento del Manuale è stato riscritto: solo citato.
 3. Ogni caso particolare delle story ha un ramo di errore corrispondente.
 4. Nessuna scelta tecnica non validata in una versione completa.
-5. {{CONTROLLO}}
+5. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.

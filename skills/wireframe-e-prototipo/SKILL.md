@@ -14,15 +14,15 @@ I quattro strumenti visivi vanno tenuti distinti, perché validano cose diverse:
 - **Wireframe**: lo schema di una schermata, senza grafica. Mostra cosa c'è e dove. Valida struttura e contenuti.
 - **Prototipo**: più wireframe collegati e navigabili, senza logica vera. Valida il percorso dell'utente.
 - **Mockup**: l'aspetto grafico definitivo. Non si produce qui: si disegna in Figma.
-- **Demo**: il software vero sullo staging. Non si produce qui.
+- **Prova**: il cliente prova il software vero sullo staging. Non si produce qui.
 
 Questa skill produce wireframe e prototipi. Servono solo se il lavoro tocca l'interfaccia, quindi in progetti e prodotti.
 
 ## Dove entrano nei piani
 
 - **Ticket**: non previsto. Un ticket non cambia l'aspetto grafico: se serve ridisegnare una schermata la richiesta è un progetto.
-- **Progetto**: wireframe delle schermate nuove o modificate, allegati alla Proposta di soluzione. Un prototipo è facoltativo, in fase di documentazione, quando il percorso è complesso.
-- **Prodotto**: wireframe delle schermate principali nella proposta, poi prototipo nella fase di prototipo e design.
+- **Progetto**: wireframe delle schermate nuove o modificate, allegati alla Proposta di soluzione. Un prototipo è facoltativo, nella sottofase di documentazione, quando il percorso è complesso.
+- **Prodotto**: wireframe delle schermate principali nella proposta, poi prototipo nella sottofase di prototipo e design (`04-prototipo-e-design`).
 
 ## Avvio
 
@@ -75,7 +75,7 @@ Insieme ai file restituisci un elenco breve:
 
 ## Dopo l'approvazione
 
-Un wireframe approvato dal cliente vale come i documenti: cambiarlo dopo è una variazione. A ogni giro di correzioni incrementa la versione ed elenca cosa è cambiato. Alla conferma, ricorda che la versione approvata va salvata su Drive accanto ai documenti del lavoro.
+Un wireframe approvato dal cliente vale come i documenti: cambiarlo dopo è una variazione. A ogni giro di correzioni incrementa la versione ed elenca cosa è cambiato. Alla conferma, ricorda che la versione approvata va salvata nella knowledge base, nella cartella della fase del lavoro.
 
 I wireframe approvati sono la base da cui si disegnano i mockup.
 
@@ -83,9 +83,16 @@ I wireframe approvati sono la base da cui si disegnano i mockup.
 
 Valgono per i testi dentro le schermate e per l'elenco di accompagnamento.
 
-{{SCRITTURA}}
+- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
+- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 I testi delle schermate si rivolgono all'utente del sistema come farà il sistema vero: lì la forma impersonale non si applica.
+
+## Dove si salva
+
+I wireframe allegati alla Proposta in `01-kickoff/03-proposta`. Quelli del Manuale in `01-kickoff/04-documentazione`. Il prototipo in `01-kickoff/04-documentazione` per un progetto, in `01-kickoff/04-prototipo-e-design` per un prodotto.
 
 ## Controllo finale
 
@@ -94,4 +101,4 @@ I testi delle schermate si rivolgono all'utente del sistema come farà il sistem
 3. Gli stati vuoto, errore e caricamento sono presenti dove servono.
 4. Nessun colore, logo o immagine: solo grigi.
 5. Le pagine si aprono senza connessione e ogni collegamento funziona.
-6. {{CONTROLLO}}
+6. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.

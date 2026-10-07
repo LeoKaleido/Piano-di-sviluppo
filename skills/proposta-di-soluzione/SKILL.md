@@ -9,7 +9,7 @@ description: Scrive e aggiorna la Proposta di soluzione per il cliente, con rich
 
 La Proposta di soluzione è il documento che il cliente riceve prima della conferma. Il suo messaggio è: "si farebbe così, cosa ne pensa?". Riformula la richiesta, descrive la soluzione, dichiara compromessi e limiti, raccoglie le decisioni che spettano al cliente.
 
-Il cliente la corregge e risponde alle domande; la proposta viene aggiornata e rimandata fino alla conferma, senza limite di giri. La versione confermata è la base del Manuale del prodotto. La prima versione rientra nel tempo massimo del kickoff (10% della stima del progetto): i giri successivi no.
+Il cliente la corregge e risponde alle domande; la proposta viene aggiornata e rimandata fino alla conferma, senza limite di giri. La versione confermata è la base del Manuale del prodotto. La prima versione rientra nel tempo del kickoff (il 10% di una stima a occhio della durata, fissato all'inizio): i giri successivi no.
 
 Vale per progetti e prodotti. Un ticket non ha proposta: ha la Scheda di intervento.
 
@@ -48,12 +48,13 @@ Intestazione: titolo, cliente, data, versione.
 7. **Assunzioni.** Ciò che è stato dato per scontato.
 8. **Domande aperte.** Vedi il formato sotto.
 9. **Cosa serve dal cliente.** I materiali da fornire (testi, immagini, dati, accessi, documentazione di sistemi esterni, utenze di prova), ancora senza date, e il nome del referente.
-10. **Prossimi passi.**
+10. **Stima di durata.** La stima precisa della durata del lavoro in giorni lavorativi (per un prodotto, per release), con la sua affidabilità e senza date di consegna. È il risultato della stima del kickoff, non la stima a occhio, che è interna.
+11. **Prossimi passi.**
 
 **Parte 3: allegato.**
 
 - **Elenco delle user story.** Raggruppate per funzionalità. Ogni funzionalità ha un codice fisso (F1, F2), ogni story un codice derivato (F1.1). Di ogni story solo titolo e frase: "Come [tipo di utente], voglio [azione], per [beneficio]". Il dettaglio arriverà nel Manuale del prodotto.
-- **Sunto della lavorazione.** Come procederà il lavoro dopo la conferma: documentazione, sviluppo a milestone con demo, rilascio. Senza date.
+- **Sunto della lavorazione.** Come procederà il lavoro dopo la conferma: documentazione, sviluppo a milestone con prova del cliente, rilascio. Senza date.
 - **Wireframe.** Facoltativi. Se il lavoro tocca l'interfaccia e si decide di allegarli, segnala che sono allegati i wireframe delle schermate nuove o modificate e che il cliente li conferma con la proposta.
 
 ## Formato delle domande aperte
@@ -70,14 +71,21 @@ Li fornisce il team. Puoi proporne di tuoi, partendo dai vincoli dello Stato di 
 ## Regole di contenuto
 
 - **Nessuna tecnologia e nessun flusso tecnico.** Il cliente valuta cosa fa il prodotto.
-- **Nessun prezzo e nessuna data.** Prezzi e preventivi sono seguiti a parte; le date nascono dal capitolo Milestone e issue del Documento tecnico.
+- **Nessun prezzo e nessuna data.** Prezzi e preventivi sono seguiti a parte; le date nascono dal capitolo Milestone del Documento tecnico.
 - **Lunghezza.** Da 2 a 3 pagine, al massimo 5, allegato compreso. La sintesi iniziale resta breve. Se per stare nel limite bisogna togliere qualcosa, si toglie il dettaglio: arriverà nel Manuale del prodotto.
 - **Comprensibile a chi non è del settore.** Un termine tecnico inevitabile va spiegato alla prima occorrenza.
 - **Formula delle user story.** È in prima persona dal punto di vista dell'utente ed è l'unica eccezione alla forma impersonale.
 
+## Dove si salva
+
+In `01-kickoff/03-proposta`: bozze, versioni numerate e riepilogo scritto della conferma.
+
 ## Regole di scrittura
 
-{{SCRITTURA}}
+- Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
+- Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 ## Bozza o versione completa
 
@@ -109,4 +117,4 @@ La versione confermata dal cliente diventa la v1.0. La conferma può arrivare a 
 3. Ogni vincolo dello Stato di partenza che tocca la richiesta è riflesso nella proposta.
 4. Nessuna tecnologia, prezzo o data.
 5. La proposta sta in 5 pagine al massimo.
-6. {{CONTROLLO}}
+6. **Forma e caratteri.** Nessuna prima o seconda persona, cliente chiamato sempre con lo stesso nome. Se puoi eseguire comandi, lancia `python scripts/controlla_caratteri.py <file>` su ogni file prodotto: elenca i caratteri vietati con riga e colonna. Con `--correggi` sostituisce virgolette e puntini; trattini lunghi, punto mediano e simboli vanno riscritti a mano. Se non puoi eseguire comandi, rileggi il testo cercandoli.
