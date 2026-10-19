@@ -15,7 +15,7 @@ I test delle skill (cartella `test/`) producono documenti e un diario. Questa sk
 
 Chiedi solo ciò che non è già stato detto.
 
-1. **Lo scenario e la prova.** Per esempio `test/ticket-2-urgenza-checkout/esecuzione-1`. Se la prova non è indicata, usa l'ultima.
+1. **Lo scenario e la prova.** Per esempio `test/ticket-1-sconto-iva-carrello/esecuzione-1`. Se la prova non è indicata, usa l'ultima.
 2. **La prova precedente**, se esiste: `esecuzione-N-1` dello stesso scenario.
 3. **Le fonti.** `test/base-comune.md`, lo `scenario.md`, i piani in `docs/`, le Regole comuni, il Ciclo di sviluppo e le skill in `skills/` che l'esecuzione ha usato.
 
@@ -27,7 +27,7 @@ Leggi tutto per intero: una ricerca per parole chiave non basta.
 2. **Controlli dello scenario.** Per ogni voce di "Cosa deve emergere" e di "Eventi da introdurre", verifica nel diario e nei documenti se è emersa. Esito: emersa, emersa in parte, non emersa. Per ogni "Cosa non deve succedere", cerca se è successo.
 3. **Fedeltà al piano.** Per ogni fase, controlla che i passi, i documenti e le chiusure siano quelli del piano della categoria. Una deviazione è una Contraddizione se è colpa del piano o delle skill, un errore di esecuzione se è colpa di chi ha recitato (si dichiara e non diventa una modifica ai piani).
 4. **Coerenza dei numeri.** Ricalcola ore, capacità, buffer, margine, date e durata della garanzia con le regole delle Regole comuni e del Ciclo di sviluppo. Un numero sbagliato è un errore di esecuzione, tranne se la regola è ambigua: allora è una Contraddizione.
-5. **Regole di scrittura.** Per ogni documento prodotto, controlla: italiano, forma impersonale, un solo nome per ogni cosa, niente tabelle, solo caratteri da tastiera italiana (cerca virgolette curve, trattini lunghi, puntini di sospensione come carattere unico, emoji), niente ore e tecnologie nei documenti per il cliente, niente prezzi. Se puoi eseguire comandi, usa una ricerca dei caratteri vietati sui file dell'esecuzione.
+5. **Regole di scrittura.** Per ogni documento prodotto, controlla: italiano, forma impersonale, un solo nome per ogni cosa, niente tabelle (eccetto quelle del Piano dei SAL), solo caratteri da tastiera italiana (cerca virgolette curve, trattini lunghi, puntini di sospensione come carattere unico, emoji), niente ore e tecnologie nei documenti per il cliente, niente prezzi. Se puoi eseguire comandi, usa una ricerca dei caratteri vietati sui file dell'esecuzione.
 6. **Passaggi.** Per ogni coppia di skill consecutive, verifica che ciò che la prima ha prodotto basti alla seconda: se la seconda ha dovuto chiedere o inventare, è un Passaggio o un Manca.
 7. **Peso.** Per ogni documento e passo, stima quanto costa e quanto vale. Un documento che nessuna skill successiva ha letto, o che ripete ciò che sta in un altro, è un Peso: la procedura rischia di essere troppo lenta. Segnala anche i casi in cui un ticket piccolo ha prodotto più documenti di quanto il suo lavoro giustifica.
 8. **Diario.** Riprendi le annotazioni di chi ha eseguito il test e verifica che siano riportate o scartate con un motivo.
@@ -64,4 +64,4 @@ Le osservazioni accettate da Leonardo passano poi a piani e skill: non lo fa que
 - **Non correggere.** Non modificare piani, skill, scenari o documenti dell'esecuzione.
 - **Distingui piano ed esecuzione.** Se l'errore è di chi ha recitato, è un'osservazione di tipo Esecuzione.
 - **Una sola osservazione per causa.** Se la stessa causa produce più effetti, riuniscili.
-- **Italiano, forma impersonale.** Frasi brevi, elenchi, niente tabelle, solo caratteri da tastiera italiana.
+- **Italiano, forma impersonale.** Frasi brevi, elenchi, niente tabelle (eccetto quelle del Piano dei SAL), solo caratteri da tastiera italiana.

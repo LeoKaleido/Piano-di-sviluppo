@@ -7,20 +7,20 @@ description: Interpreta la trascrizione di una riunione, telefonata o altra conv
 
 ## A cosa serve
 
-Le riunioni, le telefonate e le altre conversazioni con il cliente si registrano con un computer o un telefono, si trascrivono e si aggiungono alla documentazione del lavoro nella knowledge base, nella cartella della fase in cui sono avvenute. Il testo grezzo però non basta alle altre skill: dentro ci sono richieste, decisioni, conferme e informazioni sul sistema mescolate a ciò che non serve.
+Le riunioni, le telefonate e le altre conversazioni con il cliente si registrano con un computer o un telefono, si trascrivono e si salvano nella cartella `source` del lavoro nella knowledge base, comune a tutte le fasi. Il testo grezzo però non basta alle altre skill: dentro ci sono richieste, decisioni, conferme e informazioni sul sistema mescolate a ciò che non serve.
 
 Questa skill legge una trascrizione e la trasforma in informazioni utilizzabili: dice cosa è stato chiesto, deciso e confermato, e in quale documento del lavoro va riportato. Prepara anche il riepilogo scritto da inviare al cliente, perché ciò che viene detto a voce vale solo dopo un riepilogo scritto.
 
-La skill non modifica nessun documento: propone. Le modifiche le applicano le skill dei singoli documenti (`kickoff`, `proposta-di-soluzione`, `manuale-del-prodotto`, `documento-tecnico`, `variazione`), dopo la conferma del responsabile.
+La skill non modifica nessun documento: propone. Le modifiche le applicano le skill dei singoli documenti (`kickoff`, `proposta-di-soluzione`, `manuale-del-prodotto`, `documento-tecnico`, `history-and-decision`), dopo la conferma del responsabile.
 
 ## Avvio
 
 Chiedi solo ciò che non è già stato detto.
 
-1. **L'audio o la trascrizione.** Di norma arriva un semplice file audio, registrato da computer o da telefono. Se hai uno strumento di trascrizione, trascrivi tu il file e conserva il testo così com'è. Se non lo hai, chiedi la trascrizione e dichiaralo. Può essere di una riunione, di una telefonata o di uno scambio di messaggi. Dove si trova: nella knowledge base, nella cartella della fase del lavoro.
-2. **Il lavoro.** Cliente, sistema, e se è un ticket, un progetto o un prodotto.
+1. **L'audio o la trascrizione.** Di norma arriva un semplice file audio, registrato da computer o da telefono. Se hai uno strumento di trascrizione, trascrivi tu il file e conserva il testo così com'è. Se non lo hai, chiedi la trascrizione e dichiaralo. Può essere di una riunione, di una telefonata o di uno scambio di messaggi. Dove si trova: nella cartella `source` del lavoro.
+2. **Il lavoro.** Cliente, sistema, e se è una lavorazione minore, un progetto o un prodotto.
 3. **Data e partecipanti.** Chi c'era per il cliente, e in particolare se c'era il referente: vale solo la sua approvazione.
-4. **A che punto è il lavoro**, e la versione corrente dei documenti: Proposta di soluzione, Manuale del prodotto, Documento tecnico, Registro delle variazioni. Serve a sapere se un cambiamento chiesto è una modifica (documento non ancora confermato) o una variazione (dopo la conferma del Manuale).
+4. **A che punto è il lavoro**, e la versione corrente dei documenti: Proposta di soluzione, Manuale del prodotto, Documento tecnico, History and decision. Serve a sapere se un cambiamento chiesto è una modifica (documento non ancora confermato) o una variazione (dopo la conferma del Manuale).
 5. **I documenti collegati.** Stato di partenza, domande aperte con i loro codici (D1, D2), materiali attesi dal cliente.
 
 Leggi la trascrizione per intero prima di estrarre qualcosa.
@@ -74,17 +74,17 @@ Se il riepilogo riporta una conferma di documento, nomina il documento e la vers
 
 ## Formato
 
-Markdown, `sintesi-conversazione-<cliente>-<lavoro>-<AAAA-MM-GG>.md`. L'audio e la trascrizione originale si conservano a parte, non modificati, nella cartella della fase del lavoro nella knowledge base, con la sintesi. Il riepilogo per il cliente si restituisce come testo da incollare in un'email.
+Markdown, `<AAAA-MM-GG>-sintesi.md`. L'audio e la trascrizione originale si conservano a parte, non modificati, nella cartella `source` del lavoro, con la sintesi. Il riepilogo per il cliente si restituisce come testo da incollare in un'email; una volta inviato si salva in `source`, con la data nel nome.
 
 ## Dove si salva
 
-Audio, trascrizione e sintesi nella cartella della fase in cui la conversazione è avvenuta, per esempio `01-kickoff/01-valutazione`.
+Audio, trascrizione e sintesi nella cartella `source` del lavoro, con il nome che inizia con la data della conversazione (AAAA-MM-GG). Audio, trascrizione e sintesi della stessa conversazione hanno lo stesso nome, con estensione e suffisso diversi.
 
 ## Regole di scrittura
 
 - Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
 - Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
-- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere (unica eccezione: le tabelle del Piano dei SAL). Grassetti ed elenchi puntati sono ammessi.
 - Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 ## Controllo finale

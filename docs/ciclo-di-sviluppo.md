@@ -2,9 +2,9 @@
 
 Data: 2026-10-06
 
-Questo documento descrive la parte di sviluppo di una lavorazione: sprint, milestone, issue, capacità, buffer, prova del cliente e imprevisti. Si rilegge durante lo sviluppo. Vale per i ticket, i progetti e i prodotti, con le differenze segnate per categoria. Le parti che valgono per una sola categoria sono segnate con il suo nome.
+Questo documento descrive la parte di sviluppo di una lavorazione: sprint, milestone, issue, capacità, buffer, prova del cliente e imprevisti. Si rilegge durante lo sviluppo. Vale per le lavorazioni minori, i progetti e i prodotti, con le differenze segnate per categoria. Le parti che valgono per una sola categoria sono segnate con il suo nome.
 
-Le regole comuni a ogni lavoro (glossario, categorie, contatti, documenti, date, variazioni, garanzia) sono nelle Regole comuni. Le fasi prima e dopo lo sviluppo sono nei piani di ogni categoria: Piano dei ticket, Piano di progetto, Piano di prodotto.
+Le regole comuni a ogni lavoro (glossario, categorie, contatti, documenti, date, variazioni, garanzia) sono nelle Regole comuni. Le fasi prima e dopo lo sviluppo sono nei piani di ogni categoria: Piano delle lavorazioni minori, Piano di progetto, Piano di prodotto.
 
 Un diagramma di flusso dettagliato è in `presentation/schemi/diagramma-ciclo-di-sviluppo.html`.
 
@@ -21,7 +21,7 @@ Il ciclo dei punti 2, 3 e 4 si ripete a ogni sprint, sempre nell'ordine nota e p
 
 ## Le parti del lavoro
 
-**Issue.** È l'unità di lavoro. Vive solo in ClickUp: non è descritta nei documenti. Ha un codice fisso (I1, I2), un titolo, un tipo, una descrizione, le dipendenze, una stima in ore, una DoD e uno stato. Una issue stimata oltre le 16 ore si divide. Un ticket è un task in ClickUp, e un ticket lungo è semplicemente lungo: al massimo si divide in sottotask.
+**Issue.** È l'unità di lavoro. Vive solo in ClickUp: non è descritta nei documenti. Ha un codice fisso (I1, I2), un titolo, un tipo, una descrizione, le dipendenze, una stima in ore, una DoD e uno stato. Una issue stimata oltre le 16 ore si divide. Una lavorazione minore è un task in ClickUp, e una lavorazione minore lunga è semplicemente lunga: al massimo si divide in sottotask.
 
 I tipi di issue:
 
@@ -29,7 +29,7 @@ I tipi di issue:
 - **Supporto.** Sblocca altre issue: ambienti, infrastruttura, struttura dei dati. Cita le issue che sblocca.
 - **Spike.** Tempo limitato per sciogliere un'incognita prima di stimare. Cita la domanda a cui risponde.
 - **Bug.** Correzione di un comportamento diverso dal Manuale. Cita la story violata.
-- **Variazione.** Lavoro nato da una variazione approvata. Cita la voce del Registro delle variazioni.
+- **Variazione.** Lavoro nato da una variazione approvata. Cita la voce di History and decision.
 
 Gli stati di una issue in ClickUp sono sei. Una issue ha un solo stato alla volta:
 
@@ -43,7 +43,7 @@ Gli stati di una issue in ClickUp sono sei. Una issue ha un solo stato alla volt
 I passaggi:
 
 - **BACKLOG a PLANNED.** Quando l'issue è scelta nella pianificazione dello sprint e si aggiunge alla List dello sprint. A metà sprint il responsabile può anticipare issue con la parte avanzata del buffer di sprint non usato.
-- **PLANNED a IN PROGRESS.** Chi sviluppa inizia a lavorarci. Solo se l'issue è nello sprint corrente e le issue da cui dipende sono COMPLETED. Un'issue fuori dallo sprint non si inizia, tranne un ticket urgente.
+- **PLANNED a IN PROGRESS.** Chi sviluppa inizia a lavorarci. Solo se l'issue è nello sprint corrente e le issue da cui dipende sono COMPLETED. Un'issue fuori dallo sprint non si inizia, tranne una lavorazione minore urgente.
 - **IN PROGRESS a TESTING.** Chi sviluppa ha concluso il lavoro, che è sullo staging. Parte la revisione del codice (skill `revisione-codice`).
 - **TESTING a IN PROGRESS.** La revisione ha commenti bloccanti.
 - **TESTING a COMPLETED.** La revisione è approvata e tutta la DoD è spuntata. I commenti "da correggere" che escono dalla issue diventano nuove issue in BACKLOG.
@@ -60,7 +60,7 @@ I passaggi:
 - il lavoro è sullo staging;
 - lo stato in ClickUp è aggiornato;
 - le ore reali sono tracciate sull'issue con il tracciamento del tempo di ClickUp;
-- se l'issue cambia il modo di pubblicare (regole del server, cache, riavvii, variabili), la modifica è annotata per la Guida alla pubblicazione con un commento e l'etichetta `guida`;
+- se l'issue cambia il modo di pubblicare (regole del server, cache, riavvii, variabili), la modifica è annotata per il capitolo Pubblicazione con un commento e l'etichetta `pubblicazione`;
 - per l'ultima issue di una story, il criterio di accettazione della story è verificato.
 
 **Milestone.** Solo progetti e prodotti. Un blocco di lavoro che consegna story intere e si può dimostrare. Verso il cliente si chiama SAL. La durata di ogni milestone e la data della sua prova sono già decise nel Documento tecnico e nel Piano dei SAL. La durata minima è di uno sprint, due settimane.
@@ -70,7 +70,7 @@ I passaggi:
 - Le dipendenze decidono l'ordine: nessuna issue precede quelle da cui dipende. I materiali del cliente sono dipendenze.
 - In un prodotto la prima milestone è quella delle fondamenta: infrastruttura, ambienti, parti mai affrontate.
 
-Le milestone di un progetto o di un prodotto stanno nel capitolo Milestone del Documento tecnico (obiettivo, story, ore, buffer, data della prova) e sono caricate anche in ClickUp. Le issue stanno solo in ClickUp. Un ticket non ha milestone.
+Le milestone di un progetto o di un prodotto stanno nel capitolo Piano delle milestone del Documento tecnico (obiettivo, story, lavorazioni, cosa verifica il cliente, ore, buffer, data della prova) e sono caricate anche in ClickUp. Le issue stanno solo in ClickUp. Una lavorazione minore non ha milestone.
 
 **ClickUp.** Due Space. "Lavorazioni": un Folder per lavorazione (codice di osTicket nel nome), una List per milestone (data di scadenza uguale alla data della prova), le issue come task, scritte una volta sola, e una List "Materiali" con un task per ogni materiale del cliente e la data entro cui serve, e, dopo il rilascio, una List "Garanzia" con un task per ogni voce segnalata in garanzia. "Sprint": la cartella degli sprint, una List per sprint. Le issue scelte per uno sprint si aggiungono alla List dello sprint come collegamento: stesso task, nessuna copia. Un Folder "Ticket" tiene i ticket, un task per ticket con gli stessi stati. La capacità si legge dalla vista Workload, con le ore come punti.
 
@@ -78,7 +78,7 @@ Le milestone di un progetto o di un prodotto stanno nel capitolo Milestone del D
 
 **Capacità.** Le ore realmente disponibili di una persona in uno sprint, tolte ferie, festività e chiusure.
 
-**Buffer di sprint.** La parte di capacità riservata ai ticket urgenti: il 20% della capacità di ogni persona in ogni sprint.
+**Buffer di sprint.** La parte di capacità riservata ai lavorazioni minori urgenti: il 20% della capacità di ogni persona in ogni sprint.
 
 **Buffer di milestone.** Solo progetti e prodotti. Le ore aggiunte a ogni milestone: il 20% delle ore stimate, il 30% quando sviluppa una sola persona perché un'assenza ferma il lavoro.
 
@@ -90,7 +90,7 @@ Per ogni passo sono indicati chi lo esegue, la skill da usare, i documenti che p
 
 Prima di iniziare si verifica che sia pronto ciò che serve.
 
-- **Ticket.** La Scheda di intervento è completa, con DoD e stima, e c'è un responsabile.
+- **Lavorazione minore.** La Scheda di intervento è completa, con DoD e stima, e c'è un responsabile.
 - **Progetto.** Il Documento tecnico è completo, ogni story del Manuale è coperta da issue stimate, ogni milestone ha il suo buffer e la sua data, e il Piano dei SAL è stato inviato al cliente.
 - **Prodotto.** Come per il progetto, con la prima milestone dedicata alle fondamenta.
 
@@ -103,7 +103,7 @@ Si chiude quando: tutto ciò che serve è pronto. Se manca qualcosa, non si iniz
 
 Si sviluppano le issue dello sprint. Lo stato delle issue (BACKLOG, PLANNED, IN PROGRESS, TESTING, COMPLETED, CANCELLED) vive in ClickUp.
 
-- Una daily, breve e regolare, per i progetti e i prodotti. I ticket non l'hanno. Un blocco si segnala il giorno stesso.
+- Una daily, breve e regolare, per i progetti e i prodotti. Le lavorazioni minori non l'hanno. Un blocco si segnala il giorno stesso.
 - Ogni issue si chiude solo quando soddisfa la sua DoD, revisione del codice compresa (skill `revisione-codice`).
 - Una issue che scopre un'incognita non risolvibile in tempo breve genera una issue di tipo spike a tempo limitato, poi una nuova stima.
 - Una issue che si rivela molto più grande della stima si ferma e si avvisa il responsabile: la stima si rifà, e una issue oltre le 16 ore si divide.
@@ -111,11 +111,11 @@ Si sviluppano le issue dello sprint. Lo stato delle issue (BACKLOG, PLANNED, IN 
 
 Differenze per categoria:
 
-- **Ticket.** Se si toccano parti diverse da quelle previste, si corregge la voce "Su cosa intervenire" della Scheda di intervento. Se il lavoro supera la stima, il responsabile avvisa chi ha analizzato, che aggiorna la stima. Se supera le 2 settimane si ferma e si riclassifica come progetto.
+- **Lavorazione minore.** Se si toccano parti diverse da quelle previste, si corregge la voce "Su cosa intervenire" della Scheda di intervento. Se il lavoro supera la stima, il responsabile avvisa chi ha analizzato, che aggiorna la stima. Se supera le 2 settimane si ferma e si riclassifica come progetto.
 - **Progetto e prodotto.** Le story si realizzano nell'ordine delle dipendenze della milestone in corso. Le issue di una stessa story possono stare in sprint diversi della stessa milestone.
 
 Chi: chi sviluppa.
-Skill: nessuna per lo sviluppo. `revisione-codice` per la revisione di ogni issue. `variazione` per un cambiamento chiesto dal cliente. `riprogrammazione` per un imprevisto di tempo. `interpretazione-conversazioni` per ogni conversazione con il cliente.
+Skill: nessuna per lo sviluppo. `revisione-codice` per la revisione di ogni issue. `history-and-decision` per un cambiamento chiesto dal cliente (variazione) o per un imprevisto di tempo (riprogrammazione). `interpretazione-conversazioni` per ogni conversazione con il cliente.
 Produce: issue COMPLETED, con le DoD soddisfatte, e lo stato aggiornato in ClickUp.
 Si chiude quando: a fine sprint, vedi il passo 3.
 
@@ -125,13 +125,13 @@ Si chiude lo sprint di venerdì con la Nota di sprint. La nota viene prima della
 
 1. **Esito delle issue.** COMPLETED e non COMPLETED, lette da ClickUp. Le issue non completate passano allo sprint successivo, con la priorità: lo sprint non si allunga.
 2. **Ore completate.** La somma delle stime delle issue diventate COMPLETED dentro le date dello sprint. È il dato che guida la pianificazione successiva.
-3. **Imprevisti.** Assenze, ticket urgenti, blocchi, materiali in ritardo: cosa è successo e quante ore è costato.
+3. **Imprevisti.** Assenze, lavorazioni minori urgenti, blocchi, materiali in ritardo: cosa è successo e quante ore è costato.
 4. **Controllo della milestone.** Solo progetti e prodotti. Si calcola il margine (capacità rimanente fino alla data del Piano dei SAL meno ore rimanenti, vedi la sezione Capacità e buffer). La milestone è in linea se il margine è almeno metà del buffer di milestone iniziale, a rischio se è tra zero e metà, in ritardo se è sotto zero.
 5. **Segnalazioni.** Se la milestone è a rischio o in ritardo serve una riprogrammazione.
 6. **Cosa serve dal cliente.** Materiali in scadenza e risposte attese, con le date.
 
 Chi: il responsabile.
-Skill: `sprint`, per la nota. `riprogrammazione` se la milestone è a rischio o in ritardo.
+Skill: `sprint`, per la nota. `history-and-decision` se la milestone è a rischio o in ritardo.
 Produce: la Nota di sprint, interna e per lavorazione: fatto, non fatto, ore, imprevisti, margine della milestone con i numeri, cosa serve dal cliente, una riga sul prossimo sprint. Non va al cliente.
 Si chiude quando: ore, esiti e stato della milestone sono registrati.
 
@@ -140,10 +140,10 @@ Si chiude quando: ore, esiti e stato della milestone sono registrati.
 Gli sprint sono dinamici: si pianificano a fine sprint, per il successivo. Milestone, issue e date sono già definite nel Documento tecnico e nel Piano dei SAL. La pianificazione dipende dalla Nota di sprint: si fa il venerdì sera se la nota è pronta, altrimenti il lunedì mattina, e si comunica appena possibile. Chi pianifica garantisce che le tempistiche del Piano dei SAL siano rispettate.
 
 1. Si parte dalle ore realmente disponibili di ogni persona per la lavorazione nel prossimo sprint. Vanno chieste durante lo sprint in corso, per poter chiudere il piano il venerdì: non si riusano quelle teoriche. Una persona che lavora a più lavorazioni divide la sua capacità tra i piani, e il supervisore controlla che la somma non la superi.
-2. Si toglie il buffer di sprint, riservato ai ticket urgenti: il 20% della capacità di ogni persona. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED con la parte avanzata.
+2. Si toglie il buffer di sprint, riservato ai lavorazioni minori urgenti: il 20% della capacità di ogni persona. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED con la parte avanzata.
 3. Si usano le stime delle issue non completate già rivalutate nella Nota di sprint: la capacità non si corregge sulla storia.
 4. Il resto si pianifica per intero, e non sotto la capacità. Si scelgono le issue in quest'ordine: prima quelle tornate dallo sprint precedente, poi quelle che sbloccano altro lavoro (supporto e spike), poi le altre secondo le dipendenze. Non si scelgono issue che attendono un materiale del cliente non ancora arrivato.
-5. I ticket non hanno documenti di sprint: si pianificano in ClickUp. Un ticket normale usa prima la capacità delle persone sempre disponibili per i ticket e, se serve, un prestito di ore da un progetto, deciso da chi gestisce il team prima di questo piano: le ore prestate riducono la capacità del progetto e il suo margine. Un ticket a tempo perso entra solo con la capacità che avanza e non usa mai un prestito.
+5. Le lavorazioni minori non hanno documenti di sprint: si pianificano in ClickUp. Una lavorazione minore normale usa prima la capacità delle persone sempre disponibili per le lavorazioni minori e, se serve, un prestito di ore da un progetto, deciso da chi gestisce il team prima di questo piano: le ore prestate riducono la capacità del progetto e il suo margine. Una lavorazione minore a tempo perso entra solo con la capacità che avanza e non usa mai un prestito.
 6. Con le issue scelte la milestone deve restare nella data del Piano dei SAL. Se non ci sta, lo si segnala prima di consegnare il piano.
 7. Il responsabile conferma la scelta con chi sviluppa. Il supervisore controlla che le stime siano plausibili e che la capacità sia rispettata.
 8. Le issue scelte passano allo sprint in ClickUp.
@@ -152,7 +152,7 @@ Il primo sprint di una lavorazione non ha una nota precedente: si pianifica a fi
 
 Differenze per categoria:
 
-- **Ticket.** Entra nello sprint come una issue assegnata al responsabile. Un ticket urgente non aspetta la pianificazione: parte subito, con le ore dal buffer di sprint.
+- **Lavorazione minore.** Entra nello sprint come una issue assegnata al responsabile. Una lavorazione minore urgente non aspetta la pianificazione: parte subito, con le ore dal buffer di sprint.
 - **Progetto e prodotto.** Le issue si pescano dalla milestone in corso.
 
 Chi: il responsabile, con chi sviluppa. Il supervisore controlla.
@@ -165,22 +165,23 @@ Si chiude quando: ogni persona ha le sue issue, la somma delle ore non supera la
 Solo progetti e prodotti. Quando le story di una milestone sono finite:
 
 1. Il team verifica sullo staging ogni story della milestone sul suo criterio di accettazione, con le issue COMPLETED in ClickUp. Una story che non lo soddisfa non si manda al cliente sperando che vada bene.
-2. Il responsabile prepara il Milestone report e il messaggio per la prova.
-3. Il cliente prova le story sullo staging, guidato dal Milestone report. Si verifica ciò che è scritto nel Manuale. Una demo in call è facoltativa. Una richiesta nuova non è un difetto e non si accetta: si annota e dopo si tratta come variazione. Una contestazione si decide sul criterio di accettazione.
+2. Il responsabile fissa la sessione dal vivo con il cliente (in call o di persona) e invia un messaggio con data, ora, modalità, story da provare e criteri di accettazione.
+3. Nella sessione (user acceptance test, UAT) il team presenta il lavoro sullo staging e il cliente prova le story, una per una, davanti al team. Si verifica ciò che è scritto nel Manuale. Una richiesta nuova non è un difetto e non si accetta: si annota e dopo si tratta come variazione. Una contestazione si decide sul criterio di accettazione.
 4. Esito per ogni story: accettata, accettata con difetto non bloccante (con una data di correzione), non accettata per difetto bloccante. Un difetto bloccante si corregge prima dell'accettazione.
-5. Il cliente accetta in modo esplicito. Il silenzio non vale come accettazione di una prova, e non c'è un termine che la accetta da sola. Se conferma a voce, vale dopo il riepilogo scritto.
-6. La milestone passa ad accettata e il suo stato (da avviare, in corso, consegnata, accettata) si aggiorna nel capitolo Milestone del Documento tecnico. Per i difetti si aprono issue di tipo bug in ClickUp, con la story violata.
+5. Il cliente accetta in modo esplicito, a fine sessione. Il silenzio non vale come accettazione di una prova, e non c'è un termine che la accetta da sola. Se conferma a voce, vale dopo il riepilogo scritto.
+6. La milestone risulta accettata dall'esito, che non si scrive nel Documento tecnico né nel Piano dei SAL (sono piani). Per i difetti si aprono issue di tipo bug in ClickUp, con la story violata. L'esito è una voce di `history-and-decision.md`.
+7. Il responsabile scrive il Milestone report, interno, con come è andato lo sviluppo della milestone.
 
 Chi: il responsabile.
-Skill: `prova-su-staging` per il messaggio al cliente e l'esito, `milestone-report` per il documento al cliente.
-Produce: il Milestone report per il cliente, con le story consegnate, come provare sullo staging, l'esito, lo stato della milestone successiva, le date aggiornate e ciò che serve dal cliente.
+Skill: `prova-su-staging` per il messaggio al cliente e l'esito, `milestone-report` per il report interno.
+Produce: il messaggio per la prova (in `source`), l'esito (voce di `history-and-decision.md`) e il Milestone report interno in `develop`, con le story consegnate, ore previste e reali, margine, variazioni e imprevisti.
 Si chiude quando: il cliente ha accettato la milestone.
 
 ### 6. Uscita dallo sviluppo
 
 Il lavoro passa alla fase successiva del suo piano.
 
-- **Ticket.** Passa al rilascio, che coincide con la chiusura, con una risposta al cliente nel ticket. L'aggiornamento dei documenti segue dopo la chiusura (Piano dei ticket, fase 3).
+- **Lavorazione minore.** Passa al rilascio, che coincide con la chiusura, con una risposta al cliente nel ticket.
 - **Progetto.** Quando tutte le milestone sono accettate si passa al collaudo finale e al rilascio (Piano di progetto, fase 3, rilascio).
 - **Prodotto.** Quando tutte le milestone della release sono accettate si passa al collaudo finale, al piano di lancio e al rilascio (Piano di prodotto).
 
@@ -192,7 +193,7 @@ Si chiude quando: tutte le issue del lavoro sono COMPLETED o CANCELLED e, per pr
 
 I buffer sono due, con scopi diversi.
 
-- **Buffer di sprint.** Il 20% della capacità di ogni persona in ogni sprint, riservato ai ticket urgenti. Si usa solo per i ticket urgenti entrati nello sprint. Non si usa per le issue dei progetti. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED, ma solo con la parte avanzata: è l'unica eccezione alla regola che le issue entrano nello sprint con la pianificazione dello sprint.
+- **Buffer di sprint.** Il 20% della capacità di ogni persona in ogni sprint, riservato ai lavorazioni minori urgenti. Si usa solo per i lavorazioni minori urgenti entrati nello sprint. Non si usa per le issue dei progetti. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED, ma solo con la parte avanzata: è l'unica eccezione alla regola che le issue entrano nello sprint con la pianificazione dello sprint.
 - **Buffer di milestone.** Le ore aggiunte a ogni milestone: il 20% delle ore stimate, il 30% con una sola persona. Si usa per le stime sbagliate, le assenze brevi, le urgenze oltre il buffer di sprint e le variazioni piccole. Le variazioni piccole possono consumarne al massimo la metà: oltre il tetto, ogni nuova variazione è trattata come media.
 
 Lo sprint non si pianifica sotto la capacità. Il buffer di milestone è l'unico cuscinetto oltre al buffer di sprint.
@@ -211,21 +212,21 @@ Stati della milestone:
 
 Ordine d'uso quando arriva un imprevisto di tempo:
 
-1. Un ticket urgente usa prima il buffer di sprint.
+1. Una lavorazione minore urgente usa prima il buffer di sprint.
 2. Oltre il buffer di sprint, escono dallo sprint le issue meno prioritarie e le ore pesano sul buffer di milestone, cioè riducono il margine.
-3. Se la milestone è a rischio si usa la skill `riprogrammazione`. Se nessuna data già comunicata cambia, il cliente non si avvisa e decide il responsabile come gestire la situazione.
+3. Se la milestone è a rischio si usa la skill `history-and-decision`. Se nessuna data già comunicata cambia, il cliente non si avvisa e decide il responsabile come gestire la situazione.
 4. Se la milestone è in ritardo, le leve sono tre: spostare una story a una milestone successiva, spostare la data, aggiungere ore. Le prime due si decidono con il cliente. Aggiungere ore lo decide chi gestisce il team, con il CEO se serve.
 5. Se una data già comunicata al cliente cambia, il cliente è avvisato subito, con la proposta.
 
-Se gli urgenti superano il buffer di sprint per due sprint consecutivi, il buffer di sprint si alza oppure una persona a rotazione viene dedicata ai ticket.
+Se gli urgenti superano il buffer di sprint per due sprint consecutivi, il buffer di sprint si alza oppure una persona a rotazione viene dedicata alle lavorazioni minori.
 
-## Ticket urgenti durante lo sviluppo di un progetto
+## Lavorazioni minori urgenti durante lo sviluppo di un progetto
 
-Solo un ticket urgente può togliere persone a un progetto senza preavviso: un ticket normale può solo chiedere ore in prestito, concordate prima della pianificazione dello sprint del progetto. Il ticket urgente segue il percorso d'urgenza del Piano dei ticket: si sceglie la persona che conosce meglio la parte coinvolta, anche se sta lavorando al progetto. La persona mette in pausa la issue in corso: lascia salvato il lavoro, scrive in un commento lo stato in cui si trova e riporta l'issue a PLANNED, perché IN PROGRESS vuol dire che qualcuno ci lavora effettivamente. La issue riparte appena l'urgenza finisce.
+Solo una lavorazione minore urgente può togliere persone a un progetto senza preavviso: una lavorazione minore normale può solo chiedere ore in prestito, concordate prima della pianificazione dello sprint del progetto. La lavorazione minore urgente segue il percorso d'urgenza del Piano delle lavorazioni minori: si sceglie la persona che conosce meglio la parte coinvolta, anche se sta lavorando al progetto. La persona mette in pausa la issue in corso: lascia salvato il lavoro, scrive in un commento lo stato in cui si trova e riporta l'issue a PLANNED, perché IN PROGRESS vuol dire che qualcuno ci lavora effettivamente. La issue riparte appena l'urgenza finisce.
 
-- Le ore vanno sul ticket, non sul progetto, così le stime di progetto restano leggibili.
+- Le ore vanno sulla lavorazione minore, non sul progetto, così le stime di progetto restano leggibili.
 - Le ore pesano prima sul buffer di sprint e, oltre, sul buffer di milestone.
-- Al cliente del progetto si comunica solo l'effetto, se una data già comunicata cambia: un ticket urgente di un altro cliente non si racconta.
+- Al cliente del progetto si comunica solo l'effetto, se una data già comunicata cambia: una lavorazione minore urgente di un altro cliente non si racconta.
 
 ## Il cliente non risponde
 
@@ -237,20 +238,20 @@ Il progetto e il prodotto non sono mai fermi. Quando manca una risposta o un mat
 4. Le parti che dipendono dalla risposta slittano degli stessi giorni, e le nuove date si comunicano subito al cliente.
 5. Se non c'è nulla di fattibile, la capacità liberata va ad altri lavori e il lavoro riprende appena la risposta arriva.
 
-Non c'è un termine dopo il quale il lavoro si chiude: il cliente sa già che una risposta tardiva ritarda il lavoro. Un ticket resta sospeso informalmente, senza termini.
+Non c'è un termine dopo il quale il lavoro si chiude: il cliente sa già che una risposta tardiva ritarda il lavoro. Una lavorazione minore resta sospesa informalmente, senza termini.
 
 ## Variazioni durante lo sviluppo
 
 Le regole per riconoscere e categorizzare una variazione sono nelle Regole comuni (sezione Variazioni) e, per la differenza tra modifica e variazione, nel Piano di progetto.
 
-Dopo la conferma del Manuale del prodotto ogni cambiamento chiesto dal cliente è una variazione. Il processo, con la skill `variazione`:
+Dopo la conferma del Manuale del prodotto ogni cambiamento chiesto dal cliente è una variazione. Il processo, con la skill `history-and-decision`:
 
 1. La richiesta arriva solo dal responsabile e per iscritto. Una richiesta a voce vale dopo il riepilogo scritto.
-2. Si registra nel Registro delle variazioni e riceve una categoria con le tre domande delle Regole comuni, in ordine.
+2. Si registra in History and decision, con un codice (V1, V2), e riceve una categoria con le tre domande delle Regole comuni, in ordine.
 3. Piccola: conferma scritta del cliente, assorbita dal buffer di milestone entro il tetto. Media: si stima l'impatto su ore e date e il cliente lo approva per iscritto prima che si lavori. Grande: torna la Proposta, con una proposta integrativa.
 4. Non entra mai nello sprint in corso: diventa una issue di tipo variazione in ClickUp, nel primo sprint utile.
 5. Le issue già iniziate e superate passano a CANCELLED e il lavoro svolto resta dovuto e visibile.
-6. Una variazione è chiusa solo quando i documenti sono aggiornati: Manuale, capitolo Milestone, Piano dei SAL se cambia una data.
+6. Una variazione è chiusa solo quando i documenti sono aggiornati: Manuale, capitolo Piano delle milestone, Piano dei SAL se cambia una data.
 
 ## Dimensione del team
 
@@ -260,7 +261,7 @@ Con più persone ogni issue è rivista da una seconda persona, e nessuna parte d
 
 ## Imprevisti durante lo sviluppo
 
-Ogni imprevisto ha una risposta già decisa. Valgono per lo sviluppo di progetti e prodotti. Per i ticket si applicano quelli del Piano dei ticket. Ogni imprevisto si ripercuote sul margine della milestone: dopo ognuno si rifà il controllo della milestone.
+Ogni imprevisto ha una risposta già decisa. Valgono per lo sviluppo di progetti e prodotti. Per le lavorazioni minori si applicano quelli del Piano delle lavorazioni minori. Ogni imprevisto si ripercuote sul margine della milestone: dopo ognuno si rifà il controllo della milestone.
 
 **Le persone**
 
@@ -270,14 +271,14 @@ Ogni imprevisto ha una risposta già decisa. Valgono per lo sviluppo di progetti
 - **Assenza lunga o uscita dal team.** Passaggio di consegne su issue e documenti, e nuova pianificazione della milestone. Chi gestisce il team decide chi subentra.
 - **Festività non considerata.** Si corregge il calendario, si ricalcola la capacità e si rifà il controllo della milestone.
 - **Nuova persona nel team.** Capacità ridotta nel suo primo sprint.
-- **Una persona è chiamata per una garanzia.** Un pacchetto di garanzia su un lavoro pubblicato usa la capacità dei ticket. Se serve chi conosce la parte, chi gestisce il team decide un prestito di ore e le ore pesano sul margine della milestone del progetto da cui la persona è presa (skill `pacchetto-di-garanzia`).
+- **Una persona è chiamata per una garanzia.** Un pacchetto di garanzia su un lavoro pubblicato usa la capacità delle lavorazioni minori. Se serve chi conosce la parte, chi gestisce il team decide un prestito di ore e le ore pesano sul margine della milestone del progetto da cui la persona è presa (skill `history-and-decision`).
 - **Urgenze oltre il buffer di sprint.** Vale la sezione sui buffer.
 
 In questi casi il cliente viene avvisato solo se cambia una data già comunicata.
 
 **I tempi**
 
-- **Sprint non completato.** Le issue non COMPLETED passano allo sprint successivo con la priorità, lo sprint non si allunga. Il cliente lo legge nello stato della milestone del Milestone report.
+- **Sprint non completato.** Le issue non COMPLETED passano allo sprint successivo con la priorità, lo sprint non si allunga. Se una data comunicata cambia, il cliente lo sa con un messaggio.
 - **Stime sbagliate.** A ogni chiusura di sprint chi sviluppa rivaluta le ore delle issue non COMPLETED: la rivalutazione alimenta il margine della milestone, che segnala il problema.
 - **Milestone a rischio o in ritardo.** Vale la sezione sui buffer.
 - **Blocco tecnico o di un servizio esterno.** Una issue di tipo spike a tempo limitato, poi una nuova stima.
@@ -293,22 +294,20 @@ In questi casi il cliente viene avvisato solo se cambia una data già comunicata
 
 Documenti:
 
-- **Documento tecnico**, capitolo Milestone (progetti e prodotti). Interno. La fonte delle milestone; le issue stanno in ClickUp.
-- **Scheda di intervento** (ticket). Interna. La fonte della issue del ticket.
+- **Documento tecnico**, capitolo Piano delle milestone (progetti e prodotti). Interno. La fonte delle milestone; le issue stanno in ClickUp.
+- **Scheda di intervento** (lavorazione minore). Interna, con il PDF. La fonte della issue della lavorazione minore e il documento unico della lavorazione minore.
 - **Nota di sprint.** Interna, una per lavorazione, a ogni fine sprint. Una pagina: chi la apre deve capire lo stato in un minuto. La pianificazione dello sprint successivo non è un documento: è la List in ClickUp.
 - **ClickUp.** Lo strumento dove vivono le issue e il loro stato.
-- **Registro delle variazioni.** Interno, uno per lavorazione, dalla conferma del Manuale.
-- **Milestone report.** Per il cliente, a ogni milestone (progetti e prodotti): story, criteri, come provare, esito.
-- **Piano dei SAL.** Per il cliente, inviato prima dello sviluppo e aggiornato se una data cambia.
+- **Milestone report.** Interno, letto da chi gestisce il progetto, a ogni milestone (progetti e prodotti): come è andato lo sviluppo, ore previste e reali, margine, story consegnate, esito della prova.
+- **Piano dei SAL.** Per il cliente, estratto dal capitolo Piano delle milestone, inviato prima dello sviluppo e rigenerato se una data cambia.
 
 Skill:
 
 - `sprint`: Nota di sprint a fine sprint, poi pianificazione del successivo in ClickUp.
-- `riprogrammazione`: quando una milestone è a rischio o in ritardo, o un imprevisto tocca le date.
-- `variazione`: per ogni cambiamento chiesto dopo la conferma del Manuale.
-- `prova-su-staging`: messaggio per la prova del cliente e verbale di accettazione.
+- `history-and-decision`: per ogni fatto che conta: una variazione chiesta dopo la conferma del Manuale, una riprogrammazione quando una milestone è a rischio o in ritardo o un imprevisto tocca le date, una segnalazione in garanzia.
+- `prova-su-staging`: messaggio per la prova del cliente e registrazione dell'esito in History and decision.
 - `revisione-codice`: la revisione di ogni issue prima di chiuderla.
-- `milestone-report`: il documento per il cliente a ogni milestone.
+- `milestone-report`: il report interno a ogni milestone.
 - `piano-delle-milestone`: se milestone o issue cambiano, per aggiornare il capitolo del Documento tecnico e rigenerare il Piano dei SAL.
 - `interpretazione-conversazioni`: per ogni conversazione con il cliente.
 

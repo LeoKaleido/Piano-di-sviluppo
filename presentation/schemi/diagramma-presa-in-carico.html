@@ -171,7 +171,7 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box who"><h3>Chi</h3><p>Chi analizza: la persona che legge la richiesta e decide come trattarla.</p></div>
       <div class="box steps"><h3>Cosa si fa</h3>
         <ol>
-          <li>Si assegna l'urgenza sui fatti: urgente, normale, a tempo perso. Per un ticket vale anche il percorso d'urgenza.</li>
+          <li>Si assegna l'urgenza sui fatti: urgente, normale, a tempo perso. Per una lavorazione minore vale anche il percorso d'urgenza.</li>
           <li>Se la richiesta contiene più lavori indipendenti, si divide: un codice per lavoro.</li>
           <li>Il cliente può essere informato per presa visione. Non si dichiara una data di consegna.</li>
         </ol>
@@ -184,12 +184,12 @@ dl.events dd { margin: 2px 0 0 0; }
 <section class="phase" id="verifica">
   <header><span class="num">Parte 2</span><h2>Verifica preliminare</h2><span class="what">Si decide se il lavoro va aperto</span></header>
   <div class="body">
-    <p class="intro">Due controlli, con un tempo massimo pari al 10% di una stima a occhio. Un ticket urgente non li aspetta: si fanno in parallelo o dopo. Per un prodotto, che non ha ancora un codice, si fa solo il confronto con i lavori aperti.</p>
+    <p class="intro">Due controlli, con un tempo massimo pari al 10% di una stima a occhio. Una lavorazione minore urgente non li aspetta: si fanno in parallelo o dopo. Per un prodotto, che non ha ancora un codice, si fa solo il confronto con i lavori aperti.</p>
     <div class="grid">
-      <div class="box skill"><h3>Skill</h3><p><code>kickoff</code> per progetti e prodotti, <code>kickoff-ticket</code> per i ticket: i due controlli e le decisioni.</p></div>
+      <div class="box skill"><h3>Skill</h3><p><code>kickoff</code> per progetti e prodotti, <code>kickoff-minore</code> per le lavorazioni minori: i due controlli e le decisioni.</p></div>
       <div class="box steps"><h3>Cosa si fa</h3>
         <ol>
-          <li><b>Confronto con i lavori aperti</b>: progetti, ticket aperti, variazioni registrate, consegne in garanzia.</li>
+          <li><b>Confronto con i lavori aperti</b>: progetti, lavorazioni minori aperte, variazioni registrate, consegne in garanzia.</li>
           <li><b>Controllo del codice</b>, in sola lettura.</li>
           <li>Si elencano i lavori e i documenti toccati, citando ogni lavoro per codice della lavorazione: serviranno all'allineamento dei documenti.</li>
         </ol>
@@ -217,10 +217,10 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="branches">
         <div class="branch"><span class="label">No</span>Il sistema non esiste ancora.<span class="goes">Prodotto. Responsabile: il product lead.</span></div>
         <div class="branch"><span class="label">Sì, e vale almeno una condizione</span>La stima supera le 2 settimane, serve più di una persona, serve una proposta, cambia l'aspetto grafico.<span class="goes">Progetto. Responsabile: il project manager.</span></div>
-        <div class="branch"><span class="label">Sì, e non ne vale nessuna</span>Intervento circoscritto.<span class="goes">Ticket. Responsabile: lo sviluppatore che lo esegue.</span></div>
+        <div class="branch"><span class="label">Sì, e non ne vale nessuna</span>Intervento circoscritto.<span class="goes">Lavorazione minore. Responsabile: lo sviluppatore che lo esegue.</span></div>
       </div>
     </div>
-    <p class="note" style="margin-top:10px">Il responsabile è sempre uno sviluppatore: cambiano nome e responsabilità. Un ticket che cresce fino a soddisfare una condizione si ferma e diventa progetto.</p>
+    <p class="note" style="margin-top:10px">Il responsabile è sempre uno sviluppatore: cambiano nome e responsabilità. Una lavorazione minore che cresce fino a soddisfare una condizione si ferma e diventa progetto.</p>
   </div>
 </section>
 <div class="arrow"><div class="stem"></div><div class="head"></div></div>
@@ -230,15 +230,15 @@ dl.events dd { margin: 2px 0 0 0; }
   <div class="body">
     <div class="grid">
       <div class="box steps"><h3>Ticket</h3>
-        <p>Tre fasi. Analisi (verifica preliminare e Scheda di intervento), sviluppo (pianificazione ed esecuzione, con revisione del codice sempre), rilascio (pubblicazione con chiusura e risposta nel ticket, aggiornamento dei documenti dopo la chiusura). Nessuna conferma né prova del cliente.</p>
-        <p class="note"><code>docs/piano-dei-ticket.md</code>, <code>presentation/schemi/diagramma-piano-dei-ticket.html</code></p>
+        <p>Tre fasi. Analisi (verifica preliminare e Scheda di intervento), sviluppo (pianificazione ed esecuzione, con revisione del codice sempre), rilascio (pubblicazione con chiusura e risposta nel ticket). Il documento unico della lavorazione minore è la Scheda di intervento, con il PDF. Nessuna conferma né prova del cliente.</p>
+        <p class="note"><code>docs/piano-delle-lavorazioni-minori.md</code>, <code>presentation/schemi/diagramma-piano-delle-lavorazioni-minori.html</code></p>
       </div>
       <div class="box steps"><h3>Progetto</h3>
-        <p>Tre fasi. Kickoff, in quattro sottofasi (valutazione, stima, proposta con la stima, documentazione con Manuale, Documento tecnico e Piano dei SAL), sviluppo con una prova del cliente sullo staging a ogni milestone, rilascio con collaudo, pubblicazione e chiusura.</p>
+        <p>Tre fasi. Kickoff, in quattro sottofasi (valutazione, stima, proposta con la stima, documentazione con Manuale, Documento tecnico e Piano dei SAL), sviluppo con una prova dal vivo del cliente sullo staging (UAT) a ogni milestone, rilascio con collaudo, pubblicazione e chiusura.</p>
         <p class="note"><code>docs/piano-di-progetto.md</code>, <code>presentation/schemi/diagramma-piano-di-progetto.html</code></p>
       </div>
       <div class="box steps"><h3>Prodotto</h3>
-        <p>Tre fasi. Kickoff, in cinque sottofasi (valutazione con analisi del contesto, stima, proposta con le release, prototipo e design, documentazione), sviluppo con la prima milestone dedicata alle fondamenta, rilascio con il lancio (collaudo, preparazione con Piano di lancio, pubblicazione graduale, chiusura).</p>
+        <p>Tre fasi. Kickoff, in cinque sottofasi (valutazione con analisi del contesto, stima, proposta con le release e la stima economica di ogni release (il prodotto lavora a budget, non a consumo), prototipo e design, documentazione), sviluppo con la prima milestone dedicata alle fondamenta, rilascio con il lancio (collaudo, preparazione con Piano di lancio, pubblicazione graduale, chiusura).</p>
         <p class="note"><code>docs/piano-di-prodotto.md</code></p>
       </div>
       <div class="box skill"><h3>Sviluppo, comune a tutti</h3>
@@ -260,10 +260,10 @@ dl.events dd { margin: 2px 0 0 0; }
           <li>Lo sprint finisce di venerdì. I documenti di aiuto al rilascio si leggono il lunedì.</li>
           <li>In condizioni normali si rilascia anche a metà sprint.</li>
           <li>Un'urgenza si pubblica appena pronta, anche di venerdì sera fino alle 18.</li>
-          <li>L'incaricato segue la Guida alla pubblicazione del sistema.</li>
+          <li>L'incaricato segue il capitolo Pubblicazione del sistema.</li>
         </ul>
       </div>
-      <div class="box close wide"><h3>Si chiude quando</h3><p>Il lavoro è in produzione. Per un ticket coincide con la chiusura e il cliente lo vede chiuso. Per un progetto o un prodotto il cliente ha accettato in modo esplicito prima.</p></div>
+      <div class="box close wide"><h3>Si chiude quando</h3><p>Il lavoro è in produzione. Per una lavorazione minore coincide con la chiusura e il cliente lo vede chiuso. Per un progetto o un prodotto il cliente ha accettato in modo esplicito prima.</p></div>
     </div>
   </div>
 </section>
@@ -275,21 +275,21 @@ dl.events dd { margin: 2px 0 0 0; }
     <div class="grid">
       <div class="box steps"><h3>Aggiornamento dei documenti</h3>
         <ul>
-          <li>Skill <code>allineamento-documenti</code>, con <code>manuale-del-prodotto</code>, <code>documento-tecnico</code> e <code>guida-alla-pubblicazione</code> per i tre documenti del sistema. Un progetto chiude anche con il Report di progetto (<code>report-di-progetto</code>).</li>
+          <li>Skill <code>allineamento-documenti</code>, con <code>manuale-del-prodotto</code> e <code>documento-tecnico</code> per i documenti del sistema. Un progetto chiude anche con il Report di progetto (<code>report-di-progetto</code>).</li>
           <li>Parte dai codici delle lavorazioni citati nella scheda o nella verifica preliminare.</li>
-          <li>Per un ticket, urgente o no, si fa dopo la chiusura. Per un progetto o un prodotto il lavoro si chiude dopo l'aggiornamento.</li>
+          <li>Solo progetti e prodotti: il lavoro si chiude dopo l'aggiornamento. Una lavorazione minore non aggiorna i documenti del sistema: corregge la sua Scheda, e il primo progetto sulla stessa parte la recepisce.</li>
         </ul>
       </div>
       <div class="box doc"><h3>Garanzia</h3>
         <ul>
-          <li>Dal rilascio, il maggiore tra 15 giorni e il 50% della durata pianificata. Per un ticket sempre 15 giorni lavorativi.</li>
-          <li>Copre i bug e le richieste piccole (variazioni piccole e richieste estetiche). Le voci segnalate insieme sono un pacchetto di garanzia, che si tratta con <code>pacchetto-di-garanzia</code> come imprevisto di capacità.</li>
+          <li>Dal rilascio, il maggiore tra 15 giorni e il 50% della durata pianificata. Per una lavorazione minore sempre 15 giorni lavorativi.</li>
+          <li>Copre i bug e le richieste piccole (variazioni piccole e richieste estetiche). Le voci segnalate insieme sono un pacchetto di garanzia, che si tratta con <code>history-and-decision</code> come imprevisto di capacità.</li>
         </ul>
       </div>
       <div class="box event wide"><h3>Cosa può succedere</h3>
         <dl class="events">
           <dt>Un bug dopo il rilascio</dt><dd>Entro la garanzia è un pacchetto di garanzia. Oltre, è un ticket nuovo.</dd>
-          <dt>Una richiesta nuova presentata come bug</dt><dd>Decide il Manuale del prodotto: se il comportamento lo rispetta, è una variazione o un ticket nuovo.</dd>
+          <dt>Una richiesta nuova presentata come bug</dt><dd>Decide il Manuale del prodotto: se il comportamento lo rispetta, è una variazione o una lavorazione minore nuova.</dd>
         </dl>
       </div>
     </div>
@@ -308,10 +308,10 @@ dl.events dd { margin: 2px 0 0 0; }
         <div class="box steps wide"><h3>Struttura</h3>
           <ul>
             <li><b>Piano di sviluppo e skill.</b> I documenti del piano e le skill.</li>
-            <li><b>Documenti del sistema.</b> Manuale del prodotto, Documento tecnico e Guida alla pubblicazione, nella versione vigente.</li>
+            <li><b>Documenti del sistema.</b> Manuale del prodotto e Documento tecnico, nella versione vigente.</li>
             <li><b>Cartella delle lavorazioni.</b> Una cartella per lavorazione, con il codice del ticket come nome.</li>
-            <li><b>Cartelle delle fasi.</b> Dentro, una cartella per ogni fase in cui nascono documenti, per esempio <code>01-analisi</code> per un ticket o <code>01-kickoff/03-proposta</code> per un progetto, con le sottofasi numerate. Ogni documento, trascrizione e file audio sta nella cartella della fase in cui è nato.</li>
-            <li><b>Storico e decisioni.</b> Ogni lavorazione ha <code>storico.md</code> e <code>decisioni.md</code>, nati vuoti e popolati a mano con le skill dedicate.</li>
+            <li><b>Cartelle delle fasi.</b> Dentro, una cartella per ogni fase in cui nascono documenti, per esempio <code>01-analisi</code> per una lavorazione minore o <code>01-kickoff/03-proposta</code> per un progetto, con le sottofasi numerate. Ogni documento, trascrizione e file audio sta nella cartella della fase in cui è nato.</li>
+            <li><b>History and decision.</b> Ogni lavorazione ha <code>history-and-decision.md</code>, nato vuoto e popolato a mano con la skill dedicata: storia e decisioni in un solo file.</li>
           </ul>
         </div>
         <div class="box warn wide"><h3>Attenzione a</h3><p>Il sistema del cliente può avere più repository di codice (sito pubblico, gestionale e altri): la Scheda di intervento e il Documento tecnico indicano sempre il repository di ogni parte toccata.</p></div>

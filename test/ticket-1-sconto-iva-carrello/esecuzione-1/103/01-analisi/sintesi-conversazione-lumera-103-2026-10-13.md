@@ -1,0 +1,49 @@
+# Sintesi della conversazione, ticket 103
+
+Lavoro: ticket 103, Lumera Arredi, ordine di calcolo di sconto e IVA nel carrello. Data: 2026-10-13. Telefonata tra Leonardo (chi analizza) e Franco (referente). Stato del lavoro: ticket in attesa della risposta alla domanda del 5 ottobre; il Manuale del prodotto non dice come si applicano i codici sconto.
+
+## 1. Sintesi
+
+**Decisioni**
+
+- Franco (referente): i codici sconto di importo fisso si tolgono prima dell'IVA. Certezza: detta chiaramente, dopo che l'esempio numerico è stato richiamato.
+- Franco (referente): il cambiamento vale per tutti i codici di importo fisso, compresi quelli già distribuiti.
+
+**Conferme**
+
+- Nessun documento da confermare. Per un ticket non c'è una conferma del cliente: la decisione è del referente e vale dopo il riepilogo scritto.
+
+**Informazioni**
+
+- Franco ha letto il messaggio "di corsa" (riferito da Franco). Da chiarire: la formula "come fanno gli altri" non indica chi siano gli altri; non cambia la decisione, ma non è un riferimento verificabile.
+
+**Domande aperte**
+
+- Nessuna del cliente. Questione tecnica per lo sviluppo, non emersa nella conversazione: come ripartire un importo fisso tra righe con aliquote IVA diverse (22% e ridotta).
+
+**Impegni**
+
+- Leonardo: invio del riepilogo scritto a Franco in giornata.
+
+## 2. Dove riportare
+
+- Registro delle decisioni di 103: voce per la decisione di Franco (DEC3).
+- Storico di 103: voce di conferma del cliente, 13 ottobre.
+- Scheda di intervento di 103, voce "Cosa fare": regola di calcolo decisa, valida per tutti i codici di importo fisso.
+- Manuale del prodotto, F3: a lavoro concluso, nuova story sulla regola di calcolo (passo per `allineamento-documenti`).
+
+## 3. Riepilogo scritto per il cliente
+
+Oggetto: codici sconto di importo fisso, ticket 103
+
+Riepilogo della telefonata di oggi, 13 ottobre.
+
+Deciso da Franco:
+
+- i codici sconto di importo fisso vengono tolti dal prezzo prima di aggiungere l'IVA. Con un prodotto da 100 euro più IVA al 22% e un codice da 10 euro, il totale diventa 109,80 euro invece di 112 euro;
+- il cambiamento vale per tutti i codici di importo fisso, anche per quelli già distribuiti ai clienti;
+- i codici sconto in percentuale non cambiano.
+
+Il lavoro viene messo in programma. La data di pubblicazione sarà comunicata solo quando sarà certa.
+
+Si chiede di rispondere solo se qualcosa non corrisponde a quanto detto.

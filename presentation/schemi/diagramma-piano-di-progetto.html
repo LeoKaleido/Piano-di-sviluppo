@@ -173,7 +173,6 @@ dl.events dd { margin: 2px 0 0 0; }
 <section class="phase" id="fase1">
   <header><span class="num">Fase 1, sottofasi 1.1 e 1.2</span><h2>Kickoff: valutazione e stima</h2><span class="what">Si capisce la richiesta e si stima quanto durerà il progetto</span></header>
   <div class="body">
-    <p class="note">Cartella nella knowledge base: <code>01-kickoff/01-valutazione</code> e <code>01-kickoff/02-stima</code>. Il codice del ticket di osTicket è il nome della cartella della lavorazione.</p>
     <p class="intro">Il cliente non apre un progetto: apre una richiesta. Qualcuno la legge, vede che è un progetto e designa il responsabile, il project manager. Il responsabile fa subito una stima a occhio della durata, interna, che fissa il tempo del kickoff al 10%. Poi valuta la richiesta, controlla il codice attuale e i lavori aperti, e ricava la stima precisa leggendo anche i Report di progetto dei lavori già fatti.</p>
     <div class="grid">
       <div class="box who"><h3>Chi</h3><p>Chi analizza designa il responsabile, con chi gestisce il team e, se serve, con il CEO: si decide in pochi minuti. Da lì la fase la esegue il responsabile.</p></div>
@@ -189,7 +188,7 @@ dl.events dd { margin: 2px 0 0 0; }
           <li><b>Valutazione.</b> Confronto con i lavori aperti e controllo del codice, in sola lettura. Conferma della categoria.</li>
           <li><b>Incontro con il cliente</b> per capire il bisogno e sapere chi decide: il referente.</li>
           <li><b>Stima precisa</b> della durata, ricavata dalla richiesta, analizzando la codebase, insieme ai tempi dei progetti già fatti letti nei loro Report di progetto. Si dichiara quanto è affidabile e quali fattori l'hanno determinata. Compare nella Proposta.</li>
-          <li><b>Proposta</b> con la stima precisa, scritta dentro il tempo del kickoff. Il tempo non limita l'attesa del cliente.</li>
+          <li><b>Proposta</b> con la stima di durata e il tempo di rilascio indicativo (una finestra in mesi a partire da un mese di avvio ipotizzato, non una data), scritta dentro il tempo del kickoff. Il tempo non limita l'attesa del cliente.</li>
         </ol>
       </div>
       <div class="box doc"><h3>Documenti che si producono</h3>
@@ -225,8 +224,7 @@ dl.events dd { margin: 2px 0 0 0; }
 <section class="phase" id="fase3">
   <header><span class="num">Fase 1, sottofase 1.3</span><h2>Kickoff: Proposta</h2><span class="what">Un documento semplice, avanti e indietro con il cliente</span></header>
   <div class="body">
-    <p class="note">Cartella nella knowledge base: <code>01-kickoff/03-proposta</code></p>
-    <p class="intro">La Proposta dice "si farebbe così, cosa ne pensa?". È accompagnata dalla stima di durata. È veloce e semplice da leggere: 2 o 3 pagine, al massimo 5. Va avanti e indietro con il cliente senza limite di giri. La prima versione si scrive dentro il tempo del kickoff (il 10% della stima a occhio), i giri successivi no.</p>
+    <p class="intro">La Proposta dice "si farebbe così, cosa ne pensa?". È accompagnata dalla stima di durata e dal tempo di rilascio indicativo, una finestra in mesi. È veloce e semplice da leggere: 2 o 3 pagine, al massimo 5. Va avanti e indietro con il cliente senza limite di giri. La prima versione si scrive dentro il tempo del kickoff (il 10% della stima a occhio), i giri successivi no.</p>
     <div class="grid">
       <div class="box who"><h3>Chi</h3><p>Il responsabile.</p></div>
       <div class="box skill"><h3>Skill</h3>
@@ -245,10 +243,10 @@ dl.events dd { margin: 2px 0 0 0; }
           <li>La soluzione: obiettivo e utenti, cosa potrà fare ciascun tipo di utente, compromessi, suggerimenti opzionali, cosa non si potrà fare, assunzioni, domande aperte (con codice D1, D2), materiali che servono dal cliente, prossimi passi.</li>
           <li>Allegato: le user story, solo titolo e frase ("Come, voglio, per"), e un sunto di come procederà la lavorazione, senza date.</li>
           <li>Wireframe, se si decide di allegarli.</li>
-          <li>La stima di durata, con la sua affidabilità.</li>
+          <li>La stima di durata e la finestra di rilascio in mesi, con affidabilità e ipotesi (mese di avvio, materiali del cliente).</li>
           <li>Nessuna tecnologia, nessun prezzo, nessuna data di consegna.</li>
         </ul>
-        <p>Ogni giro è una versione numerata, con l'elenco di ciò che è cambiato. Prima versione v0.1; la confermata diventa v1.0.</p>
+        <p>Ogni giro è una versione numerata, con l'elenco di ciò che è cambiato. Prima versione v0.1; la confermata si chiama semplicemente Proposta di soluzione, senza versione.</p>
       </div>
       <div class="box steps wide"><h3>Come si gestisce un riscontro del cliente</h3>
         <ol>
@@ -285,7 +283,6 @@ dl.events dd { margin: 2px 0 0 0; }
 <section class="phase" id="fase4">
   <header><span class="num">Fase 1, sottofase 1.4</span><h2>Kickoff: Documentazione, Manuale del prodotto</h2><span class="what">La spiegazione completa del prodotto, leggibile dal cliente</span></header>
   <div class="body">
-    <p class="note">Cartella nella knowledge base: <code>01-kickoff/04-documentazione</code></p>
     <p class="intro">La Proposta confermata e la richiesta diventano la fonte del Manuale: tutto ciò che serve per capire il progetto, quali strumenti tocca (gestionale, sito pubblico e simili) e come funziona. Il Manuale è l'unica fonte per i comportamenti.</p>
     <div class="grid">
       <div class="box who"><h3>Chi</h3><p>Il responsabile.</p></div>
@@ -308,7 +305,7 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box warn"><h3>Attenzione a</h3>
         <ul>
           <li>Il criterio di accettazione è ciò che deciderà se una story è accettata: "funziona bene" non è un criterio.</li>
-          <li>Il mockup approvato è esportato in PDF nella knowledge base: quella copia fa fede.</li>
+          <li>Il mockup approvato, disegnato in Claude Design, è esportato in PDF in <code>design</code>: quella copia fa fede.</li>
           <li>Se Manuale e Documento tecnico sono in contrasto, vale il Manuale.</li>
         </ul>
       </div>
@@ -320,7 +317,7 @@ dl.events dd { margin: 2px 0 0 0; }
           <dt>Il Manuale è ambiguo mentre si scompone una story</dt><dd>Si segnala e si pone una domanda puntuale al cliente: non si interpreta in silenzio.</dd>
         </dl>
       </div>
-      <div class="box impl wide"><h3>Cosa implica</h3><p>La conferma del Manuale è il confine tra modifica e variazione: da quel momento ogni cambiamento ha un costo in ore e passa dal Registro delle variazioni.</p></div>
+      <div class="box impl wide"><h3>Cosa implica</h3><p>La conferma del Manuale è il confine tra modifica e variazione: da quel momento ogni cambiamento ha un costo in ore e passa da History and decision.</p></div>
     </div>
   </div>
 </section>
@@ -330,20 +327,19 @@ dl.events dd { margin: 2px 0 0 0; }
 <section class="phase" id="fase5">
   <header><span class="num">Fase 1, sottofase 1.4</span><h2>Kickoff: Documentazione, Documento tecnico e Piano dei SAL</h2><span class="what">Come si realizza, in quali milestone, con quale stima</span></header>
   <div class="body">
-    <p class="note">Cartella nella knowledge base: <code>01-kickoff/04-documentazione</code></p>
     <p class="intro">Dal Manuale il responsabile scrive, con chi svilupperà, il Documento tecnico. Contiene anche la divisione in milestone e la creazione delle issue, con le stime: è la parte fondamentale per lo sviluppo. Con le issue la durata si stima di nuovo, e appena la stima è vera il cliente ne viene informato, sempre, anche se è uguale alla prima.</p>
     <div class="grid">
       <div class="box who"><h3>Chi</h3><p>Il responsabile, con chi sviluppa. Le scelte tecniche le prende chi sviluppa.</p></div>
       <div class="box skill"><h3>Skill</h3>
         <ul>
           <li><code>documento-tecnico</code>: le parti tecniche.</li>
-          <li><code>piano-delle-milestone</code>: il capitolo Milestone del Documento tecnico e il Piano dei SAL.</li>
+          <li><code>piano-delle-milestone</code>: il capitolo Piano delle milestone del Documento tecnico e il Piano dei SAL.</li>
         </ul>
       </div>
       <div class="box doc wide"><h3>Documenti che si producono</h3>
-        <p><b>Documento tecnico</b> (interno): panoramica, tecnologie, struttura del codice, dati, realizzazione delle funzionalità (con i codici delle story, senza riscriverle), integrazioni, infrastruttura e ambienti, sicurezza, decisioni tecniche, rischi e debito tecnico, <b>milestone</b> (le issue stanno in ClickUp), modifiche rispetto alla versione precedente.</p>
-        <p><b>Capitolo Milestone:</b> parametri, calendario, quadro delle milestone (codice, obiettivo dimostrabile, story, ore, buffer, data prevista della prova), materiali del cliente, rischi, copertura di ogni story, stima di durata.</p>
-        <p><b>Piano dei SAL</b> (per il cliente, documento a parte): la durata stimata, i SAL (le milestone) con la data prevista di ciascuna prova, i materiali attesi con la data entro cui servono. Niente issue, ore, buffer, tecnologie, prezzi.</p>
+        <p><b>Documento tecnico</b> (interno): panoramica, tecnologie, struttura del codice, dati, realizzazione delle funzionalità (con i codici delle story, senza riscriverle), integrazioni, infrastruttura e pubblicazione (ambienti, passi, regole del server, verifiche, ritorno), sicurezza, decisioni tecniche, rischi e debito tecnico, <b>Piano delle milestone</b> (le issue stanno in ClickUp), modifiche rispetto alla versione precedente. Ogni versione è completa e indipendente.</p>
+        <p><b>Capitolo Piano delle milestone:</b> parametri, calendario, quadro delle milestone (codice, obiettivo dimostrabile, story, lavorazioni, cosa verifica il cliente, ore, buffer, data prevista della prova), materiali del cliente, rischi, copertura di ogni story, stima di durata.</p>
+        <p><b>Piano dei SAL</b> (per il cliente, documento a parte, estratto dal capitolo e mai scritto a mano): in tabelle, la durata stimata, i SAL (le milestone) con la data prevista di ciascuna prova e cosa verifica il cliente, i materiali attesi con la data entro cui servono. Niente issue, ore, buffer, tecnologie, prezzi.</p>
       </div>
       <div class="box steps wide"><h3>Regole di pianificazione</h3>
         <ul>
@@ -381,19 +377,17 @@ dl.events dd { margin: 2px 0 0 0; }
 
 <!-- FASE 6 -->
 <section class="phase" id="fase6">
-  <header><span class="num">Fase 2</span><h2>Sviluppo</h2><span class="what">Sprint, issue, milestone, prova del cliente su staging</span></header>
+  <header><span class="num">Fase 2</span><h2>Sviluppo</h2><span class="what">Sprint, issue, milestone, UAT dal vivo con il cliente su staging</span></header>
   <div class="body">
-    <p class="note">Cartella nella knowledge base: <code>02-sviluppo</code></p>
-    <p class="intro">Si lavora a sprint, prendendo le issue dalla milestone in corso. A ogni milestone il cliente prova il lavoro sullo staging, guidato dal Milestone report, e accetta in modo esplicito. Una demo in call è facoltativa: una demo non si accetta in silenzio.</p>
+    <p class="intro">Si lavora a sprint, prendendo le issue dalla milestone in corso. A ogni milestone si fa con il cliente, dal vivo, una sessione di prova sullo staging (UAT), annunciata da un messaggio con le story da provare: il cliente prova e accetta in modo esplicito. Una demo in call è facoltativa: una demo non si accetta in silenzio.</p>
     <div class="grid">
       <div class="box who"><h3>Chi</h3><p>Il responsabile guida, il team sviluppa.</p></div>
       <div class="box skill"><h3>Skill</h3>
         <ul>
           <li><code>sprint</code>: Nota di sprint a fine sprint e pianificazione del successivo in ClickUp.</li>
-          <li><code>prova-su-staging</code>: messaggio per la prova di milestone e verbale di accettazione.</li>
-          <li><code>milestone-report</code>: il documento per il cliente a ogni milestone.</li>
-          <li><code>variazione</code>: per ogni cambiamento dopo la conferma del Manuale.</li>
-          <li><code>riprogrammazione</code>: quando una milestone è a rischio o in ritardo.</li>
+          <li><code>prova-su-staging</code>: messaggio per la prova di milestone e registrazione dell'esito.</li>
+          <li><code>milestone-report</code>: il report interno a ogni milestone.</li>
+          <li><code>history-and-decision</code>: per variazioni (dopo la conferma del Manuale) e riprogrammazioni (milestone a rischio o in ritardo).</li>
           <li><code>interpretazione-conversazioni</code>: per ogni conversazione con il cliente.</li>
         </ul>
       </div>
@@ -403,14 +397,14 @@ dl.events dd { margin: 2px 0 0 0; }
           <li><b>Chiusura, di venerdì.</b> Le issue non COMPLETED passano allo sprint successivo con la priorità: lo sprint non si allunga. Si registrano le ore completate e gli imprevisti.</li>
           <li><b>Controllo della milestone.</b> Si confrontano le ore rimanenti con la capacità rimanente prima della data del Piano dei SAL: in linea (margine almeno metà del buffer iniziale), a rischio (margine tra zero e metà), in ritardo (margine sotto zero).</li>
           <li><b>Nota di sprint</b>, interna e per lavorazione. È l'unico documento dello sprint.</li>
-          <li><b>Pianificazione dello sprint successivo</b> in ClickUp, che dipende dalla nota: il venerdì sera se la nota è pronta, altrimenti il lunedì mattina. Capacità reale, buffer di sprint (ticket urgenti) tolto, issue scelte, date del Piano dei SAL rispettate. Non è un documento: è la List dello sprint. Il supervisore controlla stime e capacità.</li>
+          <li><b>Pianificazione dello sprint successivo</b> in ClickUp, che dipende dalla nota: il venerdì sera se la nota è pronta, altrimenti il lunedì mattina. Capacità reale, buffer di sprint (lavorazioni minori urgenti) tolto, issue scelte, date del Piano dei SAL rispettate. Non è un documento: è la List dello sprint. Il supervisore controlla stime e capacità.</li>
         </ol>
       </div>
       <div class="box steps wide"><h3>A fine milestone</h3>
         <ol>
           <li>Il team verifica sullo staging ogni story della milestone sul suo criterio di accettazione.</li>
-          <li>Il responsabile prepara il Milestone report (<code>milestone-report</code>) e il messaggio per la prova (<code>prova-su-staging</code>).</li>
-          <li>Il cliente prova le story sullo staging, guidato dal Milestone report; una demo in call è facoltativa. Una richiesta nuova emersa nella prova non è un difetto: si annota e si tratta come variazione.</li>
+          <li>Il responsabile prepara il messaggio per la prova, con le story e i loro criteri (<code>prova-su-staging</code>).</li>
+          <li>Nella sessione dal vivo (UAT) il team presenta e il cliente prova le story sullo staging, guidato dal messaggio di invito. Una richiesta nuova emersa nella prova non è un difetto: si annota e si tratta come variazione.</li>
           <li>Esito per ogni story: accettata, accettata con difetto non bloccante (con data di correzione), non accettata per difetto bloccante.</li>
           <li>Il cliente conferma in modo esplicito. Se conferma a voce, vale dopo il riepilogo scritto.</li>
         </ol>
@@ -418,8 +412,8 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box doc"><h3>Documenti che si producono</h3>
         <ul>
           <li>Nota di sprint (interna, per lavorazione).</li>
-          <li>Registro delle variazioni.</li>
-          <li>Milestone report per il cliente a ogni milestone, con l'esito della prova.</li>
+          <li>History and decision.</li>
+          <li>Milestone report interno a ogni milestone (<code>milestone-report</code>), letto da chi gestisce il progetto. L'esito della prova è una voce di History and decision.</li>
         </ul>
       </div>
       <div class="box close"><h3>Si chiude quando</h3><p>Tutte le milestone sono accettate.</p></div>
@@ -427,15 +421,15 @@ dl.events dd { margin: 2px 0 0 0; }
         <ul>
           <li>Una variazione non entra mai nello sprint in corso: entra in uno successivo, dopo l'approvazione.</li>
           <li>Lo sprint non si pianifica sotto la capacità, e la capacità non si corregge sulla storia: contano le stime rivalutate a ogni chiusura.</li>
-          <li>Un'assenza o un ticket urgente non si raccontano al cliente: si comunica solo l'effetto, se una data cambia.</li>
-          <li>Se la milestone è a rischio o in ritardo, il Milestone report non lo comunica da solo: la comunicazione la prepara la riprogrammazione, con la proposta.</li>
+          <li>Un'assenza o una lavorazione minore urgente non si raccontano al cliente: si comunica solo l'effetto, se una data cambia.</li>
+          <li>Se la milestone è a rischio o in ritardo, il Milestone report lo segnala ma non lo comunica: la comunicazione al cliente la prepara la riprogrammazione, con la proposta.</li>
           <li>Il comportamento che rispetta il Manuale ma non piace al cliente non è un difetto: è una variazione.</li>
         </ul>
       </div>
       <div class="box event"><h3>Cosa può succedere</h3>
         <dl class="events">
-          <dt>Un ticket urgente interrompe il lavoro</dt><dd>Vale la sezione "Buffer".</dd>
-          <dt>La milestone è a rischio o in ritardo</dt><dd>Si usa la skill <code>riprogrammazione</code>. Leve: spostare una story, spostare la data, aggiungere ore.</dd>
+          <dt>Una lavorazione minore urgente interrompe il lavoro</dt><dd>Vale la sezione "Buffer".</dd>
+          <dt>La milestone è a rischio o in ritardo</dt><dd>Si usa la skill <code>history-and-decision</code>. Leve: spostare una story, spostare la data, aggiungere ore.</dd>
           <dt>Il cliente non accetta la prova</dt><dd>I difetti bloccanti si correggono e la prova si ripete.</dd>
           <dt>Il cliente chiede qualcosa a voce o fuori dal canale previsto</dt><dd>Vale solo dopo essere stato messo per iscritto e registrato. Se non è previsto dai documenti è una variazione.</dd>
           <dt>Il cliente contesta una story alla consegna</dt><dd>Decide il criterio di accettazione del Manuale.</dd>
@@ -443,7 +437,7 @@ dl.events dd { margin: 2px 0 0 0; }
           <dt>Assenze, stime sbagliate, blocchi tecnici</dt><dd>Escono dallo sprint le issue meno prioritarie; a ogni chiusura chi sviluppa rivaluta le stime delle issue non COMPLETED e il margine segnala il problema; un blocco tecnico si affronta con una issue Spike a tempo limitato.</dd>
         </dl>
       </div>
-      <div class="box impl wide"><h3>Cosa implica</h3><p>Questa è la parte più lunga del progetto: ogni decisione qui consuma buffer, sposta date o richiede una comunicazione al cliente. La documentazione resta viva: il Registro delle variazioni e le sintesi delle conversazioni aggiornano le fonti delle skill.</p></div>
+      <div class="box impl wide"><h3>Cosa implica</h3><p>Questa è la parte più lunga del progetto: ogni decisione qui consuma buffer, sposta date o richiede una comunicazione al cliente. La documentazione resta viva: History and decision e le sintesi delle conversazioni aggiornano le fonti delle skill.</p></div>
     </div>
   </div>
 </section>
@@ -453,31 +447,28 @@ dl.events dd { margin: 2px 0 0 0; }
 <section class="phase" id="fase7">
   <header><span class="num">Fase 3, sottofasi 3.1, 3.2 e 3.3</span><h2>Rilascio: collaudo, preparazione, pubblicazione</h2><span class="what">Si prova l'insieme sullo staging, si prepara, si pubblica</span></header>
   <div class="body">
-    <p class="note">Cartella nella knowledge base: <code>03-rilascio/01-collaudo</code>, <code>03-rilascio/02-preparazione</code>, <code>03-rilascio/03-pubblicazione</code></p>
     <p class="intro">Il rilascio è semplice perché lo staging contiene già tutte le milestone. L'accettazione delle singole milestone non basta: si prova l'insieme, il cliente accetta, si prepara e si pubblica. Non si passa alla sottofase successiva finché la condizione di chiusura non è soddisfatta.</p>
     <div class="grid">
-      <div class="box who"><h3>Chi</h3><p>Il responsabile per il collaudo, la prova finale, il piano di rilascio e la Guida alla pubblicazione. L'incaricato della pubblicazione, una persona designata che non è necessariamente il responsabile, legge i documenti e pubblica.</p></div>
+      <div class="box who"><h3>Chi</h3><p>Il responsabile per il collaudo, la prova finale, il piano di rilascio e il capitolo Pubblicazione. L'incaricato della pubblicazione, una persona designata che non è necessariamente il responsabile, legge i documenti e pubblica.</p></div>
       <div class="box skill"><h3>Skill</h3>
         <ul>
-          <li><code>collaudo-e-rilascio</code>: checklist del collaudo (in ClickUp), piano di rilascio, scheda tecnica di rilascio.</li>
-          <li><code>prova-su-staging</code>: prova finale e verbale di accettazione.</li>
-          <li><code>guida-alla-pubblicazione</code>: la Guida del sistema.</li>
+          <li><code>collaudo-e-rilascio</code>: checklist del collaudo (in ClickUp), piano di rilascio.</li>
+          <li><code>prova-su-staging</code>: prova finale e registrazione dell'esito in History and decision.</li>
+          <li><code>documento-tecnico</code>: il capitolo Pubblicazione del Documento tecnico.</li>
         </ul>
       </div>
       <div class="box steps wide"><h3>Le tre sottofasi, in ordine</h3>
         <ol>
           <li><b>3.1 Collaudo.</b> Collaudo finale sullo staging: i percorsi che attraversano più milestone; le parti esistenti toccate dal progetto, per escludere regressioni; le integrazioni e i dati reali, o una copia fedele. Poi la prova finale del cliente sullo staging. Si chiude quando il cliente accetta in modo esplicito.</li>
-          <li><b>3.2 Preparazione.</b> Si concorda il piano di rilascio con il cliente: data e ora, cosa cambia per gli utenti, interruzioni, cosa succede se qualcosa fallisce, chi viene avvisato. Si scrive o si aggiorna la Guida alla pubblicazione con le regole di questo progetto (regole del server, riavvii, cache) e da essa si ricava la scheda tecnica di rilascio. Si chiude quando il piano è concordato, la Guida è aggiornata e la scheda è pronta.</li>
-          <li><b>3.3 Pubblicazione.</b> L'incaricato pubblica secondo la scheda e la Guida e fa le verifiche dopo ogni passo e alla fine. Non avviene in CI. Si può rilasciare anche a metà sprint, e di venerdì sera solo per un'urgenza, entro le 18. A pubblicazione verificata si avvisa il cliente. Si chiude quando il sistema è in produzione e il cliente è avvisato: da qui decorre la garanzia.</li>
+          <li><b>3.2 Preparazione.</b> Si concorda il piano di rilascio con il cliente: data e ora, cosa cambia per gli utenti, interruzioni, cosa succede se qualcosa fallisce, chi viene avvisato. Il piano comprende le particolarità tecniche (regole del server, riavvii, cache, migrazioni): l'incaricato legge il piano e il capitolo Pubblicazione vigente. Si chiude quando il piano è concordato e le particolarità sono scritte.</li>
+          <li><b>3.3 Pubblicazione.</b> L'incaricato pubblica secondo il capitolo Pubblicazione e fa le verifiche dopo ogni passo e alla fine. Non avviene in CI. Si può rilasciare anche a metà sprint, e di venerdì sera solo per un'urgenza, entro le 18. A pubblicazione verificata si avvisa il cliente. Si chiude quando il sistema è in produzione e il cliente è avvisato: da qui decorre la garanzia.</li>
         </ol>
       </div>
       <div class="box doc"><h3>Documenti che si producono</h3>
         <ul>
-          <li>Checklist del collaudo (in ClickUp) e, se il rilascio ha particolarità, scheda tecnica di rilascio (interna). Altrimenti una riga: si segue la Guida.</li>
-          <li>Piano di rilascio (per il cliente, non tecnico).</li>
-          <li>Verbale di accettazione della prova finale (per il cliente).</li>
-          <li>Guida alla pubblicazione, aggiornata (documento del sistema, interno).</li>
-          <li>Una voce nello storico: cosa è stato fatto, cosa è emerso.</li>
+          <li>Checklist del collaudo (in ClickUp). Le particolarità del rilascio, se ci sono, stanno nel piano di rilascio (voce di History and decision) e alla chiusura passano nel capitolo Pubblicazione.</li>
+          <li>Piano di rilascio: il messaggio per il cliente (non tecnico, in <code>source</code>) e una voce di History and decision con le particolarità tecniche.</li>
+          <li>Una voce in History and decision: cosa è stato fatto, cosa è emerso.</li>
         </ul>
       </div>
       <div class="box close"><h3>Si chiude quando</h3><p>Il sistema è in produzione, le verifiche sono superate e il cliente è avvisato.</p></div>
@@ -485,7 +476,7 @@ dl.events dd { margin: 2px 0 0 0; }
         <ul>
           <li>Il silenzio non vale come accettazione di una prova.</li>
           <li>Il piano di rilascio per il cliente non contiene tecnologie, nomi di server, ore o prezzi.</li>
-          <li>La Guida non contiene segreti: indica dove sono custoditi.</li>
+          <li>Il capitolo Pubblicazione non contiene segreti: indica dove sono custoditi.</li>
           <li>Il ritorno alla versione precedente deve essere descritto prima di pubblicare, con chi lo decide.</li>
           <li>La garanzia decorre dalla pubblicazione, non da un'accettazione successiva.</li>
         </ul>
@@ -496,10 +487,10 @@ dl.events dd { margin: 2px 0 0 0; }
           <dt>Il cliente non accetta il collaudo finale</dt><dd>I difetti bloccanti si correggono e la prova si ripete.</dd>
           <dt>Rilascio fallito</dt><dd>Ritorno alla versione precedente e nuova data, con avviso immediato al cliente.</dd>
           <dt>Una richiesta nuova emerge nel collaudo</dt><dd>Non è un difetto: è una variazione.</dd>
-          <dt>Durante la pubblicazione emerge una regola non scritta</dt><dd>Si annota e va nella Guida alla pubblicazione in chiusura.</dd>
+          <dt>Durante la pubblicazione emerge una regola non scritta</dt><dd>Si annota e va nel capitolo Pubblicazione in chiusura.</dd>
         </dl>
       </div>
-      <div class="box impl wide"><h3>Cosa implica</h3><p>Pubblicare dipende dall'accettazione esplicita del cliente: senza, non si pubblica. La Guida alla pubblicazione è ciò che permette a chi pubblica la prossima volta, anche per un ticket, di non ripartire da zero.</p></div>
+      <div class="box impl wide"><h3>Cosa implica</h3><p>Pubblicare dipende dall'accettazione esplicita del cliente: senza, non si pubblica. Il capitolo Pubblicazione è ciò che permette a chi pubblica la prossima volta, anche per una lavorazione minore, di non ripartire da zero.</p></div>
     </div>
   </div>
 </section>
@@ -509,31 +500,30 @@ dl.events dd { margin: 2px 0 0 0; }
 <section class="phase" id="fase8">
   <header><span class="num">Fase 3, sottofase 3.4</span><h2>Rilascio: chiusura</h2><span class="what">Si aggiornano i documenti, parte la garanzia</span></header>
   <div class="body">
-    <p class="note">Cartella nella knowledge base: <code>03-rilascio/04-chiusura</code></p>
-    <p class="intro">Dopo la pubblicazione il responsabile aggiorna i documenti: Manuale del prodotto, Documento tecnico e Guida alla pubblicazione descrivono ciò che è stato realmente fatto e ciò che è emerso durante la pubblicazione, e così i documenti degli altri lavori toccati. Un progetto è chiuso solo dopo questo aggiornamento.</p>
+    <p class="intro">Dopo la pubblicazione il responsabile aggiorna i documenti: Manuale del prodotto e Documento tecnico descrivono ciò che è stato realmente fatto e ciò che è emerso durante la pubblicazione, e così i documenti degli altri lavori toccati. Un progetto è chiuso solo dopo questo aggiornamento.</p>
     <div class="grid">
       <div class="box who"><h3>Chi</h3><p>Il responsabile.</p></div>
       <div class="box skill"><h3>Skill</h3>
         <ul>
           <li><code>allineamento-documenti</code>: trova i documenti toccati e propone le modifiche.</li>
-          <li><code>manuale-del-prodotto</code>, <code>documento-tecnico</code> e <code>guida-alla-pubblicazione</code>: per riscrivere i tre documenti del sistema.</li>
+          <li><code>manuale-del-prodotto</code> e <code>documento-tecnico</code>: per riscrivere i documenti del sistema.</li>
           <li><code>report-di-progetto</code>: il report di chiusura, che tira le somme.</li>
         </ul>
       </div>
       <div class="box steps wide"><h3>Cosa si fa, in ordine</h3>
         <ol>
-          <li>Si aggiornano Manuale, Documento tecnico e Guida alla pubblicazione del sistema, con nuova versione numerata e origine della modifica.</li>
+          <li>Si aggiornano Manuale e Documento tecnico del sistema, con nuova versione numerata e origine della modifica.</li>
           <li>Si cercano i documenti degli altri lavori sulle stesse parti di codice e si aggiornano quelli su cui il progetto ha cambiato qualcosa di rilevante.</li>
           <li>I documenti approvati per un lavoro ancora aperto non si modificano in silenzio: serve una variazione o una comunicazione al cliente.</li>
-          <li>Si chiude il Registro delle variazioni con l'ultimo stato.</li>
-          <li>Si scrive il Report di progetto, dallo storico e dal Registro delle decisioni della lavorazione, dai dati di ClickUp e dagli altri documenti: stima contro realtà, buffer, variazioni, imprevisti, decisioni, dati per le stime future. A fine garanzia si compila la sezione sulla garanzia.</li>
+          <li>Si chiude History and decision con l'ultimo stato.</li>
+          <li>Si scrive il Report di progetto, da History and decision e dal History and decision della lavorazione, dai dati di ClickUp e dagli altri documenti: stima contro realtà, buffer, variazioni, imprevisti, decisioni, dati per le stime future. A fine garanzia si compila la sezione sulla garanzia.</li>
         </ol>
       </div>
-      <div class="box doc"><h3>Documenti che si producono</h3><p>Manuale del prodotto, Documento tecnico e Guida alla pubblicazione aggiornati, gli eventuali altri documenti toccati, e il Report di progetto (interno).</p></div>
+      <div class="box doc"><h3>Documenti che si producono</h3><p>Manuale del prodotto e Documento tecnico aggiornati (capitolo Pubblicazione compreso), gli eventuali altri documenti toccati, e il Report di progetto (interno, in <code>log</code>).</p></div>
       <div class="box close"><h3>Si chiude quando</h3><p>I documenti sono aggiornati e il Report di progetto è scritto. Il progetto è chiuso.</p></div>
       <div class="box event"><h3>Cosa può succedere</h3>
         <dl class="events">
-          <dt>Segnalazioni dopo il rilascio</dt><dd>Entro la garanzia sono un pacchetto di garanzia (skill <code>pacchetto-di-garanzia</code>): bug, variazioni piccole e richieste estetiche, in <code>04-garanzia</code>, senza conferma del cliente. È un imprevisto di capacità: ore tracciate, prestito di ore se serve. A fine periodo si compila la sezione sulla garanzia del Report di progetto.</dd>
+          <dt>Segnalazioni dopo il rilascio</dt><dd>Entro la garanzia sono un pacchetto di garanzia (skill <code>history-and-decision</code>): bug, variazioni piccole e richieste estetiche, senza conferma del cliente. È un imprevisto di capacità: ore tracciate, prestito di ore se serve. A fine periodo si compila la sezione sulla garanzia del Report di progetto.</dd>
           <dt>Nuova richiesta presentata come bug</dt><dd>Si applica il criterio del Manuale: se il comportamento lo rispetta è una variazione o un nuovo ticket.</dd>
           <dt>I documenti non si trovano</dt><dd>Si dichiara che il controllo copre solo quelli raggiunti.</dd>
         </dl>
@@ -555,7 +545,7 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="grid">
         <div class="box steps wide"><h3>Come si fa</h3>
           <ol>
-            <li>La conversazione si registra con un computer o un telefono: alla skill si consegna un semplice file audio. Audio e trascrizione si conservano non modificati nella knowledge base, nella cartella della fase in cui la conversazione è avvenuta.</li>
+            <li>La conversazione si registra con un computer o un telefono: alla skill si consegna un semplice file audio. Audio e trascrizione si conservano non modificati nella cartella <code>source</code> della lavorazione, con la data davanti al nome.</li>
             <li>La skill <code>interpretazione-conversazioni</code> la legge e produce: la sintesi (richieste, decisioni, conferme, informazioni sul sistema, domande aperte, materiali promessi, impegni nostri, contraddizioni con i documenti), l'elenco di dove riportare ogni cosa, e il riepilogo scritto per il cliente.</li>
             <li>Il responsabile conferma e applica le modifiche con le skill dei singoli documenti.</li>
             <li>Il riepilogo scritto si invia al cliente quando ha confermato o deciso qualcosa a voce.</li>
@@ -583,8 +573,8 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="decision">
         <div class="q">Il cliente chiede un cambiamento. Cos'è?</div>
         <div class="branches">
-          <div class="branch"><span class="label">Modifica</span>Cambia la Proposta o il Manuale prima della conferma.<span class="goes">Si recepisce con una nuova versione numerata. Non entra nel Registro delle variazioni. Nessun limite di giri.</span></div>
-          <div class="branch"><span class="label">Variazione</span>Cambia ciò che il cliente ha già confermato, Manuale compreso, o ciò che è già in sviluppo.<span class="goes">Entra nel Registro delle variazioni e riceve una categoria (skill <code>variazione</code>).</span></div>
+          <div class="branch"><span class="label">Modifica</span>Cambia la Proposta o il Manuale prima della conferma.<span class="goes">Si recepisce con una nuova versione numerata. Non entra in History and decision. Nessun limite di giri.</span></div>
+          <div class="branch"><span class="label">Variazione</span>Cambia ciò che il cliente ha già confermato, Manuale compreso, o ciò che è già in sviluppo.<span class="goes">Entra in History and decision e riceve una categoria (skill <code>history-and-decision</code>).</span></div>
           <div class="branch"><span class="label">Bug</span>Il sistema fa una cosa diversa dal Manuale.<span class="goes">Non è una variazione: si corregge.</span></div>
           <div class="branch"><span class="label">Ambiguità</span>Il Manuale non è chiaro.<span class="goes">Si pone una domanda puntuale al cliente e si aggiorna il Manuale. È una variazione solo se il chiarimento comporta lavoro non previsto.</span></div>
         </div>
@@ -610,14 +600,14 @@ dl.events dd { margin: 2px 0 0 0; }
     <header><span class="num">Regola</span><h2>Capacità e buffer: quando si usa quale</h2><span class="what">Due buffer, due scopi</span></header>
     <div class="body">
       <div class="grid">
-        <div class="box doc"><h3>Buffer di sprint</h3><p>Il 20% della capacità di ogni persona in ogni sprint, riservato ai ticket urgenti. Si usa solo per i ticket urgenti entrati nello sprint. Non si usa per le issue dei progetti. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED con la parte avanzata.</p></div>
+        <div class="box doc"><h3>Buffer di sprint</h3><p>Il 20% della capacità di ogni persona in ogni sprint, riservato ai lavorazioni minori urgenti. Si usa solo per i lavorazioni minori urgenti entrati nello sprint. Non si usa per le issue dei progetti. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED con la parte avanzata.</p></div>
         <div class="box doc"><h3>Buffer di milestone</h3><p>Solo progetti e prodotti. Le ore aggiunte a ogni milestone: il 20% delle ore stimate, il 30% con una sola persona. Si usa per stime sbagliate, assenze brevi, urgenze oltre il buffer di sprint e variazioni piccole. Le variazioni piccole possono consumarne al massimo la metà.</p></div>
         <div class="box doc wide"><h3>Margine della milestone</h3><p>Capacità rimanente fino alla data della prova, al netto del buffer di sprint, meno le ore rimanenti (stime delle issue non COMPLETED). All'inizio il margine è il buffer di milestone. <b>In linea:</b> margine almeno metà del buffer iniziale. <b>A rischio:</b> tra zero e metà. <b>In ritardo:</b> sotto zero.</p></div>
         <div class="box steps wide"><h3>Ordine d'uso quando arriva un imprevisto di tempo</h3>
           <ol>
-            <li>Un ticket urgente usa prima il buffer di sprint.</li>
+            <li>Una lavorazione minore urgente usa prima il buffer di sprint.</li>
             <li>Oltre il buffer di sprint, escono dallo sprint le issue meno prioritarie e le ore pesano sul buffer di milestone, cioè riducono il margine.</li>
-            <li>Se la milestone è a rischio si usa <code>riprogrammazione</code>. Se nessuna data già comunicata cambia, il cliente non si avvisa e decide il responsabile.</li>
+            <li>Se la milestone è a rischio si usa <code>history-and-decision</code>. Se nessuna data già comunicata cambia, il cliente non si avvisa e decide il responsabile.</li>
             <li>Se la milestone è in ritardo, le leve sono tre: spostare una story a una milestone successiva, spostare la data, aggiungere ore. Le prime due si decidono con il cliente. Aggiungere ore lo decide chi gestisce il team, con il CEO se serve.</li>
             <li>Se una data già comunicata al cliente cambia, il cliente è avvisato subito, con la proposta.</li>
           </ol>
@@ -649,7 +639,7 @@ dl.events dd { margin: 2px 0 0 0; }
           </ol>
         </div>
         <div class="box warn"><h3>Attenzione a</h3><p>Non c'è un termine dopo il quale il progetto si chiude: il cliente sa già che una risposta tardiva ritarda il lavoro. Il silenzio non vale come conferma di un documento né come accettazione di una prova.</p></div>
-        <div class="box impl"><h3>Cosa implica</h3><p>La data della parte bloccata slitta ma il resto del progetto avanza. La Nota di sprint interna e il Milestone report ricordano i materiali in scadenza, prima che diventino un blocco.</p></div>
+        <div class="box impl"><h3>Cosa implica</h3><p>La data della parte bloccata slitta ma il resto del progetto avanza. La Nota di sprint interna e il messaggio per la prova ricordano i materiali in scadenza, prima che diventino un blocco.</p></div>
       </div>
     </div>
   </div>
@@ -665,28 +655,28 @@ dl.events dd { margin: 2px 0 0 0; }
           <ul>
             <li>Proposta di soluzione con la stima (fase 1), con wireframe facoltativi.</li>
             <li>Manuale del prodotto (fase 1, che il cliente conferma), con wireframe, mockup e prototipo facoltativi.</li>
-            <li>Piano dei SAL (fase 1).</li>
-            <li>Milestone report (fase 2, a ogni milestone).</li>
+            <li>Piano dei SAL, in tabella (fase 1).</li>
+            <li>Messaggio per la prova di milestone (fase 2).</li>
             <li>Riepilogo scritto di ogni conversazione in cui il cliente conferma o decide.</li>
-            <li>Piano di rilascio e verbale di accettazione della prova finale (fase 3).</li>
+            <li>Piano di rilascio e esito della prova finale registrato in History and decision (fase 3).</li>
           </ul>
         </div>
         <div class="box who"><h3>Documenti interni</h3>
           <ul>
-            <li>Stato di partenza, con le decisioni dell'analisi in testa (fase 1).</li>
-            <li>Documento tecnico, con le milestone (fase 1). Le issue sono in ClickUp.</li>
+            <li>Milestone report (fase 2, a ogni milestone).</li>
+            <li>Documento tecnico, con il Piano delle milestone (fase 1). Le issue sono in ClickUp.</li>
             <li>Nota di sprint (fase 2).</li>
-            <li>Registro delle variazioni (dalla conferma del Manuale).</li>
+            <li>History and decision (<code>log</code>): Stato di partenza, decisioni, variazioni, riprogrammazioni, esiti delle prove, garanzia. Report di progetto.</li>
             <li>Trascrizioni e sintesi delle conversazioni (per tutto il progetto).</li>
-            <li>Scheda tecnica di rilascio (se serve) e Guida alla pubblicazione, documento del sistema (fase 3).</li>
+            <li>Capitolo Pubblicazione del Documento tecnico (fase 3).</li>
           </ul>
         </div>
         <div class="box skill wide"><h3>Skill per fase</h3>
           <ul>
             <li>Fase 1, kickoff: <code>kickoff</code>, <code>proposta-di-soluzione</code>, <code>allineamento-documenti</code>, <code>manuale-del-prodotto</code>, <code>documento-tecnico</code>, <code>piano-delle-milestone</code>, <code>wireframe-e-prototipo</code> e <code>mockup</code> (facoltative).</li>
-            <li>Fase 2, sviluppo: <code>sprint</code>, <code>prova-su-staging</code>, <code>milestone-report</code>, <code>variazione</code>, <code>riprogrammazione</code>, <code>revisione-codice</code>.</li>
-            <li>Fase 3, rilascio: <code>collaudo-e-rilascio</code>, <code>prova-su-staging</code>, <code>guida-alla-pubblicazione</code>, <code>allineamento-documenti</code>, <code>manuale-del-prodotto</code>, <code>documento-tecnico</code>, <code>report-di-progetto</code>.</li>
-            <li>Per tutto il progetto: <code>interpretazione-conversazioni</code>, <code>storico-lavorazione</code>, <code>registro-decisioni</code>. In garanzia: <code>pacchetto-di-garanzia</code>.</li>
+            <li>Fase 2, sviluppo: <code>sprint</code>, <code>prova-su-staging</code>, <code>milestone-report</code>, <code>history-and-decision</code> (variazioni, riprogrammazioni), <code>revisione-codice</code>.</li>
+            <li>Fase 3, rilascio: <code>collaudo-e-rilascio</code>, <code>prova-su-staging</code>, <code>documento-tecnico</code>, <code>allineamento-documenti</code>, <code>manuale-del-prodotto</code>, <code>documento-tecnico</code>, <code>report-di-progetto</code>.</li>
+            <li>Per tutto il progetto: <code>interpretazione-conversazioni</code>, <code>history-and-decision</code>, <code>history-and-decision</code>. In garanzia: ancora <code>history-and-decision</code>.</li>
           </ul>
           <p class="note">Non si usa <code>piano-di-lancio</code>: è solo per i prodotti.</p>
         </div>

@@ -1,0 +1,47 @@
+# Sintesi della conversazione, prodotto 110
+
+Lavoro: prodotto 110, Lumera Arredi, applicazione per gli showroom. Data: 2026-10-20. Incontro nello showroom di Milano tra il product lead 1, Elena (responsabile dello showroom) e Paolo (consulente). Franco, il referente, non c'era: nulla di ciò che è detto qui è una decisione. Stato del lavoro: valutazione.
+
+## 1. Sintesi
+
+**Informazioni sul lavoro di oggi (tutte riferite)**
+
+- Il consulente segna gli appuntamenti su un quaderno, annota codici e quantità su un foglio durante la visita, prepara la proposta in Excel con il listino stampato, la manda per email dal proprio indirizzo personale (Paolo). Circa un'ora per proposta.
+- Milano: quattro consulenti, circa quaranta proposte a settimana in tutto (Elena).
+- Sconti: fino al 10% decidono i consulenti, oltre chiamano Franco; succede di rado (Elena).
+- Il cliente conferma per email o di persona; Paolo passa il foglio a Marta, che inserisce l'ordine il giorno dopo.
+- Clienti: foglio Excel di Elena con circa 2.800 nomi, telefono ed email, con doppioni "parecchi"; consenso al trattamento dei dati mai raccolto per iscritto.
+- Connessione: buona a Milano; a Bologna debole nel seminterrato (riferito da colleghi). Torino: non verificato.
+- Ciascuno vede solo gli appuntamenti del proprio showroom; Elena vede quelli dei suoi consulenti.
+
+**Aspettative sul prodotto (opinioni, Elena)**
+
+- Il tablet si porta in giro nello showroom con il cliente. Non deve bloccarsi se manca la rete. Le foto dei prodotti devono vedersi bene.
+
+**Non verificato**
+
+- Gli utilizzatori di Torino: i due consulenti sono in fiera fino a fine ottobre. Le abitudini di Torino e Bologna sono riferite da Elena.
+
+**Domande aperte**
+
+- Limite degli sconti e chi li autorizza: la regola del 10% è riferita da Elena, non confermata da Franco.
+- Come lavorano Torino e Bologna.
+
+**Contraddizioni con i documenti**
+
+- Nessuna: non esistono documenti sul prodotto.
+
+**Riservatezza**
+
+- La conversazione non contiene dati personali di clienti.
+
+## 2. Dove riportare
+
+- Stato di partenza, contesto: tutte le informazioni sopra, con grado "riferito".
+- Stato di partenza, vincoli: assenza del consenso per i dati dei clienti, connessione debole.
+- Proposta, domande aperte: il 10%; Torino e Bologna; pulizia dei clienti.
+- Registro delle decisioni: nessuna decisione.
+
+## 3. Riepilogo scritto per il cliente
+
+Non necessario: la conversazione non ha prodotto decisioni, conferme o richieste del referente. Le domande sul 10% e sugli altri showroom andranno a Franco nella Proposta.

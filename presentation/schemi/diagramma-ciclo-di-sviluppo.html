@@ -135,7 +135,7 @@ dl.events dd { margin: 2px 0 0 0; }
 <main>
 
 <h1>Diagramma del Ciclo di sviluppo</h1>
-<p class="lead">Il percorso della parte di sviluppo di una lavorazione, valido per ticket, progetti e prodotti: un flusso unico che si dirama dove le tre categorie differiscono. Per ogni passo: chi lo esegue, quali skill usare, quali documenti si producono, a cosa stare attenti, cosa può succedere e cosa implica. La fonte di verità resta <code>docs/ciclo-di-sviluppo.md</code>: se il documento cambia, questo diagramma va aggiornato.</p>
+<p class="lead">Il percorso della parte di sviluppo di una lavorazione, valido per lavorazioni minori, progetti e prodotti: un flusso unico che si dirama dove le tre categorie differiscono. Per ogni passo: chi lo esegue, quali skill usare, quali documenti si producono, a cosa stare attenti, cosa può succedere e cosa implica. La fonte di verità resta <code>docs/ciclo-di-sviluppo.md</code>: se il documento cambia, questo diagramma va aggiornato.</p>
 
 <div class="legend">
   <span class="l-who">Chi esegue</span>
@@ -201,14 +201,13 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box skill"><h3>Skill</h3>
         <ul>
           <li>Nessuna per lo sviluppo.</li>
-          <li><code>variazione</code> per un cambiamento chiesto dal cliente.</li>
-          <li><code>riprogrammazione</code> per un imprevisto di tempo.</li>
+          <li><code>history-and-decision</code> per un cambiamento chiesto dal cliente (variazione) o per un imprevisto di tempo (riprogrammazione).</li>
           <li><code>interpretazione-conversazioni</code> per ogni conversazione con il cliente.</li>
         </ul>
       </div>
       <div class="box steps wide"><h3>Cosa si fa</h3>
         <ol>
-          <li>Una daily, breve e regolare, per i progetti e i prodotti. I ticket non l'hanno. Un blocco si segnala il giorno stesso.</li>
+          <li>Una daily, breve e regolare, per i progetti e i prodotti. Le lavorazioni minori non l'hanno. Un blocco si segnala il giorno stesso.</li>
           <li>Si sviluppa ogni issue fino a soddisfare la sua DoD, con la revisione del codice (skill <code>revisione-codice</code>) e lo stato aggiornato in ClickUp.</li>
           <li>Una issue che scopre un'incognita non risolvibile in poco tempo genera una issue di tipo spike a tempo limitato, poi una nuova stima.</li>
           <li>Una issue che si rivela molto più grande della stima si ferma e si avvisa il responsabile: la stima si rifà, e una issue oltre le 16 ore si divide.</li>
@@ -239,11 +238,11 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box event"><h3>Cosa può succedere</h3>
         <dl class="events">
           <dt>Un blocco tecnico o di un servizio esterno</dt><dd>Una issue di tipo spike a tempo limitato, poi una nuova stima.</dd>
-          <dt>Il cliente chiede qualcosa</dt><dd>Se il Manuale è già confermato è una variazione: skill <code>variazione</code>.</dd>
+          <dt>Il cliente chiede qualcosa</dt><dd>Se il Manuale è già confermato è una variazione: skill <code>history-and-decision</code>.</dd>
           <dt>Il ticket cresce fino a diventare un progetto</dt><dd>Si ferma e segue il Piano di progetto.</dd>
           <dt>Nuove richieste aggiunte a un ticket</dt><dd>Diventano un ticket nuovo.</dd>
-          <dt>Un ticket urgente interrompe il lavoro</dt><dd>La issue in corso torna a PLANNED con un commento sullo stato del lavoro. Vedi la sezione sui ticket urgenti.</dd>
-          <dt>Assenza del responsabile di un ticket</dt><dd>Se il ticket è urgente si riassegna, altrimenti slitta.</dd>
+          <dt>Una lavorazione minore urgente interrompe il lavoro</dt><dd>La issue in corso torna a PLANNED con un commento sullo stato del lavoro. Vedi la sezione sui lavorazioni minori urgenti.</dd>
+          <dt>Assenza del responsabile di una lavorazione minore</dt><dd>Se la lavorazione è urgente si riassegna, altrimenti slitta.</dd>
         </dl>
       </div>
       <div class="box close wide"><h3>Si chiude quando</h3><p>A fine sprint: vedi il passo 3.</p></div>
@@ -261,14 +260,14 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box skill"><h3>Skill</h3>
         <ul>
           <li><code>sprint</code>, per la nota.</li>
-          <li><code>riprogrammazione</code> se la milestone è a rischio o in ritardo.</li>
+          <li><code>history-and-decision</code> se la milestone è a rischio o in ritardo.</li>
         </ul>
       </div>
       <div class="box steps wide"><h3>Cosa si fa, in ordine</h3>
         <ol>
           <li><b>Esito delle issue.</b> COMPLETED e non COMPLETED, lette da ClickUp. Le non completate passano allo sprint successivo con la priorità: lo sprint non si allunga.</li>
           <li><b>Ore completate.</b> La somma delle stime delle issue diventate COMPLETED dentro lo sprint: guida la pianificazione successiva.</li>
-          <li><b>Imprevisti.</b> Assenze, ticket urgenti, blocchi, materiali in ritardo: cosa è successo e quante ore è costato.</li>
+          <li><b>Imprevisti.</b> Assenze, lavorazioni minori urgenti, blocchi, materiali in ritardo: cosa è successo e quante ore è costato.</li>
           <li><b>Controllo della milestone</b> (solo progetti e prodotti): si confrontano le ore rimanenti con la capacità rimanente prima della data, buffer di milestone compreso.</li>
           <li><b>Segnalazioni.</b> Se la milestone è a rischio o in ritardo serve una riprogrammazione.</li>
           <li>Si scrive la Nota di sprint, prima della pianificazione che ne dipende.</li>
@@ -280,7 +279,7 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="q">Esito del controllo della milestone</div>
       <div class="branches">
         <div class="branch"><span class="label">In linea</span>Il margine è almeno metà del buffer di milestone iniziale.<span class="goes">Si prosegue. Non si comunica nulla al cliente.</span></div>
-        <div class="branch"><span class="label">A rischio</span>Il margine è tra zero e metà del buffer iniziale.<span class="goes">Si usa <code>riprogrammazione</code>. Il cliente si avvisa solo se una data già comunicata cambia.</span></div>
+        <div class="branch"><span class="label">A rischio</span>Il margine è tra zero e metà del buffer iniziale.<span class="goes">Si usa <code>history-and-decision</code>. Il cliente si avvisa solo se una data già comunicata cambia.</span></div>
         <div class="branch"><span class="label">In ritardo</span>Il margine è sotto zero.<span class="goes">Servono le leve: spostare una story, spostare la data, aggiungere ore. Vedi la sezione sui buffer.</span></div>
       </div>
     </div>
@@ -296,7 +295,7 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box warn"><h3>Attenzione a</h3>
         <ul>
           <li>La nota viene prima della pianificazione, che ne dipende.</li>
-          <li>Per un ticket non c'è il controllo della milestone: c'è solo l'esito delle issue.</li>
+          <li>Per una lavorazione minore non c'è il controllo della milestone: c'è solo l'esito delle issue.</li>
           <li>Non si inventano ore, stati o assenze: ciò che non si sa, si chiede.</li>
         </ul>
       </div>
@@ -318,11 +317,11 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box steps wide"><h3>Cosa si fa, in ordine</h3>
         <ol>
           <li>Si parte dalle ore realmente disponibili di ogni persona nello sprint, tolte ferie, festività e chiusure. Si chiedono a ogni sprint: non si riusano quelle teoriche.</li>
-          <li>Si toglie il buffer di sprint, il 20% della capacità, riservato ai ticket urgenti. Se a metà sprint non è stato usato, si anticipa altro lavoro.</li>
+          <li>Si toglie il buffer di sprint, il 20% della capacità, riservato ai lavorazioni minori urgenti. Se a metà sprint non è stato usato, si anticipa altro lavoro.</li>
           <li>Si usano le stime delle issue non COMPLETED già rivalutate nella Nota di sprint: la capacità non si corregge sulla storia.</li>
           <li>Il resto si pianifica per intero, non sotto la capacità. Si scelgono le issue: prima quelle tornate dallo sprint precedente, poi quelle che sbloccano altro lavoro (supporto e spike), poi le altre secondo le dipendenze.</li>
           <li>Non si scelgono issue che attendono un materiale del cliente non ancora arrivato.</li>
-          <li>I ticket non hanno documenti di sprint: si pianificano in ClickUp. Un ticket normale usa prima le persone sempre disponibili e, se serve, un prestito di ore da un progetto deciso da chi gestisce il team prima della pianificazione. Un ticket a tempo perso usa solo la capacità che avanza.</li>
+          <li>Le lavorazioni minori non hanno documenti di sprint: si pianificano in ClickUp. Una lavorazione minore normale usa prima le persone sempre disponibili e, se serve, un prestito di ore da un progetto deciso da chi gestisce il team prima della pianificazione. Una lavorazione minore a tempo perso usa solo la capacità che avanza.</li>
           <li>Il supervisore controlla che le stime siano plausibili e che la capacità sia rispettata.</li>
         </ol>
       </div>
@@ -333,8 +332,8 @@ dl.events dd { margin: 2px 0 0 0; }
     <div class="decision">
       <div class="q">Da dove vengono le issue, secondo la categoria</div>
       <div class="branches">
-        <div class="branch"><span class="label">Ticket</span>Entra nello sprint come una issue assegnata al responsabile. Un ticket urgente non aspetta la pianificazione: parte subito, con le ore dal buffer di sprint. Un ticket lungo è semplicemente lungo: al massimo si divide in più issue dello stesso ticket.</div>
-        <div class="branch"><span class="label">Progetto</span>Le issue si pescano dalla milestone in corso, nel capitolo Milestone del Documento tecnico.</div>
+        <div class="branch"><span class="label">Ticket</span>Entra nello sprint come una issue assegnata al responsabile. Una lavorazione minore urgente non aspetta la pianificazione: parte subito, con le ore dal buffer di sprint. Una lavorazione minore lunga è semplicemente lunga: al massimo si divide in più issue dello stesso ticket.</div>
+        <div class="branch"><span class="label">Progetto</span>Le issue si pescano dalla milestone in corso, nel capitolo Piano delle milestone del Documento tecnico.</div>
         <div class="branch"><span class="label">Prodotto</span>Come per il progetto. Nella prima milestone ci sono le fondamenta.</div>
       </div>
     </div>
@@ -343,19 +342,19 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box warn"><h3>Attenzione a</h3>
         <ul>
           <li>Lo sprint non si pianifica sotto la capacità, e le ore teoriche non si usano.</li>
-          <li>Un ticket normale o a tempo perso non può togliere persone ai progetti.</li>
-          <li>Il buffer di sprint serve solo ai ticket urgenti, non alle issue dei progetti.</li>
+          <li>Una lavorazione minore normale o a tempo perso non può togliere persone ai progetti.</li>
+          <li>Il buffer di sprint serve solo ai lavorazioni minori urgenti, non alle issue dei progetti.</li>
           <li>Una variazione non entra mai nello sprint in corso.</li>
         </ul>
       </div>
       <div class="box event"><h3>Cosa può succedere</h3>
         <dl class="events">
-          <dt>Nessuna capacità per un ticket normale</dt><dd>Sta in una coda ordinata per urgenza e data di apertura, e aspetta lo sprint successivo.</dd>
-          <dt>La persona adatta non è disponibile</dt><dd>Se il ticket è urgente si riassegna, altrimenti slitta.</dd>
+          <dt>Nessuna capacità per una lavorazione minore normale</dt><dd>Sta in una coda ordinata per urgenza e data di apertura, e aspetta lo sprint successivo.</dd>
+          <dt>La persona adatta non è disponibile</dt><dd>Se la lavorazione è urgente si riassegna, altrimenti slitta.</dd>
           <dt>Una issue attende un materiale del cliente</dt><dd>Non si sceglie. Vale la sezione "Il cliente non risponde".</dd>
         </dl>
       </div>
-      <div class="box impl wide"><h3>Cosa implica</h3><p>La capacità è condivisa tra tutti i lavori dell'azienda: ogni ora data a un ticket urgente è un'ora tolta a un progetto. Per questo l'urgenza si decide in un solo punto.</p></div>
+      <div class="box impl wide"><h3>Cosa implica</h3><p>La capacità è condivisa tra tutti i lavori dell'azienda: ogni ora data a una lavorazione minore urgente è un'ora tolta a un progetto. Per questo l'urgenza si decide in un solo punto.</p></div>
     </div>
   </div>
 </section>
@@ -363,9 +362,9 @@ dl.events dd { margin: 2px 0 0 0; }
 
 <!-- PASSO 5 -->
 <section class="phase" id="passo5">
-  <header><span class="num">Passo 5</span><h2>Fine milestone</h2><span class="what">Solo progetti e prodotti: prova del cliente sullo staging e accettazione</span></header>
+  <header><span class="num">Passo 5</span><h2>Fine milestone</h2><span class="what">Solo progetti e prodotti: UAT dal vivo con il cliente sullo staging e accettazione</span></header>
   <div class="body">
-    <p class="intro">Quando le story di una milestone sono finite il cliente prova il lavoro sullo staging. I ticket non hanno milestone né prova su staging: per loro questo passo non esiste.</p>
+    <p class="intro">Quando le story di una milestone sono finite il cliente prova il lavoro sullo staging, dal vivo con il team (UAT). Le lavorazioni minori non hanno milestone né prova su staging: per loro questo passo non esiste.</p>
     <div class="grid">
       <div class="box who"><h3>Chi</h3><p>Il responsabile.</p></div>
       <div class="box skill"><h3>Skill</h3>
@@ -377,8 +376,8 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="box steps wide"><h3>Cosa si fa, in ordine</h3>
         <ol>
           <li>Il team verifica sullo staging ogni story della milestone sul suo criterio di accettazione. Una story che non lo soddisfa non si manda al cliente sperando che vada bene.</li>
-          <li>Il responsabile prepara il Milestone report e il messaggio per la prova.</li>
-          <li>Il cliente prova le story sullo staging, seguendo il percorso naturale di un utente e guidato dal Milestone report. Si verifica ciò che è scritto nel Manuale. Una demo in call è facoltativa.</li>
+          <li>Il responsabile prepara il messaggio per la prova, con le story e i criteri.</li>
+          <li>Nella sessione dal vivo (UAT), in call o di persona, il team presenta il lavoro sullo staging e il cliente prova le story, seguendo il percorso naturale di un utente, guidato dal messaggio di invito. Si verifica ciò che è scritto nel Manuale. Una demo in call è facoltativa.</li>
           <li>Si assegna un esito a ogni story.</li>
           <li>Il cliente accetta in modo esplicito. Se conferma a voce, vale dopo il riepilogo scritto.</li>
           <li>La milestone passa ad accettata. Per i difetti si aprono issue di tipo bug, con la story violata.</li>
@@ -396,15 +395,14 @@ dl.events dd { margin: 2px 0 0 0; }
     </div>
     <div style="height:14px"></div>
     <div class="grid">
-      <div class="box doc wide"><h3>Documento che si produce: il Milestone report, per il cliente</h3>
+      <div class="box doc wide"><h3>Documento che si produce: il Milestone report, interno</h3>
         <ul>
-          <li>Le story consegnate, con codice e nome del Manuale e il criterio di accettazione riportato parola per parola.</li>
-          <li>L'esito della prova per ogni story, con le date di correzione dei difetti non bloccanti.</li>
-          <li>Le variazioni di questa milestone e il loro effetto sulle date.</li>
-          <li>La prossima milestone, con la data prevista della prova.</li>
-          <li>Le date aggiornate, se una data comunicata cambia, con il motivo in parole non tecniche.</li>
-          <li>Ciò che serve dal cliente, con le date, e la richiesta di conferma scritta.</li>
-          <li>Nessuna ora, stima, buffer, tecnologia o nome di persona del team.</li>
+          <li>Letto da chi gestisce il progetto, non dal cliente. Il cliente riceve solo il messaggio per la prova, con le story da provare e i criteri.</li>
+          <li>Milestone e stato: in linea, a rischio o in ritardo, con data prevista e reale.</li>
+          <li>Le story consegnate con l'esito della prova e le date di correzione dei difetti non bloccanti.</li>
+          <li>Ore previste e reali, buffer e margine.</li>
+          <li>Variazioni, riprogrammazioni e imprevisti di questa milestone, da History and decision.</li>
+          <li>Cosa ha funzionato e cosa no, e la prossima milestone.</li>
         </ul>
       </div>
       <div class="box close"><h3>Si chiude quando</h3><p>Il cliente ha accettato la milestone.</p></div>
@@ -414,7 +412,7 @@ dl.events dd { margin: 2px 0 0 0; }
           <li>Una richiesta nuova emersa nella prova non è un difetto: si annota e dopo si tratta come variazione.</li>
           <li>Un comportamento che rispetta il Manuale ma non piace al cliente non è un difetto.</li>
           <li>Una contestazione si decide sul criterio di accettazione del Manuale.</li>
-          <li>Se la milestone è a rischio o in ritardo, il Milestone report non lo comunica da solo: la comunicazione la prepara la riprogrammazione.</li>
+          <li>Se la milestone è a rischio o in ritardo, il Milestone report lo segnala ma non lo comunica: la comunicazione la prepara la riprogrammazione.</li>
         </ul>
       </div>
       <div class="box event"><h3>Cosa può succedere</h3>
@@ -437,7 +435,7 @@ dl.events dd { margin: 2px 0 0 0; }
     <div class="decision">
       <div class="q">Dove va il lavoro, secondo la categoria</div>
       <div class="branches">
-        <div class="branch"><span class="label">Ticket</span>Passa al rilascio, che coincide con la chiusura, con una risposta al cliente nel ticket. L'aggiornamento dei documenti segue dopo la chiusura.<span class="goes">Piano dei ticket, fase 3.</span></div>
+        <div class="branch"><span class="label">Ticket</span>Passa al rilascio, che coincide con la chiusura, con una risposta al cliente nel ticket.<span class="goes">Piano delle lavorazioni minori, fase 3.</span></div>
         <div class="branch"><span class="label">Progetto</span>Quando tutte le milestone sono accettate, passa al collaudo finale e al rilascio.<span class="goes">Piano di progetto, fase 3, rilascio.</span></div>
         <div class="branch"><span class="label">Prodotto</span>Quando tutte le milestone della release sono accettate, passa al collaudo finale, al piano di lancio e al rilascio.<span class="goes">Piano di prodotto.</span></div>
       </div>
@@ -461,14 +459,14 @@ dl.events dd { margin: 2px 0 0 0; }
     <header><span class="num">Regola</span><h2>Capacità e buffer: quando si usa quale</h2><span class="what">Due buffer, due scopi</span></header>
     <div class="body">
       <div class="grid">
-        <div class="box doc"><h3>Buffer di sprint</h3><p>Il 20% della capacità di ogni persona in ogni sprint, riservato ai ticket urgenti. Si usa solo per i ticket urgenti entrati nello sprint. Non si usa per le issue dei progetti. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED con la parte avanzata.</p></div>
+        <div class="box doc"><h3>Buffer di sprint</h3><p>Il 20% della capacità di ogni persona in ogni sprint, riservato ai lavorazioni minori urgenti. Si usa solo per i lavorazioni minori urgenti entrati nello sprint. Non si usa per le issue dei progetti. Se a metà sprint non è stato usato, il responsabile può anticipare issue da BACKLOG a PLANNED con la parte avanzata.</p></div>
         <div class="box doc"><h3>Buffer di milestone</h3><p>Solo progetti e prodotti. Le ore aggiunte a ogni milestone: il 20% delle ore stimate, il 30% con una sola persona. Si usa per stime sbagliate, assenze brevi, urgenze oltre il buffer di sprint e variazioni piccole. Le variazioni piccole possono consumarne al massimo la metà.</p></div>
         <div class="box doc wide"><h3>Margine della milestone</h3><p>Capacità rimanente fino alla data della prova, al netto del buffer di sprint, meno le ore rimanenti (stime delle issue non COMPLETED). All'inizio il margine è il buffer di milestone. <b>In linea:</b> margine almeno metà del buffer iniziale. <b>A rischio:</b> tra zero e metà. <b>In ritardo:</b> sotto zero.</p></div>
         <div class="box steps wide"><h3>Ordine d'uso quando arriva un imprevisto di tempo</h3>
           <ol>
-            <li>Un ticket urgente usa prima il buffer di sprint.</li>
+            <li>Una lavorazione minore urgente usa prima il buffer di sprint.</li>
             <li>Oltre il buffer di sprint, escono dallo sprint le issue meno prioritarie e le ore pesano sul buffer di milestone, cioè riducono il margine.</li>
-            <li>Se la milestone è a rischio si usa <code>riprogrammazione</code>. Se nessuna data già comunicata cambia, il cliente non si avvisa e decide il responsabile.</li>
+            <li>Se la milestone è a rischio si usa <code>history-and-decision</code>. Se nessuna data già comunicata cambia, il cliente non si avvisa e decide il responsabile.</li>
             <li>Se la milestone è in ritardo, le leve sono tre: spostare una story a una milestone successiva, spostare la data, aggiungere ore. Le prime due si decidono con il cliente. Aggiungere ore lo decide chi gestisce il team, con il CEO se serve.</li>
             <li>Se una data già comunicata al cliente cambia, il cliente è avvisato subito, con la proposta.</li>
           </ol>
@@ -487,14 +485,14 @@ dl.events dd { margin: 2px 0 0 0; }
 <!-- URGENTI -->
 <section class="side" id="urgenti">
   <div class="phase">
-    <header><span class="num">Regola</span><h2>Ticket urgenti durante lo sviluppo di un progetto</h2><span class="what">Solo un ticket urgente può togliere persone a un progetto</span></header>
+    <header><span class="num">Regola</span><h2>Ticket urgenti durante lo sviluppo di un progetto</h2><span class="what">Solo una lavorazione minore urgente può togliere persone a un progetto</span></header>
     <div class="body">
       <div class="grid">
         <div class="box steps wide"><h3>Cosa si fa</h3>
           <ol>
             <li>Si sceglie la persona che conosce meglio la parte coinvolta, anche se sta lavorando al progetto.</li>
             <li>La persona mette in pausa la issue in corso: lascia salvato il lavoro, scrive lo stato in un commento e riporta la issue a PLANNED.</li>
-            <li>Il ticket segue il percorso d'urgenza del Piano dei ticket.</li>
+            <li>Il ticket segue il percorso d'urgenza del Piano delle lavorazioni minori.</li>
           </ol>
         </div>
         <div class="box warn"><h3>Attenzione a</h3>
@@ -526,8 +524,8 @@ dl.events dd { margin: 2px 0 0 0; }
             <li>Se non c'è nulla di fattibile, la capacità liberata va ad altri lavori e il lavoro riprende appena la risposta arriva.</li>
           </ol>
         </div>
-        <div class="box warn"><h3>Attenzione a</h3><p>Non c'è un termine dopo il quale il lavoro si chiude: il cliente sa già che una risposta tardiva ritarda il lavoro. Il silenzio non vale come conferma di un documento né come accettazione di una prova. Un ticket resta sospeso informalmente, senza termini.</p></div>
-        <div class="box impl"><h3>Cosa implica</h3><p>La data della parte bloccata slitta, il resto avanza. La Nota di sprint e il Milestone report ricordano i materiali in scadenza, prima che diventino un blocco.</p></div>
+        <div class="box warn"><h3>Attenzione a</h3><p>Non c'è un termine dopo il quale il lavoro si chiude: il cliente sa già che una risposta tardiva ritarda il lavoro. Il silenzio non vale come conferma di un documento né come accettazione di una prova. Una lavorazione minore resta sospesa informalmente, senza termini.</p></div>
+        <div class="box impl"><h3>Cosa implica</h3><p>La data della parte bloccata slitta, il resto avanza. La Nota di sprint e il messaggio per la prova ricordano i materiali in scadenza, prima che diventino un blocco.</p></div>
       </div>
     </div>
   </div>
@@ -541,7 +539,7 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="grid">
         <div class="box steps wide"><h3>Da ricordare</h3>
           <ul>
-            <li>Dopo la conferma del Manuale ogni cambiamento chiesto dal cliente è una variazione: si registra nel Registro delle variazioni e si categorizza con la skill <code>variazione</code>.</li>
+            <li>Dopo la conferma del Manuale ogni cambiamento chiesto dal cliente è una variazione: si registra in History and decision e si categorizza con la skill <code>history-and-decision</code>.</li>
             <li>Categoria, in ordine, la prima risposta affermativa decide: grande (cambia ciò che la proposta ha stabilito, o story in più milestone), media (sposta una data, sposta story tra milestone o release, tocca lavoro accettato, supera 4 ore, o tocca più di una story), piccola (nessuna delle precedenti).</li>
             <li>La variazione piccola è assorbita dal buffer di milestone, entro il tetto di metà del buffer. La media richiede l'approvazione scritta del cliente prima di lavorare. La grande torna alla proposta.</li>
             <li>Una variazione non entra mai nello sprint in corso.</li>
@@ -558,7 +556,7 @@ dl.events dd { margin: 2px 0 0 0; }
 <!-- IMPREVISTI -->
 <section class="side" id="imprevisti">
   <div class="phase">
-    <header><span class="num">Risposte già decise</span><h2>Imprevisti durante lo sviluppo</h2><span class="what">Per progetti e prodotti. Per i ticket valgono quelli del Piano dei ticket</span></header>
+    <header><span class="num">Risposte già decise</span><h2>Imprevisti durante lo sviluppo</h2><span class="what">Per progetti e prodotti. Per le lavorazioni minori valgono quelli del Piano delle lavorazioni minori</span></header>
     <div class="body">
       <div class="grid">
         <div class="box event"><h3>Le persone</h3>
@@ -575,7 +573,7 @@ dl.events dd { margin: 2px 0 0 0; }
         </div>
         <div class="box event"><h3>I tempi</h3>
           <dl class="events">
-            <dt>Sprint non completato</dt><dd>Le issue non COMPLETED passano allo sprint successivo con la priorità, lo sprint non si allunga. Il cliente lo legge nello stato della milestone del Milestone report.</dd>
+            <dt>Sprint non completato</dt><dd>Le issue non COMPLETED passano allo sprint successivo con la priorità, lo sprint non si allunga. Se una data comunicata cambia, il cliente lo sa con un messaggio.</dd>
             <dt>Stime sbagliate</dt><dd>A ogni chiusura di sprint chi sviluppa rivaluta le ore delle issue non COMPLETED: la rivalutazione alimenta il margine della milestone, che segnala il problema.</dd>
             <dt>Milestone a rischio o in ritardo</dt><dd>Vale la sezione sui buffer.</dd>
             <dt>Blocco tecnico o di un servizio esterno</dt><dd>Una issue di tipo spike a tempo limitato, poi una nuova stima.</dd>
@@ -602,25 +600,24 @@ dl.events dd { margin: 2px 0 0 0; }
       <div class="grid">
         <div class="box doc"><h3>Documenti interni</h3>
           <ul>
-            <li>Documento tecnico, capitolo Milestone (progetti e prodotti): la fonte delle issue.</li>
+            <li>Documento tecnico, capitolo Piano delle milestone (progetti e prodotti): la fonte delle issue.</li>
             <li>Scheda di intervento (ticket): la fonte della issue del ticket.</li>
             <li>Nota di sprint: per lavorazione, a ogni fine sprint. La pianificazione dello sprint successivo è la List in ClickUp.</li>
             <li>ClickUp: lo stato delle issue.</li>
-            <li>Registro delle variazioni: dalla conferma del Manuale.</li>
+            <li>History and decision: dalla conferma del Manuale.</li>
           </ul>
         </div>
         <div class="box who"><h3>Documenti per il cliente</h3>
           <ul>
             <li>Piano dei SAL: inviato prima dello sviluppo, aggiornato se una data cambia.</li>
-            <li>Milestone report: a ogni milestone, con le istruzioni per provare (progetti e prodotti).</li>
+            <li>Milestone report: interno, a ogni milestone (progetti e prodotti).</li>
             <li>Riepilogo scritto delle conversazioni in cui il cliente conferma o decide.</li>
           </ul>
         </div>
         <div class="box skill wide"><h3>Skill</h3>
           <ul>
             <li><code>sprint</code>: Nota di sprint e pianificazione del successivo in ClickUp.</li>
-            <li><code>riprogrammazione</code>: quando una milestone è a rischio o in ritardo, o un imprevisto tocca le date.</li>
-            <li><code>variazione</code>: per ogni cambiamento chiesto dopo la conferma del Manuale.</li>
+            <li><code>history-and-decision</code>: variazioni, riprogrammazioni, garanzia e ogni fatto che conta.</li>
             <li><code>prova-su-staging</code>: messaggio per la prova e esito di milestone.</li>
             <li><code>revisione-codice</code>: la revisione di ogni issue.</li>
             <li><code>milestone-report</code>: il documento per il cliente a ogni milestone.</li>

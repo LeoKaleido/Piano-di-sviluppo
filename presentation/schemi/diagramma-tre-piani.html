@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagramma dei tre piani</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --ink: #1b2430;
+  --muted: #5a6575;
+  --line: #c9d1dc;
+  --phase: #1f4e8c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b;
+    --card: #1a2029;
+    --ink: #e6eaf0;
+    --muted: #9aa6b6;
+    --line: #3a4455;
+    --phase: #3b72b8;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 24px 16px 64px;
+}
+main { max-width: 1400px; margin: 0 auto; }
+h1 { font-size: 1.9rem; margin: 0 0 4px; }
+p { margin: 0 0 8px; }
+a { color: var(--phase); }
+code { background: rgba(120,130,150,0.18); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+.lead { color: var(--muted); margin-bottom: 16px; max-width: 1040px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 16px; }
+.legend span { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.85rem; }
+.l-fase { background: #e8f0fb; }
+.l-doc { background: #fff4d6; }
+.l-dec { background: #fff0e0; border-color: #d98a2b !important; }
+.l-fine { background: #eaf3df; }
+.l-alt { background: #f3ecfa; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .l-fase { background: #1e2d44; }
+  :root:not([data-theme="light"]) .l-doc { background: #3a3220; }
+  :root:not([data-theme="light"]) .l-dec { background: #3a2c1a; }
+  :root:not([data-theme="light"]) .l-fine { background: #26331b; }
+  :root:not([data-theme="light"]) .l-alt { background: #2c2438; }
+}
+.tools { display: flex; gap: 8px; margin-bottom: 10px; }
+.tools button {
+  font: inherit; font-size: 0.9rem; cursor: pointer; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 4px 12px;
+}
+.canvas { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: auto; padding: 16px; }
+.canvas svg { max-width: none; height: auto; }
+.note { font-size: 0.9rem; color: var(--muted); margin-top: 12px; }
+noscript { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Diagramma dei tre piani</h1>
+<p class="lead">Lavorazione minore, progetto e prodotto in un solo disegno: la parte iniziale comune, la diramazione per categoria, le fasi di ognuno e dove si ricongiungono (la garanzia). Il dettaglio di ogni fase, con skill e documenti, è nei diagrammi di <a href="diagramma-piano-delle-lavorazioni-minori.html">lavorazione minore</a>, <a href="diagramma-piano-di-progetto.html">progetto</a> e <a href="diagramma-presa-in-carico.html">presa in carico</a>. La fonte di verità sono i tre piani in <code>docs/</code>: se cambiano, questo diagramma va aggiornato.</p>
+
+<div class="legend">
+  <span class="l-fase">Fase o sottofase</span>
+  <span class="l-doc">Documento che nasce</span>
+  <span class="l-dec">Decisione</span>
+  <span class="l-alt">Percorso particolare</span>
+  <span class="l-fine">Chiusura</span>
+</div>
+
+<div class="tools">
+  <button type="button" id="zin">Ingrandisci</button>
+  <button type="button" id="zout">Riduci</button>
+  <button type="button" id="zfit">Adatta alla larghezza</button>
+</div>
+
+<div class="canvas" id="canvas"><noscript>Il diagramma richiede JavaScript (libreria Mermaid).</noscript></div>
+
+<p class="note">Disegnato con <a href="https://mermaid.js.org/">Mermaid</a> (versione 11.4.0, caricata da CDN: serve la rete per vederlo). Il sorgente del diagramma è il testo nello script in fondo a questo file: per modificare il flusso si cambiano le righe, non il disegno.</p>
+
+</main>
+
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.esm.min.mjs";
+
+const dark = window.matchMedia("(prefers-color-scheme: dark)").matches
+  && document.documentElement.dataset.theme !== "light";
+
+const c = dark
+  ? { fase: "#1e2d44", doc: "#3a3220", dec: "#3a2c1a", fine: "#26331b", alt: "#2c2438", start: "#3b72b8",
+      ink: "#e6eaf0", line: "#9aa6b6", decLine: "#d98a2b", bg: "#1a2029" }
+  : { fase: "#e8f0fb", doc: "#fff4d6", dec: "#fff0e0", fine: "#eaf3df", alt: "#f3ecfa", start: "#223a5a",
+      ink: "#1b2430", line: "#5a6575", decLine: "#d98a2b", bg: "#ffffff" };
+
+const src = `
+flowchart TD
+  START(["Ticket del cliente<br/>su osTicket"]):::start
+  ANALISI["Chi analizza: urgenza,<br/>verifica preliminare,<br/>stima a occhio"]:::fase
+  CAT{"Categoria?"}:::dec
+  NO(["Non da fare o da rimandare:<br/>risposta al cliente con il motivo"]):::fine
+
+  START --> ANALISI --> CAT
+  CAT -->|non va aperto| NO
+
+  subgraph LAVMIN ["LAVORAZIONE MINORE"]
+    direction TB
+    T1["Fase 1 - Analisi<br/>decisioni in testa e<br/>Scheda di intervento"]:::fase
+    T1D["Scheda di intervento<br/>(PDF) e task in ClickUp"]:::doc
+    T2["2.1 Pianificazione<br/>BACKLOG a PLANNED<br/>nello sprint"]:::fase
+    T3["2.2 Esecuzione<br/>IN PROGRESS, TESTING<br/>con revisione del codice,<br/>COMPLETED con DoD"]:::fase
+    T4["Fase 3 - Pubblicazione e chiusura<br/>incaricato pubblica,<br/>risposta al cliente<br/>nel ticket"]:::fase
+    TUR["Urgente:<br/>parte subito"]:::alt
+    TAS["Assistenza:<br/>nessun codice,<br/>chiusura = risposta"]:::alt
+    TF(["Lavorazione minore chiusa"]):::fine
+    T1 --> T1D --> T2 --> T3 --> T4 --> TF
+    T1 -.-> TUR -.-> T3
+    T1 -.-> TAS -.-> TF
+    TRI["Oltre 2 settimane:<br/>si riclassifica<br/>come progetto"]:::alt
+    T3 -.-> TRI
+  end
+
+  subgraph PROGETTO ["PROGETTO"]
+    direction TB
+    P1["1.1 Valutazione<br/>stima a occhio,<br/>tempo del kickoff al 10%"]:::fase
+    P2["1.2 Stima<br/>precisa, da codebase<br/>e Report di progetto"]:::fase
+    P3["1.3 Proposta<br/>versioni v0.1, v0.2..."]:::fase
+    PC1{"Il cliente<br/>conferma?"}:::dec
+    P4["1.4 Documentazione<br/>Manuale del prodotto"]:::fase
+    PC2{"Il cliente conferma<br/>il Manuale?"}:::dec
+    P4B["Documento tecnico con<br/>Piano delle milestone,<br/>issue in ClickUp, Piano dei SAL"]:::doc
+    P5["Fase 2 - Sviluppo a sprint<br/>Nota di sprint a ogni<br/>fine sprint"]:::fase
+    P6["UAT dal vivo con il<br/>cliente sullo staging<br/>a ogni milestone,<br/>Milestone report"]:::fase
+    PM{"Altre<br/>milestone?"}:::dec
+    P7["3.1 Collaudo<br/>UAT finale dal vivo<br/>con il cliente"]:::fase
+    P8["3.2 Preparazione<br/>piano di rilascio"]:::fase
+    P9["3.3 Pubblicazione<br/>incaricato, verifiche,<br/>avviso al cliente"]:::fase
+    P10["3.4 Chiusura<br/>documenti aggiornati,<br/>Report di progetto"]:::fase
+    PF(["Progetto chiuso"]):::fine
+    P1 --> P2 --> P3 --> PC1
+    PC1 -->|no, nuova versione| P3
+    PC1 -->|si| P4 --> PC2
+    PC2 -->|no, nuova versione| P4
+    PC2 -->|si| P4B --> P5 --> P6 --> PM
+    PM -->|si| P5
+    PM -->|no| P7 --> P8 --> P9 --> P10 --> PF
+    P9 -.->|se fallisce:<br/>versione precedente,<br/>nuova data| P8
+  end
+
+  subgraph PRODOTTO ["PRODOTTO"]
+    direction TB
+    R1["1.1 Valutazione<br/>con analisi del contesto"]:::fase
+    R2["1.2 Stima<br/>di durata e<br/>economica per release"]:::fase
+    R3["1.3 Proposta<br/>con release, budget<br/>e wireframe"]:::fase
+    RC1{"Il cliente<br/>conferma?"}:::dec
+    R4["1.4 Prototipo e design<br/>prototipo e mockup,<br/>sessioni guidate"]:::fase
+    R5["1.5 Documentazione<br/>Manuale, Documento tecnico,<br/>Piano dei SAL"]:::fase
+    R6["Fase 2 - Sviluppo a sprint<br/>prima milestone:<br/>fondamenta"]:::fase
+    R7["3.1 Collaudo<br/>UAT finale dal vivo"]:::fase
+    R8["3.2 Preparazione<br/>Piano di lancio, dati iniziali,<br/>formazione"]:::fase
+    R9["3.3 Pubblicazione<br/>graduale: gruppo ristretto,<br/>poi tutti"]:::fase
+    R10["3.4 Chiusura<br/>documenti aggiornati,<br/>capitolo Pubblicazione,<br/>Report di progetto"]:::fase
+    RF(["Prima release chiusa"]):::fine
+    R1 --> R2 --> R3 --> RC1
+    RC1 -->|no, nuova versione| R3
+    RC1 -->|si| R4 --> R5 --> R6 --> R7 --> R8 --> R9 --> R10 --> RF
+  end
+
+  CAT -->|lavorazione minore| T1
+  CAT -->|progetto| P1
+  CAT -->|prodotto| R1
+
+
+  G["Garanzia dalla messa in produzione<br/>lavorazione minore: 15 giorni lavorativi<br/>progetto e prodotto: max tra 15 giorni<br/>e 50% della durata pianificata"]:::fine
+  REG["Passaggio a regime:<br/>lavorazioni minori e progetti"]:::alt
+  TF --> G
+  PF --> G
+  RF --> G
+  RF --> REG
+
+  classDef start fill:${c.start},stroke:${c.start},color:#ffffff
+  classDef fase fill:${c.fase},stroke:${c.line},color:${c.ink}
+  classDef doc fill:${c.doc},stroke:${c.line},color:${c.ink}
+  classDef dec fill:${c.dec},stroke:${c.decLine},stroke-width:2px,color:${c.ink}
+  classDef fine fill:${c.fine},stroke:${c.line},color:${c.ink}
+  classDef alt fill:${c.alt},stroke:${c.line},color:${c.ink},stroke-dasharray:4 3
+`;
+
+mermaid.initialize({
+  startOnLoad: false,
+  securityLevel: "strict",
+  theme: "base",
+  flowchart: { htmlLabels: true, curve: "basis", nodeSpacing: 28, rankSpacing: 36, useMaxWidth: false },
+  themeVariables: {
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+    fontSize: "14px",
+    lineColor: c.line,
+    primaryTextColor: c.ink,
+    clusterBkg: "transparent",
+    clusterBorder: c.line,
+    edgeLabelBackground: c.bg,
+    titleColor: c.ink
+  }
+});
+
+const canvas = document.getElementById("canvas");
+const { svg } = await mermaid.render("tre-piani", src);
+canvas.innerHTML = svg;
+
+const el = canvas.querySelector("svg");
+const natural = el.getBoundingClientRect().width;
+let width = natural;
+const apply = () => { el.style.width = width + "px"; el.style.maxWidth = "none"; };
+const fit = () => { width = Math.min(natural, canvas.clientWidth - 32); apply(); };
+document.getElementById("zin").onclick = () => { width *= 1.2; apply(); };
+document.getElementById("zout").onclick = () => { width /= 1.2; apply(); };
+document.getElementById("zfit").onclick = fit;
+fit();
+</script>
+</body>
+</html>

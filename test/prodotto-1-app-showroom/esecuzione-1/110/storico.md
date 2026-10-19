@@ -1,0 +1,31 @@
+# Storico, prodotto 110
+
+- 2026-10-12, 01-kickoff/01-valutazione, Altro: richiesta di Franco su osTicket. Effetto: nessuno. Riferimenti: richiesta.
+- 2026-10-13, 01-kickoff/01-valutazione, Cambio di persone: assegnazione al product lead 1; stima a occhio 150 giorni lavorativi, tempo del kickoff 15 giorni lavorativi fino al 2 novembre. Riferimenti: DEC1, DEC2.
+- 2026-10-14, 01-kickoff/01-valutazione, Conferma del cliente: Franco indica sé stesso come referente; richieste di pagamento, firma e riepilogo vendite. Riferimenti: DEC3.
+- 2026-10-20, 01-kickoff/01-valutazione, Altro: incontro con Elena e Paolo; Torino non disponibile. Effetto: ciò che non è verificato diventa domanda aperta.
+- 2026-10-22, 01-kickoff/02-stima, Fase completata: stima precisa 24 settimane. Effetto: giorno 8 di 15 del tempo del kickoff.
+- 2026-11-02, 01-kickoff/03-proposta, Fase completata: invio della Proposta v0.1, dentro il tempo del kickoff.
+- 2026-11-09, 01-kickoff/03-proposta, Richiesta del cliente: Franco chiede pagamento, firma e riepilogo nella prima release; risponde a D1-D6. Effetto: non accolta; Proposta v0.2. Riferimenti: DEC4, DEC5.
+- 2026-11-24, 01-kickoff/03-proposta, Conferma del cliente: Franco conferma a voce la Proposta v0.2 (diventa v1.0); riepilogo scritto lo stesso giorno. Effetto: allineamento dei documenti con 100 e ticket 103. Riferimenti: DEC4.
+- 2026-12-02, 01-kickoff/04-prototipo-e-design, Richiesta del cliente: sessione con Elena; richiesta del telefono in S1. Effetto: prototipo v2.
+- 2026-12-15, 01-kickoff/04-prototipo-e-design, Conferma del cliente: Franco approva prototipo v2 e mockup a voce. Riferimenti: DEC6.
+- 2026-12-23, 01-kickoff/05-documentazione, Altro: invio del Manuale v0.1. Franco non risponde.
+- 2027-01-07, 01-kickoff/05-documentazione, Ritardo del cliente: sollecito scritto. Effetto: Documento tecnico e Piano dei SAL slittano di 4 giorni lavorativi di attesa effettiva.
+- 2027-01-14, 01-kickoff/05-documentazione, Conferma del cliente: Manuale v0.2 confermato a voce, diventa v1.0. Riferimenti: DEC7.
+- 2027-01-29, 01-kickoff/05-documentazione, Fase completata: Documento tecnico, issue in ClickUp, Piano dei SAL inviato. Effetto: stima di durata 26 settimane, due settimane sopra la Proposta. Si pianifica lo sprint 12.
+- 2027-02-12, 02-sviluppo, Imprevisto: assenza dello sviluppatore 4 (12 ore); spike sulle API degli ordini (24 ore in più). M1 in ritardo di 8 ore di margine. Riferimenti: Nota di sprint 12.
+- 2027-02-15, 02-sviluppo, Riprogrammazione: 16 ore aggiunte nello sprint 13. Effetto: margine più 8 ore. Riferimenti: DEC9.
+- 2027-02-26, 02-sviluppo, Fase completata: prova di M1; Franco non risponde.
+- 2027-03-03, 02-sviluppo, Conferma del cliente: Franco accetta M1. Effetto: nessuna data cambia.
+- 2027-03-15, 02-sviluppo, Richiesta del cliente: variazione V1 (SMS). Effetto: M2 più 14 ore. Riferimenti: DEC10.
+- 2027-04-12, 02-sviluppo, Richiesta del cliente: variazione V2, rifiutata il 19 aprile. Riferimenti: DEC11.
+- 2027-07-30, 02-sviluppo, Fase completata: tutte le milestone accettate alle date del Piano dei SAL (M1 accettata il 3 marzo). Ore reali 1.872.
+- 2027-08-06, 03-rilascio/01-collaudo, Conferma del cliente: prova finale accettata con un difetto non bloccante (F6.1), correzione entro il 3 settembre.
+- 2027-08-25, 03-rilascio/02-preparazione, Conferma del cliente: Piano di lancio v1 approvato. Riferimenti: DEC12.
+- 2027-09-01, 03-rilascio/02-preparazione, Ritardo del cliente: informativa sulla privacy arrivata con 3 giorni lavorativi di ritardo. Effetto: lancio più tre giorni; Piano di lancio v2.
+- 2027-09-09, 03-rilascio/03-pubblicazione, Rilascio: lancio sul gruppo ristretto (Milano).
+- 2027-09-10, 03-rilascio/03-pubblicazione, Imprevisto: proposte scartate da alcuni provider (dominio mittente). Effetto: resta sul gruppo ristretto. Riferimenti: DEC13.
+- 2027-09-13, 03-rilascio/03-pubblicazione, Rilascio: apertura a tutti. Effetto: decorre la garanzia, 91 giorni fino al 13 dicembre 2027; assistenza rafforzata fino al 27 settembre.
+- 2027-09-17, 03-rilascio/04-chiusura, Fase completata: documenti aggiornati, Report di progetto scritto. Il prodotto passa a regime.
+- 2027-09-23, 04-garanzia, Segnalazione in garanzia: email senza sconto (bug); stampa PDF (fuori garanzia). Riferimenti: DEC14.

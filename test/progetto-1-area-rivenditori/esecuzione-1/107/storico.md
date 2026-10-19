@@ -1,0 +1,25 @@
+# Storico, progetto 107
+
+- 2026-10-05, 01-kickoff/01-valutazione, Altro: richiesta di Franco su osTicket. Urgenza normale assegnata da chi analizza.
+- 2026-10-06, 01-kickoff/01-valutazione, Cambio di persone: assegnazione al project manager 2; stima a occhio 60 giorni lavorativi, tempo del kickoff 6 giorni fino al 13 ottobre. Riferimenti: DEC1.
+- 2026-10-07, 01-kickoff/01-valutazione, Conferma del cliente: Franco referente; richieste di Diego (bonifico, download). Riferimenti: DEC2.
+- 2026-10-09, 01-kickoff/02-stima, Fase completata: stima precisa 12 settimane per la soluzione intera, non compatibile con la fiera; prima parte fattibile con poco margine.
+- 2026-10-13, 01-kickoff/03-proposta, Fase completata: Proposta v0.1 inviata, nel tempo del kickoff.
+- 2026-10-26, 01-kickoff/03-proposta, Ritardo del cliente: Franco risponde a D1-D4, non a D5-D8. Effetto: conferma bloccata; elenco delle domande aperte inviato il 27 ottobre.
+- 2026-11-09, 01-kickoff/03-proposta, Conferma del cliente: D5-D8 risolte e Proposta v1.0 confermata a voce. Riferimenti: DEC3, DEC4.
+- 2026-11-30, 01-kickoff/04-documentazione, Conferma del cliente: Manuale v1.5 e mockup confermati a voce. Riferimenti: DEC5.
+- 2026-12-04, 01-kickoff/04-documentazione, Fase completata: Documento tecnico, issue, Piano dei SAL inviato; sprint 8 pianificato.
+- 2026-12-15, 02-sviluppo, Richiesta del cliente: Diego chiede i preventivi in PDF per telefono allo sviluppatore 2; non accettata, indirizzata al project manager 2.
+- 2026-12-17, 02-sviluppo, Richiesta del cliente: Franco chiede il PDF per iscritto (V1). Approvata il 22 dicembre. Riferimenti: DEC6.
+- 2026-12-18, 02-sviluppo, Fase completata: prova del SAL1. Diego chiede gli ordini ricorrenti (V2). Franco non risponde.
+- 2027-01-07, 02-sviluppo, Conferma del cliente: Franco accetta il SAL1 e rinvia V2. Riferimenti: DEC8.
+- 2027-01-11, 02-sviluppo, Ritardo del cliente: i listini arrivano 6 giorni lavorativi dopo la data del Piano dei SAL. Effetto: parte dipendente ferma 2 giorni lavorativi.
+- 2027-01-11, 02-sviluppo, Imprevisto: sviluppatore 2 malato fino al 15 gennaio (30 ore lorde).
+- 2027-01-13, 02-sviluppo, Imprevisto: ticket urgente 108, sviluppatore 1 fermo due giorni (12 ore dal buffer di sprint).
+- 2027-01-15, 02-sviluppo, Riprogrammazione: M2 in ritardo (meno 4 ore); prova al 22 gennaio; 8 ore aggiunte. Riferimenti: DEC7.
+- 2027-01-28, 02-sviluppo, Conferma del cliente: Franco accetta il SAL2, 4 giorni lavorativi dopo la prova.
+- 2027-02-12, 02-sviluppo, Fase completata: SAL3 alla data (231 ore reali).
+- 2027-02-17, 03-rilascio/01-collaudo, Conferma del cliente: prova finale accettata con un difetto non bloccante (PDF), correzione entro il 5 marzo.
+- 2027-02-18, 03-rilascio/03-pubblicazione, Rilascio: pubblicazione e verifiche superate. Decorre la garanzia di 35 giorni, fino al 25 marzo.
+- 2027-02-26, 03-rilascio/04-chiusura, Fase completata: documenti aggiornati, Report di progetto scritto. Progetto chiuso.
+- 2027-03-01, 04-garanzia, Segnalazione in garanzia: bug del prezzo nel pagamento e ritocco estetico. Riferimenti: DEC9.
