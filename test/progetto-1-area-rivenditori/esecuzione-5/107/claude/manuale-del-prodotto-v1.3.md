@@ -1,0 +1,203 @@
+# Manuale del prodotto, Lumera Arredi, sito di vendita online
+
+Cliente: Lumera Arredi. Sistema: sito di vendita online. Versione 1.3, del 2026-09-25. Aggiornato con la Proposta di soluzione del comparatore di prodotti (lavorazione 100), confermata da Franco. Documento a scopo di test, scritto per intero come base comune dei tre scenari.
+
+## 1. Scopo e ambito
+
+Il sito di Lumera Arredi permette ai visitatori di consultare il catalogo di illuminazione e complementi d'arredo, e ai clienti di acquistare online. Comprende catalogo, scheda prodotto, carrello, pagamento, area cliente e comparatore di prodotti. Il Manuale descrive il sito come lo vede chi lo usa.
+
+Non descrive il gestionale (lo strumento interno con cui Lumera gestisce prodotti, ordini, clienti, codici sconto e messaggi di contatto) né il modulo di contatto del sito.
+
+## 2. Glossario
+
+- **Visitatore.** Chi consulta il sito senza essere entrato nella propria area cliente.
+- **Cliente.** Chi ha un accesso proprio all'area cliente.
+- **Prodotto.** Un articolo del catalogo, con codice, nome, descrizione, immagini, prezzo e marca.
+- **Categoria.** Raggruppamento dei prodotti (per esempio lampade da tavolo).
+- **Disponibilità.** Lo stato di un prodotto: disponibile subito, ordinabile o esaurito.
+- **Carrello.** L'elenco dei prodotti che il cliente ha scelto e non ha ancora pagato.
+- **Riepilogo del pagamento.** La schermata che mostra righe, spedizione e totale prima del pagamento.
+- **Lista dei desideri.** L'elenco dei prodotti che il cliente vuole ritrovare.
+- **Confronto.** L'insieme dei prodotti che il visitatore ha scelto di mettere a confronto.
+
+## 3. Tipi di utente e permessi
+
+- **Visitatore.** Consulta il catalogo, le schede prodotto e il confronto, e può aggiungere prodotti al carrello. Per pagare deve entrare come cliente.
+- **Cliente.** Può fare tutto ciò che fa il visitatore, pagare, e usare l'area cliente (ordini, indirizzi, lista dei desideri). Le story del carrello sono scritte dal punto di vista del cliente.
+- Il sito ha un solo tipo di accesso, quello del cliente.
+
+## 4. Funzionalità
+
+### F1 Catalogo
+
+Lo usano visitatori e clienti.
+
+- **F1.1** Come visitatore, voglio vedere l'elenco dei prodotti, per scegliere cosa guardare.
+  - Situazione di partenza: nessuna.
+  - Comportamento: il catalogo mostra i prodotti a pagine, con immagine, nome, prezzo e disponibilità, in ordine di inserimento.
+  - Casi particolari: nessun prodotto nella categoria, messaggio "Nessun prodotto trovato"; immagine mancante, segnaposto.
+  - Accettata quando: il catalogo mostra i prodotti di prova a pagine, e una categoria vuota mostra il messaggio.
+- **F1.2** Come visitatore, voglio cercare un prodotto per parole, per trovarlo senza scorrere.
+  - Situazione di partenza: il visitatore è nel catalogo.
+  - Comportamento: scrive una o più parole; il catalogo mostra i prodotti il cui nome o la cui descrizione le contiene.
+  - Casi particolari: nessun risultato, messaggio "Nessun prodotto trovato" con il suggerimento di cambiare le parole; ricerca vuota, il catalogo torna all'elenco completo.
+  - Accettata quando: cercando "tavolo" compaiono solo i prodotti di prova che contengono la parola, e una parola inesistente mostra il messaggio.
+- **F1.3** Come visitatore, voglio filtrare per categoria, prezzo e marca, per restringere la scelta.
+  - Situazione di partenza: il visitatore è nel catalogo.
+  - Comportamento: sceglie una o più condizioni; il catalogo mostra solo i prodotti che le rispettano tutte. Il prezzo si sceglie come intervallo.
+  - Casi particolari: filtri senza risultati, messaggio "Nessun prodotto trovato" e pulsante per togliere i filtri; intervallo di prezzo invertito, i valori vengono scambiati.
+  - Accettata quando: con categoria "lampade da tavolo" e prezzo fino a 100 euro compaiono solo i prodotti di prova che rispettano entrambe le condizioni.
+
+### F2 Scheda prodotto
+
+Lo usano visitatori e clienti.
+
+- **F2.1** Come visitatore, voglio vedere la scheda di un prodotto, per decidere se acquistarlo.
+  - Situazione di partenza: il visitatore ha scelto un prodotto nel catalogo.
+  - Comportamento: la scheda mostra nome, descrizione, immagini, prezzo e disponibilità.
+  - Casi particolari: prodotto non più nel catalogo, messaggio "Prodotto non disponibile" e collegamento al catalogo.
+  - Accettata quando: la scheda di un prodotto di prova mostra tutte le informazioni, e l'indirizzo di un prodotto tolto mostra il messaggio.
+- **F2.2** Come visitatore, voglio sapere se il prodotto è disponibile, per sapere quando lo ricevo.
+  - Comportamento: la scheda indica "Disponibile subito", "Ordinabile" o "Esaurito". Un prodotto esaurito non si può aggiungere al carrello.
+  - Casi particolari: un prodotto ordinabile si aggiunge al carrello, con l'indicazione che la consegna richiede più tempo.
+  - Accettata quando: tre prodotti di prova con le tre disponibilità mostrano l'indicazione giusta, e quello esaurito non si aggiunge al carrello.
+
+### F3 Carrello
+
+Lo usano visitatori e clienti.
+
+- **F3.1** Come cliente, voglio aggiungere un prodotto al carrello, per acquistarlo insieme ad altri.
+  - Situazione di partenza: il cliente è nella scheda di un prodotto non esaurito.
+  - Comportamento: tocca "Aggiungi al carrello"; il prodotto compare nel carrello con quantità uno e il prezzo.
+  - Casi particolari: prodotto già nel carrello, la quantità aumenta di uno; prodotto esaurito, il pulsante non è attivo.
+  - Accettata quando: dopo l'aggiunta il carrello mostra il prodotto con prezzo e quantità uno, e aggiungerlo di nuovo porta la quantità a due.
+- **F3.2** Come cliente, voglio cambiare le quantità nel carrello, per correggere l'ordine.
+  - Situazione di partenza: il carrello contiene almeno un prodotto.
+  - Comportamento: cambia la quantità di una riga; il totale si aggiorna subito. Portando la quantità a zero la riga si toglie.
+  - Casi particolari: quantità non intera o negativa, non accettata; quantità oltre il massimo ordinabile, messaggio con il massimo.
+  - Accettata quando: cambiando una quantità da uno a tre il totale triplica il valore della riga, e a zero la riga sparisce.
+- **F3.3** Il carrello si svuota dopo 30 giorni.
+  - Situazione di partenza: il carrello contiene prodotti non pagati.
+  - Comportamento: se il cliente non lo usa per 30 giorni, il carrello si svuota da solo.
+  - Casi particolari: prodotti aggiunti dopo lo svuotamento, il carrello riparte da quelli.
+  - Accettata quando: un carrello fermo per 30 giorni risulta vuoto al ritorno del cliente.
+
+### F4 Pagamento
+
+Lo usano i clienti.
+
+- **F4.1** Come cliente, voglio scegliere l'indirizzo di spedizione, per ricevere l'ordine dove voglio.
+  - Situazione di partenza: il cliente ha un carrello non vuoto ed è entrato.
+  - Comportamento: sceglie tra gli indirizzi salvati nell'area cliente o ne inserisce uno nuovo.
+  - Casi particolari: indirizzo incompleto, messaggio sul campo mancante; nessun indirizzo salvato, il modulo di inserimento si apre da solo.
+  - Accettata quando: un cliente con due indirizzi salvati ne sceglie uno e lo vede nel riepilogo.
+- **F4.2** Il totale del carrello coincide con quello del riepilogo del pagamento.
+  - Situazione di partenza: il cliente ha scelto l'indirizzo.
+  - Comportamento: il riepilogo mostra le righe del carrello, la spedizione e il totale. Il totale delle righe coincide con quello del carrello.
+  - Casi particolari: prodotto diventato esaurito nel frattempo, avviso e riga segnalata, pagamento bloccato finché non viene tolta.
+  - Accettata quando: per un carrello di prova il totale delle righe nel riepilogo è identico a quello del carrello.
+- **F4.3** Come cliente, voglio pagare con carta, per completare l'acquisto.
+  - Situazione di partenza: il cliente è nel riepilogo.
+  - Comportamento: inserisce i dati della carta e conferma; se il pagamento riesce, vede la conferma dell'ordine.
+  - Casi particolari: circuito di carta non accettato, messaggio con i circuiti accettati; pagamento rifiutato, messaggio e carrello intatto; connessione interrotta durante il pagamento, il cliente non viene addebitato due volte e può riprovare.
+  - Accettata quando: con una carta di prova accettata l'ordine è confermato, con una carta di prova rifiutata il messaggio compare e il carrello resta.
+- **F4.4** Come cliente, voglio ricevere la conferma dell'ordine per email, per conservarla.
+  - Situazione di partenza: il pagamento è riuscito.
+  - Comportamento: il cliente riceve un'email con le righe, il totale e l'indirizzo di spedizione.
+  - Casi particolari: invio dell'email fallito, l'ordine resta valido e la conferma è comunque visibile nell'area cliente.
+  - Accettata quando: dopo un acquisto di prova il cliente riceve l'email entro un minuto.
+
+### F5 Area cliente
+
+Lo usano i clienti.
+
+- **F5.1** Come cliente, voglio vedere i miei ordini, per sapere a che punto sono.
+  - Situazione di partenza: il cliente è entrato.
+  - Comportamento: l'elenco mostra gli ordini dal più recente, con data, totale e stato.
+  - Casi particolari: nessun ordine, messaggio "Nessun ordine".
+  - Accettata quando: un cliente di prova con due ordini li vede in ordine di data, e uno senza ordini vede il messaggio.
+- **F5.2** Come cliente, voglio gestire i miei indirizzi, per non riscriverli a ogni ordine.
+  - Comportamento: aggiunge, modifica e toglie gli indirizzi salvati.
+  - Casi particolari: indirizzo usato in un ordine non ancora spedito, resta nell'ordine anche se tolto.
+  - Accettata quando: un indirizzo aggiunto compare tra quelli scelti nel pagamento, e uno tolto non compare più.
+- **F5.3** Come cliente, voglio una lista dei desideri, per ritrovare i prodotti che mi interessano.
+  - Comportamento: dalla scheda aggiunge il prodotto alla lista; dall'area cliente la consulta e toglie i prodotti.
+  - Casi particolari: prodotto tolto dal catalogo, resta nella lista con la dicitura "Non più disponibile".
+  - Accettata quando: un prodotto aggiunto compare nella lista, e dopo averlo tolto non c'è più.
+
+### F10 Selezione nel comparatore
+
+Lo usano i visitatori.
+
+- **F10.1** Come visitatore, voglio aggiungere un prodotto al confronto dalla sua scheda, per valutarlo insieme ad altri.
+  - Comportamento: dalla scheda tocca "Confronta"; il prodotto entra nel confronto e un indicatore mostra quanti ce ne sono.
+  - Casi particolari: confronto già al massimo di quattro prodotti, messaggio e nessuna aggiunta; prodotto già nel confronto, nessun doppione.
+  - Accettata quando: dopo l'aggiunta l'indicatore sale di uno, e al quinto prodotto compare il messaggio.
+- **F10.2** Come visitatore, voglio aggiungere un prodotto al confronto dal catalogo, per non aprire ogni scheda.
+  - Comportamento: sull'elenco del catalogo ogni prodotto ha "Confronta", con le stesse regole di F10.1.
+  - Accettata quando: dal catalogo si aggiunge un prodotto e lo si ritrova nel confronto.
+- **F10.3** Come visitatore, voglio togliere un prodotto dal confronto, per restringere la scelta.
+  - Comportamento: dal confronto tocca "Togli" su un prodotto; sparisce e l'indicatore scende.
+  - Casi particolari: ultimo prodotto tolto, il confronto mostra "Nessun prodotto da confrontare".
+  - Accettata quando: dopo aver tolto un prodotto non compare più e l'indicatore scende di uno.
+
+### F11 Confronto
+
+Lo usano i visitatori.
+
+- **F11.1** Come visitatore, voglio vedere le caratteristiche affiancate, per confrontarle a colpo d'occhio.
+  - Comportamento: il confronto mostra una colonna per prodotto e una riga per caratteristica.
+  - Casi particolari: caratteristica mancante in un prodotto, cella con il trattino.
+  - Accettata quando: tre prodotti di prova compaiono affiancati con le stesse caratteristiche.
+- **F11.2** Come visitatore, voglio evidenziare solo le differenze, per capire cosa cambia tra i prodotti.
+  - Comportamento: attivando "Solo differenze" il confronto nasconde le caratteristiche uguali in tutti i prodotti.
+  - Casi particolari: nessuna differenza, messaggio "I prodotti hanno le stesse caratteristiche".
+  - Accettata quando: con tre prodotti di prova che differiscono in due caratteristiche, attivando l'opzione restano solo due righe.
+- **F11.3** Come visitatore, voglio vedere nel confronto solo i prodotti disponibili subito, per non scegliere qualcosa che non posso avere.
+  - Comportamento: attivando "Solo disponibili subito" il confronto nasconde i prodotti ordinabili o esauriti.
+  - Casi particolari: nessun prodotto disponibile subito, messaggio e possibilità di disattivare l'opzione.
+  - Accettata quando: con due prodotti disponibili e uno esaurito, attivando l'opzione ne restano due.
+
+### F12 Condivisione e acquisto dal comparatore
+
+Lo usano i visitatori.
+
+- **F12.1** Come visitatore, voglio condividere il confronto con un link, per chiedere un parere.
+  - Comportamento: tocca "Condividi"; ottiene un indirizzo che apre lo stesso confronto a chiunque lo riceva.
+  - Casi particolari: prodotto tolto dal catalogo dopo la condivisione, nel confronto compare "Non più disponibile".
+  - Accettata quando: l'indirizzo copiato, aperto in una finestra privata, mostra gli stessi prodotti.
+- **F12.2** Come visitatore, voglio mettere nel carrello un prodotto dal confronto, per acquistare senza tornare alla scheda.
+  - Comportamento: sotto ogni prodotto c'è "Aggiungi al carrello", con le stesse regole di F3.1.
+  - Casi particolari: prodotto esaurito, il pulsante non è attivo.
+  - Accettata quando: dal confronto si aggiunge un prodotto e lo si ritrova nel carrello.
+
+## 5. Schermate e navigazione
+
+Catalogo, scheda prodotto, carrello, indirizzo di spedizione, riepilogo del pagamento, pagamento, conferma dell'ordine, area cliente (ordini, indirizzi, lista dei desideri), confronto. Dal catalogo si apre la scheda; dalla scheda e dal catalogo si aggiunge al carrello e al confronto; dal carrello si passa all'indirizzo, poi al riepilogo e al pagamento. I wireframe e i mockup delle schermate sono nella cartella delle lavorazioni 96 (carrello e pagamento) e 100 (confronto).
+
+## 6. Dati gestiti
+
+Prodotti con prezzo e disponibilità, carrelli, ordini, clienti con indirizzi, lista dei desideri. Il confronto non si conserva: dura finché il visitatore lo usa o finché il link condiviso è valido.
+
+## 7. Requisiti generali
+
+Funziona sui browser correnti di computer, tablet e telefono. Lingua italiana. Gli indirizzi email dei clienti si usano solo per le comunicazioni sull'ordine. Il sito invia al cliente la conferma dell'ordine.
+
+## 8. Fuori ambito
+
+Gestionale (strumento interno), modulo di contatto, pagamento con bonifico, accesso con profili diversi dal cliente.
+
+## 9. Tracciabilità
+
+Proposta del sito: catalogo (F1), scheda (F2), carrello (F3), pagamento (F4), area cliente (F5). Proposta del comparatore: selezione (F10), confronto (F11), condivisione e acquisto (F12).
+
+I codici da F6 a F9 non sono assegnati: il comparatore è partito da F10 per lasciarli liberi a funzioni future del sito.
+
+## 10. Domande aperte
+
+Nessuna.
+
+## 11. Modifiche rispetto alla versione precedente
+
+- v1.3 (2026-09-25): F10, F11 e F12 confermate nella Proposta del comparatore (lavorazione 100). Il resto è invariato.
+- v1.2: carrello e pagamento rifatti (lavorazione 96, in produzione dal 14 settembre 2026).

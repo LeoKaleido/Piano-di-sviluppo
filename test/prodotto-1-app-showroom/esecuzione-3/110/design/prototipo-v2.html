@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototipo applicazione showroom v2</title>
+<style>
+  body { font-family: sans-serif; background: #eee; color: #333; margin: 0; padding: 16px; }
+  .nota { font-size: 12px; color: #666; margin-bottom: 12px; }
+  section { display: none; background: #fff; border: 2px solid #999; max-width: 900px; padding: 16px; }
+  section:target { display: block; }
+  section#indice { display: block; }
+  section:target ~ section#indice { display: none; }
+  .box { border: 1px solid #999; padding: 8px; margin: 6px 0; background: #f5f5f5; }
+  a { color: #333; }
+</style>
+</head>
+<body>
+<div class="nota">Prototipo: mostra il percorso, non calcola e non salva nulla. Wireframe senza grafica.</div>
+
+<section id="s1">
+  <h2>S1 Agenda del giorno (F2.1)</h2>
+  <div class="box">09:30  Rossi Maria  tel. 333 1234567  scelta lampade soggiorno</div>
+  <div class="box">11:00  Bianchi Luca  tel. 333 7654321  ritiro proposta</div>
+  <p><a href="#s2">Fissa un appuntamento</a> | <a href="#s4">Cerca un cliente</a> | <a href="#indice">Indice</a></p>
+</section>
+
+<section id="s2">
+  <h2>S2 Nuovo appuntamento (F2.2)</h2>
+  <div class="box">Cliente: Rossi Maria   Giorno: 12 novembre   Ora: 15:00</div>
+  <p><a href="#s1">Conferma e torna all'agenda</a> | <a href="#indice">Indice</a></p>
+</section>
+
+<section id="s3">
+  <h2>S3 Proposta (F4.1 a F4.5)</h2>
+  <div class="box">Lampada da tavolo Aura  2  120,00 euro</div>
+  <div class="box">Applique Lume  4  65,00 euro</div>
+  <div class="box">Sconto: 5 % (massimo 10%)   Totale: 584,14 euro</div>
+  <p><a href="#s5">Invia per email</a> | <a href="#s6">Trasforma in ordine</a> | <a href="#indice">Indice</a></p>
+  <p>Duplica proposta (in evidenza)</p>
+</section>
+
+<section id="s4">
+  <h2>S4 Cliente (F3.1, F3.3)</h2>
+  <div class="box">Rossi Maria   proposte: 2   ultimo appuntamento: 12 novembre</div>
+  <p><a href="#s3">Nuova proposta per questo cliente</a> | <a href="#indice">Indice</a></p>
+</section>
+
+<section id="s5">
+  <h2>S5 Invio della proposta (F4.4)</h2>
+  <div class="box">La proposta è stata inviata a maria.rossi@esempio.it</div>
+  <p><a href="#s3">Torna alla proposta</a> | <a href="#indice">Indice</a></p>
+</section>
+
+<section id="s6">
+  <h2>S6 Ordine (F5.1, F5.2)</h2>
+  <div class="box">Ordine creato. Stato: inviato al gestionale</div>
+  <p><a href="#s1">Torna all'agenda</a> | <a href="#indice">Indice</a></p>
+</section>
+
+<section id="indice">
+  <h2>Indice</h2>
+  <p>Percorsi da provare:</p>
+  <ul>
+    <li>Agenda e appuntamento: <a href="#s1">S1</a>, <a href="#s2">S2</a></li>
+    <li>Cliente e proposta: <a href="#s4">S4</a>, <a href="#s3">S3</a>, <a href="#s5">S5</a></li>
+    <li>Dalla proposta all'ordine: <a href="#s3">S3</a>, <a href="#s6">S6</a></li>
+  </ul>
+</section>
+</body>
+</html>

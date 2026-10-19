@@ -7,13 +7,13 @@ description: Rivede la modifica di una issue prima che sia chiusa, confrontandol
 
 ## A cosa serve
 
-Ogni issue di un progetto o di un prodotto, e ogni ticket, si chiude solo dopo la revisione del codice: è una condizione della DoD base. La skill prepara e conduce quella revisione. Non sostituisce chi rivede: gli porta i fatti, e propone commenti che il revisore conferma. Rivede sempre una seconda persona, che usa la skill. Con una persona sola la revisione è a campione, fatta da chi è esterno al lavoro.
+Ogni issue di un progetto o di un prodotto, e ogni lavorazione minore, si chiude solo dopo la revisione del codice: è una condizione della DoD base. La skill prepara e conduce quella revisione. Non sostituisce chi rivede: gli porta i fatti, e propone commenti che il revisore conferma. Rivede sempre una seconda persona, che usa la skill. Con una persona sola la revisione è a campione, fatta da chi è esterno al lavoro.
 
 ## Avvio
 
 Chiedi solo ciò che non è già stato detto.
 
-1. **La issue.** Il codice della issue (o del ticket) in ClickUp, con descrizione, DoD e, se è una issue di story, la story del Manuale (codice e criterio di accettazione).
+1. **La issue.** Il codice della issue (o della lavorazione minore) in ClickUp, con descrizione, DoD e, se è una issue di story, la story del Manuale (codice e criterio di accettazione).
 2. **La modifica.** Il ramo o la richiesta di modifica da rivedere, con il confronto rispetto al ramo di partenza.
 3. **Le repository toccate.** Per ognuna: il file `CLAUDE.md`, la documentazione per Claude presente nella repo (cartelle di documentazione, file markdown di regole, convenzioni, architettura) e gli eventuali altri file di regole. Se hai accesso alla repo, leggili tu. Se non li trovi, dichiaralo: la revisione sulle regole della repo è incompleta.
 4. **Il Documento tecnico**, capitolo su architettura e decisioni tecniche, se la modifica tocca la struttura.
@@ -61,7 +61,7 @@ I commenti e l'esito si scrivono come commenti dell'issue in ClickUp: non c'è u
 
 - Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
 - Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
-- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere (unica eccezione: le tabelle del Piano dei SAL). Grassetti ed elenchi puntati sono ammessi.
 - Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 Nei commenti i nomi di file, funzioni e tecnologie si scrivono come sono.

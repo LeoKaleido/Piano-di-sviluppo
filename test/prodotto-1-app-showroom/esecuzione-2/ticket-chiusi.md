@@ -1,0 +1,5 @@
+# Indice dei ticket chiusi, Lumera Arredi, sito di vendita online
+
+Una riga per ticket chiuso. Lo aggiorna il responsabile del ticket alla chiusura e a ogni nuova versione della Scheda di intervento; chi scrive Manuale e Documento tecnico di un progetto o di un prodotto lo legge e annota qui il codice del lavoro che recepisce la Scheda.
+
+- 103, chiuso il 2026-10-20. Sistema: sito di vendita online e gestionale. Parti toccate: `lumera-api` (modulo `prezzi`), `lumera-gestionale` (preventivi manuali). Documenti a cui la Scheda si riferisce: Manuale v1.3, Documento tecnico v1.2. Scheda corrente: v4 (2026-11-05). Recepita da: 110 (Documento tecnico v1.0, capitolo 6; nel Manuale dell'applicazione nessuna parte).

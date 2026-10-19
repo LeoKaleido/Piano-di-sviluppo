@@ -1,6 +1,6 @@
 ---
 name: mockup
-description: Prepara il materiale per chi disegna i mockup in Figma a partire dai wireframe approvati (schermate, contenuti, stati, vincoli) e segue l'approvazione del cliente. Usala in un progetto o prodotto quando cambia l'aspetto grafico. Non si usa per i ticket.
+description: Prepara il materiale per chi disegna i mockup in Claude Design a partire dai wireframe approvati (schermate, contenuti, stati, vincoli) e segue l'approvazione del cliente. Usala in un progetto o prodotto quando cambia l'aspetto grafico. Non si usa per i ticket.
 ---
 
 # Mockup
@@ -9,9 +9,9 @@ description: Prepara il materiale per chi disegna i mockup in Figma a partire da
 
 Il mockup è l'aspetto grafico definitivo di una schermata, ancora statico. Valida colori, stile e identità, dopo che il wireframe ha validato struttura e contenuti.
 
-I mockup si disegnano in Figma, a mano. Questa skill non li disegna: prepara il materiale per chi li disegna, in modo che parta dai wireframe approvati e non debba ricostruire da solo cosa va in ogni schermata. Poi segue la consegna e l'approvazione.
+I mockup si disegnano in Claude Design, a mano. Questa skill non li disegna: prepara il materiale per chi li disegna, in modo che parta dai wireframe approvati e non debba ricostruire da solo cosa va in ogni schermata. Poi segue la consegna e l'approvazione.
 
-I mockup servono in progetti e prodotti, quando cambia l'aspetto grafico. Un ticket non ne prevede: segue l'aspetto esistente. Se un ticket ne richiede uno, segnala che la richiesta potrebbe essere un progetto.
+I mockup servono in progetti e prodotti, quando cambia l'aspetto grafico. Una lavorazione minore non ne prevede: segue l'aspetto esistente. Se una lavorazione minore ne richiede uno, segnala che la richiesta potrebbe essere un progetto.
 
 ## Avvio
 
@@ -27,7 +27,7 @@ Se i wireframe non sono approvati, avvisa: un mockup disegnato su una struttura 
 
 ## Il materiale per chi disegna
 
-Un documento Markdown, `materiale-mockup-<cliente>-<sistema>.md`, con queste parti.
+Un documento Markdown, `materiale-mockup.md`, con queste parti.
 
 1. **Scopo.** Cosa cambia nell'aspetto e perché, in poche righe.
 2. **Identità grafica.** Cosa è stato fornito dal cliente e cosa manca.
@@ -53,14 +53,14 @@ Lo stesso contenuto, più indicazioni vincolanti, perché non deve prendere deci
 - quale schermata esistente prendere a modello per ogni schermata nuova;
 - cosa non va inventato: nuovi colori, nuovi caratteri, nuovi tipi di componente. Se serve qualcosa che non esiste, si segnala al responsabile.
 
-## Lavorare con Figma Starter
+## Lavorare con Claude Design
 
-Il team usa il piano gratuito di Figma. Il materiale ricorda a chi disegna quattro accorgimenti:
+I mockup si disegnano in Claude Design. Il materiale ricorda a chi disegna quattro accorgimenti, validi qualunque sia lo strumento:
 
-- si lavora nei drafts personali, che sono illimitati: un file per progetto. I 3 file condivisi restano liberi per quando serve lavorare in due;
-- cliente e sviluppatori vedono i mockup tramite link in sola visualizzazione;
-- non ci sono librerie condivise: i componenti ricorrenti di un cliente stanno in un file di base, da duplicare a ogni nuovo progetto;
-- la cronologia delle versioni dura un mese, quindi le versioni approvate vanno esportate.
+- un solo progetto di design per lavorazione, che parte dai wireframe approvati;
+- cliente e sviluppatori vedono i mockup in sola visualizzazione, senza poterli modificare;
+- i componenti ricorrenti di un cliente (colori, caratteri, pulsanti) stanno in un progetto di base, da cui si parte a ogni nuovo lavoro dello stesso cliente;
+- le versioni approvate si esportano in PDF e si conservano in `design`: la copia che fa fede non dipende dallo strumento.
 
 ## Consegna e approvazione
 
@@ -69,7 +69,7 @@ Quando i mockup sono pronti:
 1. **Verifica di corrispondenza.** Confronta i mockup con il materiale: ogni schermata e ogni stato richiesti sono presenti, e nulla è stato aggiunto o tolto rispetto ai wireframe. Per farlo servono le esportazioni dei mockup: chiedile.
 2. **Presentazione al cliente.** Prepara l'elenco di ciò che il cliente deve guardare e approvare: l'aspetto, non la struttura, che è già approvata.
 3. **Riscontro.** Scomponi le correzioni del cliente in voci. Una correzione all'aspetto si applica. Una richiesta che cambia struttura o contenuti non è una correzione del mockup: è una variazione, e va segnalata.
-4. **Archiviazione.** All'approvazione, ricorda che i mockup vanno esportati in PDF e salvati nella knowledge base, nella cartella della fase del lavoro, con il numero di versione. Quella copia è la versione che fa fede: il file Figma può cambiare, e la sua cronologia si perde dopo un mese.
+4. **Archiviazione.** All'approvazione, ricorda che i mockup vanno esportati in PDF e salvati in `design` nella cartella della lavorazione, con il numero di versione. Quella copia è la versione che fa fede: il file di Claude Design può cambiare.
 
 In un progetto il cliente approva i mockup insieme al Manuale del prodotto. In un prodotto li approva a chiusura della fase di prototipo e design, con la direzione grafica. Da quel momento cambiarli è una variazione.
 
@@ -77,12 +77,12 @@ In un progetto il cliente approva i mockup insieme al Manuale del prodotto. In u
 
 - Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
 - Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
-- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere (unica eccezione: le tabelle del Piano dei SAL). Grassetti ed elenchi puntati sono ammessi.
 - Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
 ## Dove si salva
 
-Il materiale e i PDF approvati in `01-kickoff/04-documentazione`. Per un prodotto, in `01-kickoff/04-prototipo-e-design`.
+Tutto in `design`: il materiale per realizzarli (Markdown) e i PDF dei mockup approvati, esportati da Claude Design, con la versione nel nome.
 
 ## Controllo finale
 

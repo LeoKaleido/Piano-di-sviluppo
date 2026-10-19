@@ -1,6 +1,6 @@
 ---
 name: collaudo-e-rilascio
-description: Prepara il collaudo finale di un progetto sullo staging e il piano di rilascio, e guida la pubblicazione e la chiusura. Produce la checklist del collaudo, il piano di rilascio per il cliente e, se serve, la scheda interna dei passi tecnici. Usala quando l'ultima milestone sta per essere accettata, prima della pubblicazione in produzione.
+description: Prepara il collaudo finale di un progetto sullo staging e il piano di rilascio, e guida la pubblicazione e la chiusura. Produce la checklist del collaudo, il piano di rilascio per il cliente (un messaggio e una voce di History and decision) e le particolarità tecniche del rilascio (una voce di History and decision che passa nel capitolo Pubblicazione del Documento tecnico alla chiusura). Usala quando l'ultima milestone sta per essere accettata, prima della pubblicazione in produzione.
 ---
 
 # Collaudo e rilascio
@@ -12,19 +12,19 @@ L'accettazione delle singole milestone non basta: prima della produzione si prov
 La skill prepara tre cose:
 
 - **Checklist del collaudo finale**, in ClickUp (un task con un sottotask per percorso): cosa si prova, in che ordine, con quali dati.
-- **Piano di rilascio**, per il cliente: quando si pubblica, cosa cambia per gli utenti, cosa succede se qualcosa fallisce, chi viene avvisato.
-- **Scheda tecnica di rilascio**, interna: i passi tecnici di quel rilascio in ordine e il ritorno alla versione precedente, ricavati dalla Guida alla pubblicazione del sistema (skill `guida-alla-pubblicazione`).
+- **Piano di rilascio**, per il cliente (un messaggio e una voce di History and decision): quando si pubblica, cosa cambia per gli utenti, cosa succede se qualcosa fallisce, chi viene avvisato.
+- **Particolarità del rilascio**, interne: i passi tecnici di quel rilascio e il ritorno alla versione precedente, da scrivere nel piano di rilascio (voce di History and decision) e da portare nel capitolo Pubblicazione del Documento tecnico alla chiusura (skill `documento-tecnico`). Nessun documento a parte.
 
-La prova finale del cliente sullo staging si prepara con la skill `prova-su-staging`. Questa skill prepara ciò che le sta intorno.
+La prova finale del cliente sullo staging, dal vivo insieme al team (UAT), si prepara con la skill `prova-su-staging`. Questa skill prepara ciò che le sta intorno.
 
-Vale per i progetti e per i prodotti. Il rilascio di un ticket non ha un piano a parte. Per un prodotto, il rilascio è il lancio: si aggiunge il Piano di lancio (skill `piano-di-lancio`), che per un prodotto sta in `03-rilascio/02-preparazione` insieme al piano di rilascio.
+Vale per i progetti e per i prodotti. Il rilascio di una lavorazione minore non ha un piano a parte. Per un prodotto, il rilascio è il lancio: si aggiunge il Piano di lancio (skill `piano-di-lancio`), che per un prodotto sostituisce il piano di rilascio.
 
 ## Avvio
 
 Chiedi solo ciò che non è già stato detto.
 
 1. **Cliente e sistema.**
-2. **Le fonti.** Manuale del prodotto, Documento tecnico (soprattutto il capitolo su infrastruttura e ambienti e quello sulle milestone), Guida alla pubblicazione, Stato di partenza, Registro delle variazioni, i Milestone report e i verbali delle prove precedenti.
+2. **Le fonti.** Manuale del prodotto, Documento tecnico (soprattutto il capitolo su infrastruttura e pubblicazione, che contiene il capitolo Pubblicazione, e quello sul Piano delle milestone), Stato di partenza, i Milestone report e gli esiti delle prove precedenti (in History and decision).
 3. **Lo stato dello staging.** Se contiene tutte le milestone, con quali dati.
 4. **I difetti noti.** Quelli non bloccanti accettati nelle prove e non ancora corretti.
 5. **Il calendario del cliente.** Giorni e ore in cui il sistema è meno usato, chiusure, eventi in cui non toccare nulla.
@@ -61,9 +61,9 @@ Concordato con il cliente. Linguaggio non tecnico. Contiene:
 
 Niente tecnologie, nomi di server, ore di lavoro o prezzi.
 
-## Scheda tecnica di rilascio
+## Particolarità del rilascio
 
-Interna. Se il rilascio non ha particolarità rispetto alla Guida alla pubblicazione, è una riga: si segue la Guida. Altrimenti contiene:
+Non c'è un documento a parte: le particolarità stanno nel piano di rilascio, in una voce di History and decision che l'incaricato legge, e alla chiusura il responsabile le porta nel capitolo Pubblicazione del Documento tecnico (skill `documento-tecnico`). Se il rilascio non ne ha, il capitolo Pubblicazione vigente basta e non si scrive altro. Altrimenti si elencano:
 
 - l'**ordine dei passi**, uno per riga, con chi li esegue: la pubblicazione la segue l'incaricato della pubblicazione, che non è necessariamente il responsabile e non è un processo automatico (non avviene in CI);
 - le **verifiche** da fare dopo ogni passo e al termine;
@@ -71,42 +71,42 @@ Interna. Se il rilascio non ha particolarità rispetto alla Guida alla pubblicaz
 - i **backup** da fare prima;
 - i **contatti** da avvisare se qualcosa va storto.
 
-Si ricava dalla Guida alla pubblicazione del sistema, che raccoglie le regole del server, i riavvii, le cache e le verifiche, e aggiunge le particolarità di questo rilascio (per esempio una migrazione dei dati). Se la Guida manca o non è aggiornata, prima si usa la skill `guida-alla-pubblicazione`. Se manca qualcosa, non inventarlo: va tra le domande per chi sviluppa.
+Il capitolo Pubblicazione del sistema raccoglie le regole del server, i riavvii, le cache e le verifiche, e a queste si aggiungono le particolarità di questo rilascio (per esempio una migrazione dei dati), scritte nel piano di rilascio. Se il capitolo Pubblicazione manca, si dichiara: il piano di rilascio deve allora contenere tutti i passi. Se manca qualcosa, non inventarlo: va tra le domande per chi sviluppa.
 
 ## Quando si pubblica
 
-Lo sprint finisce sempre di venerdì. La skill prepara in tempo il piano di rilascio e la scheda tecnica, che sono i documenti di aiuto al rilascio: l'incaricato della pubblicazione li legge il lunedì e pubblica. In condizioni normali si può rilasciare anche a metà sprint, purché i documenti siano pronti. Il venerdì sera non è un momento normale: si pubblica solo per un'urgenza, entro le 18. Il piano per il cliente propone date coerenti con queste regole.
+Lo sprint finisce sempre di venerdì. La skill prepara in tempo il piano di rilascio e le particolarità tecniche: l'incaricato della pubblicazione legge il piano di rilascio e il capitolo Pubblicazione vigente il lunedì e pubblica. In condizioni normali si può rilasciare anche a metà sprint, purché i documenti siano pronti. Il venerdì sera non è un momento normale: si pubblica solo per un'urgenza, entro le 18. Il piano per il cliente propone date coerenti con queste regole.
 
 ## Pubblicazione e dopo
 
-1. L'incaricato della pubblicazione pubblica secondo la scheda tecnica e fa le verifiche. La pubblicazione non avviene in CI: la segue una persona.
-2. Si invia al cliente l'avviso di sistema in produzione e si annota nello storico cosa è stato fatto e cosa è emerso.
+1. L'incaricato della pubblicazione pubblica secondo il capitolo Pubblicazione e le particolarità del piano di rilascio, e fa le verifiche. La pubblicazione non avviene in CI: la segue una persona.
+2. Si invia al cliente l'avviso di sistema in produzione (un messaggio, senza file) e si annota in History and decision cosa è stato fatto e cosa è emerso.
 3. Decorre la garanzia: il 50% della durata pianificata del lavoro, con minimo 15 giorni di calendario. I bug segnalati in questo periodo sono un pacchetto di garanzia.
-4. Si ricorda al responsabile la chiusura del progetto: Manuale del prodotto, Documento tecnico e Guida alla pubblicazione vanno aggiornati con ciò che è stato realmente fatto e con ciò che è emerso durante la pubblicazione (un passo mancante, un riavvio, una cache), con le skill `allineamento-documenti` e `guida-alla-pubblicazione`. Si scrive anche il Report di progetto (skill `report-di-progetto`). Un progetto è chiuso solo dopo l'aggiornamento dei documenti e il Report.
+4. Si ricorda al responsabile la chiusura del progetto: Manuale del prodotto e Documento tecnico (compreso il capitolo Pubblicazione con le particolarità di questo rilascio) vanno aggiornati con ciò che è stato realmente fatto e con ciò che è emerso durante la pubblicazione (un passo mancante, un riavvio, una cache), con le skill `allineamento-documenti` e `documento-tecnico`. Si scrive anche il Report di progetto (skill `report-di-progetto`). Un progetto è chiuso solo dopo l'aggiornamento dei documenti e il Report.
 
 ## Dove si salva
 
-La checklist del collaudo è in ClickUp. Il piano di rilascio e, se serve, la scheda tecnica in `03-rilascio/02-preparazione`.
+La checklist del collaudo è in ClickUp. Il piano di rilascio concordato è una voce di `history-and-decision.md` (in `log`) e un messaggio al cliente (salvato in `source`), senza file a parte. Le particolarità tecniche stanno nel piano di rilascio e alla chiusura passano nel capitolo Pubblicazione del Documento tecnico.
 
 ## Regole di contenuto
 
 - **Il collaudo dice cosa provare, non lo prova.** La skill non esegue prove né pubblica.
 - **Il cliente accetta in modo esplicito.** Il silenzio non vale come accettazione di una prova.
 - **Nulla di inventato.** Date, ambienti e procedure vengono dalle fonti o dalle risposte del responsabile.
-- **Cliente e interno separati.** Il piano per il cliente non contiene nulla di tecnico; la scheda tecnica non va al cliente.
+- **Cliente e interno separati.** Il piano per il cliente non contiene nulla di tecnico; il Documento tecnico è interno e non va al cliente.
 
 ## Regole di scrittura
 
 - Lingua italiana. Forma impersonale: niente "io", "noi", "tu", "lei", "voi". Il cliente è chiamato per nome, sempre lo stesso.
 - Ogni cosa ha un solo nome, lo stesso usato nei documenti precedenti del lavoro. Due nomi per la stessa cosa fanno credere che siano due cose.
-- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere. Grassetti ed elenchi puntati sono ammessi.
+- Frasi brevi. Elenchi al posto delle tabelle, che sono pesanti da leggere (unica eccezione: le tabelle del Piano dei SAL). Grassetti ed elenchi puntati sono ammessi.
 - Solo caratteri digitabili da una normale tastiera italiana. Certi caratteri tipografici fanno percepire il testo come generato da una macchina. Sono esclusi: virgolette basse, virgolette curve, punto mediano usato come separatore, trattino lungo e trattino medio usati come incisi o separatori, puntini di sospensione come carattere unico, frecce e simboli decorativi, emoji. Al loro posto: virgolette dritte, virgole, due punti, parentesi e il trattino normale. Le lettere accentate si scrivono normalmente.
 
-Nella scheda tecnica i nomi di tecnologie, server e file si scrivono come sono.
+Nelle particolarità tecniche e nel capitolo Pubblicazione i nomi di tecnologie, server e file si scrivono come sono.
 
 ## Formato
 
-Markdown. Piano di rilascio, testo da inviare al cliente: `piano-rilascio-<cliente>-<sistema>.md`. Scheda tecnica, interna: `scheda-rilascio-<cliente>-<sistema>.md`, solo se il rilascio ha particolarità rispetto alla Guida (altrimenti una riga: si segue la Guida).
+Il piano di rilascio per il cliente è un messaggio da inviare, in testo da incollare in un'email, e non un documento. Le particolarità del rilascio stanno nel piano di rilascio (voce di History and decision) e alla chiusura nel capitolo Pubblicazione.
 
 ## Controllo finale
 
